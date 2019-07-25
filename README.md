@@ -6,4 +6,12 @@
 - All documents are created based on the template *LaTeX Mathematics Template*, under the license *CC-BY-SA 4.0*. It is allowed to make any editions on any document, as long as terms of the license is not violated.
 
 ### Contents
+##### Available
 - MATH1010: University Mathematics
+
+##### In progress
+- MATH1030: Linear Algebra I
+
+##### Pending
+- MATH1050: Foundation of Modern Mathematics
+- MATH2010: Advanced Calculus I
