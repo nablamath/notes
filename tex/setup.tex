@@ -1,0 +1,155 @@
+% --------------------------------------------------------------
+% Document Setup
+% --------------------------------------------------------------
+
+% Basic
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% --------------------------------------------------------------
+
+% Packages
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{blindtext}
+\usepackage{enumitem}
+\usepackage{extramarks}
+\usepackage{fancyhdr}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{mdframed}
+\usepackage{multicol, multirow}
+\usepackage{needspace, setspace}
+\usepackage{pgf, tikz, pgfplots}
+\usepackage{xcolor}
+
+% --------------------------------------------------------------
+
+% Commands
+\newcommand{\s}{\vspace{1mm}}
+\newcommand{\n}{\vspace{3mm}}
+\newcommand{\sct}{\thesection.\thescount}
+\newcommand{\ans}{{\color{ze}\textit{Answer. }\hspace{3mm}}}
+\newcommand{\prf}{{\color{zt}\textit{Proof. }\hspace{3mm}}}
+
+% Symbols
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\diff}{\mathrm{d}}
+
+% --------------------------------------------------------------
+
+% Colours
+\definecolor{grey}{RGB}{120, 120, 120}
+\definecolor{aw}{RGB}{31, 0, 54}
+\definecolor{zc}{RGB}{64, 37, 0}
+\definecolor{zd}{RGB}{0, 54, 10}
+\definecolor{ze}{RGB}{0, 24, 43}
+\definecolor{zt}{RGB}{54, 4, 0}
+
+% Code
+\lstset{
+numberstyle=\tiny,
+basicstyle=\ttfamily\footnotesize\color{grey},
+breakatwhitespace=false,
+breaklines=true,
+captionpos=b,
+frame=single,
+keepspaces=true,
+numbers=left,
+numbersep=-5pt,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=2
+}
+
+% Graphing
+\usetikzlibrary{arrows}
+\pgfplotsset{compat=1.15}
+
+% --------------------------------------------------------------
+
+% Environment
+\newcounter{scount}[section]
+
+\newenvironment{cmt}{ % Comment
+\parindent0pt
+\begin{siderule}[linecolor=zc]{\color{zc}\textit{Comment. }}
+}{
+\end{siderule} \color{black}
+}
+
+\newenvironment{dft}{ % Definition
+\parindent0pt
+\refstepcounter{scount}
+\begin{siderule}[linecolor=zd]{\color{zd}\textit{Definition \sct. }}
+}{
+\end{siderule} \color{black}
+}
+
+\newenvironment{exm}{ % Example
+\parindent0pt
+\refstepcounter{scount}
+\begin{siderule}[linecolor=ze]{\color{ze}\textit{Example \sct. }}
+}{
+\end{siderule} \color{black}
+}
+
+\newenvironment{thm}{ % Theorem
+\parindent0pt
+\refstepcounter{scount}
+\begin{siderule}[linecolor=zt]{\color{zt}\textit{Theorem \sct. }}
+}{
+\end{siderule} \color{black}
+}
+
+\newenvironment{alist}{ % Alphabetical list
+\begin{enumerate}[label=(\alph*)]
+}{
+\end{enumerate}
+}
+
+\newenvironment{Alist}{ % Capitalized alphabetical list
+\begin{enumerate}[label=(\Alph*)]
+}{
+\end{enumerate}
+}
+
+\newenvironment{nlist}{ % Number list
+\begin{enumerate}[label=(\arabic*)]
+}{
+\end{enumerate}
+}
+
+\newenvironment{plist}{ % Point list
+\begin{itemize}
+}{
+\end{itemize}
+}
+
+\newenvironment{rlist}{ % Roman list
+\begin{enumerate}[label=(\roman*)]
+}{
+\end{enumerate}
+}
+
+\newmdenv[ % Siderule line
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  rightmargin=0
+]{siderule}
+
+% --------------------------------------------------------------
+% End of Setup
+% --------------------------------------------------------------
