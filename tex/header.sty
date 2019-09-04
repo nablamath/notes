@@ -3,7 +3,6 @@
 % --------------------------------------------------------------
 
 % Basic
-\documentclass[a4paper,12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -35,6 +34,7 @@
 \newcommand{\n}{\vspace{3mm}}
 \newcommand{\sct}{\thesection.\thescount}
 \newcommand{\ans}{{\color{ze}\textit{Answer. }\hspace{3mm}}}
+\newcommand{\epf}{{\color{ze}\textit{Proof. }\hspace{3mm}}}
 \newcommand{\prf}{{\color{zt}\textit{Proof. }\hspace{3mm}}}
 
 % Symbols
@@ -82,6 +82,14 @@ tabsize=2
 % Environment
 \newcounter{scount}[section]
 
+\newenvironment{crl}{ % Corollary
+\parindent0pt
+\refstepcounter{scount}
+\begin{siderule}[linecolor=zt]{\color{zt}\textit{Corollary. }}
+}{
+\end{siderule} \color{black}
+}
+
 \newenvironment{cmt}{ % Comment
 \parindent0pt
 \begin{siderule}[linecolor=zc]{\color{zc}\textit{Comment. }}
@@ -101,6 +109,22 @@ tabsize=2
 \parindent0pt
 \refstepcounter{scount}
 \begin{siderule}[linecolor=ze]{\color{ze}\textit{Example \sct. }}
+}{
+\end{siderule} \color{black}
+}
+
+\newenvironment{fig}{ % Figure
+\parindent0pt
+\refstepcounter{scount}
+\begin{siderule}[linecolor=zc]{\color{zc}\textit{Figure \sct. }}
+}{
+\end{siderule} \color{black}
+}
+
+\newenvironment{pst}{ % Proposition
+\parindent0pt
+\refstepcounter{scount}
+\begin{siderule}[linecolor=zt]{\color{zt}\textit{Proposition \sct. }}
 }{
 \end{siderule} \color{black}
 }

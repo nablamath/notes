@@ -15,3 +15,6 @@
 ##### Pending
 - MATH1050: Foundation of Modern Mathematics
 - MATH2010: Advanced Calculus I
+- MATH2020: Advanced Calculus II
+- MATH2050: Mathematical Analysis I
+- MATH2070: Algebraic Structures
