@@ -1,5 +1,5 @@
 % --------------------------------------------------------------
-% Document Setup
+% Document Style
 % --------------------------------------------------------------
 
 % Basic
@@ -18,7 +18,6 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{indentfirst}
-\usepackage{lipsum}
 \usepackage{listings}
 \usepackage{mathrsfs}
 \usepackage{mdframed}
@@ -29,32 +28,42 @@
 
 % --------------------------------------------------------------
 
-% Commands
-\newcommand{\s}{\vspace{1mm}}
-\newcommand{\n}{\vspace{3mm}}
-\newcommand{\sct}{\thesection.\thescount}
-\newcommand{\ans}{{\color{ze}\textit{Answer. }\hspace{3mm}}}
-\newcommand{\epf}{{\color{ze}\textit{Proof. }\hspace{3mm}}}
-\newcommand{\prf}{{\color{zt}\textit{Proof. }\hspace{3mm}}}
+% Spacings
+\newcommand{\s}{\vspace{1mm}} % Equation spacing
+\newcommand{\n}{\vspace{3mm}} % Context spacing
 
-% Symbols
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{Z}}
+% Wordings
+\newcommand{\ans}[1][zb]{{\color{#1}\textit{Answer. }\hspace{3mm}}} % Answer
+\newcommand{\arl}[1][zr]{{\color{#1}$\brr{\Leftarrow}$\hspace{1mm}}} % Left arrow
+\newcommand{\arr}[1][zr]{{\color{#1}$\brr{\Rightarrow}$\hspace{1mm}}} % Right arrow
+\newcommand{\prf}[1][zr]{{\color{#1}\textit{Proof. }\hspace{3mm}}} % Proof
+\newcommand{\prt}[2][a]{\hspace{-2mm}{\color{#2}\textit{Part (#1) }}\hspace{1mm}} % Part
+\newcommand{\sct}{\thesection.\thescount} % Counter
 
-\newcommand{\diff}{\mathrm{d}}
+% Equation
+\newcommand{\C}{\mathbb{C}} % Complex
+\newcommand{\N}{\mathbb{N}} % Natural
+\newcommand{\Q}{\mathbb{Q}} % Rational
+\newcommand{\R}{\mathbb{R}} % Real
+\newcommand{\Z}{\mathbb{Z}} % Integer
+
+\newcommand{\abs}[1]{\left| #1\right|} % Absolute
+\newcommand{\brc}[1]{\left\{ #1\right\}} % Curly brackets
+\newcommand{\brr}[1]{\left( #1\right)} % Round brackets
+\newcommand{\brs}[1]{\left[ #1\right]} % Square brackets
+\newcommand{\diff}{\mathrm{d}} % Differential
+\newcommand{\erm}[1]{\;\;\;\;\text{#1}} % Equation remarks
+\newcommand{\nrm}[1]{\left\| #1\right\|} % Norm
 
 % --------------------------------------------------------------
 
 % Colours
-\definecolor{grey}{RGB}{120, 120, 120}
-\definecolor{aw}{RGB}{31, 0, 54}
-\definecolor{zc}{RGB}{64, 37, 0}
-\definecolor{zd}{RGB}{0, 54, 10}
-\definecolor{ze}{RGB}{0, 24, 43}
-\definecolor{zt}{RGB}{54, 4, 0}
+\definecolor{gr}{RGB}{120, 120, 120} % Grey
+\definecolor{zb}{RGB}{0, 24, 43} % Blue
+\definecolor{zg}{RGB}{0, 54, 10} % Green
+\definecolor{zp}{RGB}{31, 0, 54} % Purple
+\definecolor{zr}{RGB}{54, 4, 0} % Red
+\definecolor{zy}{RGB}{64, 37, 0} % Yellow
 
 % Code
 \lstset{
@@ -85,56 +94,56 @@ tabsize=2
 \newenvironment{crl}{ % Corollary
 \parindent0pt
 \refstepcounter{scount}
-\begin{siderule}[linecolor=zt]{\color{zt}\textit{Corollary. }}
+\begin{siderule}[linecolor=zr]{\color{zr}\textit{Corollary. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{cmt}{ % Comment
 \parindent0pt
-\begin{siderule}[linecolor=zc]{\color{zc}\textit{Comment. }}
+\begin{siderule}[linecolor=zp]{\color{zp}\textit{Comment. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{dft}{ % Definition
 \parindent0pt
 \refstepcounter{scount}
-\begin{siderule}[linecolor=zd]{\color{zd}\textit{Definition \sct. }}
+\begin{siderule}[linecolor=zg]{\color{zg}\textit{Definition \sct. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{exm}{ % Example
 \parindent0pt
 \refstepcounter{scount}
-\begin{siderule}[linecolor=ze]{\color{ze}\textit{Example \sct. }}
+\begin{siderule}[linecolor=zb]{\color{zb}\textit{Example \sct. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{fig}{ % Figure
 \parindent0pt
 \refstepcounter{scount}
-\begin{siderule}[linecolor=zc]{\color{zc}\textit{Figure \sct. }}
+\begin{siderule}[linecolor=zy]{\color{zy}\textit{Figure \sct. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{pst}{ % Proposition
 \parindent0pt
 \refstepcounter{scount}
-\begin{siderule}[linecolor=zt]{\color{zt}\textit{Proposition \sct. }}
+\begin{siderule}[linecolor=zr]{\color{zr}\textit{Proposition \sct. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{thm}{ % Theorem
 \parindent0pt
 \refstepcounter{scount}
-\begin{siderule}[linecolor=zt]{\color{zt}\textit{Theorem \sct. }}
+\begin{siderule}[linecolor=zr]{\color{zr}\textit{Theorem \sct. }}
 }{
-\end{siderule} \color{black}
+\end{siderule}
 }
 
 \newenvironment{alist}{ % Alphabetical list
@@ -143,7 +152,7 @@ tabsize=2
 \end{enumerate}
 }
 
-\newenvironment{Alist}{ % Capitalized alphabetical list
+\newenvironment{Alist}{ % Capitalizbd alphabetical list
 \begin{enumerate}[label=(\Alph*)]
 }{
 \end{enumerate}
@@ -156,9 +165,9 @@ tabsize=2
 }
 
 \newenvironment{plist}{ % Point list
-\begin{itemize}
+\begin{itemizb}
 }{
-\end{itemize}
+\end{itemizb}
 }
 
 \newenvironment{rlist}{ % Roman list
@@ -175,5 +184,5 @@ tabsize=2
 ]{siderule}
 
 % --------------------------------------------------------------
-% End of Setup
+% End of Style
 % --------------------------------------------------------------
