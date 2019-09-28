@@ -23,14 +23,16 @@
 \usepackage{mdframed}
 \usepackage{multicol, multirow}
 \usepackage{needspace, setspace}
+\usepackage{paracol}
 \usepackage{pgf, tikz, pgfplots}
 \usepackage{xcolor}
 
 % --------------------------------------------------------------
 
 % Spacings
-\newcommand{\s}{\vspace{1mm}} % Equation spacing
 \newcommand{\n}{\vspace{3mm}} % Context spacing
+\newcommand{\propdisp}{\pagebreak} % Proper display page break
+\newcommand{\s}{\vspace{1mm}} % Equation spacing
 
 % Wordings
 \newcommand{\ans}[1][zb]{{\color{#1}\textit{Answer. }\hspace{3mm}}} % Answer
@@ -38,7 +40,14 @@
 \newcommand{\arr}[1][zr]{{\color{#1}$\brr{\Rightarrow}$\hspace{1mm}}} % Right arrow
 \newcommand{\prf}[1][zr]{{\color{#1}\textit{Proof. }\hspace{3mm}}} % Proof
 \newcommand{\prt}[2][a]{\hspace{-2mm}{\color{#2}\textit{Part (#1) }}\hspace{1mm}} % Part
+\newcommand{\prtc}[2][a]{\hspace{2mm}\prt[#1]{#2}} % Continued part
+\newcommand{\rdft}[1][\sct]{{\color{zg}\textit{Definition #1}}} % Refer definition
+\newcommand{\rexm}[1][\sct]{{\color{zb}\textit{Example #1}}} % Refer example
+\newcommand{\rfig}[1][\sct]{{\color{zy}\textit{Figure #1}}} % Refer figure
+\newcommand{\rpst}[1][\sct]{{\color{zr}\textit{Proposition #1}}} % Refer proposition
+\newcommand{\rthm}[1][\sct]{{\color{zr}\textit{Theorem #1}}}
 \newcommand{\sct}{\thesection.\thescount} % Counter
+\newcommand{\sctd}[2][0]{\the\numexpr\value{section}-#1\relax.\the\numexpr\value{scount}-#2\relax} % Delta counter
 
 % Equation
 \newcommand{\C}{\mathbb{C}} % Complex
@@ -47,13 +56,18 @@
 \newcommand{\R}{\mathbb{R}} % Real
 \newcommand{\Z}{\mathbb{Z}} % Integer
 
+\newcommand{\GL}{\mathrm{GL}} % General linear group
+\newcommand{\SL}{\mathrm{SL}} % Speical linear group
+
 \newcommand{\abs}[1]{\left| #1\right|} % Absolute
+\newcommand{\bra}[1]{\left\langle #1\right\rangle} % Angled brackets
 \newcommand{\brc}[1]{\left\{ #1\right\}} % Curly brackets
 \newcommand{\brr}[1]{\left( #1\right)} % Round brackets
 \newcommand{\brs}[1]{\left[ #1\right]} % Square brackets
-\newcommand{\diff}{\mathrm{d}} % Differential
+\newcommand{\diff}{\,\mathrm{d}} % Differential
 \newcommand{\erm}[1]{\;\;\;\;\text{#1}} % Equation remarks
 \newcommand{\nrm}[1]{\left\| #1\right\|} % Norm
+\newcommand{\srm}{\,\mid\,} % Set remarks
 
 % --------------------------------------------------------------
 
@@ -88,12 +102,11 @@ tabsize=2
 
 % --------------------------------------------------------------
 
-% Environment
+% Environments
 \newcounter{scount}[section]
 
 \newenvironment{crl}{ % Corollary
 \parindent0pt
-\refstepcounter{scount}
 \begin{siderule}[linecolor=zr]{\color{zr}\textit{Corollary. }}
 }{
 \end{siderule}
@@ -130,10 +143,24 @@ tabsize=2
 \end{siderule}
 }
 
+\newenvironment{prv}{ % Proof
+\parindent0pt
+\begin{siderule}[linecolor=zr]\prf
+}{
+\end{siderule}
+}
+
 \newenvironment{pst}{ % Proposition
 \parindent0pt
 \refstepcounter{scount}
 \begin{siderule}[linecolor=zr]{\color{zr}\textit{Proposition \sct. }}
+}{
+\end{siderule}
+}
+
+\newenvironment{tcn}{ % Technique
+\parindent0pt
+\begin{siderule}[linecolor=zp]{\color{zp}\textit{Technique. }}
 }{
 \end{siderule}
 }
@@ -152,7 +179,7 @@ tabsize=2
 \end{enumerate}
 }
 
-\newenvironment{Alist}{ % Capitalizbd alphabetical list
+\newenvironment{Alist}{ % Capitalized alphabetical list
 \begin{enumerate}[label=(\Alph*)]
 }{
 \end{enumerate}
@@ -165,9 +192,9 @@ tabsize=2
 }
 
 \newenvironment{plist}{ % Point list
-\begin{itemizb}
+\begin{itemize}
 }{
-\end{itemizb}
+\end{itemize}
 }
 
 \newenvironment{rlist}{ % Roman list

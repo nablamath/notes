@@ -20,13 +20,7 @@
 \begin{document}
 % Cover
 \title{MATH1010 Notes}
-\author{onenylxus/math-notes}
-\makeatletter
-\let\getauthor\@author
-\let\gettitle\@title
-\makeatother
-\maketitle
-\thispagestyle{empty}
+\input{sty/cover.sty}
 
 \n\n
 
@@ -41,15 +35,11 @@
 
 \pagebreak
 
-% Table of Contents
-\tableofcontents
-\thispagestyle{empty}
-\pagebreak
-
 % Header
 \input{sty/header.sty}
 
 % Context
+\fancyhead[R]{Preface}
 \section*{Preface}
 \addcontentsline{toc}{section}{Preface}
 I believe this is the beginning of your journey to university mathematics. Before we begin, please spend some time reading this preface.\n
@@ -102,6 +92,7 @@ It is also highly recommended to attend the First Year Honours Scheme. The First
 For more advice on study, please visit the website \url{http://www.math.cuhk.edu.hk/student-centre/academic-advice}.
 \pagebreak
 
+\fancyhead[R]{\nouppercase \lastrightmark}
 \section{Limits}
 \subsection{Introduction to Infinite Sequences}
 \subsubsection{Infinite Sequences}
@@ -135,7 +126,7 @@ Besides arithmetic sequence and geometric sequence, there are some interesting s
 
 \subsubsection{Fibonacci Sequence}
 \begin{dft}
-  The \textbf{Fibonacci Sequence} is the sequence $F_{n}$ which satisfies the following:
+  The \textbf{Fibonacci sequence} is the sequence $F_{n}$ which satisfies the following:
 
   $$\begin{cases}
     F_{1}=F_{2}=1 &\\
@@ -166,29 +157,30 @@ $$F_{n}=\frac{1}{\sqrt{5}}\brr{\brr{\frac{1+\sqrt{5}}{2}}^{n}+\brr{\frac{1-\sqrt
 
 An infinite sequence can also tend to $-\infty$ as $n$ tends to infinity, using similar method as above. Note that the infinite sequence is divergent if it tends to $\pm \infty$.
 
-\subsubsection{Manipulations of Limits for Sequences}
+\subsubsection{Manipulations of Limits of Sequences}
 \begin{pst}
   Here are some available manipulations of limits:
+
   \begin{alist}
-   \item \textbf{Addition and Subtraction of Limits}\\
-   Suppose $\lim_{n\to \infty}a_{n}=a$ and $\lim_{n\to \infty}b_{n}=b$. Then
+    \item \textbf{Addition and Subtraction of Limits}\\
+    Suppose $\lim_{n\to \infty}a_{n}=a$ and $\lim_{n\to \infty}b_{n}=b$. Then
 
-   $$\lim_{n\to \infty}a_{n}\pm \lim_{n\to \infty}b_{n}=a\pm b$$
+    $$\lim_{n\to \infty}a_{n}\pm \lim_{n\to \infty}b_{n}=a\pm b$$
 
-   \item \textbf{Scalar Multiplication of Limits}\\
-   Suppose $\lim_{n\to \infty}a_{n}=a$ and $c$ is a real number. Then
+    \item \textbf{Scalar Multiplication of Limits}\\
+    Suppose $\lim_{n\to \infty}a_{n}=a$ and $c$ is a real number. Then
 
-   $$\lim_{n\to \infty}ca_{n}=ca$$
+    $$\lim_{n\to \infty}ca_{n}=ca$$
 
-   \item \textbf{Multiplication of Limits}\\
-   Suppose $\lim_{n\to \infty}a_{n}=a$ and $\lim_{n\to \infty}b_{n}=b$. Then
+    \item \textbf{Multiplication of Limits}\\
+    Suppose $\lim_{n\to \infty}a_{n}=a$ and $\lim_{n\to \infty}b_{n}=b$. Then
 
-   $$\lim_{n\to \infty}a_{n}b_{n}=ab$$
+    $$\lim_{n\to \infty}a_{n}b_{n}=ab$$
 
-   \item \textbf{Division of Limits}\\
-   Suppose $\lim_{n\to \infty}a_{n}=a$ and $\lim_{n\to \infty}b_{n}=b\neq 0$. Then
+    \item \textbf{Division of Limits}\\
+    Suppose $\lim_{n\to \infty}a_{n}=a$ and $\lim_{n\to \infty}b_{n}=b\neq 0$. Then
 
-   $$\lim_{n\to \infty}\frac{a_{n}}{b_{n}}=\frac{a}{b}$$
+    $$\lim_{n\to \infty}\frac{a_{n}}{b_{n}}=\frac{a}{b}$$
   \end{alist}
 \end{pst}
 
@@ -335,7 +327,7 @@ Limit of the real-valued function when $x$ tends to $-\infty$ is defined similar
   $$\lim_{n\to \infty}f(x_{n})=l$$
 \end{thm}
 
-\subsubsection{Manipulations of Limits for Functions}
+\subsubsection{Manipulations of Limits of Functions}
 \begin{pst}
   Denote real-valued functions as $f(x)$ and $g(x)$ such that $\lim_{x\to a}f(x)$ and $\lim_{x\to a}g(x)$ exist. Also denote a real number as $k$. Then the following manipulations of limits can be applied:
 
@@ -533,19 +525,19 @@ Note that when the sine and cosine are interpreted as trigonometric ratios, the 
     \begin{rlist}
       \item Sum of Two Sine Functions
 
-      $$sin(\alpha)+sin(\beta)=2sin(\frac{\alpha +\beta}{2})cos(\frac{\alpha -\beta}{2})$$
+      $$sin(\alpha)+sin(\beta)=2sin\brr{\frac{\alpha +\beta}{2}}cos\brr{\frac{\alpha -\beta}{2}}$$
 
       \item Difference of Two Sine Functions
 
-      $$sin(\alpha)-sin(\beta)=2cos(\frac{\alpha +\beta}{2})sin(\frac{\alpha -\beta}{2})$$
+      $$sin(\alpha)-sin(\beta)=2cos\brr{\frac{\alpha +\beta}{2}}sin\brr{\frac{\alpha -\beta}{2}}$$
 
       \item Sum of Two Cosine Functions
 
-      $$cos(\alpha)+cos(\beta)=2cos(\frac{\alpha +\beta}{2})cos(\frac{\alpha -\beta}{2})$$
+      $$cos(\alpha)+cos(\beta)=2cos\brr{\frac{\alpha +\beta}{2}}cos\brr{\frac{\alpha -\beta}{2}}$$
 
       \item Difference of Two Cosine Functions
 
-      $$cos(\alpha)-cos(\beta)=-2sin(\frac{\alpha +\beta}{2})sin(\frac{\alpha -\beta}{2})$$
+      $$cos(\alpha)-cos(\beta)=-2sin\brr{\frac{\alpha +\beta}{2}}sin\brr{\frac{\alpha -\beta}{2}}$$
 
     \end{rlist}
   \end{alist}
@@ -616,25 +608,25 @@ Note that some identities for hyperbolic functions are quite similar to those fo
 
   $$\begin{aligned}[t]
     \frac{e^{x}-1}{x}&=1+\frac{x}{2!}+\frac{x^{2}}{3!}+\frac{x^{3}}{4!}+\frac{x^{4}}{5!}+\cdots\\
-    &\leq 1+\frac{x}{2}+(\frac{x^{2}}{4}+\frac{x^{3}}{8}+\frac{x^{4}}{16}+\cdots)=1+\frac{x}{2}+\frac{x^{2}}{2}
+    &\leq 1+\frac{x}{2}+\brr{\frac{x^{2}}{4}+\frac{x^{3}}{8}+\frac{x^{4}}{16}+\cdots}=1+\frac{x}{2}+\frac{x^{2}}{2}
   \end{aligned}$$\s
 
   At the same time,
 
   $$\begin{aligned}[t]
     \frac{e^{x}-1}{x}&=1+\frac{x}{2!}+\frac{x^{2}}{3!}+\frac{x^{3}}{4!}+\cdots\\
-    &\geq 1+\frac{x}{2}-(\frac{x^{2}}{4}+\frac{x^{3}}{8}+\frac{x^{4}}{16}+\cdots)=1+\frac{x}{2}-\frac{x^{2}}{2}
+    &\geq 1+\frac{x}{2}-\brr{\frac{x^{2}}{4}+\frac{x^{3}}{8}+\frac{x^{4}}{16}+\cdots}=1+\frac{x}{2}-\frac{x^{2}}{2}
   \end{aligned}$$\s
 
   Note that
 
-  $$\lim_{x\to 0}(1+\frac{x}{2}+\frac{x^{2}}{2})=\lim_{x\to 0}(1+\frac{x}{2}-\frac{x^{2}}{2})=1$$\s
+  $$\lim_{x\to 0}\brr{1+\frac{x}{2}+\frac{x^{2}}{2}}=\lim_{x\to 0}\brr{1+\frac{x}{2}-\frac{x^{2}}{2}}=1$$\s
 
   Therefore
 
   $$\lim_{x\to 0}\frac{e^{x}-1}{x}=1$$\s
 
-  \prf \prt[b]{zr} Let $y=ln(1+x)$, then
+  \prtc[b]{zr} Let $y=ln(1+x)$, then
 
   $$\begin{aligned}[t]
     e^{y}&=1+x\\
@@ -645,20 +637,20 @@ Note that some identities for hyperbolic functions are quite similar to those fo
 
   $$\lim_{x\to 0}\frac{ln(1+x)}{x}=\lim_{y\to 0}\frac{y}{e^{y}-1}=1$$\s
 
-  \prf \prt[c]{zr} Note that
+  \prtc[c]{zr} Note that
 
   $$\frac{sin(x)}{x}=1-\frac{x^{2}}{3}+\frac{x^{4}}{5}-\frac{x^{6}}{7}+\frac{x^{8}}{9}-\frac{x^{10}}{11}+\cdots$$\s
 
   For any $-1<x<1$ with $x\neq 0$, we have
 
   $$\begin{aligned}[t]
-    \frac{sin(x)}{x}&=1-(\frac{x^{2}}{3!}-\frac{x^{4}}{5!})-(\frac{x^{6}}{7!}-\frac{x^{8}}{9!})-\cdots \leq 1\\
-    \frac{sin(x)}{x}&=1-\frac{x^{2}}{3!}+(\frac{x^{4}}{5!}-\frac{x^{6}}{7!})+(\frac{x^{8}}{9!}-\frac{x^{10}}{11!})+\cdots \geq 1-\frac{x^{2}}{6}
+    \frac{sin(x)}{x}&=1-\brr{\frac{x^{2}}{3!}-\frac{x^{4}}{5!}}-\brr{\frac{x^{6}}{7!}-\frac{x^{8}}{9!}}-\cdots \leq 1\\
+    \frac{sin(x)}{x}&=1-\frac{x^{2}}{3!}+\brr{\frac{x^{4}}{5!}-\frac{x^{6}}{7!}}+\brr{\frac{x^{8}}{9!}-\frac{x^{10}}{11!}}+\cdots \geq 1-\frac{x^{2}}{6}
   \end{aligned}$$\s
 
   and
 
-  $$\lim_{x\to 0}1=\lim_{x\to 0}(1-\frac{x^{2}}{6})=1$$
+  $$\lim_{x\to 0}1=\lim_{x\to 0}\brr{1-\frac{x^{2}}{6}}=1$$
 
   Therefore
 
@@ -698,7 +690,7 @@ Note that some identities for hyperbolic functions are quite similar to those fo
 
   $$\lim_{x\to +\infty}\frac{x^{k}}{e^{x}}=0$$\s
 
-  \prf \prt[b]{zr} Let $x=e^{y}$, then $ln(x)=y$. Note that $x\to +\infty$ as $y\to +\infty$. Therefore
+  \prtc[b]{zr} Let $x=e^{y}$, then $ln(x)=y$. Note that $x\to +\infty$ as $y\to +\infty$. Therefore
 
   $$\lim_{x\to +\infty}\frac{(ln(x))^{k}}{x}=\lim_{y\to +\infty}\frac{y^{k}}{e^{y}}=0$$
 \end{pst}
@@ -717,17 +709,20 @@ Note that some identities for hyperbolic functions are quite similar to those fo
 
 $f(x)$ is continuous on an interval in $\R$ if $f(x)$ is continuous at every point on the interval.\n
 
-Generally there are several types of function that are continuous on $\R$:
-\begin{alist}
-  \item \textbf{Monomial with Non-negative Degrees}\\
-  For any non-negative integer $n$, $f(x)=x^{n}$ is continuous on $\R$.
-  \item \textbf{Sine and Cosine Functions}\\
-  $sin(x)$ and $cos(x)$ are continuous on $\R$.
-  \item \textbf{Exponential Function}\\
-  $e^{x}$ is continuous on $\R$.
-  \item \textbf{Logarithmic Function}\\
-  $ln(x)$ is continuous on $\R^{+}$.
-\end{alist}
+\begin{pst}
+  The following types of function are continuous on $\R$:
+
+  \begin{alist}
+    \item \textbf{Monomial with Non-negative Degrees}\\
+    For any non-negative integer $n$, $f(x)=x^{n}$ is continuous on $\R$.
+    \item \textbf{Sine and Cosine Functions}\\
+    $sin(x)$ and $cos(x)$ are continuous on $\R$.
+    \item \textbf{Exponential Function}\\
+    $e^{x}$ is continuous on $\R$.
+    \item \textbf{Logarithmic Function}\\
+    $ln(x)$ is continuous on $\R^{+}$.
+  \end{alist}
+\end{pst}
 
 \subsubsection{Continuity of Combinations of Functions}
 \begin{thm}
@@ -915,19 +910,19 @@ Although the continuity of the function is guaranteed with the differentiability
 
   In fact, the power rule can be applied for any real number $n$ except $0$. The complete proof (negative and rational indices to be exact) can only be done after product rule and chain rule is introduced.\n
 
-  \prf \prt[b]{zr} Let $y=e^{x}$. For any $x \in \R$,
+  \prtc[b]{zr} Let $y=e^{x}$. For any $x \in \R$,
 
   $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{e^{x+h}-e^{x}}{h}=\lim_{h\to 0}\frac{e^{x}(e^{h}-1)}{h}=e^{x}$$
 
-  \prf \prt[c]{zr} Let $y=ln(x)$. For any $x>0$,
+  \prtc[c]{zr} Let $y=ln(x)$. For any $x>0$,
 
   $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{ln(x+h)-ln(x)}{h}=\lim_{h\to 0}\frac{ln(1+\frac{h}{x})}{h}=\frac{1}{x}$$
 
-  \prf \prt[d]{zr} Let $y=sin(x)$. For any $x\in \R$,
+  \prtc[d]{zr} Let $y=sin(x)$. For any $x\in \R$,
 
   $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{sin(x+h)-sin(x)}{h}=\lim_{h\to 0}\frac{2cos(x+\frac{h}{2})sin(\frac{h}{2})}{h}=cos(x)$$
 
-  \prf \prt[e]{zr} Let $y=cos(x)$. For any $x\in \R$,
+  \prtc[e]{zr} Let $y=cos(x)$. For any $x\in \R$,
 
   $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{cos(x+h)-cos(x)}{h}=\lim_{h\to 0}\frac{-2sin(x+\frac{h}{2})sin(\frac{h}{2})}{h}=-sin(x)$$
 \end{pst}\n
@@ -970,7 +965,7 @@ Although the continuity of the function is guaranteed with the differentiability
 
   $$a^{x+y}=e^{(x+y)ln(a)}=e^{xln(a)}e^{yln(a)}=a^{x}a^{y}$$\s
 
-  \prf \prt[b]{zr} For any $a>0$,
+  \prtc[b]{zr} For any $a>0$,
 
   $$\frac{\diff}{\diff x}a^{x}=\frac{\diff}{\diff x}e^{xln(a)}=e^{xln(a)}ln(a)=a^{x}ln(a)$$
 \end{pst}
@@ -988,7 +983,7 @@ Here \textbf{product rule} and \textbf{quotient rule} is introduced:\n
 
     \item \textbf{Quotient Rule}
 
-    $$\frac{\diff}{\diff x}(\frac{p}{q})=\frac{q\frac{\diff p}{\diff x}-p\frac{\diff q}{\diff x}}{q^{2}}$$
+    $$\frac{\diff}{\diff x}\brr{\frac{p}{q}}=\frac{q\frac{\diff p}{\diff x}-p\frac{\diff q}{\diff x}}{q^{2}}$$
   \end{alist}
 
   \prf \prt[a]{zr} Denote differentiable functions of $x$ as $p=f(x)$ and $q=g(x)$. Then
@@ -1000,10 +995,10 @@ Here \textbf{product rule} and \textbf{quotient rule} is introduced:\n
     &=p\frac{\diff q}{\diff x}+q\frac{\diff p}{\diff x}
   \end{aligned}$$\s
 
-  \prf \prt[b]{zr} Denote differentiable functions of $x$ as $p=f(x)$ and $q=g(x)$. Then
+  \prtc[b]{zr} Denote differentiable functions of $x$ as $p=f(x)$ and $q=g(x)$. Then
 
   $$\begin{aligned}[t]
-    \frac{\diff}{\diff x}(\frac{p}{q})&=\lim_{h\to 0}\frac{\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}}{h}\\
+    \frac{\diff}{\diff x}\brr{\frac{p}{q}}&=\lim_{h\to 0}\frac{\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}}{h}\\
     &=\lim_{h\to 0}\frac{f(x+h)g(x)-f(x)g(x+h)}{hg(x)g(x+h)}\\
     &=\lim_{h\to 0}\brr{\frac{f(x+h)g(x)-f(x)g(x)}{hg(x)g(x+h)}-\frac{f(x)g(x+h)-f(x)g(x)}{hg(x)g(x+h)}}\\
     &=\lim_{h\to 0}\brr{g(x)\brr{\frac{f(x+h)-f(x)}{hg(x)g(x+h)}}-f(x)\brr{\frac{g(x+h)-g(x)}{hg(x)g(x+h)}}}\\
@@ -1293,6 +1288,8 @@ In order to sketch the graph of $y=f(x)$ accurately, the information below are r
   If $\lim_{x\to -\infty/+\infty}(f(x)-(ax+b))=0$, then $y=ax+b$ is said to be an \textbf{oblique asymptote} of $y=f(x)$.
 \end{dft}
 
+\propdisp
+
 \subsubsection{First Derivative Test and Turning Points}
 \begin{dft}
   Denote a continuous function as $f(x)$. $f(x)$ is said to have a \textbf{local maximum} at $x=a$ if there exists $\delta>0$ such that $f(x)\leq f(a)$ for any $x\in (a-\delta,a+\delta)$, and a \textbf{local minimum} at $x=a$ if there exists $\delta>0$ such that $f(x)\geq f(a)$ for any $x\in (a-\delta,a+\delta)$.
@@ -1344,15 +1341,15 @@ Besides the first derivative test, there is also the \textbf{second derivative t
 
   Note that anti-derivative has another name of primitive function. The collection of all anti-derivatives of $f(x)$ is called the \textbf{indefinite integral} of $f(x)$, and it is denoted by
 
-  $$\int f(x)\;\diff x$$\s
+  $$\int f(x)\diff x$$\s
 
   where the function $f(x)$ is called the \textbf{integrand} of the integral.\n
 
   Also note that anti-derivative of a function is not unique. If $F(x)$ is an anti-derivative of $f(x)$, then $F(x)+C$ is also an anti-derivative of $f(x)$ for any constant $C$. Moreover, any derivative of $f(x)$ is of the form $F(x)+C$, in which
 
-  $$\int f(x)\;\diff x=F(x)+C$$\s
+  $$\int f(x)\diff x=F(x)+C$$\s
 
-  where $C$ is an arbitrary constant called the \textbf{integration constant}. Note that $\int f(x)\;\diff x$ is not a single function but a collection of functions.
+  where $C$ is an arbitrary constant called the \textbf{integration constant}. Note that $\int f(x)\diff x$ is not a single function but a collection of functions.
 \end{dft}
 
 \subsubsection{Rules of Indefinite Integration}
@@ -1362,11 +1359,11 @@ Besides the first derivative test, there is also the \textbf{second derivative t
   \begin{alist}
     \item \textbf{Addition of indefinite integrals}
 
-    $$\int(f(x)+g(x))\;\diff x=\int f(x)\;\diff x+\int g(x)\;\diff x$$
+    $$\int(f(x)+g(x))\diff x=\int f(x)\diff x+\int g(x)\diff x$$
 
     \item \textbf{Scalar Multiplication of First Derivative}
 
-    $$\int kf(x)\;\diff x=k\int f(x)\;\diff x$$
+    $$\int kf(x)\diff x=k\int f(x)\diff x$$
   \end{alist}
 \end{pst}
 
@@ -1377,39 +1374,39 @@ Besides the first derivative test, there is also the \textbf{second derivative t
   \begin{alist}
     \item \textbf{Integration of Monomials}
 
-    $$\int x^{n}\;\diff x=\frac{x^{n+1}}{n+1}+C\erm{for }n\in\R\setminus\brc{1}$$
+    $$\int x^{n}\diff x=\frac{x^{n+1}}{n+1}+C\erm{for }n\in\R\setminus\brc{1}$$
 
     \item \textbf{Integration of Exponential Function}
 
-    $$\int e^{x}\;\diff x=e^{x}+C$$
+    $$\int e^{x}\diff x=e^{x}+C$$
 
     \item \textbf{Integration about Logarithmic Function}
 
-    $$\int\frac{1}{x}\;\diff x=ln\abs{x}+C$$
+    $$\int\frac{1}{x}\diff x=ln\abs{x}+C$$
 
     \item \textbf{Integration about Sine Function}
 
-    $$\int cos(x)\;\diff x=sin(x)+C$$
+    $$\int cos(x)\diff x=sin(x)+C$$
 
     \item \textbf{Integration about Cosine Function}
 
-    $$\int sin(x)\;\diff x=-cos(x)+C$$
+    $$\int sin(x)\diff x=-cos(x)+C$$
 
     \item \textbf{Integration about Tangent Function}
 
-    $$\int sec^{2}(x)\;\diff x=tan(x)+C$$
+    $$\int sec^{2}(x)\diff x=tan(x)+C$$
 
     \item \textbf{Integration about Secant Function}
 
-    $$\int sec(x)tan(x)\;\diff x=sec(x)+C$$
+    $$\int sec(x)tan(x)\diff x=sec(x)+C$$
 
     \item \textbf{Integration about Cosecant Function}
 
-    $$\int csc(x)cot(x)\;\diff x=-csc(x)+C$$
+    $$\int csc(x)cot(x)\diff x=-csc(x)+C$$
 
     \item \textbf{Integration about Cotangent Function}
 
-    $$\int csc^{2}(x)\;\diff x=-cot(x)+C$$
+    $$\int csc^{2}(x)\diff x=-cot(x)+C$$
   \end{alist}
 \end{pst}
 
@@ -1418,8 +1415,8 @@ Besides the first derivative test, there is also the \textbf{second derivative t
   Denote a continuous function defined on $[a,b]$ as $f(x)$. Suppose there exists a differentiable function $u=\varphi(x)$ and continuous function $g(u)$ such that $f(x)=g(\varphi(x))\varphi'(x)$ for any $x\in(a,b)$, then
 
   $$\begin{aligned}[t]
-    \int f(x)\;\diff x&=\int g(\varphi(x))\varphi'(x)\;\diff x\\
-    &=\int g(u)\;\diff u
+    \int f(x)\diff x&=\int g(\varphi(x))\varphi'(x)\diff x\\
+    &=\int g(u)\diff u
   \end{aligned}$$
 \end{thm}
 
@@ -1452,55 +1449,57 @@ Besides the first derivative test, there is also the \textbf{second derivative t
 \end{dft}
 
 \begin{dft}
-  Denote a closed and bounded interval as $[a,b]$ and a real-valued function defined on $[a,b]$ as $f: [a,b]\to\R$. $f(x)$ is \textbf{Riemann integratable} on $[a,b]$ if the limits of $L(f,P)$ and $U(f,P)$ exist as $\abs{P}$ tends to $0$ and are equal. In this case, the \textbf{Riemann integral} of $f(x)$ over $[a,b]$ is defined as
+  Denote a closed and bounded interval as $[a,b]$ and a real-valued function defined on $[a,b]$ as $f: [a,b]\to\R$. $f(x)$ is \textbf{Riemann integrable} on $[a,b]$ if the limits of $L(f,P)$ and $U(f,P)$ exist as $\abs{P}$ tends to $0$ and are equal. In this case, the \textbf{Riemann integral} of $f(x)$ over $[a,b]$ is defined as
 
-  $$\int_{a}^{b}f(x)\;\diff x=\lim_{\abs{P}\to 0}L(f,P)=\lim_{\abs{P}\to 0}U(f,P)$$\s
+  $$\int_{a}^{b}f(x)\diff x=\lim_{\abs{P}\to 0}L(f,P)=\lim_{\abs{P}\to 0}U(f,P)$$\s
 
   Note that $\lim_{\abs{P}\to 0}L(f,P)=L$ if for any $\epsilon>0$, there exists some $\delta=\delta(\epsilon)>0$ such that if $\abs{P}<\delta$, then $\abs{L(f,P)-L}<\epsilon$.
 \end{dft}
 
 \subsubsection{Rules of Definite Integration}
 \begin{pst}
-  Now suppose $f(x)$ and $g(x)$ are integratable functions on $[a,b]$, a real number $c$ where $a<c<b$ and a constant $k$, then the following rules of definite integration can be applied:
+  Now suppose $f(x)$ and $g(x)$ are integrable functions on $[a,b]$, a real number $c$ where $a<c<b$ and a constant $k$, then the following rules of definite integration can be applied:
 
   \begin{alist}
     \item \textbf{Addition of Definite Integrals}
 
-    $$\int_{a}^{b}(f(x)+g(x))\;\diff x=\int_{a}^{b}f(x)\;\diff x+\int_{a}^{b}g(x)\;\diff x$$
+    $$\int_{a}^{b}(f(x)+g(x))\diff x=\int_{a}^{b}f(x)\diff x+\int_{a}^{b}g(x)\diff x$$
 
     \item \textbf{Scalar Multiplication of Definite Integrals}
 
-    $$\int_{a}^{b}kf(x)\;\diff x=k\int_{a}^{b}f(x)\;\diff x$$
+    $$\int_{a}^{b}kf(x)\diff x=k\int_{a}^{b}f(x)\diff x$$
 
     \item \textbf{Adjacent Intervals of Definite Integrals}
 
-    $$\int_{a}^{b}f(x)\;\diff x=\int_{a}^{c}f(x)\;\diff x+\int_{c}^{b}f(x)\;\diff x$$
+    $$\int_{a}^{b}f(x)\diff x=\int_{a}^{c}f(x)\diff x+\int_{c}^{b}f(x)\diff x$$
 
     \item \textbf{Inverted Intervals of Definite Integrals}
 
-    $$\int_{a}^{b}f(x)\;\diff x=-\int_{b}^{a}f(x)\;\diff x$$
+    $$\int_{a}^{b}f(x)\diff x=-\int_{b}^{a}f(x)\diff x$$
   \end{alist}
 \end{pst}
 
 \subsubsection{Riemann Integrability}
 \begin{thm}
-  Denote a continuous function on $[a,b]$ be $f(x)$. $f(x)$ is Riemann integratable on $[a,b]$ and we have
+  Denote a continuous function on $[a,b]$ be $f(x)$. $f(x)$ is Riemann integrable on $[a,b]$ and we have
 
   $$\begin{aligned}[t]
-    \int_{a}^{b}f(x)\;\diff x&=\lim_{n\to\infty}\sum_{k=1}^{n}f(x_{k})\Delta x_{k}\\
+    \int_{a}^{b}f(x)\diff x&=\lim_{n\to\infty}\sum_{k=1}^{n}f(x_{k})\Delta x_{k}\\
     &=\lim_{n\to\infty}\sum_{k=1}^{n}f\brr{a+\frac{k}{n}(b-a)}\brr{\frac{b-a}{n}}
   \end{aligned}$$
 \end{thm}
 
+\propdisp
+
 \subsection{Introduction to Fundamental Theorem of Calculus}
 \subsubsection{Fundamental Theorem of Calculus}
 \begin{thm}
-  Here the \textbf{fundamental theorem of calculus} is introduced in two parts:
+  Here the \textbf{Fundamental Theorem of Calculus} is introduced in two parts:
 
   \begin{alist}
     \item Denote a continuous function on $[a,b]$ be $f(x)$. Let $F:[a,b]\to\R$ be the function defined by
 
-    $$F(x)=\int_{a}^{x}f(t)\;\diff t$$\s
+    $$F(x)=\int_{a}^{x}f(t)\diff t$$\s
 
     Then $F(x)$ is continuous on $[a,b]$, differentiable on $(a,b)$ and
 
@@ -1508,13 +1507,45 @@ Besides the first derivative test, there is also the \textbf{second derivative t
 
     In other words, the above represents
 
-    $$\frac{\diff}{\diff x}\int_{a}^{x}f(t)\;\diff t=f(x)\erm{for any }x\in(a,b)$$
+    $$\frac{\diff}{\diff x}\int_{a}^{x}f(t)\diff t=f(x)\erm{for any }x\in(a,b)$$
 
     \item Denote a continuous function on $[a,b]$ be $f(x)$. Let $F(x)$ be the primitive function of $f(x)$, or in other words, $F(x)$ is a continuous function on $[a,b]$ and $F'(x)=f(x)$ for any $x\in(a,b)$. Then
 
-    $$\int_{a}^{b}f(x)\;\diff x=F(b)-F(a)$$
+    $$\int_{a}^{b}f(x)\diff x=F(b)-F(a)$$
   \end{alist}
 \end{thm}
+
+\subsubsection{Limits of Series}
+The Fundamental Theorem of Calculus can be used to evaluate limits of series of a certain form:\n
+
+\begin{pst}
+  Let $f$ be an infinite series, then
+
+  $$\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}f\brr{\frac{k}{n}}=\int_{0}^{1}f(x)\diff x$$
+\end{pst}
+
+\subsubsection{Derivatives of Functions Defined by Integrals}
+\begin{pst}
+  Below are the formulae for derivatives of functions defined by integrals:
+
+  \begin{alist}
+    \item
+
+    $$\frac{\diff}{\diff x}\int_{a}^{x}f(t)\diff t=f(x)$$
+
+    \item
+
+    $$\frac{\diff}{\diff x}\int_{x}^{b}f(t)\diff t=-f(x)$$
+
+    \item
+
+    $$\frac{\diff}{\diff x}\int_{a}^{v(x)}f(t)\diff t=f(v)\frac{\diff v}{\diff x}$$
+
+    \item
+
+    $$\frac{\diff}{\diff x}\int_{u(x)}^{v(x)}f(t)\diff t=f(v)\frac{\diff v}{\diff x}-f(u)\frac{\diff u}{\diff x}$$
+  \end{alist}
+\end{pst}
 
 \subsection{Trigonometric Identities}
 \subsubsection{General Trigonometric Identities}
@@ -1522,7 +1553,9 @@ Besides the first derivative test, there is also the \textbf{second derivative t
   Below is the list of useful identities for trigonometric integrals:
 
   \begin{alist}
-    \item \begin{rlist}
+    \item
+
+    \begin{rlist}
       \item
 
       $$cos^{2}x+sin^{2}x=1$$
@@ -1535,7 +1568,10 @@ Besides the first derivative test, there is also the \textbf{second derivative t
 
       $$csc^{2}x=1+cot^{2}x$$
     \end{rlist}
-    \item \begin{rlist}
+
+    \item
+
+    \begin{rlist}
       \item
 
       $$cos^{2}x=\frac{1+cos(2x)}{2}$$
@@ -1548,7 +1584,10 @@ Besides the first derivative test, there is also the \textbf{second derivative t
 
       $$sin(x)cos(x)=\frac{sin(2x)}{2}$$
     \end{rlist}
-    \item \begin{rlist}
+
+    \item
+
+    \begin{rlist}
       \item
 
       $$cos(x)cos(y)=\frac{1}{2}(cos(x+y)+cos(x-y))$$
@@ -1561,66 +1600,68 @@ Besides the first derivative test, there is also the \textbf{second derivative t
 
       $$sin(x)sin(y)=\frac{1}{2}(cos(x-y)-cos(x+y))$$
     \end{rlist}
+
   \end{alist}
+
 \end{pst}
 
 \subsubsection{Products of Sine and Cosine Functions}
 In order to evaluate
 
-$$\int cos^{m}x\; sin^{n}x\;\diff x$$\s
+$$\int cos^{m}x\; sin^{n}x\diff x$$\s
 
 where $m,n$ are non-negative integers, then apply the following by considering the corresponding case:
 
 \begin{alist}
   \item \textbf{If m is odd}\n
 
-  Apply $cos(x)\;\diff x=\diff sin(x)$ (or substitute $u=sin(x)$).
+  Apply $cos(x)\diff x=\diff sin(x)$ (or substitute $u=sin(x)$).
 
   \item \textbf{If n is odd}\n
 
-  Apply $sin(x)\;\diff x=-\diff cos(x)$ (or substitute $u=cos(x)$).
+  Apply $sin(x)\diff x=-\diff cos(x)$ (or substitute $u=cos(x)$).
 
   \item \textbf{If m and n are both even}\n
 
   Apply double-angle formulae to reduce the power (in part (b) of general trigonometric identities).
 \end{alist}
 
-\subsubsection{Integrals of Trigonometric Functions Involving Logarithmic Functions}
+\subsubsection{Integrals of Trigonometric Functions With Logarithmic Functions}
 Here is the list of integrals of trigonometric functions involving logarithmic functions:
 
 \begin{alist}
   \item \textbf{Tangent Function}\n
 
-  $$\int tan(x)\;\diff x=ln\abs{sec(x)}+C$$
+  $$\int tan(x)\diff x=ln\abs{sec(x)}+C$$
 
   \item \textbf{Cotangent Function}\n
 
-  $$\int cot(x)\;\diff x=ln\abs{sin(x)}+C$$
+  $$\int cot(x)\diff x=ln\abs{sin(x)}+C$$
 
   \item \textbf{Secant function}\n
 
-  $$\int sec(x)\;\diff x=ln\abs{sec(x)+tan(x)}+C$$
+  $$\int sec(x)\diff x=ln\abs{sec(x)+tan(x)}+C$$
 
   \item \textbf{Cosecant function}\n
 
-  $$\int csc(x)\;\diff x=ln\abs{csc(x)-cot(x)}+C$$
+  $$\int csc(x)\diff x=ln\abs{csc(x)-cot(x)}+C$$
 \end{alist}
 
 \subsubsection{Products of Secant and Tangent Functions}
 In order to evaluate
 
-$$\int sec^{m}x\; sin^{n}x\;\diff x$$\s
+$$\int sec^{m}x\; sin^{n}x\diff x$$\s
 
 where $m,n$ are non-negative integers, then apply the following by considering the corresponding case:
 
 \begin{alist}
   \item \textbf{If m is even}\n
 
-  Apply $sec^{2}x\;\diff x=\diff tan(x)$ (or substitute $u=tan(x)$).
+  Apply $sec^{2}x\diff x=\diff tan(x)$ (or substitute $u=tan(x)$).
 
   \item \textbf{If n is odd}\n
 
-  Apply $sec(x)tan(x)\;\diff x=\diff sec(x)$ (or substitute $u=sec(x)$).
+  Apply $sec(x)tan(x)\diff x=\diff sec(x)$ (or substitute $u=sec(x)$).
 
   \item \textbf{If m is odd and n is even}\n
 
@@ -1631,11 +1672,11 @@ where $m,n$ are non-negative integers, then apply the following by considering t
 \subsubsection{Integration by Parts}
 Suppose the integrand is in the form $uv'$, then it is possible to evaluate the integration by using the following formula
 
-$$\int uv'\;\diff x=uv-\int u'v\;\diff x$$
+$$\int uv'\diff x=uv-\int u'v\diff x$$
 
 The above method is called \textbf{integration by parts}, and its general form is
 
-$$\int u\;\diff v=uv-\int v\;\diff u$$
+$$\int u\diff v=uv-\int v\diff u$$
 
 \subsubsection{Reduction Formula}
 Denote an integral with power constant $n$ as $I_{n}$. If it is possible to express $I_{n}$ in terms of $I_{k}$ where $k<n$, then such formula is called \textbf{reduction formula}.
@@ -1698,19 +1739,19 @@ Here is a list of common trigonometric substitutions:
 \begin{alist}
   \item $\sqrt{k^{2}-x^{2}}$\s
 
-  Apply $\diff x=kcos(\theta)\;\diff\theta$ (or $x=ksin(\theta)$), where
+  Apply $\diff x=kcos(\theta)\diff\theta$ (or $x=ksin(\theta)$), where
 
   $$sin(\theta)=\frac{x}{k},\; cos(\theta)=\frac{\sqrt{k^{2}-x^{2}}}{k},\; tan(\theta)=\frac{x}{\sqrt{k^{2}-x^{2}}}$$
 
   \item $\sqrt{a^{2}+x^{2}}$\s
 
-  Apply $\diff x=ksec^{2}(\theta)\;\diff\theta$ (or $x=ktan(\theta)$), where
+  Apply $\diff x=ksec^{2}(\theta)\diff\theta$ (or $x=ktan(\theta)$), where
 
   $$sin(\theta)=\frac{x}{\sqrt{a^{2}+x^{2}}},\; cos(\theta)=\frac{k}{\sqrt{a^{2}+x^{2}}},\; tan(\theta)=\frac{x}{k}$$
 
   \item $\sqrt{x^{2}-k^{2}}$\s
 
-  Apply $\diff x=ksec(\theta)tan(\theta)\;\diff\theta$ (or $x=ksec(\theta)$), where
+  Apply $\diff x=ksec(\theta)tan(\theta)\diff\theta$ (or $x=ksec(\theta)$), where
 
   $$sin(\theta)=\frac{\sqrt{x^{2}-k^{2}}}{x},\; cos(\theta)=\frac{k}{x},\; tan(\theta)=\frac{\sqrt{x^{2}-k^{2}}}{k}$$
 \end{alist}
@@ -1732,15 +1773,25 @@ With the above equations, the following formulae is derived:
 \end{alist}
 
 \subsubsection{t-substitutions}
-In order to evaluate $\int R(sin(x),cos(x),tan(x))\;\diff x$ where $R$ is a rational function, we may perform the \textbf{t-substitution}, which is
+In order to evaluate $\int R(sin(x),cos(x),tan(x))\diff x$ where $R$ is a rational function, we may perform the \textbf{t-substitution}, which is
 
 $$t=tan\brr{\frac{x}{2}}$$\s
 
 and we have
 
-$$\int R(sin(x),cos(x),tan(x))\;\diff x=\int R\brr{\frac{2t}{1+t^{2}},\frac{1-t^{2}}{1+t^{2}},\frac{2t}{1-t^{2}}}\frac{2\;\diff t}{1+t^{2}}$$\s
+$$\int R(sin(x),cos(x),tan(x))\diff x=\int R\brr{\frac{2t}{1+t^{2}},\frac{1-t^{2}}{1+t^{2}},\frac{2t}{1-t^{2}}}\frac{2\diff t}{1+t^{2}}$$\s
 
 which is an integral of rational function.
+
+\pagebreak
+
+\fancyhead[R]{References}
+\section*{References}
+\addcontentsline{toc}{section}{References}
+\begin{rlist}
+  \item George B. Thomas Jr., Maurice D. Weir, Joel R. Hass, \textit{Thomas' Calculus}, Pearson (12th/13th Edition), 2010/2014.
+  \item Hirst, K.E, \textit{Calculus of One Variable}, Springer, 2006.
+\end{rlist}
 
 \pagebreak
 
