@@ -31,13 +31,15 @@
 
 % Spacings
 \newcommand{\n}{\vspace{3mm}} % Context spacing
+\newcommand{\m}{\vspace{-3mm}} % Reverse context spacing
 \newcommand{\propdisp}{\pagebreak} % Proper display page break
 \newcommand{\s}{\vspace{1mm}} % Equation spacing
 
 % Wordings
 \newcommand{\ans}[1][zb]{{\color{#1}\textit{Answer. }\hspace{3mm}}} % Answer
-\newcommand{\arl}[1][zr]{{\color{#1}$\brr{\Leftarrow}$\hspace{1mm}}} % Left arrow
-\newcommand{\arr}[1][zr]{{\color{#1}$\brr{\Rightarrow}$\hspace{1mm}}} % Right arrow
+\newcommand{\arl}[1][zr]{{\color{#1}$\brr{\Leftarrow}$\hspace{3mm}}} % Left arrow
+\newcommand{\arr}[1][zr]{{\color{#1}$\brr{\Rightarrow}$\hspace{3mm}}} % Right arrow
+\newcommand{\clm}[2][zr]{{\color{#1}$\vdash_{#2}$\hspace{1mm}}} % Claim
 \newcommand{\prf}[1][zr]{{\color{#1}\textit{Proof. }\hspace{3mm}}} % Proof
 \newcommand{\prt}[2][a]{\hspace{-2mm}{\color{#2}\textit{Part (#1) }}\hspace{1mm}} % Part
 \newcommand{\prtc}[2][a]{\hspace{2mm}\prt[#1]{#2}} % Continued part
