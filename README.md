@@ -7,14 +7,13 @@
 - MATH1030: Linear Algebra I
 - MATH2020: Advanced Calculus II
 - MATH2050: Mathematical Analysis I
+- MATH2060: Mathematical Analysis II
 - MATH2070: Algebraic Structures
+- MATH2230: Complex Variables with Applications
 
 ##### Pending
 - MATH1050: Foundation of Modern Mathematics
 - MATH2010: Advanced Calculus I
-- MATH2060: Mathematical Analysis II
-- MATH2230: Complex Variables with Applications
-
 
 ### Remarks
 - Context of all documents are based on [**Course Catalog | CUHK Mathematics**](https://www.math.cuhk.edu.hk/course) from *Department of Mathematics, The Chinese University of Hong Kong (CUHK)*. The author does not own the source.

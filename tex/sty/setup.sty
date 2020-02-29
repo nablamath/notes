@@ -1,7 +1,3 @@
-% --------------------------------------------------------------
-% Document Style
-% --------------------------------------------------------------
-
 % Basic
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -52,7 +48,7 @@
 \newcommand{\sct}{\thesection.\thescount} % Counter
 \newcommand{\sctd}[2][0]{\the\numexpr\value{section}-#1\relax.\the\numexpr\value{scount}-#2\relax} % Delta counter
 
-% Equation
+% Equations
 \newcommand{\C}{\mathbb{C}} % Complex
 \newcommand{\N}{\mathbb{N}} % Natural
 \newcommand{\Q}{\mathbb{Q}} % Rational
@@ -82,23 +78,6 @@
 \definecolor{zr}{RGB}{54, 4, 0} % Red
 \definecolor{zy}{RGB}{64, 37, 0} % Yellow
 
-% Code
-\lstset{
-numberstyle=\tiny,
-basicstyle=\ttfamily\footnotesize\color{grey},
-breakatwhitespace=false,
-breaklines=true,
-captionpos=b,
-frame=single,
-keepspaces=true,
-numbers=left,
-numbersep=-5pt,
-showspaces=false,
-showstringspaces=false,
-showtabs=false,
-tabsize=2
-}
-
 % Graphing
 \usetikzlibrary{arrows}
 \pgfplotsset{compat=1.15}
@@ -106,7 +85,7 @@ tabsize=2
 % --------------------------------------------------------------
 
 % Environments
-\newcounter{scount}[section]
+\newcounter{scount}[section] % Counter
 
 \newenvironment{crl}{ % Corollary
 \parindent0pt
@@ -212,7 +191,3 @@ tabsize=2
   rightline=false,
   rightmargin=0
 ]{siderule}
-
-% --------------------------------------------------------------
-% End of Style
-% --------------------------------------------------------------
