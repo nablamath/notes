@@ -1,34 +1,22 @@
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
-%                                                                %
-% CUHK Mathematics                                               %
-% MATH1010: University Mathematics                               %
-%                                                                %
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%
+% CUHK Mathematics
+% MATH1010: University Mathematics
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \documentclass[a4paper,12pt]{article}
 \usepackage{standalone}
 \input{sty/setup.sty}
 
 \begin{document}
-\title{MATH1010 Notes}
+\title{MATH1010: University Mathematics}
 \input{sty/cover.sty}
 
-\n\n
-
-\noindent \textbf{Remarks}
 \begin{nlist}
-  \item Context of this document is based on university course \textit{MATH1010: University Mathematics}, from \textit{Department of Mathematics, The Chinese University of Hong Kong (CUHK)}. The original source can be found at \url{https://www.math.cuhk.edu.hk/course}. The author does not own the source.
-  \item This document is assumed unavailable for unauthorized parties that have not attended the university course. It is prohibited to share, including distributing or copying this document to unauthorized parties in any means for any non-academic purpose.
-  \item Context of this doucment may not be completely accurate. The author assumes no responsibility or liability for any errors or omissions in the context of this document.
-  \item This document is under license CC-BY-SA 4.0. It is allowed to make any editions on this document, as long as terms of the license is not violated.
-  \color{zp}\item If you are a freshman to \textit{BSc in Mathematics, The Chinese University of Hong Kong (MATH)}, it is highly recommended to read the preface first. There may be useful information and resources for you to suit up yourself before getting started.
+  \input{sty/remark.sty}
+  \color{zp}\item If you are a freshman to \textit{BSc in Mathematics, The Chinese University of Hong Kong (MATH)}, it is highly recommended to read the preface first. There may be useful information and resources for you to suit up yourself before getting started. $\Im$
 \end{nlist}
-
-\noindent \textbf{Source}\n
-
-The latest version of this document can be found at \url{https://www.github.com/onenylxus/math-notes}.
-
-\pagebreak
 
 \input{sty/header.sty}
 
@@ -75,8 +63,8 @@ It is also encouraged to find the textbooks and treat the questions in the past 
 
 Here are some recommended books with each covering almost every topic listed above at an accessible level. They are all freely available in electronic form:
 \begin{rlist}
-  \item \href{https://archive.org/details/PureMathematicsForAdvancedLevel}{B. D. Bunday, H. Mulholland, \textit{Pure Mathematics for Advanced Level}, Butterworths 1970.}
-  \item \href{https://archive.org/details/FurtherMathematics}{R. I. Porter, \textit{Further Mathematics}, Bell and Hyman Limited 1970.}
+  \item \href{https://archive.org/details/PureMathematicsForAdvancedLevel}{B. D. Bunday, H. Mulholland, \textit{Pure Mathematics for Advanced Level}, Butterworths, 1970.}
+  \item \href{https://archive.org/details/FurtherMathematics}{R. I. Porter, \textit{Further Mathematics}, Bell and Hyman Limited, 1970.}
   \item \href{https://archive.org/details/in.ernet.dli.2015.285850}{C. J. Tranter, \textit{Advanced Level Pure Mathematics}, The English Universities Press.}
 \end{rlist}
 
@@ -931,15 +919,15 @@ Although the continuity of the function is guaranteed with the differentiability
 
   \prtc[b]{zr} Let $y=e^{x}$. For any $x \in \R$,
 
-  $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{e^{x+h}-e^{x}}{h}=\lim_{h\to 0}\frac{e^{x}(e^{h}-1)}{h}=e^{x}$$
+  $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{e^{x+h}-e^{x}}{h}=\lim_{h\to 0}\frac{e^{x}(e^{h}-1)}{h}=e^{x}$$\s
 
   \prtc[c]{zr} Let $y=\ln(x)$. For any $x>0$,
 
-  $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{\ln(x+h)-\ln(x)}{h}=\lim_{h\to 0}\frac{\ln(1+\frac{h}{x})}{h}=\frac{1}{x}$$
+  $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{\ln(x+h)-\ln(x)}{h}=\lim_{h\to 0}\frac{\ln(1+\frac{h}{x})}{h}=\frac{1}{x}$$\s
 
   \prtc[d]{zr} Let $y=sin(x)$. For any $x\in \R$,
 
-  $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{sin(x+h)-sin(x)}{h}=\lim_{h\to 0}\frac{2cos(x+\frac{h}{2})sin(\frac{h}{2})}{h}=cos(x)$$
+  $$\frac{\diff y}{\diff x}=\lim_{h\to 0}\frac{sin(x+h)-sin(x)}{h}=\lim_{h\to 0}\frac{2cos(x+\frac{h}{2})sin(\frac{h}{2})}{h}=cos(x)$$\s
 
   \prtc[e]{zr} Let $y=cos(x)$. For any $x\in \R$,
 
@@ -990,7 +978,7 @@ Although the continuity of the function is guaranteed with the differentiability
 \end{pst}
 
 \subsubsection{Product Rule and Quotient Rule}
-Here \textbf{product rule} and \textbf{quotient rule} is introduced:\n
+Here the \textbf{product rule} and \textbf{quotient rule} is introduced:\n
 
 \begin{thm}
   Denote differentiable functions of $x$ as $p$ and $q$, then the following can be applied:
@@ -1815,18 +1803,11 @@ $$\int R(\sin(x),\cos(x),\tan(x))\diff x=\int R\brr{\frac{2t}{1+t^{2}},\frac{1-t
 
 which is an integral of rational function.
 
-\pagebreak
-
-\fancyhead[R]{References}
-\section*{References}
-\addcontentsline{toc}{section}{References}
-The following are the references of the context of this document:
+\input{sty/footer.sty}
 
 \begin{alist}
   \item George B. Thomas Jr., Maurice D. Weir, Joel R. Hass, \textit{Thomas' Calculus}, Pearson (12th/13th Edition), 2010/2014.
   \item K. E. Hirst, \textit{Calculus of One Variable}, Springer, 2006.
 \end{alist}
-
-\pagebreak
 
 \end{document}

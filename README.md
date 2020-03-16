@@ -22,4 +22,4 @@ MATH2010: Advanced Calculus I
 - All documents are under license *CC-BY-SA 4.0*. It is allowed to make any editions on any document, as long as terms of the license is not violated.
 
 ### Become a Contributor
-Huge efforts are required for making the notes in this repository. If you feel this repository is helpful to you, please consider contributing to this repository as well. Join [**Discord server**](https://discord.gg/8Q7dt4n) for more details.
+Huge efforts are required for making the notes in this repository. If you feel this repository is helpful to you, please consider contributing to this repository as well. Contact for more details.
