@@ -15,7 +15,7 @@
 
 \begin{nlist}
   \input{sty/remark.sty}
-  \color{zp}\item If you are a freshman to \textit{BSc in Mathematics, The Chinese University of Hong Kong (MATH)}, it is highly recommended to read the preface first. There may be useful information and resources for you to suit up yourself before getting started.
+  \item If you are a freshman to \textit{BSc in Mathematics, The Chinese University of Hong Kong (MATH)}, it is highly recommended to read the preface first. There may be useful information and resources for you to suit up yourself before getting started.
 \end{nlist}
 
 \input{sty/header.sty}
@@ -330,6 +330,8 @@ Limit of the real-valued function when $x$ tends to $-\infty$ is defined similar
 \begin{pst}
   Denote real-valued functions as $f(x)$ and $g(x)$ such that $\lim_{x\to a}f(x)$ and $\lim_{x\to a}g(x)$ exist. Also denote a real number as $k$. Then the following manipulations of limits can be applied:
 
+  \propdisp
+
   \begin{alist}
     \item \textbf{Addition of Limits}
 
@@ -345,7 +347,7 @@ Limit of the real-valued function when $x$ tends to $-\infty$ is defined similar
 
     \item \textbf{Division of Limits}\n
 
-    Suppose $\lim_{x\to a}g(x)=0$. Then
+    Suppose $\lim_{x\to a}g(x)=0$, then
 
     $$\lim_{x\to a}\frac{f(x)}{g(x)}=\frac{\lim_{x\to a}f(x)}{\lim_{x\to a}g(x)}$$
   \end{alist}
@@ -456,6 +458,8 @@ Note that when the sine and cosine are interpreted as trigonometric ratios, the 
   $$\cot(x)=\frac{\cos(x)}{\sin(x)}\erm{for }x\neq k\pi\erm{where }k\in\Z$$
 \end{dft}
 
+\propdisp
+
 \subsubsection{Trigonometric Identities}
 \begin{pst}
   The following is a list of trigonometric identities:
@@ -508,6 +512,8 @@ Note that when the sine and cosine are interpreted as trigonometric ratios, the 
 
       $$\tan(2x)=\frac{2\tan(x)}{1-\tan^{2}(x)}$$
     \end{rlist}
+
+    \propdisp
 
     \item \textbf{Product-to-sum Identities}
 
@@ -1090,6 +1096,8 @@ Here partial derivatives are used. The partial derivative $\frac{\partial F}{\pa
 
 Note that the second derivative of $f(x)$ can also be denoted as $f''(x)$ or $y''$.
 
+\propdisp
+
 \subsubsection{Higher Derivatives}
 \begin{dft}
   Denote a non-negative integer as $n$. The \textbf{n-th derivative} of $f(x)$ is defined inductively by
@@ -1307,8 +1315,6 @@ In order to sketch the graph of $y=f(x)$ accurately, the information below are r
   If $\lim_{x\to-\infty/+\infty}(f(x)-(ax+b))=0$, then $y=ax+b$ is said to be an \textbf{oblique asymptote} of $y=f(x)$.
 \end{dft}
 
-\propdisp
-
 \subsubsection{First Derivative Test and Turning Points}
 \begin{dft}
   Denote a continuous function as $f(x)$. $f(x)$ is said to have a \textbf{local maximum} at $x=a$ if there exists $\delta>0$ such that $f(x)\leq f(a)$ for any $x\in (a-\delta,a+\delta)$, and a \textbf{local minimum} at $x=a$ if there exists $\delta>0$ such that $f(x)\geq f(a)$ for any $x\in (a-\delta,a+\delta)$.
@@ -1340,6 +1346,8 @@ In some cases, local maximum or local minimum cannot be found explicitly. The \t
 
 \subsubsection{Second Derivative Test, Concavity and Inflexion Points}
 Besides the first derivative test, there is also the \textbf{second derivative test}:\n
+
+\propdisp
 
 \begin{pst}
   Denote a continuous function as $f(x)$. Suppose $f'(a)=0$. $f(x)$ has a local maximum at $x=a$ if $f''(a)<0$, and has a local minimum at $x=a$ if $f''(a)>0$.
@@ -1429,6 +1437,8 @@ Besides the first derivative test, there is also the \textbf{second derivative t
     $$\int\csc^{2}(x)\diff x=-\cot(x)+C$$
   \end{alist}
 \end{pst}
+
+\propdisp
 
 \subsubsection{Substitutions in Indefinite Integrals}
 \begin{thm}
@@ -1736,7 +1746,7 @@ Sometimes rational functions are difficult to integrate explicitly, and finding 
 
     \item \textbf{Fundamental Theorem of Algebra for Real Polynomials}\n
 
-    The polynomial $g(x)$ can be written as a product of linear or quadratic polynomials. More precisely, there exist some real numbers $\alpha_{1},\cdots,\alpha_{m},\beta_{1},\cdots,\beta_{n},\gamma_{1},\cdots,\gamma_{n}$ and positive integers $k_{1},\cdots,k_{m},l_{1},\cdots,l_{n}$ such that
+    The polynomial $g(x)$ can be written as a product of linear or quadratic polynomials. More precisely, there exist some real numbers $\alpha_{1},\cdots,\alpha_{m},\beta_{1},\cdots,\beta_{n},\gamma_{1},\\\cdots,\gamma_{n}$ and positive integers $k_{1},\cdots,k_{m},l_{1},\cdots,l_{n}$ such that
 
     $$g(x)=(x-\alpha_{1})^{k_{1}}\cdots(x-\alpha_{m})^{k_{m}}((x+\beta_{1})^{2}+\gamma_{1}^{2})^{l_{1}}\cdots((x+\beta_{n})^{2}+\gamma_{n}^{2})^{l_{n}}$$
   \end{alist}
