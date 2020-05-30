@@ -21,6 +21,7 @@
 \usepackage{needspace, setspace}
 \usepackage{paracol}
 \usepackage{pgf, tikz, pgfplots}
+\usepackage{silence}
 \usepackage{xcolor}
 
 % --------------------------------------------------------------
@@ -93,6 +94,8 @@
 
 % Remark
 \newcommand{\remark}[1]{
+  \noindent \textbf{Remarks}
+  
   \begin{nlist}
     \item Context of this document is based on university course \textit{\gettitle} from \textit{Department of Mathematics, The Chinese University of Hong Kong (CUHK)}. The original source can be found at \url{https://www.math.cuhk.edu.hk/course}. The author does not own the source.
     \item This document is assumed unavailable for unauthorized parties that have not attended the university course. It is prohibited to share, including distributing or copying this document to unauthorized parties in any means for any non-academic purpose.
@@ -100,6 +103,23 @@
     \item This document is under license CC-BY-SA 4.0. It is allowed to make any editions on this document, as long as terms of the license is not violated.
     #1
   \end{nlist}
+}
+
+% Prerequisites
+\newenvironment{prereq}{
+\noindent \textbf{Prerequisites}\n
+
+This course requires prerequisites of
+}{
+\n
+}
+
+% Reference list
+\newenvironment{reflist}{
+\begin{alist}
+  \item Various professors associated to \textit{\gettitle}
+}{
+\end{alist}
 }
 
 % --------------------------------------------------------------
@@ -211,3 +231,8 @@
   rightline=false,
   rightmargin=0
 ]{siderule}
+
+% --------------------------------------------------------------
+
+% Bad break filter
+\WarningFilter{mdframed}{You got a bad break}
