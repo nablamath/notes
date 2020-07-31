@@ -1,6 +1,7 @@
 # Mathematics Notes
 ### Contents
-MATH1010: University Mathematics
+MATH1010: University Mathematics ([pdf](pdf/math1010.pdf), [tex](tex/math1010.tex))\
+MATH1030: Linear Algebra I ([pdf](pdf/math1030.pdf), [tex](tex/math1030.tex))
 
 ### Remarks
 - Contents of all documents are based on [**Course Catalog | CUHK Mathematics**](https://www.math.cuhk.edu.hk/course) from *Department of Mathematics, The Chinese University of Hong Kong (CUHK)*. The author does not own the source.
