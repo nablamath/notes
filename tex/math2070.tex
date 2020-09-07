@@ -1,0 +1,2190 @@
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%
+% CUHK Mathematics
+% MATH2070: Algebraic Structures
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{standalone}
+\input{sty/setup.sty}
+
+\begin{document}
+\title{MATH2070: Algebraic Structures}
+\input{sty/cover.sty}
+
+\remark{}
+
+\input{sty/header.sty}
+
+\section{Group Theory}
+\subsection{Groups}
+\subsubsection{Definition of Groups}
+To start off with group theory, below is the definition of groups:\n
+
+\begin{dft}
+  A \textbf{group} $(G,*)$ is a set $G$ equipped with a binary operation
+
+  $$*:G\times G\rightarrow G$$\s
+
+  which can be called as the \textbf{group operation/product/multiplication} such that the following conditions are satisfied:
+
+  \begin{alist}
+    \item The group operation is associative, which is
+
+    $$(a*b)*c=a*(b*c)\erm{for all }a,b,c\in G$$
+
+    \item There exists an \textbf{identity element} $e\in G$ such that
+
+    $$a*e=e*a=a\erm{for all }a\in G$$
+
+    \item For every $a\in G$, there exists an element $a^{-1}\in G$, which is the \textbf{inverse} of $a$, such that
+
+    $$a*a^{-1}=a^{-1}*a=e$$
+  \end{alist}
+\end{dft}\n
+
+Note that it is also allowed to express the group operation in $ab$ or $a\cdot b$.\n
+
+\begin{dft}
+  The group $(G,*)$ is \textbf{abelian} if the group operation $*$ is commutative, which is
+
+  $$a*b=b*a\erm{for all }a,b\in G$$\s
+
+  Otherwise, the group is \textbf{nonabelian}.
+\end{dft}\n
+
+Note that if the group $(G,*)$ is abelian, the sign of the group operation $*$ is often replaced by $+$.\n
+
+\begin{dft}
+  The \textbf{order} of the group $(G,*)$, denoted by $\abs{G}$, is the cardinality of the set $G$. The set $G$ is said to be \textbf{finite} if the order of the group $\abs{G}$ is finite, or otherwise it is said to be \textbf{infinite}.
+\end{dft}\n
+
+Below are some examples on identifying groups:\n
+
+\begin{exm}
+  Let $n\in\Z^{+}$, then
+
+  $$\begin{aligned}[t]
+    U_{n}&:=\brc{z\in\C\srm z^{n}=1}\\
+    &=\brc{e^{\frac{2\pi ik}{n}}\srm 0\leq k\leq n-1}
+  \end{aligned}$$\s
+
+  is an abelian group under multiplication of complex numbers.\n
+
+  \prf[zb] The well-definedness of the group operation has to be checked, thus first let $a,b\in U_{n}$, then
+
+  $$a^{n}=b^{n}=1\\
+  \Rightarrow(ab)^{n}=a^{n}\cdot b^{n}=1\cdot 1=1\\
+  \Rightarrow a\cdot b\in U_{n}$$\s
+
+  After that, the three conditions of a group are checked one by one:
+
+  \begin{alist}
+    \item Associtativity follows from that of multiplication of complex numbers.
+    \item An identity element is given by $1=e^{\frac{2\pi i\cdot 0}{n}}\in U_{n}$.
+    \item Given $a\in U_{n}$, $a=e^{\frac{2\pi ik}{n}}$ for some $0\leq k\leq n-1$. Then $\frac{1}{a}=e^{\frac{2\pi i(n-k)}{n}}$ is an inverse to $a$.
+  \end{alist}
+
+  Hence $(U_{n},\cdot)$ is a group. It follows from the fact that multiplication in $\C$ is commutative, which means $(U_{n},\cdot)$ is abelian.
+\end{exm}\n
+
+\begin{exm}
+  Let $X$ be a nonempty set. The set of all symmetries (or permutations) of $X$ is defined as
+
+  $$S_{X}:=\brc{\rho:X\rightarrow X\srm\rho\text{ is bijective}}$$\s
+
+  Then $S_{X}$ forms a group under composition of maps, for example
+
+  $$(\rho_{1},\rho_{2})\in S_{X}\mapsto \rho_{1}\circ\rho_{2}\in S_{X}$$\s
+
+  \prf[zb] Again, the three conditions of a group are checked:
+
+  \begin{alist}
+    \item Composition of maps is associative.
+    \item The identity map $Id:x\mapsto x$ is an identity element.
+    \item $\rho\in S_{X}$ is bijective, which means $\rho^{-1}$ exists and is also bijective, which is an element of $S_{X}$.
+  \end{alist}
+
+  Note that the group above is finite nonabelian group.
+\end{exm}
+
+\propdisp
+
+\subsubsection{Linear Groups}
+\begin{dft}
+  The \textbf{General Linear Group} of $n\times n$ real matrices $M$, such that $\det(M)\neq 0$, and denoted by $\mathrm{GL}(n,\R)$, is a group under matrix multiplication.
+\end{dft}\n
+
+\begin{dft}
+  The \textbf{Special Linear Group} of $n\times n$ real matrices $M$, such that $\det(M)=1$, and denoted by $\mathrm{SL}(n,\R)$, is a group under matrix multiplication.
+\end{dft}
+
+\subsubsection{Basic Properties of Groups}
+\begin{pst}
+  The identity element in a group is unique.\n
+
+  \prf Suppose $e,e'\in G$ are two identity elements in $G$, then
+
+  $$e'=e'\cdot e=e$$
+
+  Therefore $e'=e$.
+\end{pst}\n
+
+\begin{pst}
+  Let $G$ be a group, then for any $a\in G$, inverse of $a$ is unique.\n
+
+  \prf Suppose $a',a''\in G$ are two inverses of $a$, then
+
+  $$\begin{aligned}[t]
+    a''&=a''\cdot e\\
+    &=a''\cdot(a\cdot a')\\
+    &=(a''\cdot a)\cdot a'\\
+    &=e\cdot a'\\
+    &=a'
+  \end{aligned}$$
+
+  Therefore $a'=a''$.
+\end{pst}\n
+
+\begin{pst}
+  Let $G$ be a group, then $(ab)^{-1}=b^{-1}a^{-1}\erm{for any }a,b\in G$.\n
+
+  \prf Note that $(ab)(b^{-1}a^{-1})=(b^{-1}a^{-1})(ab)=e$, along with the uniqueness of inverse (by \rpst[\sctd{2}]), $(ab)^{-1}=b^{-1}a^{-1}$.
+\end{pst}\n
+
+\begin{dft}
+  Let $G$ be a group with identity element $e$, for any $g\in G$, $n\in\N$, let
+
+  $$g^{n}=\begin{cases}
+    \underset{k\text{ times}}{\underbrace{g\cdots g}} &\erm{, if }k\in\Z^{+}\\
+    $e$ &\erm{, if }k=0\\
+    \underset{k\text{ times}}{\underbrace{g^{-1}\cdots g^{-1}}} &\erm{, if }k\in\Z_{<0}\\
+  \end{cases}$$
+\end{dft}\n
+
+\begin{dft}
+  The \textbf{Klein-4 group} is defined by $\Z_{2}\times\Z_{2}$ with elements $(0,0),(0,1),(1,0)$ and $(1,1)$.
+\end{dft}
+
+\subsection{Cyclic Groups}
+\subsubsection{Element Order}
+\begin{dft}
+  Let $G$ be a group with identity element $e\in G$. The \textbf{order} of an element $g\in G$, denoted by $\abs{g}$, is the smallest positive integer $n$ such that $g^{n}=e$ if such integer exist. Otherwise, $g$ has infinite order, which is $\abs{g}=\infty$.
+\end{dft}\n
+
+In other words, the order of an element can be found as follows:
+
+$$\abs{g}=\begin{cases}
+  \min\brc{k\in\Z^{+}\srm g^{k}=e}&\erm{, if such set is nonempty}\\
+  \infty &\erm{, otherwise}
+\end{cases}$$\s
+
+\begin{pst}
+  Let $G$ be a group with identity element $e\in G$, then for any $n\in\Z^{+}$ such that $g^{n}=e$ where $g\in G$, $\abs{g}\mid n$.\n
+
+  \prf Let $m:=\abs{g}$ (which is finite by assumption). Suppose $g^{n}=e$ for some $n\in\Z^{+}$. By the Division Algorithm in $Z$, there exists some $q,r\in\Z$ with $0\leq r\leq m$ such that
+
+  $$\begin{aligned}[t]
+    &n=qm+r\\
+    \Rightarrow\; &e=g^{n}=g^{qm+r}=\brr{g^{m}}^{q}g^{r}=g^{r}
+  \end{aligned}$$\s
+
+  which means that $r=0$ (otherwise there will be a contradiction based on the definition of $m=\abs{g}$). Therefore $n=qm$, or $m\mid n$.
+\end{pst}\n
+
+\begin{thm}
+  Let $G$ be a group. Fix an element $g\in G$. If $\abs{g}=\infty$, then $\bra{g}$ is an infinite countable set. If $\abs{g}=m<\infty$, then
+
+  $$\bra{g}=\brc{e,g,g^{2},\cdots,g^{m-1}}$$\s
+
+  \prf Suppose $\abs{g}=\infty$, then by defintion, the map $\varphi:\Z\rightarrow\bra{g}$ is surjective. Now if $g^{k_{1}}=g^{k_{2}}$ for $k_{1},k_{2}\in\Z$, and without the loss of generality, assume that $k_{1}\geq k_{2}$. Then $g^{k_{1}-k_{2}}=e$ and $\abs{g}=\infty\Leftrightarrow\brc{k\in\Z^{+}\;\mid\; g^{k}=e}=\phi$. Hence $\varphi$ is injective.\n
+
+  Suppose $\abs{g}=m<\infty$, then it has to show that $\bra{g}\subset\brc{e,g,g^{2},\cdots,g^{m-1}}$. Let $g^{k}\in\bra{g}$ where $k\in\Z$. By \rpst[\sctd{1}], $g^{r}\in\brc{e,g,g^{2},\cdots,g^{m-1}}$.
+\end{thm}
+
+\subsubsection{Definition of Cyclic Groups}
+\begin{dft}
+  A group $G$ is said to be \textbf{cyclic} if there exists $g\in G$ such that every element of $G$ is equal to $g^{n}$ for some integers $n$. In this case, $g$ is a \textbf{generator} of $G$, denoted by $G=\bra{g}$.
+\end{dft}\n
+
+Note that a generator of a cyclic group is not unique, in other words, there may exist different elements $g_{1},g_{2}$ such that $G=\bra{g_{1}}=\bra{g_{2}}$.\n
+
+\begin{thm}
+  If a group is cyclic, the group is also abelian.\n
+
+  \prf Let $G$ be a cyclic group, then $G=\bra{g}$ for some element $g\in G$ and every element is in the form $g^{n}$ for some $n\in\Z$, then
+
+  $$g^{n_{1}}\cdot g^{n_{2}}=g^{n_{1}+n_{2}}=g^{n_{2}+n_{1}}=g^{n_{2}}\cdot g^{n_{1}}$$
+\end{thm}
+
+\subsection{Symmetric Groups}
+\subsubsection{Definition of Symmetric Groups}
+\begin{dft}
+  Let $X$ be a set. A permutation of the set $X$ is the bijective map
+
+  $$\sigma:X\to X$$
+\end{dft}\n
+
+\begin{thm}
+  The set $S$ of permutations of a set $X$ is a group with respect to the composition of maps ($\circ$).\n
+
+  \prf The following conditions of a group is satisfied:
+
+  \begin{alist}
+    \item Let $\sigma,\gamma$ be permutations of $X$. By definition, they are both bijective maps from $X$ to itself. Then $\sigma\circ\gamma$ will also be a bijective map from $X$ to itslef, hence $\sigma\circ\gamma$ is a permutation of $X$, and $\circ$ is a well-defined binary opeation on $S$.
+    \item Composition of maps is associative.
+    \item There exists a map $e(x)=x$ for all $x\in X$, which is an identity element in $S$.
+    \item Let $\sigma$ be an element in $S$. Since $\sigma$ is bijective, there exists the inverse $\sigma^{-1}$ which is also bijective.
+  \end{alist}
+\end{thm}\n
+
+\begin{dft}
+  If a set $S_{x}$ of permutations of another set $X$ is a group with respect to the composition of maps, then $S_{x}$ is said to be the \textbf{symmetric group} on $X$.\n
+
+  An \textbf{n-th symmetric group} is the symmetric group on $I_{n}:=\brc{1,2,\cdots,n}$ where $n$ is a positive integer, denoted by $S_{n}$. Its element $\sigma\in S_{n}$, which is a bijective map, can be expressed as follows:
+
+  $$\sigma=\brr{\begin{matrix}
+    1 & 2 & \cdots & n\\
+    \sigma(1) & \sigma(2) & \cdots & \sigma(n)
+  \end{matrix}}$$
+\end{dft}
+
+\subsubsection{Cyclic Permutations}
+\begin{dft}
+  Let $S$ be an n-th symmetric group, and $\sigma$ be an element in $S$. $(i_{1}i_{2}\cdots i_{k})$ is a \textbf{k-cycle} which denotes the permutation
+
+  $$i_{1}\mapsto i_{2},i_{2}\mapsto i_{3},\cdots,i_{k}\mapsto i_{1}$$\s
+
+  and $j\mapsto j$ for all
+
+  $$j\in\brc{1,2,\cdots,n}\setminus\brc{i_{1},i_{2},\cdots,i_{k}}$$\s
+
+  which is said to be \textbf{fixed} by $\sigma$.
+\end{dft}\n
+
+\begin{exm}
+  Consider the element $\sigma$ in eighth symmetric group $S_{8}$:
+
+  $$\begin{aligned}[t]
+    \sigma&=\brr{\begin{matrix}
+      1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+      8 & 6 & 4 & 2 & 1 & 3 & 5 & 7
+    \end{matrix}}\\
+    &=(1\: 8\: 7\: 5)(2\: 6\: 3\: 4)
+  \end{aligned}$$\s
+
+  and such factorization is essentially unique.
+\end{exm}\n
+
+Note that a 2-cycle is often called a \textbf{transposition} as it switches two elements with each other.\n
+
+\begin{thm}
+  Every permutation in any symmetric group is either a cycle or a product of disjoint cycles.
+\end{thm}
+
+\subsection{Dihedral Groups}
+\subsubsection{Definition of Dihedral Groups}
+\begin{dft}
+  A \textbf{dihedral group}, denoted by $D_{n}$, is a group containing elements of transformations of $\R^{2}$, which consists of all rotations (denoted by $r$) by fixed angles about the origin and reflections (denoted by $s$) over lines through the origin, of regular polygons with $n$ sides.
+\end{dft}
+
+\subsubsection{Dihedral Groups and Transformations of Regular Polygons}
+Note that dihedral groups are subgroups of the group $U$ of rigid motions on $\R^{2}$, where
+
+$$U:=\brc{\sigma:\R^{2}\to\R^{2}\srm\sigma(\nrm{\mathbf{v}-\mathbf{w}})=\nrm{\sigma(\mathbf{v})-\sigma(\mathbf{w})}\;\forall\mathbf{v},\mathbf{w}\in\R^{2}}$$ %propdisp
+
+In fact, $\sigma$ represents the distance in $\R^{2}$, and note that
+
+$$\sigma(\mathbf{v})=A\mathbf{v}+\mathbf{b}$$\s
+
+for some orthogonal $A\in M_{2\times 2}(\R)$ and $\mathbf{b}\in\R^{2}$. With this terminology,
+
+$$T=\brc{\sigma\in U\srm\sigma\;\text{fixes }\mathrm{\sigma}\in\R^{2}}$$\s
+
+contains all rotations and reflections in \rdft.\n
+
+Now consider a regular n-gon $\Delta_{n}\subset\R^{2}$ centered at $\mathbf{O}\in\R^{2}$ with vertices $P_{n}:=\brc{x_{1},x_{2},\cdots,x_{n}}\subset\R^{2}$, then the dihedral group can be defined as
+
+$$D_{n}:=\brc{\sigma\in T\srm\sigma(P_{n})=P(n)}$$
+
+\subsubsection{Properties of Dihedral Groups}
+\begin{thm}
+  A dihedral group $D_{n}$ can be expressed as
+
+  $$D_{n}=\brc{\begin{matrix}
+    r_{0},r_{1},r_{2},\cdots,r_{n-1}\\
+    s_{1},s_{2},s_{3},\cdots,s_{n}
+  \end{matrix}}$$\s
+
+  where $r_{k}$ is a counterclockwise rotation by $\frac{2k\pi}{n}$ and $s_{1},s_{2},\cdots,s_{n}$ are reflections about the $n$ symmetry axes of $\Delta_{n}$. Then $\abs{D_{n}}=2n$.
+\end{thm}\n
+
+Note that the rotations can be rewritten as $\brc{id,r,r^{2},\cdots,r^{n-1}}$ and reflections can be rewritten as $\brc{s,rs,r^{2}s,\cdots,r^{n-1}s}$, since the composition of any two reflections is a rotation.\n
+
+\begin{pst}
+  For any rotation $r$ and reflection $s$, $s^{-1}rs=r^{-1}$, then all dihedral groups $D_{n}$ are nonabelian since $rs=sr^{-1}$.
+\end{pst}
+
+\subsection{Subgroups}
+\subsubsection{Definition of Subgroups}
+Just like subsets as substructure of sets in set theory, there is also substructure of groups. The following are the definition of subgroups:\n
+
+\begin{dft}
+  Let $(G,*)$ be a group. A nonempty subset $H\subset G$ is a \textbf{subgroup} of $G$, denoted by $H<G$, if $H$ is also a group by itself under the induced structure of $G$. By induced structure, more precisely it means that:
+
+  \begin{alist}
+    \item $H$ is closed under $*$, which is $a*b\in H\;\forall a,b\in H$ (This shows that the restriction of $*$ to $H\times H$ gives a well-defined binary operation on $H$).
+    \item $H$ is a group using this induced operation.
+  \end{alist}
+\end{dft}\n
+
+\begin{dft}
+  For any group $G$, the singleton containing only the identity element $\brc{e}$ is called the \textbf{trivial subgroup} of $G$.\n
+
+  A subgroup $H<G$ is said to be \textbf{nontrivial} if $H\neq\brc{e}$. Since a group is a subgroup of itself, which is $G<G$, a subgroup $H<G$ is said to be \textbf{proper} if $H\neq G$.
+\end{dft}
+
+\begin{exm}
+  Below are various examples of subgroups:
+
+  \begin{alist}
+    \item Since $\Z\subset\Q\subset\R\subset\C$, then $(\Z,+)<(\Q,+)<(\R,+)<(\C,+)$.
+    \item The roots of unity $\mathrm{U}_{n}=\brc{z\in\C\srm z^{n}=1}$ is a subgroup of $\mathrm{U}=\brc{z\in\C\srm\abs{z}=1}$, for all positive integers $n$.
+    \item The special linear group $\mathrm{SL}(n,F)=\brc{A\in\mathrm{GL}(n,F)\srm\det(A)=1}$ is a subgroup of general linear group $\mathrm{GL}(n,F)$.
+  \end{alist}
+\end{exm}
+
+\subsubsection{Subgroups and Symmetric Groups}
+\begin{pst}
+  Let an n-th symmetric group be $S_{n}$, then each permutation $\sigma\in S_{n}$ is a product of transpositions.\n
+
+  \prf Notice that every cycle is a product of transpositions:
+
+  $$(i_{1}\: i_{2}\:\cdots\: i_{k})=(i_{1}\: i_{k})(i_{1}\: i_{k-1})\cdots(i_{1}\: i_{2})$$\s
+
+  then the result follows from the fact that every permutation of the symmetric group is a product of cycles.
+\end{pst}\n
+
+\begin{pst}
+  Let an n-th symmetric group be $S_{n}$, then in every factorization of $\sigma\in S_{n}$ as a product of transpositions, then the number of factors is either always even or always odd.\n
+
+  \prf The use of determinant is required to finish this proof. Observe that there exists an unique matrix $A\in M_{n\times n}(\R)$ with only $0$ or $1$ as entries which sends any vector
+
+  $$\brs{\begin{matrix}
+    x_{1}\\
+    x_{2}\\
+    \vdots\\
+    x_{n}\\
+  \end{matrix}}\in\R^{n}\;\text{to}\brs{\begin{matrix}
+    x_{\sigma_{1}}\\
+    x_{\sigma_{2}}\\
+    \vdots\\
+    x_{\sigma_{n}}\\
+  \end{matrix}}\in\R^{n}$$\s
+
+  where $A$ is given by permuting rows in the identity matrix $I_{n}$. Now if there are two factorizations of $\sigma$ into products of transpositions, which is
+
+  $$\begin{cases}
+    \sigma=\tau_{1}\tau_{2}\cdots\tau_{k}\\
+    \sigma=\mu_{1}\mu_{2}\cdots\mu_{l}
+  \end{cases}$$\s
+
+  which can be determined that $\det(A)=(-1)^{k}\det(I_{n})=(-1)^{k}$ in the first equation and $\det(A)=(-1)^{l}\det(I_{n})=(-1)^{l}$. Hence $(-1)^{k}=(-1)^{l}$, and $k-l$ is divisible by $2$.
+\end{pst}\n
+
+\begin{dft}
+  Let an n-th symmetric group be $S_{n}$, then a permutation $\sigma\in S_{n}$ is called \textbf{even} (\textbf{odd}) if it is a product of an even (odd) number of transpositions.\n
+
+  Further let $A_{n}:=\brc{\sigma\in S_{n}\srm\sigma\;\text{is even}}$, then $A_{n}<S_{n}$. $A_{n}$ is called the \textbf{n-th alternating group}.
+\end{dft}
+
+\subsubsection{Techniques on Subgroups}
+\begin{pst}
+  A nonempty subset $H$ of a group $G$ is a subgroup of $G$ if and only if
+
+  $$ab^{-1}\in H\;\forall a,b\in H$$\s
+
+  \prf \prt[$\Rightarrow$]{zr} Suppose $H<G$, then given $a,b\in H$, we have $b^{-1}\in H$ because of the existence of inverse in groups. Along with the closedness of $H$ under the group product, $ab^{-1}\in H$.\n
+
+  \prtc[$\Leftarrow$]{zr} Suppose $ab^{-1}\in H\;\forall a,b\in H$. Because $H$ is nonempty, there exists some element within $H$, and for any element $a\in H$, $e=a\cdot a^{-1}\in H$. For any $b\in H$, $b^{-1}=e\cdot b^{-1}\in H$. Now, for $a,b\in H$, since $b^{-1}\in H$, then $a\cdot b=a(b^{-1})^{-1}\in H$, $H$ is closed under the group opeation. Finally, with the associativity of the induced operation follows from that in $G$, it can be concluded that $H$ is a group under the induced operation.
+\end{pst}\n
+
+With the proposition above, it is much easier to determine whether a subset of a group is a subgroup or not.
+
+\begin{exm}
+  Prove example (b) and (c) in \rexm[\sctd{5}].\n
+
+  \ans \prt[b]{zb} Note that for any $z_{1},z_{2}\in U_{n}$,
+
+  $$\begin{aligned}[t]
+    &z_{1}^{n}=z_{2}^{n}=1\\
+    \Rightarrow&(z_{1}z_{2}^{-1})^{n}=1\\
+    \Rightarrow&=z_{1}z_{2}^{-1}\in U_{n}
+  \end{aligned}$$\s
+
+  By \rpst[\sctd{1}], $U_{n}<U$.\n
+
+  \prtc[c]{zb} Note that for any $A,B\in\mathrm{SL}(n,F)$,
+
+  $$\begin{aligned}[t]
+    &\det(A)=\det(B)=1\\
+    \Rightarrow&\det(AB^{-1})=\det(A)\det(B)^{-1}=1\\
+    \Rightarrow&AB^{-1}\in\mathrm{SL}(n,F)
+  \end{aligned}$$\s
+
+  By \rpst[\sctd{1}], $\mathrm{SL}(n,F)<\mathrm{GL}(n,F)$.
+\end{exm}
+
+\subsubsection{Cyclic Subgroups}
+\begin{pst}
+  Let $G$ be a group and fix an element $g\in G$ where $\bra{g}:=\brc{g^{k}\srm k\in\Z}$. $\bra{g}$ is the smallest subgroup of $G$ containing $g$.\n
+
+  \prf For $\bra{g}<G$, take $g^{k_{1}},g^{k_{2}}\in\bra{g}$, then $g^{k_{1}}\cdot (g^{k_{2}})^{-1}=g^{k_{1}-k_{2}}\in\bra{g}$, which means that $\bra{g}<G$. Now let $H<G$ be a subgroup of $G$ containing $g$, then $g^{k}\in H\;\forall k\in\Z$. Therefore, $\bra{g}\subset H$.
+\end{pst}\n
+
+With the proposition above, the following definition of cyclic subgroups can be introduced:\n
+
+\begin{dft}
+  Let $G$ be a group and fix an element $g\in G$. $\bra{g}$ is the \textbf{cyclic subgroup} generated by $g$.
+\end{dft}\n
+
+\begin{pst}
+  The intersection of any collection of subgroups of a group $G$ is a subgroup of $G$, that is if $\brc{H_{i}\srm i\in I}$ is a collection of subgroups of $G$, then
+
+  $$\bigcap_{i\in I}H_{i}<G$$
+\end{pst}\n
+
+With the proposition above, it can be rewritten into
+
+$$\bra{g}=\bigcap_{\brc{H\srm g\in H<G}}H$$\s
+
+\begin{pst}
+  Every subgroup of a cyclic group is cyclic.\n
+
+  \prf Let $G=\bra{g}$ be a cyclic group, and $H<G$ be a subgroup. If $H$ is trivial, then it is cyclic since it is generated by the identity element $e$. If $H$ is nontrivial, then there exists $k\in\Z^{+}$ such that $g^{k}\in H$. Let
+
+  $$m:=\min\brc{k\in\Z^{+}\srm g^{k}\in H}$$\s
+
+  Now claim that $H$ is generated by $g^{m}$. First of all, it is obvious that $\bra{g^{m}}\subset H$. Conversely, let $g^{n}$ be an arbitrary element in $H$. By the Division Algorithm, there exists unique integers $q$ and $0\leq r\leq m-1$ such that $n=mq+r$. Then $g^{n}=(g^{m})^{q}g^{r}$ which leads to $g^{r}=(g^{m})^{-q}g^{n}\in H$. If $r\neq 0$, then it contradicts to the Division Algorithm, so it forces $r=0$. With $r=0$, $g^{n}\in\bra{g^{m}}$ and $H\subset\bra{g^{m}}$.
+\end{pst}\n
+
+\begin{crl}
+  Any subgroup of $(\Z,+)$ is of the form $n\Z$ for some $n\in\Z$.
+\end{crl}
+
+\subsubsection{Greatest Common Divisor}
+With the corollary of \rpst[\sct], the greatest common divisor can be defined:\n
+
+\begin{dft}
+  For any $a,b\in\Z$, the subset
+
+  $$\bra{a,b}:=\brc{ma+nb\srm m.n\in\Z}$$\s
+
+  is a subgroup of $\Z$, and is of the form $d\Z$ for some $d\in\Z$. The \textbf{greatest common divisor} of $a$ and $b$, defined by $\gcd(a,b)$, is the positive integer $d$ mentioned above. Furthermore, $d$ has to satisfies the following:
+
+  \begin{alist}
+    \item \textbf{Definition}
+
+    $$d=ma+nb\;\exists m,n\in\Z$$
+
+    \item \textbf{Divisibility}
+
+    $$d\mid a\;\text{and }d\mid b$$
+
+    \item \textbf{Common divisor}
+
+    $$\text{If }k\mid a\;\text{and }k\mid b\;\text{, then }k\mid d$$
+  \end{alist}
+\end{dft}\n
+
+\begin{pst}
+  Let $G$ be a cyclic group of order $n$ and $g\in G$ be a generator of $G$, which is $G=\bra{g}$. Let $g^{s}\in G$ be an element in $G$, then the order of $g^{s}$
+
+  $$\abs{g^{s}}=\frac{n}{\gcd(s,n)}$$\s
+
+  Moreover, $\bra{g^{s}}=\bra{g^{t}}$ if and only if $\gcd(s,n)=\gcd(t,n)$.\n
+
+  \prf Let $m=\abs{g^{s}}$. Since $\abs{G}=n$, $(g^{s})^{\frac{n}{d}}=(g^{n})^{\frac{s}{d}}=e$. By \rpst[\sctd{26}], $m\mid\frac{n}{d}$. On the other hand, $e=(g^{s})^{m}$ and by the same proposition as above, $n\mid sm$. By dividing both sides by $d$, $\frac{n}{d}\mid\frac{sm}{d}$. However, $\frac{n}{d}$ and $\frac{s}{d}$ are relatively primes, so $\frac{n}{d}\mid{m}$ which proves that $\abs{g^{s}}=\frac{n}{\gcd(s,n)}$.\n
+
+  To prove the second assertion, it has to be first shown that there is an equality of subgroups $\bra{g^{s}}=\bra{g^{d}}$ where $d=\gcd(s,n)$. Note that one inclusion is clear: as $d\mid s$, $g^{s}\in \bra{g^{d}}$ which implies $\bra{g^{s}}\subset\bra{g^{d}}$. Conversely, note that there exists $p,q\in\Z$ such that $d=ps+qn$, so $g^{d}=(g^{s})^{p}(g^{n})^{q}=(g^{s})^{p}=\bra{g^{s}}$. Hence $\bra{g^{d}}\subset\bra{g^{s}}$ and the proof of equality is complete.\n
+
+  $\bra{g^{s}}=\bra{g^{t}}$ implies that $\abs{g^{s}}=\abs{g^{t}}$ which in turn gives $\gcd(s,n)=\gcd{t,n}$. Conversely, if $d:=\gcd(s,n)=\gcd(t,n)$, then $\bra{g^{d}}=\bra{g^{s}}=\bra{g^{t}}$.
+\end{pst}\n
+
+\begin{crl}
+  All generators of a cyclic group $G=\bra{g}$ of order $n$ are of the form $g^{r}$ where $r$ and $n$ are relatively primes.
+\end{crl}
+
+\subsection{Generating Sets}
+\subsubsection{Definition of Generating Sets}
+\begin{dft}
+  Let $G$ be a group and $S$ be a nonempty subset of $G$. Define
+
+  $$\bra{S}:=\brc{a_{1}^{m_{1}}a_{2}^{m_{2}}\cdots a_{n}^{m_{n}}\srm n\in\N,a_{i}\in S\;\forall i,m_{i}\in\Z\;\forall i}$$\s
+
+  be the \textbf{smallest subgroup} of $G$ containing the subset $S$, which is called the subgroup generated by $S$.\n
+
+  \prf[zg] Let $a_{1}^{m_{1}}a_{2}^{m_{2}}\cdots a_{n}^{m_{n}},b_{1}^{l_{1}}b_{2}^{l_{2}}\cdots b_{k}^{l_{k}}\in\bra{S}$. Then $AB^{-1}=a_{1}^{m_{1}}a_{2}^{m_{2}}\cdots a_{n}^{m_{n}}b_{1}^{-l_{1}}b_{2}^{-l_{2}}\cdots b_{k}^{-l_{k}}\in\bra{S}$. Then $\bra{S}<G$.\n
+
+  Furthermore, if $H<G$ is a subgroup containing $S$, then $a^{k}\in H\;\forall a\in S,\forall k\in\Z$ and thus $a_{1}^{m_{1}}a_{2}^{m_{2}}\cdots a_{n}^{m_{n}}\in H\;\forall a_{1},a_{2},\cdots,a_{n}\in S,\forall k_{1},k_{2},\cdots,k_{n}\in\Z$. Therefore, $\bra{S}\subset H$.
+\end{dft}\n
+
+Note that the subgroup generated by an empty set $\bra{\phi}=\brc{e}$. Also note that
+
+$$\bra{S}=\bigcap_{S\subset H<G}H$$\s
+
+If $S=\brc{a_{1},a_{2},\cdots,a_{n}}$, it is often written as $\bra{a_{1},a_{2},\cdots,a_{n}}$ instead of $\bra{\brc{a_{1},a_{2},\cdots,a_{n}}}$.\n
+
+\begin{dft}
+  A group $G$ is said to be \textbf{finitely generated} if there exists a finite subset $S=\brc{a_{1},a_{2},\cdots,a_{n}}$ such that $G=\bra{a_{1},a_{2},\cdots,a_{n}}$.
+\end{dft}
+
+\subsubsection{Equivalence Relations and Partitions}
+Recall the definition of partitions:\n
+
+\begin{dft}
+  Let $S$ be a set. A \textbf{partition} of $S$, denoted by $P$, is a collection of subsets $\brc{S_{i}\srm i\in I}$ such that $S_{i}\neq\phi\;\forall i\in I, S_{i}\cap S_{j}=\phi\;\text{if }i\neq j,S=\bigcap_{i\in I}S_{i}$. In this case, it is also said that $S$ is a disjoin union of $\brc{S_{i}\srm i\in I}$ written as $S=\bigsqcup_{i\in I}S_{i}$.
+\end{dft}\n
+
+\begin{dft}
+  Let $S$ be a set. An \textbf{equivalence relation} on $S$, is a relaion $\sim$ on $S$ (which is a subset of $S\times S$) such that the following are true:
+
+  \begin{alist}
+    \propdisp
+
+    \item \textbf{Reflexive}
+
+    $$a\sim a\;\forall a\in S$$
+
+    \item \textbf{Symmetric}
+
+    $$\text{If }a\sim b\;\text{then }b\sim a$$
+
+    \item \textbf{Transitive}
+
+    $$\text{If }a\sim b\;\text{and }b\sim c\;\text{then }a\sim c$$
+  \end{alist}
+\end{dft}\n
+
+\begin{dft}
+  For any $a\in S$, the subset
+
+  $$C_{a}:=\brc{b\in S\srm b\sim a}\subset S$$\s
+
+  is called the \textbf{equivalence class} of $a$.
+\end{dft}\n
+
+\begin{pst}
+  The collection of equivalence classes $\brc{C_{a}\srm a\in S}$ is a partition of $S$. More precisely, any two equivalence classes are either exactly the same subset or disjoint, which is
+
+  $$C_{a}\cap C_{b}\neq\phi\Rightarrow C_{a}=C_{b}$$\s
+
+  Then
+
+  $$S=\bigcup_{a\in S}C_{a}=\bigsqcup_{a\in I}C_{a}$$\s
+
+  for some index set $I$.\n
+
+  \prf Suppose $c\in C_{a}\cap C_{b}\neq\phi$, then
+
+  $$c\in C_{a}\Rightarrow c\sim a\Rightarrow a\sim c$$\s
+
+  On the other hand,
+
+  $$c\in C_{b}\Rightarrow c\sim b\Rightarrow a\sim b$$\s
+
+  In order to show that $C_{a}\subset C_{b}$, let $d\in C_{a}$ where $d\sim a$ is always true. However $a\sim b$, and by transitivity, $d\sim b$ and so $d\in C_{b}$. By the symmetric property, $a\sim b\Rightarrow b\sim a$. Also note that $C_{a}$ and $C_{b}$ are interchangable, then $C_{b}\subset C_{a}$. Hence $C_{a}=C_{b}$.
+\end{pst}
+
+\subsubsection{Application of Equivalence Relations}
+Recall \rthm[\sctd{20}], below is the proof of the theorem:\n
+
+\begin{prv}
+  Let $\sigma\in S_{n}$ be a permutation of $I_{n}=\brc{1,2,\cdots,n}$. Define a relation $\sim$ on $I_{n}$ by $a\sim b$ if and only if $b=\sigma^{k}(a)$ for some $k\in\Z$, which is an equivalence relation.\n
+
+  Hence it induces a partition of $I_{n}$:
+
+  $$I_{n}=O_{1}\sqcup O_{2}\sqcup\cdots\sqcup O_{m}$$\s
+
+  where $O_{i}$ is called an \textbf{orbit} of $\sigma$ in $I_{n}$. Then for $j=1,2,\cdots,m$, define a cycle of length $\abs{O_{j}}$ by
+
+  $$\mu_{j}(a)=\begin{cases}
+    \sigma(a)&\erm{, if }a\in O_{j}\\
+    a&\erm{, if }a\not\in O_{j}
+  \end{cases}$$\s
+
+  Note that $\mu_{1},\mu_{2},\cdots,\mu_{m}$ are disjoint cycles because $\brc{O_{1},O_{2},\cdots,O_{m}}$ is a partition of $I_{n}$.\n
+
+  Finally, check that $\sigma=\mu_{1}\mu_{2}\cdots\mu_{m}$. By computing
+
+  $$\begin{aligned}[t]
+    (\mu_{1}\mu_{2}\cdots\mu_{m})(a)&=\mu_{j}(a)\erm{where }a\in O_{j}\\
+    &=\sigma(a)
+  \end{aligned}$$
+\end{prv}
+
+\subsection{Cosets}
+\subsubsection{Definition of Cosets}
+\begin{pst}
+  Let $G$ be a group and $H<G$ be a subgroup, then a relation $\sim_{L}$ on $G$ can be defined as $a\sim_{L}b$ if and only if $b=a\cdot h$ for some $h\in H$, or in other words, $a^{-1}b\in H$, then $\sim_{L}$ is an equivalence relation.\n
+
+  \prf In order to prove $\sim_{L}$ is an equivalence relation, check the following:
+
+  \begin{alist}
+    \item \textbf{Reflexive}
+
+    $$\begin{aligned}[t]
+      &a^{-1}a=e\in H\;\forall a\in G\\
+      \Rightarrow&a\sim_{L}a\;\forall a\in G
+    \end{aligned}$$
+
+    \propdisp
+
+    \item \textbf{Symmetric}
+
+    $$\begin{aligned}[t]
+      a\sim_{L}b&\Leftrightarrow a^{-1}b\in H\\
+      &\Rightarrow (a^{-1}b)^{-1}=b^{-1}a\in H\\
+      &\Rightarrow b\sim_{L}a
+    \end{aligned}$$
+
+    \item \textbf{Transitive}
+
+    $$\begin{aligned}[t]
+      \begin{cases}
+        a\sim_{L}b\\
+        b\sim_{L}c
+      \end{cases}&\Leftrightarrow\begin{cases}
+        a^{-1}b\in H\\
+        b^{-1}c\in H
+      \end{cases}\\
+      &\Rightarrow a^{-1}c=(a^{-1}b)(b^{-1}c)\in H\\
+      &\Rightarrow a\sim_{L}c
+    \end{aligned}$$
+
+  \end{alist}
+\end{pst}\n
+
+Note that for any subset $H\subset G$, the relation $\sim$ on $G$ defined by $a\sim b$ if and only if $a^{-1}b\in H$ is an equivalence relation, if and only if $H<G$.
+
+\begin{dft}
+  Let $G$ be a group and $H<G$ be a subgroup. Define $\sim_{L}$ be the relation mentioned above, then $\sim_{L}$ induces a partition of $G$ into equivalence classes, where those classes are \textbf{left cosets} of $H$ in $G$. Each left coset of $H$ in $G$ is of the form
+
+  $$\begin{aligned}[t]
+    aH&=\brc{b\in G\srm a\sim_{L}b}\\
+    &=\brc{b\in G\srm b=ah\;\text{for some }h\in H}
+  \end{aligned}$$\s
+
+  Similarly, define $\sim_{R}$ be another relation where $a\sim_{R}b\Leftrightarrow b=ha$ for some $h\in H$, then $\sim_{R}$ also induces a partition of $G$ into equivalence classes, where those classes are \textbf{right cosets} of $H$ in $G$. Each right coset of $H$ in $G$ is of the form
+
+  $$\begin{aligned}[t]
+    Ha&=\brc{b\in G\srm a\sim_{R}b}\\
+    &=\brc{b\in G\srm b=ha\;\text{for some }h\in H}
+  \end{aligned}$$
+\end{dft}\n
+
+Note that left cosets and right cosets are equivalent if the group is abelian.
+
+\subsubsection{Theorem of Lagrange}
+With the definition of left cosets and right cosets, it can be related with the following:\n
+
+\begin{dft}
+  The \textbf{index} of $H$ in $G$ is the number of left cosets (or right cosets) of $H$ in $G$, denoted by $[G:H]$.
+\end{dft}\n
+
+The definition above implies that the number, or cardinality to be exact, of left cosets and right cosets of $H$ in $G$ are equal. This leads to the \textbf{Theorem of Lagrange}:\n
+
+\begin{thm}
+  Let $H$ be a subgroup of a group $G$, then for all $a\in G$,
+
+  $$\abs{aH}=\abs{H}=\abs{Ha}$$\s
+
+  In particular, if $\abs{G}<+\infty$, then $\abs{H}\mid\abs{G}$ or more precisely,
+
+  $$\abs{G}=\abs{H}\cdot[G:H]$$\s
+
+  \prf For the first statement, consider the maps $\varphi_{a}:H\to aH$ and $\psi_{a}:H\to Ha$. In other words, for any $h\in H$, $\varphi_{a}:h\mapsto ah$ and $\psi_{a}:h\mapsto ha$. Claim $\varphi_{a}$ (and $\psi_{a}$) is a bijection for all $a\in G$:
+
+  \begin{alist}
+    \item \textbf{Injectivity}\\
+    For all $h_{1},h_{2}\in H$, $\varphi_{a}(h_{1})=\varphi_{a}(h_{2})\Rightarrow ah_{1}=ah_{2}\Rightarrow h_{1}=h_{2}$. Hence $\varphi_{a}$ is injective.
+    \item \textbf{Surjectivity}\\
+    Let $g\in aH$, then by definition, there exists $h\in H$ such that $g=ah=\varphi_{a}(h)$. Hence $\varphi_{a}$ is surjective.
+  \end{alist}
+
+  For the second statement, note that the partition of $G$
+
+  $$G=\bigsqcup_{i\in I}a_{i}H$$\s
+
+  where $\brc{a_{1}H,a_{2}H,\cdots,a_{k}H}$ enumerates the set of all left cosets of $H$ in $G$. This implies that
+
+  $$\begin{aligned}[t]
+    \abs{G}&=\sum_{i=1}^{k}\abs{a_{i}H}\\
+    &=\sum_{i=1}^{k}\abs{H}\\
+    &=k\abs{H}=[G:H]\cdot\abs{H}
+  \end{aligned}$$
+\end{thm}\n
+
+Below are some corollaries based on the Theorem of Lagrange:\n
+
+\begin{crl}
+  Let $G$ be a finite group, then $\abs{g}\mid\abs{G}$ for all $g\in G$. In particular,
+
+  $$g^{\abs{G}}=e\;\forall g\in G$$\s
+
+  \prf By applying the Theorem of Lagrange to the cyclic subgroup $\bra{g}$ generated by $g\in G$, $\abs{g}=\abs{\bra{g}}\mid\abs{G}$.
+\end{crl}\n
+
+\begin{crl}
+  If $G$ is a finite group of prime order, then it is cyclic.\n
+
+  \prf Suppose $\abs{G}=p$ is a prime. Further let $g\in G\setminus\brc{e}$, then $\abs{g}\mid\abs{G}=p$ by the corollary above, and $\abs{g}=p$. Therefore $G=\bra{g}$.
+\end{crl}\n
+
+\begin{exm}
+  If $\brc{e}<G$, then the set of left cosets and the set of right cosets are the same, which is $\brc{\brc{g}\srm g\in G}$. This means that $G=\bigsqcup_{g\in G}\brc{g}$.\n
+
+  On the other hand, if $G<G$, then again the set of left cosets and the set of right cosets are the same, which is $\brc{G}$. This leads to a trivial result $G=G$.
+\end{exm}\n
+
+\begin{exm}
+  Let $D_{n}$ be a dihedral group, which is
+
+  $$D_{n}=\brc{\begin{matrix}
+    id,r_{1},r_{2},\cdots,r_{n-1}\\
+    s,r_{1}s,r_{2}s,\cdots,r_{n-1}s
+  \end{matrix}}$$\s
+
+  For $\bra{r}<D_{n}$,
+
+  $$\begin{aligned}[t]
+    \text{left cosets}&=\brc{\bra{r},s\bra{r}}\Rightarrow D_{n}=\bra{r}\sqcup s\bra{r}\\
+    \text{right cosets}&=\brc{\bra{r},\bra{r}s}\Rightarrow D_{n}=\bra{r}\sqcup \bra{r}s
+  \end{aligned}$$\s
+
+  In particular, $s\bra{r}=\bra{r}s$.
+\end{exm}
+
+\subsection{Group Homomorphisms}
+\subsubsection{Definition of Group Homomorphisms}
+\begin{dft}
+  Let $G=(G,*)$ and $G'=(G,*')$ be groups. A \textbf{group homomorphism}, denoted by $\phi$, is a map $G\to G'$ such that
+
+  $$\phi(a*b)=\phi(a)*'\phi(b)$$\s
+
+  for all $a,b\in G$. If $\phi$ is an addition bijective, then $\phi$ is called a \textbf{group isomorphism}, and $G$ is \textbf{isomorphic} to $G'$ as groups. In other words, $G$ and $G'$ have the same structure.
+\end{dft}\n
+
+\begin{dft}
+  Let $G$ be a group. An \textbf{automorphism} of $G$ is an isomorphism from $G$ onto itself
+
+  $$\phi:G\to G$$
+\end{dft}\n
+
+Note that
+
+$$\textrm{Aut}(G):=\brc{\phi:G\to G\srm\phi\;\text{is an isomorphism}}$$\s
+
+is a group itself under composition of maps.\n
+
+\begin{exm}
+  Below are various examples of group homomorphisms:
+
+  \begin{alist}
+    \item The exponential function
+
+    $$\exp:(\R,+)\to(\R^{+},\cdot)$$\s
+
+    is a group homomorphism, which is $\exp(a+b)=\exp(a)\exp(b)$.
+    \item The determinant
+
+    $$\det:\GL(n,\R)\to(\R^{x},\cdot)$$\s
+
+    is a group homomorphism, which is $\det(AB)=\det(A)\det(B)$.
+    \item Fix any $n\in\Z^{x}$, then $n\Z<\Z$ and the map
+
+    $$\phi:n\Z\to\Z$$\s
+
+    is a group isomorphism.
+  \end{alist}
+\end{exm}\n
+
+Note that if $\phi:G\to G'$ is a group isomorphism, then $\phi^{-1}:G'\to G$ is automatically a group isomorphism. For example, the logarithmic function is the inverse of the exponential function in example (a) of \rexm[\sct], and it is an isomorphism, which is $\log(ab)=\log(a)+\log(b)$.\n
+
+Also note that in example (c) of \rexm[\sct], if $\abs{n}\neq 1$, then $n\Z\neq\Z$ and $n\Z<\Z$ but $n\Z\cong\Z$. In general, given a group $G$ and two subgroups $H,H'<G$, then $H=H'$ as subsets in $G$, and $H\cong H'$ as groups, which are usually not equivalent. On the other hand, for any $n\in\Z$, the map $\phi':\Z\to n\Z$ is a group homomorphism but not an isomorphism unless $\abs{n}=1$.\n
+
+\begin{exm}
+  The remainder map
+
+  $$\phi:\Z\to\Z_{n}=\brc{0,1,2,\cdots,n-1}$$\s
+
+  is well-defined because of the Division Theorem, and surjective. Let $k_{1},k_{2}\in\Z$, and check that $\phi(k_{1}+k_{2})=\phi(k_{1})+\phi(k_{2})$ for homomorphism. By the Division Theorem, for $i=1,2$, there exists unique $q_{i},r_{i}\in\Z$ with $0\leq r_{i}\leq n-1$ such that $k_{i}=q_{i}n+r_{i}$.\n
+
+  Now by definition, $\phi(k_{i})=r_{i}$ for $i=1,2$. Consider $k_{1}+k_{2}$,
+
+  $$k_{1}+k_{2}=(q_{1}+q_{2})n+(r_{1}+r_{2})=(q_{1}+q_{2}+1)n+(r_{1}+r_{2}-n)$$\s
+
+  which leads to
+
+  $$\begin{aligned}[t]
+    \phi(k_{1}+k_{2})&=\begin{cases}
+      r_{1}+r_{2}&\erm{if }0\leq r_{1}+r_{2}\leq n-1\\
+      r_{1}+r_{2}-n&\erm{if }n\leq r_{1}+r_{2}
+    \end{cases}\\
+    &=r_{1}+_{n}r_{2}=\phi(k_{1})+_{n}\phi(k_{2})
+  \end{aligned}$$
+\end{exm}\n
+
+\subsubsection{Basic Properties of Group Homomorphisms}
+\begin{pst}
+  Let $\phi:G\to G'$ be a group homomorphism, then the following applies:
+
+  \begin{alist}
+    \item
+
+    $$\phi(e_{G})=\phi(e_{G'})$$
+
+    \item
+
+    $$\phi(g^{-1})=\phi(g)^{-1}\;\forall g\in G$$
+
+    \item
+
+    $$\phi(g^{n})=\phi(g)^{n}\;\forall g\in G,\forall n\in Z$$
+  \end{alist}
+
+  \prf \prt[a]{zr}
+
+  $$\begin{aligned}[t]
+    e_{G}\cdot e_{G}&=e_{G}\\
+    \phi(e_{G}\cdot e_{G})&=\phi(e_{G})\\
+    \phi(e_{G})^{-1}\phi(e_{G})\phi(e_{G})&=\phi(e_{G})^{-1}\phi(e_{G})\\
+    \phi(e_{G})=e_{G'}
+  \end{aligned}$$\s
+
+  \prtc[b]{zr} For any $g\in G$,
+
+  $$\phi(g^{-1})\phi(g)=\phi(g^{-1}g)=e_{G"}$$\s
+
+  by part (a). Similarly, $\phi(g)\phi(g^{-1})=e_{G'}$, and so $\phi(g^{-1})=\phi(g)^{-1}$ by uniqueness of inverses in $G'$.
+
+  \prtc[c]{zr} Can be proven by using part (a), part (b) and induction.
+\end{pst}
+
+\subsubsection{Images and Kernels}
+\begin{pst}
+  Let $\phi:G\to G'$ be a group homomorphism, then the following applies:
+
+  \begin{alist}
+    \item
+
+    $$H<G\Rightarrow\phi(H)<G'$$
+
+    \item
+
+    $$H'<G'\Rightarrow\phi^{-1}(H')<G$$
+  \end{alist}
+
+  \prf \prt[a]{zr} Recall the criterion where $\phi\neq H\subset G$ is a subgroup if and only if $ab^{-1}\in H$ for all $a,b\in H$. First, $H\neq\phi$ implies $\phi(H)\neq\phi$. Let $a',b'\in\phi(H)$ be two arbitrary elements. By definition, there exists $a,b\in H$ such that $a'=\phi(a)$ and $b'=\phi(b)$, then
+
+  $$(a')(b')^{-1}=\phi(a)\phi(b)^{-1}=\phi(a)\phi(b^{-1})=\phi(ab^{-1})$$\s
+
+  Since $H<G$ and $ab^{-1}\in H$, $(a')(b')^{-1}\in\phi(H)$, which means that $\phi(H)<G'$.\n
+
+  \prtc[b]{zr} First, $\phi^{-1}(H')\neq\phi$ since $H'\neq\phi$. Let $a,b\in\phi^{-1}(H')$, which is $\phi(a),\phi(b)\in H'$. $H'<G'$ implies that
+
+  $$\phi(a)\phi(b)^{-1}=\phi(ab^{-1})\in H'$$\s
+
+  meaning that $ab^{-1}\in\phi^{-1}(H')$, and so $\phi^{-1}(H')<G$.
+\end{pst}\n
+
+\begin{crl}
+  Let $\phi:G\to G'$. The \textbf{image} of $\phi$
+
+  $$\mathrm{im}\:\phi:=\phi(G)=\brc{\phi(g)\srm g\in G}$$\s
+
+  is a subgroup of $G'$. The \textbf{kernel} of $\phi$
+
+  $$\ker\phi:=\phi^{-1}(e_{G'})=\brc{g\in G\srm \phi(g)=e_{G'}}$$\s
+
+  is a subgroup of $G$.
+\end{crl}
+
+\subsubsection{Applications of Group Homomorphisms}
+\begin{pst}
+  Let $\phi:G\to G'$ be a surjective group homomorphism, then the following applies:
+
+  \begin{alist}
+    \item If $G$ is cyclic, $G'$ is also cyclic.
+    \item If $G$ is abelian, $G'$ is also abelian.
+  \end{alist}
+
+  \prf \prt[a]{zr} Note that the fact that $\phi$ is injective implies $G'=\phi(G)$. If $G=\bra{g}$ for some $g\in G$, then $G'=\phi(G)=\bra{\phi(G)}$.\n
+
+  \prtc[b]{zr} For $\phi(a),\phi(b)\in G'=\phi(G)$,
+
+  $$\begin{aligned}[t]
+    \phi(a)\phi(b)&=\phi(ab)
+    &=\phi(ba)=\phi(b)\phi(a)
+  \end{aligned}$$\s
+
+  Therefore $G'$ is abelian.
+\end{pst}\n
+
+\begin{crl}
+  If $G\cong G'$, then $G$ is cyclic (abelian) if and only if $G'$ is cyclic (abelian).
+\end{crl}\n
+
+\begin{exm}
+  Below are various examples based on \rpst[\sctd{1}]:
+
+  \begin{alist}
+    \item $\Z_{4}\not\cong\Z_{2}\times\Z_{2}$ since $\Z_{4}$ is cyclic but $\Z_{2}\times\Z_{2}$ is not. In fact, $\Z_{4}$ and $\Z$ are the only two groups of order $4$ up to isomorphism.
+    \item Although $\abs{S_{3}}=\abs{\Z_{6}}=6$, but $S_{3}\not\cong\Z_{6}$ since $\Z_{6}$ is abelian but $S_{3}$ is not. However, $\Z_{6}\cong\Z_{2}\times\Z_{3}$ with $(1,1)$ as generator of $\Z_{2}\times\Z_{3}$.
+  \end{alist}
+\end{exm}
+
+\subsubsection{Group Homomorphisms and Orders}
+\begin{pst}
+  If $\phi:G\to G'$ is an isomorphism, then
+
+  $$\abs{\phi(g)}=\abs{g}\;\forall g\in G$$\s
+
+  \prf If $\phi:G\to G'$ is a group homomorphism and $H<G$, then $\phi\!\mid_{H}:H\to G'$ is also a group homomorphism. Also, if $\phi$ is injective, then $\phi\!\mid_{H}$ is also injective.\n
+
+  Apply this to $H=\bra{g}$, which gives an injective homomorphism
+
+  $$\phi\!\mid_{\bra{g}}:\bra{g}\to G'$$\s
+
+  whose image is given by
+
+  $$\mathrm{im}(\phi\!\mid_{\bra{g}})=\brc{\phi(g^{k})=\phi(g)^{k}\srm k\in\Z}=\bra{\phi(g)}$$\s
+
+  Hence $\phi\!\mid_{\bra{g}}$ gives an isomorphism from $\bra{g}$ onto $\bra{\phi(g)}$. In particular, $\abs{g}=\abs{\phi(g)}$.
+\end{pst}\n
+
+\begin{exm}
+  Consider $\Z_{2}\times\Z_{12}$ and $\Z_{3}\times\Z_{8}$. They are not isomorphic because $\Z_{2}\times\Z_{12}$ has an order $12$ element $(0,1)\in\Z_{2}\times\Z_{12}$, but $\Z_{3}\times\Z_{8}$ does not.
+\end{exm}
+
+\propdisp
+
+\subsection{Classification of Groups}
+\subsubsection{Classification of Cyclic Groups}
+\begin{thm}
+  Let $G$ be a cyclic group. If $\abs{G}=+\infty$, then $G\cong\Z$. Otherwise, if $\abs{G}=n<+\infty$, then $G\cong\Z_{n}$.\n
+
+  \prf Let $G=\bra{g}$ for some $g\in G$. The proof is split into two cases:
+
+  \begin{alist}
+    \item \textbf{Case I: }$\abs{G}=+\infty$\n
+
+    For $\phi$ to be a homomorphism, note that
+
+    $$\begin{aligned}[t]
+      \phi(k_{1}+k_{2})&=g^{k_{1}+k_{2}}=g^{k_{1}}g^{k_{2}}\\
+      &=\phi(k_{1})\phi(k_{2})\;\forall k_{1},k_{2}\in\Z
+    \end{aligned}$$\s
+
+    For $\phi$ to be injective, if $\phi(k_{1})\neq\phi(k_{2})$ and without the loss of generality, $k_{1}\geq k_{2}$, then
+
+    $$\begin{aligned}[t]
+      g^{k_{1}}=g^{k_{2}}&\Rightarrow g^{k_{1}-k_{2}}=e\\
+      &\Rightarrow k_{1}-k_{2}=0\erm{since }\abs{g}=+\infty\\
+      &\Rightarrow k_{1}=k_{2}
+    \end{aligned}$$\s
+
+    Since $G$ is generated by $g$, $\phi$ is surjective. With all the requirements, $\phi$ is an isomorphism.
+    \item \textbf{Case II: }$\abs{G}=n<+\infty$\n
+
+    Note that
+
+    $$\begin{cases}
+      G=\bra{G}\\
+      \abs{G}=n
+    \end{cases}\Rightarrow G=\brc{e,g,g^{2},\cdots,g^{n-1}}$$\s
+
+    Then there is a bijection
+
+    $$\phi:G\to\Z_{n}=\brc{0,1,2,\cdots,n-1}$$\s
+
+    Again, for $\phi$ to be a homomorphism, note that
+
+    $$\begin{aligned}[t]
+      \phi(g^{k_{1}}+g^{k_{2}})&=\phi(g^{k_{1}+k_{2}})\\
+      &=\begin{cases}
+        \phi(g^{k_{1}+k_{2}})&\erm{if }k_{1}+k_{2}\leq n-1\\
+        \phi(g^{k_{1}+k_{2}-n})&\erm{if }n\leq k_{1}+k_{2}\leq 2n-2
+    \end{cases}\\
+    &=\begin{cases}
+      k_{1}+k_{2}&\erm{if }k_{1}+k_{2}\leq n-1\\
+      k_{1}+k_{2}-n&\erm{if }n\leq k_{1}+k_{2}\leq 2n-2
+    \end{cases}\\
+    &=\phi(g^{k_{1}})+\phi(g^{k_{2}})
+    \end{aligned}$$\n
+
+    With all the requirements, $\phi$ is an isomorphism.
+  \end{alist}
+\end{thm}\n
+
+Note that for any fixed order, there is a unique cyclic group up to isomorphisms.\n
+
+\begin{crl}
+  Let $G$ be a cyclic group. If $\abs{G}=p$ where $p$ is a prime number, then $G\cong\Z_{p}$.\n
+
+  \prf By the corollary of the Theorem of Lagrange, if $\abs{G}=p$ is prime, then $G$ is cyclic. The result follows from this, together with the second statement above.
+\end{crl}\n
+
+\begin{exm}
+  For any positive integer $n$, the subgroup
+
+  $$U_{n}=\brc{z\in\C\srm z^{n}=1}\subset U=\brc{z\in\C\srm \abs{z}=1}=\bra{e^{\frac{2\pi i}{n}}}$$\s
+
+  Since $\abs{U_{n}}=n$, by \rthm[\sctd{1}], $U_{n}\cong\Z_{n}$, and an isomorphism is given by $e^{\frac{2\pi i}{n}}\mapsto k$ for $k=0,1,2,\cdots,n-1$.
+\end{exm}
+
+\pagebreak
+
+\section{Ring Theory and General Field Theory}
+\subsection{Rings}
+\subsubsection{Definition of Rings}
+\begin{dft}
+  A \textbf{ring} $(R,+,*)$ is a set $R$ equipped with two binary operations
+
+  $$+,*:R\times R\to R$$\s
+
+  such that the following conditions are satisfied:
+
+  \begin{alist}
+    \item $(R,+)$ is an abelian group.
+    \item $(R,*)$ satisfies the following conditions:
+
+    \begin{rlist}
+      \item The multiplication $*$ is associative, which is
+
+      $$(a*b)*c=a*(b*c)\erm{for all }a,b,c\in R$$
+
+      \item There exists an element $1\in R$ (which is called the \textbf{multiplicative identity}) such that
+
+      $$1*a=a*1=a\erm{for all }a\in R$$
+    \end{rlist}
+    \item $(R,+,*)$ satisfies the distributive laws:
+
+    \begin{rlist}
+      \item
+
+      $$a*(b+c)=a*b+a*c\erm{for all }a,b,c\in R$$
+
+      \item
+
+      $$(a+b)*c=a*c+b*c\erm{for all }a,b,c\in R$$
+    \end{rlist}
+  \end{alist}
+\end{dft}\n
+
+Note that in the literature, $(R,+,*)$ without part (b)(ii) is also called a ring. In that case, if part (b)(ii) is also satisfied, then $(R,+,*)$ is called a \textbf{ring with unity}. For example, $(2\Z,+,*)$ is a ring without unity.\n
+
+\begin{exm}
+  The following sets equipped with their corresponding usual operations of addition and multiplication are rings:
+
+  \begin{alist}
+    \item $\Z,\Q,\R,\C$.
+    \item $\Z[x],\Q[x],\R[x],\C[x]$, which represents the set of all polynomials with integer, rational, real and complex coefficients respectively.
+    \item $\Q[\sqrt{2}]=\brc{a+b\sqrt{2}\srm a,b\in\Q}\subset\R$.
+    \item $\Z[i]=\brc{a+bi\srm a,b\in\Z}\subset\C$. Such ring is called the \textbf{ring of Gaussian integers}.
+    \item $\Q[\alpha]:=\brc{f(\alpha)\srm f(x)\in\Q[x]}\subset\C,\Z[\alpha]:=\brc{g(\alpha)\srm g(x)\in\Z[x]}\subset\C$ for any $\alpha\in\C$.
+    \item $M_{n\times n}(\R)$ for any fixed positive integer $n$ with usual matrix addition and multiplication.
+    \item $C[a,b]=\brc{f:[a,b]\to\R\srm f\;\text{is continuous}},D[a,b]=\brc{g:[a,b]\to\R\srm g\;\text{is differentiable}}$.
+    \item $\text{Map}(X,R):=\brc{f:X\to R}$ for any set $X$ and ring $R$.
+  \end{alist}
+\end{exm}
+
+\subsubsection{Properties of Rings}
+\begin{pst}
+  Let $R$ be a ring, then $R$ has a unique additive identity and also a unique multiplicative identity.\n
+
+  \prf The additive identity is automatically unique by the definition of rings. The uniqueness of $0$ is also given. Now suppose there are two multiplicative identities $1,1'\in R$, then $1=1\cdot 1'=1'$.
+\end{pst}\n
+
+\begin{pst}
+  Let $R$ be a ring. For any $r\in R$, its \textbf{additive inverse} $-r\in R$ is unique. If $r\in R$ has a \textbf{multiplicative inverse}, denoted by $r'\in R$ such that $r\cdot r'=r'\cdot r=1$, then the multiplicative inverse is unique.\n
+
+  \prf The part about additive inverse is automically true by the definition of rings. For multiplicative inverses, if $r',r''\in R$ are multiplicative inverses to $r\in R$, then
+
+  $$r'=r'\cdot 1=r'\cdot(r\cdot r'')=(r'\cdot r)\cdot r''=r''$$
+\end{pst}\n
+
+\begin{pst}
+  Let $R$ be a ring, then the following equations can be applied:
+
+  \begin{alist}
+    \item
+
+    $$0\cdot r=r\cdot 0=0\;\forall r\in R$$
+
+    \item
+
+    $$(-1)(-r)=(-r)(-1)=r\;\forall r\in R$$
+
+    \item
+
+    $$(-1)r=r(-1)=-r\;\forall r\in R$$
+  \end{alist}
+
+  \prf \prt[a]{zr}
+
+  $$0\cdot r=(0+0)\cdot r=0\cdot r+0\cdot r\Rightarrow 0\cdot r=0$$\s
+
+  Similarly, $r\cdot 0=0$.\n
+
+  \propdisp
+
+  \prtc[b]{zr}
+
+  $$(-1)(-r)+(-r)=((-1)+1)(-r)=0(-r)=0$$\s
+
+  thus uniqueness of additive inverse $-r$ implies that $(-1)(-r)=r$. Similarly, $(-r)(-1)=r$.
+\end{pst}\n
+
+\begin{pst}
+  If $R$ is a ring where the multiplicative identity is the additive identity, which is $1=0$, then $R=\brc{0}$ which is called the \textbf{zero ring}.\n
+
+  \prf For any $r\in R$, $r=r\cdot 1=r\cdot 0=0$.
+\end{pst}
+
+\subsubsection{Commutative Rings}
+\begin{dft}
+  A ring $R$ is said to be \textbf{commutative} if
+
+  $$ab=ba\;\forall a,b\in R$$
+\end{dft}\n
+
+\begin{exm}
+  The following sets equipped with their corresponding usual operations of addition and multiplication are commutative rings:
+
+  \begin{alist}
+    \item $\Z,\Q,\R,\C$.
+    \item $\Z[x],\Q[x],\R[x],\C[x]$.
+    \item $\Z[i],\Q[\sqrt{2}],C[a,b],D[a,b]$.
+    \item $\mathrm{Map}(X,R)$ where $X$ is a set and $R$ is a commutative ring.
+  \end{alist}
+\end{exm}
+
+\subsection{Common Types of Rings}
+\subsubsection{Modulo Arithmetic}
+Recall how the remainder is defined in groups:\n
+
+\begin{dft}
+  Let $n$ be a positive integer. Consider the group
+
+  $$\brr{\Z_{m}=\brc{0,1,2,\cdots,m-1},+_{m}}$$\s
+
+  For any $k\in\Z$, the \textbf{remainder} of $k$ divided by $m$, denoted by $\overline{k}$, is equal to $r\in\Z_{m}$ where $k=mq+r$.
+\end{dft}\n
+
+Now define an operation of multiplication $\cdot_{m}$ on $\Z_{m}$ by $a\cdot_{m}b=\overline{a\cdot b}$. Note that $+_{m}$ and $\cdot_{m}$ are addition and multiplication defined modulo $m$. Note that
+
+$$\begin{aligned}[t]
+  &a\equiv c(\mathrm{mod}\; m)\;\text{and }b\equiv d(\mathrm{mod}\; m)\\
+  \Rightarrow&a+b\equiv c+d(\mathrm{mod}\; m)\;\text{and }a\cdot b\equiv c\cdot d(\mathrm{mod}\; m)
+\end{aligned}$$\s
+
+the the following proposition can be applied:\n
+
+\begin{pst}
+  $(Z_{m},+_{m},\cdot_{m})$ is a commutative ring.\n
+
+  \prf Note that $(Z_{m},+_{m})$ is an abelian group. Let $a,b,c\in\Z_{m}$, then
+
+  $$\begin{aligned}[t]
+    a\cdot_{m}(b\cdot_{m}c)&=a\cdot_{m}\overline{bc}=\overline{a\cdot\overline{bc}}\\
+    &=\overline{\overline{a}\cdot\overline{bc}}=\overline{abc}
+  \end{aligned}$$\s
+
+  and
+
+  $$\begin{aligned}[t]
+    (a\cdot_{m}b)\cdot_{m}c&=\overline{ab}\cdot_{m}c=\overline{\overline{ab}\cdot c}\\
+    &=\overline{\overline{ab}\cdot\overline{c}}=\overline{abc}
+  \end{aligned}$$\s
+
+  Therefore $\cdot_{m}$ is associative. With $1\in\Z_{m}$ as the multiplicative identity, then
+
+  $$\begin{aligned}[t]
+    a\cdot_{m}(b+_{m}c)&=a\cdot_{m}\overline{b+c}=\overline{a\cdot\overline{b+c}}\\
+    &=\overline{a\cdot(b+c)}=\overline{a\cdot b+a\cdot c}\\
+    &=\overline{a\cdot b}+\overline{a\cdot c}=a\cdot_{n}b+a\cdot_{n}c
+  \end{aligned}$$
+\end{pst}
+
+\subsubsection{Polynomial Rings}
+\begin{dft}
+  Let $R$ be a nonzero ($1\neq 0$) commutative ring. A \textbf{polynomial} with coefficients in $R$ (in one variable) is a formal sum
+
+  $$f(x)=\sum_{i=0}^{\infty}a_{i}x^{i}=a_{0}+a_{1}x+a_{2}x^{2}+\cdots+a_{n}x^{n}$$\s
+
+  where $a_{i}\in R$ and $a_{i}\neq 0$ only for finitely many $i$.
+\end{dft}\n
+
+Note that a polynomial with coefficients in $R$ is essentially a finite sequence of elements in $R$.\n
+
+\begin{dft}
+  Let $f(x)$ be a polynomial defined in \rdft[\sctd{1}]. The \textbf{degree} of $f(x)$ is defined as
+
+  $$\deg f(x):=\begin{cases}
+    \max\brc{i\in\Z_{\geq 0}\srm a_{i}\neq 0}&\erm{if }f(x)\not\equiv 0\\
+    -\infty&\erm{if }f(x)\equiv 0
+  \end{cases}$$
+\end{dft}\n
+
+The notation $R[x]$ is the set of all polynomials with coefficients in $R$. With such notation, the following proposition can be introduced:\n
+
+\begin{pst}
+  Let $f(x)=\sum_{i=0}^{\infty}a_{i}x^{i}\in R[x]$ and $g(x)=\sum_{i=0}^{\infty}b_{i}x^{i}\in R[x]$ be polynomials defined in \rdft[\sctd{2}], then the following can be applied:
+
+  \begin{alist}
+    \item \textbf{Equality of Polynomials}\n
+
+    $f(x)=g(x)$ if and only if $a_{i}=b_{i}$ for all $i$ as elements in $R[x]$.
+    \item \textbf{Addition of Polynomials}\n
+
+    $$f(x)+g(x)=\sum_{i=0}^{\infty}(a_{i}+b_{i})x^{i}$$
+
+    \item \textbf{Multiplication of Polynomials}\n
+
+    $$f(x)\cdot g(x)=\sum_{i=0}^{\infty}c_{i}x^{i}$$\s
+
+    where $c_{i}=\sum_{k=0}^{i}a_{k}b_{i-k}$.
+  \end{alist}
+\end{pst}\n
+
+Note that the addition operation is well-defined since $a_{i}+b_{i}\neq 0$ only for finitely many $i$. With the binary operations required, there is the following proposition:\n
+
+\begin{pst}
+  $(R[x],+,\cdot)$ is a nonzero commutative ring.\n
+
+  \prf Note that the following are true:
+
+  \begin{alist}
+    \item $(R[x],+)$ is an abelian group with additive identity $0\in R[x]$, which is the zero polynomial.
+    \item $1\in R[x]$ is the multiplicative identity.
+    \item For associativity for multiplication, let $f(x)=\sum_{i}a_{i}x^{i},g(x)=\sum_{i}b^{i}x^{i},h(x)=\sum_{i}c^{i}x^{i}\in R[x]$, then
+
+    $$\begin{aligned}[t]
+      f\cdot(g\cdot h)&=\sum_{k=0}^{\infty}\brr{\sum_{i+j=k}a_{i}\brr{\sum_{m+n=j}b_{m}c_{n}}_{j}}x^{k}\\
+      &=\sum_{k=0}^{\infty}\brr{\sum_{i+j=k}\sum_{m+n=j}a_{i}b_{m}c_{n}}x^{k}\\
+      &=\sum_{k=0}^{\infty}\brr{\sum_{i+m+n=k}a_{i}b_{m}c_{n}}x^{k}
+    \end{aligned}$$\s
+
+    On the other hand,
+
+    $$\begin{aligned}[t]
+      (f\cdot g)\cdot h&=\brr{\sum_{l=0}^{\infty}\brr{\sum_{i+m=l}a_{i}b_{m}}x^{l}}\cdot\brr{\sum_{i}c_{i}x^{i}}\\
+      &=\sum_{k=0}^{\infty}\brr{\sum_{l+n=k}\sum_{i+m=l}a_{i}b_{m}c_{n}}x_{k}\\
+      &=\sum_{k=0}^{\infty}\brr{\sum_{i+m+n=k}a_{i}b_{m}c_{n}}x^{k}
+    \end{aligned}$$
+
+    \item The binary operation satisfies the distributive laws.
+  \end{alist}
+\end{pst}\n
+
+\begin{dft}
+  Given a polynomial $f(x)=\sum_{i=0}^{n}a_{i}x^{i}\in R[x]$, define a \textbf{function} as
+
+  $$\phi_{f}:\alpha\in R\mapsto f(\alpha)=\sum_{i=0}^{n}a_{i}x^{i}\in R$$
+\end{dft}\n
+
+\begin{pst}
+  Given polynomials $f,g\in R[x]$ with functions $\phi_{f},\phi_{g}:R\to R$, if $\phi_{f}=\phi_{g}$ as functions of $R\to R$, then $f=g$ as polynomials in $R[x]$.
+\end{pst}
+
+For example, $f(x)\in \R[x]$ defines a function $\phi_{f}:\R\to\R$ where $f(x)=x^{2}$. Moreover, if $g(x)\in \R[x]$ where $f(\alpha)=g(\alpha)$ for all $\alpha\in\R$, then $f=g$ in $R[x]$. This means that $f$ and $g$ have exactly the same coefficients.\n
+
+However, this may not be true in general, especially when the cardinality of $R$ is finite. Consider $f=x^{2}+x+1\in\Z_{2}[x]$ and $g=x^{4}+x^{3}+x^{2}+x+1\in\Z_{2}[x]$, then $f\neq g$ in $\Z_{2}[x]$ but $f(\alpha)=g(\alpha)$ for all $\alpha\in\Z_{2}$.
+
+\subsection{Integral Domains and Fields}
+\subsubsection{Integral Domains}
+\begin{dft}
+  An \textbf{integral domain} is a nonzero commutative ring $R$ where the product of any two nonzero elements is always nonzero.
+\end{dft}\n
+
+\begin{dft}
+  A nonzero element $r$ in a ring $R$ is called a \textbf{zero divisor} if there exists nonzero element $s\in R$ such that $rs=0$.
+\end{dft}\n
+
+With the definitions above, it can be shown that a nonzero commutative ring $R$ is an integral domain if and only if it has no zero divisors.\n
+
+\begin{pst}
+  A commutative ring $R$ is an integral domain if and only if the cancellation law holds for multiplication, which is $ca=cb$ and $c\neq 0$ implies $a=b$.\n
+
+  \prf\arr Suppose $R$ is an integral domain. If $ca=cb$, then by distributive laws, $c(a-b)=c(a+(-b))=0$. Since $R$ is an integral domain, either $c=0$ and $a-b=0$. Given that $c\neq 0$, so $a=b$.\n
+
+  \arl Suppose cancellation law holds. Suppose there are nonzero $a,b\in R$ such that $ab=0$, then by the previous result, $0=a0$ and this will give out $ab=a0$. Cancellation leads to $b=0$, which contradicts the assumption.
+\end{pst}
+
+\subsubsection{Units}
+\begin{dft}
+  Let $R$ be a ring, then an element $a\in R$ is said to be a \textbf{unit} if it has a multiplicative inverse. In other words, there exists $a^{-1}\in R$ such that $aa^{-1}=a^{-1}a=1$.
+\end{dft}\n
+
+\begin{exm}
+  Below are various examples of units:
+
+  \begin{alist}
+    \item $1$ and $-1$ are the only units of $\Z$.
+    \item Let $R$ be the ring of all real-valued functions on $\R$, then any function $f\in R$ satisfying $f(x)\neq 0$ for all $x$ is a unit.
+    \item Let $R$ be the ring of all continuous real-valued functions on $\R$, then $f\in R$ is a unit if and only if it is either strictly positive or strictly negative.
+  \end{alist}
+\end{exm}\n
+
+\begin{pst}
+  The only units of $\Q[x]$ are nonzero constants.\n
+
+  \prf Given any $f\in\Q[x]$ such that $\deg f>0$, for all nonzero $g\in\Q[x]$,
+
+  $$\deg fg\geq\deg f>0=\deg 1$$\s
+
+  and hence $fg\neq 1$. If $g=0$, then $fg=0\neq 1$, so $f$ has no multiplicative inverse.\n
+
+  If $f$ is a nonzero constant, then $f^{-1}=\frac{1}{f}$ is a constant polynomial in $\Q[x]$ and
+
+  $$f\brr{\frac{1}{f}}=\frac{1}{f}(f)=1$$\s
+
+  Therefore $f$ is a unit.\n
+
+  Finally, if $f=0$, then $fg=0\neq 1$ for all $g\in\Q[x]$, so the zero polynomial has no multiplicative inverse.
+\end{pst}
+
+\propdisp
+
+\subsubsection{Fields}
+\begin{dft}
+  A \textbf{field} is a commutative ring with $1\neq 0$ where every nonzero element is a unit.
+\end{dft}\n
+
+In other words, a nonzero commutative ring $F$ is a field if and only if every nonzero element $r\in F$ has a multiplicative inverse $r^{-1}$, which is $rr^{-1}=r^{-1}r=1$.\n
+
+\begin{exm}
+  With the definition of fields, it can be shown that:
+
+  \begin{alist}
+    \item $\Q$, $\R$ and $\C$ are fields, but $\Z$ is not.
+    \item Polynomial rings, including $\Q[x]$, $\R[x]$ and $\C[x]$, are not fields.
+  \end{alist}
+\end{exm}\n
+
+Note that if every nonzero element of a commutative ring has a multiplicative inverse, then the ring is an integral domain since
+
+$$ca=cb\Rightarrow c^{-1}ca=c^{-1}cb\Rightarrow a=b$$\s
+
+and this leads to the following proposition:\n
+
+\begin{pst}
+  A field is an integral domain.
+\end{pst}\n
+
+\begin{pst}
+  Let $k\in\Z_{m}\setminus\brc{0}$. If $\gcd(k,m)>1$, then $k$ is a zero divisor. If $\gcd(k,m)=1$, then $k$ is a unit.\n
+
+  \prf Let $d=\gcd(k,m)$. If $d>1$, then $\frac{m}{d}$ is a nonzero element in $\Z_{m}$, and
+
+  $$k\cdot_{m}\frac{m}{d}=\overline{\frac{k}{d}\cdot m}=0$$\s
+
+  so $k$ is a zero divisor. On the other hand, if $d=1$, then there exists $a,b\in\Z$ such that $ak+bm=1$, but this means $\overline{a}k=1$ in $\Z_{m}$, so $k$ is a unit.
+\end{pst}
+
+% Fill missing
+
+\subsection{Ring Homomorphisms}
+\subsubsection{Definition of Ring Homomorphisms}
+\begin{dft}
+  Let $R$ and $R'$ be rings. A \textbf{ring homomorphism} from $R$ to $R'$ is a map $\phi:R\to R'$ such that the following are satisfied:
+
+  \begin{alist}
+    \item \textbf{Multiplicative Identity}
+
+    $$\phi(1_{R})=1_{R'}$$
+
+    \item \textbf{Addition}
+
+    $$\phi(a+b)=\phi(a)+\phi(b)$$
+
+    \item \textbf{Multiplication}
+
+    $$\phi(ab)=\phi(a)\phi(b)$$
+  \end{alist}
+\end{dft}\n
+
+Note that part (a) of the definition above is not imposed in some textbooks.
+
+\subsubsection{Properties of Ring Homomorphisms}
+\begin{pst}
+  Let $R$ and $R'$ be rings. If $\phi:R\to R'$ is a ring homomorphism, then $\phi:(R,+)\to(R',+')$ is a homomorphism between abelian groups.
+\end{pst}\n
+
+In particular, $\phi(0_{R})=0_{R'}$ and $\phi(-a)=-\phi(a)$ for all $a\in R$. Note that the converse of the above proposition is not true. For example, $\psi:\Z\to\Z$ where $k\mapsto 2k$ is a group homomorphism, but it is not a ring homomorphism.\n
+
+\begin{pst}
+  Let $R$ and $R'$ be rings. If $\phi:R\to R'$ is a ring homomorphism and $u\in R^{x}$ is an element from the set of all units in $R$, then $\phi(u^{-1})=\phi(u)^{-1}$.\n
+
+  \prf By the definition of ring homomorphism,
+
+  $$\phi(u^{-1})\phi(u)=\phi(u^{-1}u)=\phi(1_{R})=1_{R'}$$\s
+
+  then $\phi(u^{-1})=\phi(u)^{-1}$.
+\end{pst}
+
+\subsubsection{Examples of Ring Homomorphisms}
+\begin{exm}
+  Below are various examples of ring homomorphisms:
+
+  \begin{alist}
+    \item For any positive integer $n$, the remainder map $\phi:\Z\to\Z_{n}$ where $k\mapsto\overline{k}$ is a ring homomorphism, since the following conditions are satisfied:
+
+    \begin{rlist}
+      \item \textbf{Multiplicative Identity}
+
+      $$\phi(1)=\overline{1}=1$$
+
+      \item \textbf{Addition}
+
+      $$\phi(k_{1}+k_{2})=\overline{k_{1}+k_{2}}=\overline{\overline{k_{1}}+\overline{k_{2}}}=\phi(k_{1})+\phi(k_{2})$$
+
+      \item \textbf{Multiplication}
+
+      $$\phi(k_{1}k_{2})=\overline{k_{1}k_{2}}=\overline{(\overline{k_{1}})(\overline{k_{2}})}=\phi(k_{1})\phi(k_{2})$$
+    \end{rlist}
+
+    Note that the zero map $\phi:R\to R'$ where $r\mapsto 0_{R'}$ is not a ring homomorphism because of part (a) of \rdft[\sctd{3}].
+
+    \item For any ring $R$, the map $\phi:\Z\to R$ where
+
+    $$n\mapsto n\cdot 1_{R}=\begin{cases}
+      \underset{n\;\text{times}}{\underbrace{1_{R}+\cdots+1_{R}}}&\erm{if }n>0\\
+      0_{R}&\erm{if }n=0\\
+      \underset{n\;\text{times}}{\underbrace{(-1_{R})+\cdots+(-1_{R})}}&\erm{if }n<0
+    \end{cases}$$\s
+
+    is a ring homomorphism, since the following conditions are satisfied:
+
+    \begin{rlist}
+      \item \textbf{Multiplicative Identity}
+
+      $$\phi(1)=1\cdot 1_{R}=1_{R}$$
+
+      \item \textbf{Addition}
+
+      $$\phi(n_{1}+n_{2})=(n_{1}+n_{2})1_{R}=n_{1}1_{R}+n_{2}1_{R}=\phi(n_{1})+\phi(n_{2})$$
+
+      \item \textbf{Multiplication}
+
+      $$\phi(n_{1}n_{2})=(n_{1}n_{2})1_{R}=(n_{1}1_{R})(n_{2}1_{R})=\phi(n_{1})\phi(n_{2})$$
+    \end{rlist}
+
+    Note that for any ring $R$, $\phi$ is the only ring homomorphism from $\Z$ to $R$. If $\theta:\Z\to R$ is a ring homomorphism, then $\phi(1)=1_{R}$ and this implies
+
+    $$\begin{aligned}[t]
+      \theta(n)&=\theta(\underset{n\;\text{times}}{\underbrace{1+\cdots+1}})\\
+      &=\underset{n\;\text{times}}{\underbrace{\theta(1)+\cdots+\theta(1)}}\\
+      &=n\theta(1)=n\cdot 1_{R}=\phi(n)
+    \end{aligned}$$\s
+
+    for all $n\in\Z$.
+  \end{alist}
+\end{exm}
+
+\subsubsection{Characteristics of Integral Domains}
+\begin{dft}
+  Let $D$ be an integral domain. If there does not exist $n\in\Z_{>0}$ such that $\phi(n)=0$, then $D$ is said to have \textbf{characteristic} $0$, denoted as $\mathrm{char}(D)=0$.\n
+
+  On the other hand, if there exists $n\in\Z_{>0}$ such that $\phi(n)=0$, then $D$ is said to have \textbf{positive characteristic}, and $\mathrm{char}(D)=\min\brc{n\in\Z_{>0}\srm n\cdot 1_{D}=0}$.
+\end{dft}\n
+
+\begin{pst}
+  If $D$ is an integral domain of positive characteristic, then $\mathrm{char}(D)$ is a prime number.
+\end{pst}\n
+
+\begin{exm}
+  Below are various examples of characteristics of integral domains:
+
+  \begin{alist}
+    \item $\Z,\Q,\R,\C$ are all of characteristic $0$.
+
+    \item $\Z_{n}$ is not an integral domain if $n$ is composite, then $n=p$ where $p$ is a prime and $\mathrm{char}(\Z_{n})=p$.
+
+    \item The \textbf{natrual inclusion}
+
+    $$\phi:\Z\to\Q=\underset{\sim}{\underline{\Z\times(\Z\setminus\brc{0})}}$$\s
+
+    where $n\mapsto\frac{n}{1}$ is a ring homomorphism.\n
+
+    More generally, if $D$ is an integral domain, and
+
+    $$F=\underset{\sim}{\underline{D\times(D\setminus\brc{0})}}$$\s
+
+    is the field of fractions, then the map $\phi:D\to F$ where $a\mapsto[(a,1)]$ is an injective ring homomorphism, since the following conditions are satisfied:
+
+    \begin{rlist}
+      \item \textbf{Multiplicative Identity}
+
+      $$\phi(1)=[(1,1)]$$
+
+      \item \textbf{Addition}
+
+      $$\phi(a_{1}+a_{2})=[(a_{1}+a_{2},1)]=[(a_{1},1)]+[(a_{2},1)]=\phi(a_{1})+\phi(a_{2})$$
+
+      \item \textbf{Multiplication}
+
+      $$\phi(a_{1}a_{2})=[(a_{1}a_{2},1)]=[(a_{1},1)][(a_{2},1)]=\phi(a_{1})\phi(a_{2})$$
+
+      \item \textbf{Injectivity}\n
+
+      To show that $\phi$ is injective,\m\m
+
+      $$\ker\phi=\brc{a\in D\srm[(a,1)]=[(0,1)]}=\brc{a\in D\srm a\cdot 1=1\cdot 0}=\brc{0}\subset D$$
+    \end{rlist}
+
+    \item Let $R$ be a commutative ring. For any $a\in R$, the \textbf{evaluation map}
+
+    $$\phi_{a}:R[x]\to R$$\s
+
+    where $f(x)\mapsto f(a)$ is a surjective ring homomorphism.
+  \end{alist}
+\end{exm}
+
+\subsection{Subrings and Ideals}
+\subsubsection{Definition of Subrings}
+\begin{dft}
+  Let $R$ be a ring. A subset $S\subset R$ is called a \textbf{subring} if it is closed under the addition $+$ and multiplication $\cdot$ in $R$ and $S$ itself is a ring with unity $1_{R}$ under the induced operations. In other words, $S\subset R$ is a subring of $R$ if it satisfies the conditions in \rdft[\sctd{32}].
+\end{dft}\n
+
+Note that for any ring $R$, $\brc{0}\subset R$ is not a subring. Below is a practical criterion for checking whether a subset is a subring:\n
+
+\begin{pst}
+  Let $R$ be a ring, then a subset $S\subset R$ is a subring if and only if the following conditions are satisfied:
+
+  \begin{alist}
+    \item
+
+    $$1_{R}\in S$$
+
+    \item
+
+    $$a-b\in S\;\forall a,b\in S$$
+
+    \item
+
+    $$a\cdot b\in S\;\forall a,b\in S$$
+  \end{alist}
+\end{pst}\n
+
+\begin{pst}
+  Let $\phi:R\to R'$ be a ring homomorphism, then the following are true:
+
+  \begin{alist}
+    \item If $S<R$ is a subring of $R$, then $\phi(S)<R'$.
+
+    \item If $S'<R'$ is a subring of $R'$, then $\phi^{-1}(S')<R$.\n
+
+    \prf Note that the following are true:
+
+    \begin{rlist}
+      \item
+
+      $$\phi(1_{R})=1_{R'}\in S'\Rightarrow 1_{R}\in\phi^{-1}(S')$$
+
+      \item Let $a,b\in\phi^{-1}(S')$, then $\phi(a),\phi(b)\in S'$.
+    \end{rlist}
+
+    Since $S'$ is a subring, then
+
+    $$\begin{cases}
+      \phi(a-b)=\phi(a)-\phi(b)\in S'\\
+      \phi(ab)=\phi(a)\phi(b)\in S'
+    \end{cases}\Rightarrow a-b,ab\in\phi^{-1}(S')$$\s
+
+    hence $\phi^{-1}(S')$ is a subring of $R$.
+  \end{alist}
+\end{pst}\n
+
+\begin{crl}
+  For any ring homomorphism $\phi:R\to R'$, its image
+
+  $$\mathrm{im}\:\phi=\phi(R)=\brc{\phi(a)\srm a\in R}$$\s
+
+  is a subring of $R'$.
+\end{crl}\n
+
+Note that $\ker\phi$ is not a subring unless $R'$ is the zero ring, because $\phi(1_{R})=1_{R'}\neq 0$ unless $R'=\brc{0_{R'}}$.\n
+
+\begin{exm}
+  Consider an integral domain $D$ contained inside a field $F$, which is $D\subset F$. Let $\alpha\in F$, then this defines the evaluation map $\phi_{\alpha}:D[x]\to F$ where $f(x)\mapsto f(\alpha)$ is a ring homomorphism. By the corollary of \rpst[\sctd{1}],
+
+  $$D[\alpha]:=\mathrm{im}\:\phi_{\alpha}=\brc{f(\alpha)\srm f\in D[x]}$$\s
+
+  is a subring of $F$. In particular, $D[\alpha]$ is an integral domain.
+\end{exm}
+
+\subsubsection{Definition of Ideals}
+\begin{dft}
+  A subset $I$ of a commutative ring $R$ is said to be an \textbf{ideal} if the following properties are satisfied:
+
+  \begin{alist}
+    \item $0\in I$.
+    \item If $a,b\in I$, then $a+b\in I$.
+    \item For all $a\in I$, $ar\in I$ for all $r\in R$.
+  \end{alist}
+\end{dft}
+
+\subsection{Quotient Rings}
+\subsubsection{Residues}
+\begin{dft}
+  Let $R$ be a commutative ring and $I\subset R$ be an ideal. Consider the set $R/I=\brc{a+I\srm a\in R}$, then $a+I\in R\setminus I$ is said to be the \textbf{residue} of $a\in R$, denoted by $\overline{a}$.
+\end{dft}
+
+\subsubsection{Construction of Quotient Rings}
+Recall that $\overline{a}$ is the equivalence class containing $a$ with respect to the relation $a\sim b\Leftrightarrow a-b\in I$. In particular, for any $a,b\in R$, $\overline{a}=\overline{b}\Leftrightarrow a-b\in I$. In this case, $a$ is said to be congruent to $b$ modulo $I$, denoted by $a\equiv b(\mathrm{mod} I)$.\n
+
+Now define an operation $+$ on $R\setminus I$ such that
+
+$$(a+I)+(b+I):=(a+b)+I$$\s
+
+and the binary operation above is well-defined. More precisely, it has to be checked if
+
+$$\begin{cases}
+  a'+I=a+I\\
+  b'+I=b+I
+\end{cases}$$\s
+
+then $(a'+b')+I=(a+b)+I$. Suppose
+
+$$\begin{cases}
+  a'+I=a+I\\
+  b'+I=b+I
+\end{cases}\Leftrightarrow\begin{cases}
+  a'-a\in I\\
+  b'-b\in I
+\end{cases}$$\s
+
+and since $(I,+)<(R,+)$,
+
+$$\begin{aligned}[t]
+  &(a'-a)+(b'-b)\in I\\
+  \Rightarrow&(a'+b')-(a+b)\in I\\
+  \Rightarrow&(a'+b')+I=(a+b)+I
+\end{aligned}$$\s
+
+so $+$ on $R\setminus I$ is well-defined. Furthermore, check if the binary operation can form an abelian group:\n
+
+\begin{pst}
+  $(R\setminus I,+)$ is an abelian group.\n
+
+  \prf Note that associativity and commutativity of $+$ follow from those in $R$. The additive identity is $0+I=I$, and the additive inverse of $a+I$ is $(-a)+I$.
+\end{pst}\n
+
+Note that the above only involves the addition in $R$. In particular, given any subgroup $H$ in an abelian group $G$, the quotient abelian group $G\setminus H$ is constructed as above. If $\abs{G}<+\infty$, then
+
+$$\abs{G\setminus H}=[G:H]=\frac{\abs{G}}{\abs{H}}$$\s
+
+\begin{thm}
+  Let $R$ be a commutative ring and $(I,+)<(R,+)$ is an additive subgroup, then the binary operation
+
+  $$(a+I)\cdot(b+I):=(ab)+I$$\s
+
+  is well-defined if and only if $I$ is an ideal.\n
+
+  \prf\arl Suppose $I$ is an ideal. Also suppose that
+
+  $$\begin{cases}
+    a'+I=a+I\\
+    b'+I=b+I
+  \end{cases}$$\s
+
+  then it has to be checked that $a'b'+I=ab+I$. Note that the above implies that there exists $i,j\in I$ such that
+
+  $$\begin{cases}
+    a'=a+i\\
+    b'=b+j\\
+  \end{cases}$$\s
+
+  then
+
+  $$a'b'=(a+i)(b+j)=ab+aj+bi+ij$$\s
+
+  where $aj+bi+ij\in I$ since $I$ is an ideal. This means that $a'b'=ab$ and $a'b'+I=ab+I$.\n
+
+  \arr Suppose the multiplication is well-defined. Let $a\in R$ and $i\in I$, then $i+I=0+I$ and the well-definedness of the multiplication implies that
+
+  $$\begin{aligned}[t]
+    (0+I)(a+I)&=(i+I)(a+I)\\
+    I&=(ai)+I
+  \end{aligned}$$\s
+
+  so $ai\in I$ and $I$ is an ideal.
+\end{thm}\n
+
+\begin{crl}
+  $(R\setminus I,+,\cdot)$ is a ring.\n
+
+  \prf Associtativity of $\cdot$ and the distributive laws are inherited from $R$. The multiplicative identity is $1+I$.
+\end{crl}
+
+\subsubsection{Quotient Rings}
+With the construction above, the definition of quotient rings is as below:\n
+
+\begin{dft}
+  Let $R$ be a commutative ring and $I\subset R$ be an ideal, then $R\setminus I$ is called the \textbf{quotient ring} of $R$ by the ideal $I$.
+\end{dft}\n
+
+\begin{pst}
+  Consider the map $\pi:R\to R\setminus I$ where $a\mapsto a+I$, then $\pi$ is a surjective map homomorphism.\n
+
+  \prf For any $a,b\in R$,
+
+  $$\pi(a+b)=(a+b)+I=(a+I)+(b+I)=\pi(a)+\pi(b)$$\s
+
+  and
+
+  $$\pi(ab)=(ab)+I=(a+I)(b+I)=\pi(a)\pi(b)$$
+\end{pst}
+
+\subsubsection{First Isomorphism Theorem}
+Below the \textbf{First isomorphism Theorem} is introduced:\n
+
+\begin{thm}
+  Let $\phi:R\to R'$ be a ring homomorphism. Then
+
+  $$R\setminus\ker\phi\cong\mathrm{im}\phi$$\s
+
+  More precisely, the map
+
+  $$\overline{\phi}:R\setminus\ker\phi\to\mathrm{im}\phi\erm{where }a+\ker\phi\mapsto\phi(a)$$\s
+
+  is a ring homomorphism such that $\phi=\overline{\phi}\circ\pi$.\n
+
+  \prf \begin{alist}
+    \item \textbf{Well-definedness of $\overline{\phi}$}\n
+
+    Let $a,a'\in R$ such that $a+\ker\phi=a'+\ker\phi$, and this means that $\phi(a-a')=0$. With some evaluations, $\overline{\phi}(a+\ker\phi)=\phi(a)=\phi(a')=\overline{\phi}(a'+\ker\phi)$. Therefore $\overline{\phi}$ is well-defined.
+
+    \item \textbf{Homomorphism Property of $\overline{\phi}$}\n
+
+    Let $a+\ker\phi,b+\ker\phi\in R\setminus\ker\phi$, then
+
+    $$\begin{aligned}[t]
+      &\overline{\phi}((a+\ker\phi)+(b+\ker\phi))\\
+      =&\overline{\phi}((a+b)+\ker\phi)\\
+      =&\phi(a+b)=\phi(a)+\phi(b)\\
+      =&\overline{\phi}(a+\ker\phi)+\overline{\phi}(b+\ker\phi)
+    \end{aligned}$$\s
+
+    and
+
+    $$\begin{aligned}[t]
+      &\overline{\phi}((a+\ker\phi)\cdot(b+\ker\phi))\\
+      =&\overline{\phi}((ab)+\ker\phi)\\
+      =&\phi(ab)=\phi(a)\phi(b)\\
+      =&\overline{\phi}(a+\ker\phi)\overline{\phi}(b+\ker\phi)
+    \end{aligned}$$
+
+    \item \textbf{Isomorphism Property of $\overline{\phi}$}\n
+
+    By definition, every element of $\mathrm{im}\phi$ is of the form $\phi(a)=\overline{\phi}(a+\ker\phi)$ for some $a\in R$. Then $\overline{\phi}$ is surjective. Also note that
+
+    $$\begin{aligned}[t]
+      \ker\overline{\phi}&=\brc{a+\ker\phi\srm\phi(a)=0}\\
+      &=\brc{a+\ker\phi\srm a\in\ker\phi}\\
+      &=\brc{\ker\phi}
+    \end{aligned}$$\s
+
+    therefore $\overline{\phi}$ is injective and $\overline{\phi}$ is an isomorphism for rings.
+  \end{alist}
+
+  Finally, for any $a\in R$,
+
+  $$(\overline{\phi}\circ\pi)(a)=\overline{\phi}(a+\ker\phi)=\phi(a)$$\s
+
+  therefore $\phi=\overline{\phi}\circ\pi$.
+\end{thm}
+
+In fact, $\pi$ is called the \textbf{canonical map} (or \textbf{projection map}).\n
+
+\begin{exm}
+  Below are various examples of quotient rings:
+
+  \begin{alist}
+    \item For any positive integer $n$, the remainder map
+
+    $$\phi:\Z\to\Z_{n}$$\s
+
+    is a surjective ring homomorphism with
+
+    $$\ker\phi=\brc{k\in\Z\srm\overline{k}=0}=n\Z$$\s
+
+    so by the First Isomorphism Theorem, $\Z\setminus n\Z\cong\Z_{n}$.
+
+    \item Consider the map
+
+    $$\phi:\Z\to\Z[i]\setminus(1+3i)\erm{where }n\mapsto\overline{n}=n+(1+3i)$$\s
+
+    Note that $\Z[i]$ is also a PID, so every ideal in it is a principal ideal. $\phi$ is a surjective ring homomorphism and
+
+    $$\ker\phi=10\Z$$\s
+
+    \prf[zb] Let $m,n\in\Z$, then
+
+    $$\phi(n+m)=(n+m)+(1+3i)=(n+(1+3i))+(m+(1+3i))=\phi(n)+\phi(m)$$\s
+
+    and
+
+    $$\phi(nm)=(nm)+(1+3i)=(n+(1+3i))(m+(1+3i))=\phi(n)\phi(m)$$\s
+
+    To show that $\phi$ is surjective, observe that in $\Z[i]\setminus(1+3i)$, $\overline{1+3i}=\overline{0}$. Let $I=(1+3i)$, then
+
+    $$\begin{aligned}[t]
+      1+3i&\equiv 0(\mathrm{mod} I)\\
+      1&\equiv-3i(\mathrm{mod} I)\\
+      i&\equiv 3(\mathrm{mod} I)
+    \end{aligned}$$\s
+
+    For an arbitrary element $\overline{a+bi}\in\Z[i]\setminus(1+3i)$,
+
+    $$\overline{a+bi}=\overline{a+3b}=\phi(a+3b)$$\s
+
+    and hence $\phi$ is surjective. Now consider
+
+    $$\ker\phi=\brc{n\in\Z\srm\overline{n}=\overline{0}}$$\s
+
+    note that $\overline{n}=\overline{0}$ implies $n=(a-3b)+(b+3a)i$ for some $a+bi\in\Z[i]$. Solving the system of equations, $n=10a$, and the above argument shows that if $\overline{n}\in\ker\phi$, then $n\in 10\Z$ and $\ker\phi\subset 10\Z$. On the other hand, $10=(1+3i)(1-3i)$ leads to $=10\in\ker\phi$ and hence $10\Z\subset\ker\phi$.\n
+
+    As a result, $\ker\phi=10\Z$. By the First Isomorphism Theorem, $\Z\setminus 10\Z\cong\Z[i]\setminus(1+3i)$.
+  \end{alist}
+\end{exm}
+
+\subsection{Factorization of Polynomials}
+\subsubsection{Principal Ideal Domains}
+Recall an ideal $(a)=\brc{ar\srm r\in R}$ generated by one element $a\in R$ is called a principal ideal. Note that $R=(1)$ and $\brc{0}=(0)$ are both principal ideals.\n
+
+\begin{dft}
+  Let $R$ be an integral domain, then $R$ is a \textbf{principal ideal domain} (\textbf{PID}) if every ideal in $R$ is principal.
+\end{dft}\n
+
+Note that the definition of principal ideal domains brings out an interesting fact: any field is a principal ideal domain. However, the following proposition needs to be established first.\n
+
+\begin{pst}
+  Let $R$ be a commutative ring, then for all $d,f\in R[x]$ where the leading coefficient of $d$ is a unit in $R$, there exists $q,r\in R[x]$ such that
+
+  $$f=qd+r,\;\deg(r)<\deg(d)$$\s
+
+  \prf The proof is using induction to complete. For the base case, if $\deg(f)<\deg(d)$, take $r=f$, then $f=0d+r$ and $\deg(r)<\deg(d)$. For inductive step, let
+  
+  $$d=\sum_{i=0}^{n}a_{i}x^{i}\in R[x]$$\s
+  
+  be fixed where $a_{n}$ is a unit in $R$. For any given
+  
+  $$f=\sum_{i=0}^{m}b_{i}x^{i}\in R[x]$$\s
+
+  where $m\geq n$, suppose the claim holds for all $f'$ with $\deg(f')<\deg(f)$, let
+
+  $$f'=f-a_{n}^{-1}b_{m}x^{m-n}d$$\s
+
+  By hypothesis there exists $q',r'\in R[x]$ with $\deg(r')<\deg(d)$ such that
+
+  $$\begin{aligned}[t]
+    f-a_{n}^{-1}b_{m}x^{m-n}d&=q'd+r'\\
+    f&=(a_{n}^{-1}b_{m}x^{m-n}+q')d+r'
+  \end{aligned}$$\s
+
+  which is in the form $f=qd+r'$ where $q\in R[x]$ and $\deg(r')<\deg(d)$.
+\end{pst}\n
+
+\begin{thm}
+  Let $F$ be a field, then $F[x]$ is a principal ideal domain.\n
+
+  \prf Let $I$ be an ideal of $F[x]$ and $d$ be a nonzero polynomial in $I$ with the least leading degree. Such $d$ can be found since the leading degree of a polynomial is a nonnegative integer. $I$ is ideal implies $(d)\subset I$.\n
+
+  By division theorem, $f=qd+r$ for some $q,r\in F[x]$ where $\deg(r)<\deg(d)$. Note that $r=f-qd$ lies in $I$. Since $d$ is a nonzero element of $I$ with the least degree, $r=0$, leaving $f=qd$. Finally, $f\in(d)$ and $I\subset(d)$, so $I=(d)$ can be concluded.
+\end{thm}
+
+\subsubsection{Factor Theorem for Polynomials}
+\begin{dft}
+  Let $F$ be a field and $f=\sum_{i=0}^{n}c_{i}x^{i}$ be a polynomial in $F[x]$. An element $a\in F$ is a \textbf{root} of $f$ if
+
+  $$f(a)=\sum_{i=0}^{n}c_{i}a^{i}=0$$
+\end{dft}\n
+
+In fact the above definition is just a small recall from secondary school mathematics, but with the introduction of fields.\n
+
+\begin{pst}
+  For all polynomials $f\in F[x]$ and elements $a\in F$, there exists $q\in F[x]$ such that
+
+  $$f=q(x-a)+f(a)$$
+\end{pst}\n
+
+With the proposition above, \textbf{Factor Theorem} can be introduced:\n
+
+\begin{thm}
+  Let $F$ be a field and $f$ be a polynomial in $F[x]$, then $a\in F$ is a root in $f$ if and only if $(x-a)$ divides $f$ in $F[x]$.
+\end{thm}\n
+
+\begin{thm}
+  Let $F$ be a field and $f$ be a nonzero polynomial in $F[x]$ with degree $n$, then $f$ has at most $n$ roots in $F$. Moreover, if $a_{1},a_{2},\cdots,a_{n}\in F$ are distinct roots of $f$, then
+
+  $$f=c(x-a_{1})(x-a_{2})\cdots(x-a_{n})$$\s
+
+  where $c$ is a constant in $F$.
+\end{thm}\n
+
+\begin{crl}
+  Let $F$ be a field, and $f,g$ be nonzero polynomials in $F[x]$ with maximum degree of $n$, or $n=\max\brc{\deg(f),\deg(g)}$, then if $f(a)=g(a)$ for $n+1$ distinct elements $a\in F$, then $f=g$.
+\end{crl}
+
+\subsubsection{Monic Polynomials}
+\begin{dft}
+  Let $f$ be a polynomial in $F[x]$, then $f$ is \textbf{monic} if its leading coefficient is $1$.
+\end{dft}
+
+\begin{pst}
+  Let $F$ be a field, and $f,g$ be nonzero polynomials in $F[x]$, then there exists a unique monic polynomial $d\in F[x]$ with the following properties:
+
+  \begin{alist}
+    \item $(f,g)=(d)$.
+    \item $d$ divides $f$ and $g$, or there exists $a,b\in F[x]$ such that $f=ad$ and $g=bd$.
+    \item There exists $p,q\in F[x]$ such that $d=pf+qg$.
+    \item If $h\in F[x]$ is a divisor of $f$ and $g$, then $h$ divides $d$.
+  \end{alist}
+\end{pst}\n
+
+Note that the polynomial $d$ in the proposition above is called the \textbf{greatest common divisor} (\textbf{gcd}) of $f$ and $g$. If $d=1$, $f$ and $g$ are \textbf{relatively prime}.\n
+
+\begin{dft}
+  Let $p$ be a nonconstant polynomial in $F[x]$, then $p$ is \textbf{irreducible} if there do not exist $f,g\in F[x]$ such that $\deg(p)>\max\brc{\deg(f),\deg(g)}$ and $p=fg$.
+\end{dft}
+
+\subsubsection{Unique Factorization Domain}
+\begin{dft}
+  Let $D$ be an integral domain, then $D$ is a \textbf{unique factorization domain} (\textbf{UFD}) if any nonzero nonunit $r\in D$ can be factorized into a unique finite product of irreducible elements. 
+\end{dft}\n
+
+\begin{pst}
+  If $F$ is a field, then $F$ is also a principal ideal domain and a unique factorization domain.
+\end{pst}\n
+
+\begin{pst}
+  A polynomial $f\in F[x]$ is a unit if and only if it is a nonzero constant polynomial.\n
+
+  \prf If $f,g\in F[x]$ are nonzero polynomials satisfying $fg=1$, then by comparing degrees on both sides gives $\deg(f)+\deg(g)=0$, which means $\deg(f)=\deg(g)=0$ and $f,g$ are constant polynomials.
+\end{pst}\n
+
+\begin{crl}
+  Every nonconstant polynomial $f\in F[x]$ can be expressed as
+
+  $$f=cp_{1}p_{2}\cdots p_{n}$$\s
+
+  where $c$ is a nonzero constant, and each $p_{i}$ is a monic irreducible polynomial in $F[x]$. The factorization is unique up to reordering of the factors.
+\end{crl}\n
+
+With the proposition above, the greatest common divisor of two polynomials can be computed using the Euclidean Algorithm as in the case of $\Z$.\n
+
+\begin{thm}
+  Let $F$ be a field and $p$ be a polynomial in $F[x]$, then the following statements are equivalent:
+
+  \begin{alist}
+    \item $F[x]/(p)$ is a field.
+    \item $F[x]/(p)$ is an integral domain.
+    \item $p$ is irreducible in $F[x]$.
+  \end{alist}
+\end{thm}
+
+\subsubsection{Rational Polynomials}
+\begin{pst}
+  Let $f=\sum_{i=0}^{n}a_{i}x^{i}$ be a polynomial in $\Q[x]$ with $a_{i}\in\Z$, then every rational root $r$ of $f$ in $\Q$ has the form $r=\frac{b}{c}$, where $\gcd\brc{b,c}=1$, $b\!\mid\!a_{0}$ and $c\!\mid\!a_{n}$.\n
+
+  \prf Let $r=\frac{b}{c}$ be a root of $f$, then
+
+  $$\sum_{i=0}^{n}a_{i}\brr{\frac{b}{c}}^{i}=0$$\s
+
+  Multiply both sides with $c^{n}$ and rearrange gives
+
+  $$a_{0}c^{n}=-b(a_{1}c^{n-1}+a_{2}c^{n-2}b+\cdots+a_{n}b^{n-1})$$\s
+
+  and given that $b$ and $c$ are relatively prime, $b$ divides $a_{0}$. Similarly,
+
+  $$a_{n}b^{n}=-c(a_{0}c^{n-1}+a_{1}c^{n-2}b+\cdots+a_{n-1}b^{n-1})$$\s
+
+  shows that $c$ divides $a_{n}$.
+\end{pst}\n
+
+The proposition above is useful to determine whether a polynomial (especially with degree $3$ or greater) because such a polynomial is reducible only if it has a root in $\Q$.\n
+
+\begin{exm}
+  Check whether $f(x)=x^{3}+3x+2\in\Q[x]$ is reducible or not.\n
+
+  \ans By \rpst[\sctd{1}], only $\pm 1$ and $\pm 2$ are possible roots. However, none of the possible roots satisfies the equation $f(x)=0$. Therefore, $f(x)$ is irreducible.
+\end{exm}\n
+
+\begin{dft}
+  Let $f$ be a polynomial in $\Z[x]$, then $f$ is \textbf{primitive} if the greatest common divisor of its coefficients is $1$.
+\end{dft}\n
+
+By the definition above, a monic polynomial is primitive. Moreover, if $d$ is the greatest common divisor of coefficients of $f$, then $(1/d)f$ is primitive. Below is the \textbf{Gauss' Lemma}:\n
+
+\begin{pst}
+  If $f,g\in\Z[x]$ are both primitive, then $fg$ is also primitive.\n
+
+  \prf Let $f=\sum_{k=0}^{m}a_{k}x^{k}$, $g=\sum_{k=0}^{n}b_{k}x^{k}$, then $fg=\sum_{k=0}^{m+n}c_{k}x^{k}$ where
+
+  $$c_{k}=\sum_{i+j=k}a_{i}b_{j}$$\s
+
+  Assume $fg$ is not primitive, then there exists a prime $p$ such that $p$ divides any $c_{k}$. Since $f$ is primitive, there exists a least $0<u<m$ such that $a_{u}$ is not divisible by $p$. Similarly, since $g$ is primitive, there exists a least $0<v<n$ such that $b_{v}$ is not divisible by $p$. Now
+
+  $$c_{u+v}=\sum_{\substack{i+j=u+v\\(i,j)\neq(u,v)}}a_{i}b_{j}+a_{u}b_{v}$$\s
+
+  Hence
+
+  $$a_{u}b_{v}=c_{u+v}-\sum_{\substack{i+j=u+v\\i<u}}a_{i}b_{j}-\sum_{\substack{i+j=u+v\\j<v}}a_{i}b_{j}$$\s
+
+  shows that every term on the right hand side are divisible by $p$. By Euclid's Lemma, $p$ divides either $a_{u}$ or $b_{v}$, which leads to a contradiction. Therefore, $fg$ is primitive.
+\end{pst}\n
+
+\begin{dft}
+  Let $f$ be a nonzero polynomial in $\Q[x]$, then there exists a \textbf{content} of $f$, denoted by $c(f)$, and a primitive polynomial $f_{0}\in\Z[x]$ such that
+
+  $$f=c(f)f_{0}$$
+\end{dft}\n
+
+Below are some propositions about contents of polynomials:\n
+
+\begin{pst}
+  If $f\in\Z[x]$, then $c(f)\in\Z$.\n
+
+  \prf Let $d$ be the greatest common divisor of the coefficients of $f$, then naturally $(1/d)f$ is a primitive polynomial and
+
+  $$f=d\brr{\frac{1}{d}f}$$\s
+
+  is a factorization of $f$ into a product of a positive rational number and a primitive polynomial in $\Z[x]$. Therefore by the uniqueness of $c(f)$ and $f_{0}$, $c(f)=d\in\Z$.
+\end{pst}\n
+
+\begin{pst}
+  Let $f,g,h$ be nonzero polynomials in $\Q[x]$ such that $f=gh$, then $c(f)=c(g)c(h)$ and $f_{0}=g_{0}h_{0}$.\n
+
+  \prf The equation $f=gh$ implies
+
+  $$c(f)f_{0}=c(g)c(h)g_{0}h_{0}$$\s
+
+  where $c(f),c(g),c(h)$ are positive rational numbers, and $f_{0},g_{0},h_{0}$ are primitive polynomials. By Gauss' Lemma, $g_{0}h_{0}$ is also primitive. Finally, the uniqueness of content and primitive polynomial shows that $c(f)=c(g)c(h)$ and $f_{0}=g_{0}h_{0}$.
+\end{pst}\n
+
+\begin{thm}
+  Let $f$ be a nonzero polynomial in $\Z[x]$. If $f=GH$ for some $G,H\in\Q[x]$, then $f=gh$ for some $g,h\in\Z[x]$, where $\deg(g)=\deg(G)$ and $\deg(h)=\deg(H)$.
+\end{thm}\n
+
+For the following theorem, let $p$ be a prime, and $\Z_{p}\cong\Z/\Z$. Note that $\Z_{p}$ is a field since $p$ is a prime. For $a\in\Z$, let $\overline{a}$ denote the residue of $a$ in $\Z_{p}$. 
+
+\begin{thm}
+  Let $f=\sum_{k=0}^{n}a_{k}x^{k}$ be a monic polynomial in $\Z[x]$. If $\overline{f}:=\sum_{k=0}^{n}\overline{a_{k}}x^{k}$ is irreducible in $\Z_{p}[x]$ for some prime $p$, then $f$ is irreducible in $\Q[x]$.
+\end{thm}\n
+
+Below is the \textbf{Einstein's Criterion}:\n
+
+\begin{thm}
+  Let $f=\sum_{k=0}^{n}a_{k}x^{k}$ be a polynomial in $\Z[x]$. If there exists a prime $p$ such that $p\!\mid\!a_{i}$ for $0\leq i<n$, but $p\!\nmid\!a_{n}$ and $p^{2}\!\nmid\!a_{0}$, then $f$ is irreducible in $\Q[x]$.
+\end{thm}\n
+
+\begin{exm}
+  The polynomial $x^{5}+3x^{4}-6x^{3}+12x+3$ is irreducible in $\Q[x]$ by the Einstein's Criterion using $p=3$.
+\end{exm}
+
+\subsection{Field Extensions}
+\subsubsection{Definition of Field Extensions}
+\begin{dft}
+  Let $E,F$ be fields, then $F$ is said to be a \textbf{subfield} if $F$ is a subring of $E$. In this case, $E$ is an extension of $F$, or $E/F$ is a \textbf{field extension}.
+\end{dft}\n
+
+Note that $E/F$ does not mean a quotient ring. Further let $\alpha$ be an element of $E$, then consider the evaluation map
+
+$$\phi_{\alpha}:F[x]\to E,f\mapsto f(\alpha)$$\s
+
+which is a homomorphism such that $\phi_{\alpha}\!\mid\!_{F}=\mathrm{id}_{F}$. The image of $\phi_{\alpha}$ is the subring
+
+$$F[\alpha]:=\mathrm{im}\phi_{\alpha}=\brc{f(\alpha)\srm f\in F[x]}$$\s
+
+in $E$. Since $E$ is a field, $F[\alpha]$ is an integral domain. Also, the subfield
+
+$$F(\alpha)=\brc{\frac{f(\alpha)}{g(\alpha)}\srm f,g\in F[x],g(\alpha)\neq 0}$$\s
+
+in $E$ is precisely the field of fractions of $F[\alpha]$. There are two scenarios:
+
+\begin{nlist}
+  \item $\ker\phi_{\alpha}=\brc{0}$, which means $\alpha$ is not a root of any nonzero polynomial $f\in F[x]$. In this case, $\alpha\in E$ is \textbf{transcendental} over $F$. Then $\phi_{\alpha}$ gives an isomorphism $F[x]\cong F[\alpha]$.
+  \item $\ker\phi_{\alpha}\neq\brc{0}$, which means $\alpha$ is a root of some nonzero polynomial $f\in F[x]$. In this case, $\alpha\in E$ is \textbf{algebraic} over $F$. Since $F[x]$ is a principal ideal domain, $\ker\phi_{\alpha}=(p)$ for some $p\in F[x]$. By the First Isomorphism Theorem,
+  
+  $$\overline{\phi_{\alpha}}:F[x]/(p)\cong F[\alpha]$$\s
+
+  Since $F[\alpha]$ is an integral domain, $p$ is irreducible and $\overline{\phi_{\alpha}}$ is a field. Therefore $\overline{\phi_{\alpha}}=F(\alpha)$ where $F(\alpha)$ is the smallest subfield of $E$ containing $F$ and $\alpha$. $F(\alpha)$ is said to be obtained from $F$ by \textbf{adjoining} $\alpha$.
+\end{nlist}
+
+\begin{thm}
+  Let $E/F$ be a field extension and $\alpha$ be an element of $E$, then the following applies:
+
+  \begin{alist}
+    \item If $\alpha$ is algebraic over $F$, then $\alpha$ is a root of an irreducible polynomial $p\in F[x]$, such that $p\!\mid\!f$ for any $f\in F[x]$ with $f(\alpha)=0$.
+    \item For $p$ be an irreducible polynomial $F[x]$ of which $\alpha$ is a root, then the map $\overline{\phi_{\alpha}}:F[x]/(p)\to F(\alpha)$ is defined by
+    
+    $$\phi\brr{\sum_{i=0}^{n}c_{i}x^{i}+(p)}=\sum_{i=0}^{n}c_{i}\alpha^{i}$$\s
+
+    which is also a ring homomorphism mapping $x+(p)$ to $\alpha$ and $a+(p)$ to $a$ for any $a\in F$.
+    \item Let $p$ be an irreducible polynomial in $F[x]$ of which $\alpha$ is a root. Then, each element in $F(\alpha)$ has a unique expression of the form
+    
+    $$c_{0}+c_{1}\alpha+\cdots+c_{n-1}\alpha^{n-1}$$\s
+
+    where $c_{i}\in F$ and $n=\deg(p)$.
+    \item If $\alpha,\beta\in E$ are both roots of an irreducible polynomial $p\in F[x]$, then there exists a ring homomorphism $\rho:F(\alpha)\to F(\beta)$ with $\rho(\alpha)=\beta$ and $\rho(s)=s$ for all $s\in F$.
+  \end{alist}
+\end{thm}
+
+\subsubsection{Finite Fields}
+Below is the \textbf{Kronecker's Theorem}:\n
+
+\begin{thm}
+  Let $F$ be a field, and $f$ be a nonconstant polynomial in $F[x]$, then there exists a field extension $E$ of $F$, such that $f\in F[x]\subset E[x]$ is a product of linear polynomials in $E[x]$. In other words, there exists a field extension $E$ of $F$ such that
+  
+  $$f=c(x-\alpha_{1})(x-\alpha_{2})\cdots(x-\alpha_{n})$$\s
+
+  for some $c,\alpha_{i}\in E$.
+\end{thm}\n
+
+\begin{dft}
+  Let $D$ be an integral domain, then the \textbf{characteristic} of $D$, denoted by $\mathrm{char}(D)$ is the smallest positive integer $n$ such that
+  the sum of $1$ $n$ times is $0$. If the integer does not exist, $D$ has \textbf{characteristic zero}.
+\end{dft}\n
+
+\begin{pst}
+  Let $F$ be a finite field, then the number of elements of $F$ is equal to $p^{n}$ for some prime $p$ and $n\in\N$.\n
+
+  \prf Since $F$ is finite, it has finite characteristic, and since $F$ is a field, $\mathrm{char}(F)$ must be a prime $p$.
+\end{pst}\n
+
+With the proposition, below is the \textbf{Galois' Theorem}:\n
+
+\begin{thm}
+  Given any prime $p$ and $n\in\N$, there exists a finite field $F$ with $p^{n}$ elements.
+\end{thm}\n
+
+\begin{pst}
+  Let $F$ be a field, and $f$ be a nonzero irreducible polynomial in $F[x]$, then $F[x]/(f)$ is a vector space of dimension $\deg(f)$ over $F$.
+\end{pst}\n
+
+\begin{crl}
+  If $F$ is a finite field with $\abs{F}$ elements, and $f$ is a irreducible polynomial of degree $n$ in $F[x]$, then the field $F[x]/(f)$ has $\abs{F}^{n}$ elements.
+\end{crl}
+
+\input{sty/footer.sty}
+
+\begin{alist}
+  \item Michael Artin, \textit{Algebra}, Pearson (2nd Edition), 2010.
+  \item John B. Fraleigh, \textit{A First Course in Abstract Algebra}, Addison-Wesley (7th Edition), 2003.
+\end{alist}
+
+\end{document}
