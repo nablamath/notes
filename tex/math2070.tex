@@ -1643,13 +1643,13 @@ Note that $\ker\phi$ is not a subring unless $R'$ is the zero ring, because $\ph
 \subsection{Quotient Rings}
 \subsubsection{Residues}
 \begin{dft}
-  Let $R$ be a commutative ring and $I\subset R$ be an ideal. Consider the set $R/I=\brc{a+I\srm a\in R}$, then $a+I\in R\setminus I$ is said to be the \textbf{residue} of $a\in R$, denoted by $\overline{a}$.
+  Let $R$ be a commutative ring and $I\subset R$ be an ideal. Consider the set $R/I=\brc{a+I\srm a\in R}$, then $a+I\in R/I$ is said to be the \textbf{residue} of $a\in R$, denoted by $\overline{a}$.
 \end{dft}
 
 \subsubsection{Construction of Quotient Rings}
-Recall that $\overline{a}$ is the equivalence class containing $a$ with respect to the relation $a\sim b\Leftrightarrow a-b\in I$. In particular, for any $a,b\in R$, $\overline{a}=\overline{b}\Leftrightarrow a-b\in I$. In this case, $a$ is said to be congruent to $b$ modulo $I$, denoted by $a\equiv b(\mathrm{mod} I)$.\n
+Recall that $\overline{a}$ is the equivalence class containing $a$ with respect to the relation $a\sim b\Leftrightarrow a-b\in I$. In particular, for any $a,b\in R$, $\overline{a}=\overline{b}\Leftrightarrow a-b\in I$. In this case, $a$ is said to be congruent to $b$ modulo $I$, denoted by $a\equiv b(\mathrm{mod}\;I)$.\n
 
-Now define an operation $+$ on $R\setminus I$ such that
+Now define an operation $+$ on $R/I$ such that
 
 $$(a+I)+(b+I):=(a+b)+I$$\s
 
@@ -1678,17 +1678,17 @@ $$\begin{aligned}[t]
   \Rightarrow&(a'+b')+I=(a+b)+I
 \end{aligned}$$\s
 
-so $+$ on $R\setminus I$ is well-defined. Furthermore, check if the binary operation can form an abelian group:\n
+so $+$ on $R/I$ is well-defined. Furthermore, check if the binary operation can form an abelian group:\n
 
 \begin{pst}
-  $(R\setminus I,+)$ is an abelian group.\n
+  $(R/I,+)$ is an abelian group.\n
 
   \prf Note that associativity and commutativity of $+$ follow from those in $R$. The additive identity is $0+I=I$, and the additive inverse of $a+I$ is $(-a)+I$.
 \end{pst}\n
 
-Note that the above only involves the addition in $R$. In particular, given any subgroup $H$ in an abelian group $G$, the quotient abelian group $G\setminus H$ is constructed as above. If $\abs{G}<+\infty$, then
+Note that the above only involves the addition in $R$. In particular, given any subgroup $H$ in an abelian group $G$, the quotient abelian group $G/H$ is constructed as above. If $\abs{G}<+\infty$, then
 
-$$\abs{G\setminus H}=[G:H]=\frac{\abs{G}}{\abs{H}}$$\s
+$$\abs{G/H}=[G:H]=\frac{\abs{G}}{\abs{H}}$$\s
 
 \begin{thm}
   Let $R$ be a commutative ring and $(I,+)<(R,+)$ is an additive subgroup, then the binary operation
@@ -1728,7 +1728,7 @@ $$\abs{G\setminus H}=[G:H]=\frac{\abs{G}}{\abs{H}}$$\s
 \end{thm}\n
 
 \begin{crl}
-  $(R\setminus I,+,\cdot)$ is a ring.\n
+  $(R/I,+,\cdot)$ is a ring.\n
 
   \prf Associtativity of $\cdot$ and the distributive laws are inherited from $R$. The multiplicative identity is $1+I$.
 \end{crl}
@@ -1737,11 +1737,11 @@ $$\abs{G\setminus H}=[G:H]=\frac{\abs{G}}{\abs{H}}$$\s
 With the construction above, the definition of quotient rings is as below:\n
 
 \begin{dft}
-  Let $R$ be a commutative ring and $I\subset R$ be an ideal, then $R\setminus I$ is called the \textbf{quotient ring} of $R$ by the ideal $I$.
+  Let $R$ be a commutative ring and $I\subset R$ be an ideal, then $R/I$ is called the \textbf{quotient ring} of $R$ by the ideal $I$.
 \end{dft}\n
 
 \begin{pst}
-  Consider the map $\pi:R\to R\setminus I$ where $a\mapsto a+I$, then $\pi$ is a surjective map homomorphism.\n
+  Consider the map $\pi:R\to R/I$ where $a\mapsto a+I$, then $\pi$ is a surjective map homomorphism.\n
 
   \prf For any $a,b\in R$,
 
@@ -1753,16 +1753,16 @@ With the construction above, the definition of quotient rings is as below:\n
 \end{pst}
 
 \subsubsection{First Isomorphism Theorem}
-Below the \textbf{First isomorphism Theorem} is introduced:\n
+Below the \textbf{First Isomorphism Theorem} is introduced:\n
 
 \begin{thm}
-  Let $\phi:R\to R'$ be a ring homomorphism. Then
+  Let $\phi:R\to R'$ be a ring homomorphism, then
 
-  $$R\setminus\ker\phi\cong\mathrm{im}\phi$$\s
+  $$R/\ker\phi\cong\mathrm{im}\phi$$\s
 
   More precisely, the map
 
-  $$\overline{\phi}:R\setminus\ker\phi\to\mathrm{im}\phi\erm{where }a+\ker\phi\mapsto\phi(a)$$\s
+  $$\overline{\phi}:R/\ker\phi\to\mathrm{im}\phi\erm{where }a+\ker\phi\mapsto\phi(a)$$\s
 
   is a ring homomorphism such that $\phi=\overline{\phi}\circ\pi$.\n
 
@@ -1773,7 +1773,7 @@ Below the \textbf{First isomorphism Theorem} is introduced:\n
 
     \item \textbf{Homomorphism Property of $\overline{\phi}$}\n
 
-    Let $a+\ker\phi,b+\ker\phi\in R\setminus\ker\phi$, then
+    Let $a+\ker\phi,b+\ker\phi\in R/\ker\phi$, then
 
     $$\begin{aligned}[t]
       &\overline{\phi}((a+\ker\phi)+(b+\ker\phi))\\
@@ -1825,7 +1825,7 @@ In fact, $\pi$ is called the \textbf{canonical map} (or \textbf{projection map})
 
     $$\ker\phi=\brc{k\in\Z\srm\overline{k}=0}=n\Z$$\s
 
-    so by the First Isomorphism Theorem, $\Z\setminus n\Z\cong\Z_{n}$.
+    so by the First Isomorphism Theorem, $\Z/n\Z\cong\Z_{n}$.
 
     \item Consider the map
 
@@ -1861,7 +1861,7 @@ In fact, $\pi$ is called the \textbf{canonical map} (or \textbf{projection map})
 
     note that $\overline{n}=\overline{0}$ implies $n=(a-3b)+(b+3a)i$ for some $a+bi\in\Z[i]$. Solving the system of equations, $n=10a$, and the above argument shows that if $\overline{n}\in\ker\phi$, then $n\in 10\Z$ and $\ker\phi\subset 10\Z$. On the other hand, $10=(1+3i)(1-3i)$ leads to $=10\in\ker\phi$ and hence $10\Z\subset\ker\phi$.\n
 
-    As a result, $\ker\phi=10\Z$. By the First Isomorphism Theorem, $\Z\setminus 10\Z\cong\Z[i]\setminus(1+3i)$.
+    As a result, $\ker\phi=10\Z$. By the First Isomorphism Theorem, $\Z/10\Z\cong\Z[i]\setminus(1+3i)$.
   \end{alist}
 \end{exm}
 
