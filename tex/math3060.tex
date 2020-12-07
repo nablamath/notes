@@ -1,0 +1,2118 @@
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%
+% CUHK Mathematics
+% MATH3060: Mathematical Analysis III
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{standalone}
+\input{sty/setup.sty}
+
+\begin{document}
+\title{MATH3060: Mathematical Analysis III}
+\input{sty/cover.sty}
+
+\remark{}
+
+\input{sty/header.sty}
+
+\section{Fourier Series}
+\subsection{Introduction to Fourier Series}
+\subsubsection{Trigonometric Series}
+\begin{dft}
+  A \textbf{trigonometric series} on $[-\pi,\pi]$ is a series of functions in the form
+
+  $$\sum_{n=0}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+
+  where $a_{n},b_{n}\in\R$. Furthermore, if $a_{n}=0$ for all $n$, the series is called a \textbf{sine series}. Similarly, if $b_{n}=0$ for all $n$, the series is called a \textbf{cosine series}.
+\end{dft}\n
+
+Note that it is possible to pull out the zeroth term of the sum, making the series in the form
+
+$$a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+
+hence it can be assumed that $b_{0}=0$.\n
+
+\begin{pst}
+  Let $(a_{n}),(b_{n})$ be infinite series. If
+  
+  $$\abs{a_{n}},\abs{b_{n}}\leq\frac{C}{n^{s}}$$\s
+  
+  for some $C>0$ and $s>1$, then their corresponding series $\sum_{n=0}^{\infty}\abs{a_{n}}$ and $\sum_{n=0}^{\infty}\abs{b_{n}}$ are convergent.
+\end{pst}
+
+\begin{pst}
+  If $\sum_{n=0}^{\infty}\abs{a_{n}}$ and $\sum_{n=0}^{\infty}\abs{b_{n}}$ are convergent, then by Weierstrass M-test,
+  
+  $$\sum_{n=0}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+  
+  is uniformly and absolutely convergent.
+\end{pst}
+
+\begin{pst}
+  Let $\phi(x)=a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$ be a continuous function on $[-\pi,\pi]$. If $\sum\abs{a_{n}},\sum\abs{b_{n}}<\infty$, then $\phi(x)$ is $2\pi$-periodic.
+\end{pst}
+
+\subsubsection{Fourier Series}
+\begin{dft}
+  Let $f$ be a $2\pi$-periodic function on $\R$ which is Riemann integrable on $[-\pi,\pi]$, then the \textbf{Fourier series} (or \textbf{Fourier expansion}) of $f$ is the trigonometric series
+
+  $$a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+
+  with Fourier coefficients of $f$
+
+  $$\begin{cases}
+    a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(y)\diff y\\
+    a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(y)\cos(ny)\diff y\\
+    b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(y)\sin(ny)\diff y
+  \end{cases}$$
+\end{dft}\n
+
+Note that $a_{0}$ is actually the average of $f$ over $[-\pi,\pi]$. Fourier series depends on the global information of $f$ on $[-\pi,\pi]$ instead of a point in $f$. Fourier series also depends only on $f\!\mid\!_{(-\pi,\pi)}$, which means the end points of the closed interval are independent.\n
+
+\begin{pst}
+  Let $f_{1},f_{2}$ are Fourier series where $f_{1}\equiv f_{2}$ almost everywhere on $[-\pi,\pi]$, then $f_{1}$ and $f_{2}$ are the same Fourier series.
+\end{pst}
+
+\subsubsection{Motivation of Fourier Series}
+Recall the form of a Fourier series as
+
+$$f(x)=a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+
+for all $x\in\R$. If $f$ is uniformly convergent,
+
+$$\begin{aligned}[t]
+  &\int_{-\pi}^{\pi}f(x)\cos(mx)\diff x\\
+  =\;&a_{0}\int_{-\pi}^{\pi}\cos(mx)\diff x+\sum_{n=1}^{\infty}\brr{a_{n}\int_{-\pi}^{\pi}\cos(nx)\cos(mx)\diff x+b_{n}\int_{-\pi}^{\pi}\sin(nx)\cos(mx)\diff x}
+\end{aligned}$$\s
+
+Note that
+
+$$\int_{-\pi}^{\pi}\cos(mx)\diff x=\begin{cases}
+  2\pi\erm{if }m=0\\
+  0\erm{if }m\neq 0
+\end{cases}$$\s
+
+$$\int_{-\pi}^{\pi}\cos(nx)\cos(mx)\diff x=\begin{cases}
+  \pi\erm{if }m=n\\
+  0\erm{if }m\neq n
+\end{cases}$$\s
+
+$$\int_{-\pi}^{\pi}\sin(nx)\cos(mx)\diff x=0\;\forall m,n\geq 1$$\s
+
+which will deduce
+
+$$a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)\diff x,\;a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos(mx)\diff x$$\s
+
+Using similar method but instead of $\cos(mx)$, $\sin(mx)$ will deduce
+
+$$b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin(mx)\diff x$$
+
+\subsection{Complex Fourier Series}
+\subsubsection{Definition of Complex Fourier Series}
+\begin{dft}
+  Let $f$ be a $2\pi$-periodic function on $\C$ which is Riemann integrable on $[-\pi,\pi]$, then its \textbf{complex Fourier series} is a Fourier series of the form
+
+  $$\sum_{-\infty}^{\infty}c_{n}e^{inx}$$
+
+  where $\brc{c_{n}}_{-\infty}^{\infty}$ is a \textbf{bisequence} of complex numbers defined by
+
+  $$c_{n}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\diff x$$\s
+  
+  for all integers $n$. Moreover, $\sum_{-\infty}^{\infty}c_{n}e^{inx}$ is said to be convergent at $x$ if
+
+  $$\lim_{N\to+\infty}\sum_{-N}^{N}c_{n}e^{inx}$$\s
+
+  exists.
+\end{dft}\n
+
+Note that for a complex-valued function $f=u+iv$,
+
+$$\int_{a}^{b}f=\int_{a}^{b}u+i\int_{a}^{b}v$$\s
+
+In other words, $f$ is said to be integrable if both $u$ and $v$ are integrable.
+
+\subsubsection{Motivation of Complex Fourier Series}
+Recall the form of a complex Fourier series as
+
+$$f(x)=\sum_{-\infty}^{\infty}c_{n}e^{inx}$$\s
+
+for all $x\in\C$. If $f$ converges nicely,
+
+$$\int_{-\pi}^{\pi}e^{-imx}\diff x=\sum_{-\infty}^{\infty}c_{n}\int_{-\pi}^{\pi}e^{i(n-m)x}\diff x$$\s
+
+Note that
+
+$$\int_{-\pi}^{\pi}e^{i(n-m)x}\diff x=\begin{cases}
+  2\pi\erm{if }n=m\\
+  0\erm{if }n\neq m
+\end{cases}$$\s
+
+which will deduce
+
+$$c_{n}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\diff x$$
+
+\subsubsection{Relations between Real and Complex Fourier Series}
+In this section the relationship between (real) Fourier series and complex Fourier series for a real-valued function $f$ is discussed. Note that
+
+$$\begin{aligned}[t]
+  c_{n}&=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\diff x\\
+  &=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)(\cos(nx)-i\sin(nx))\diff x\\
+  &=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)\cos(nx)\diff x-\frac{i}{2\pi}\int_{-\pi}^{\pi}f(x)\sin(nx)\diff x
+\end{aligned}$$\s
+
+which will deduce
+
+$$c_{n}=\begin{cases}
+  \frac{1}{2}(a_{n}-ib_{n})&\erm{if }n\geq 1\\
+  0&\erm{if }n=0\\
+  \frac{1}{2}(a_{-n}+ib_{-n})&\erm{if }n\leq -1
+\end{cases}$$\s
+
+\begin{pst}
+  Let $f$ be a real-valued function, then its complex Fourier coefficient $c_{-n}=\overline{c_{n}}$.
+\end{pst}\n
+
+\begin{pst}
+  Let $f$ be a $2\pi$-periodic real function which is differentiable on $[-\pi,\pi]$ with $f'$ integrable on $[-\pi,\pi]$. Denote the Fourier coefficients of $f$ and $f'$ by $\brc{a_{n}(f), b_{n}(f); c_{n}(f)}$ and $\brc{a_{n}(f'), b_{n}(f'); c_{n}(f')}$ respectively, then
+  
+  $$\begin{cases}
+    a_{n}(f')=nb_{n}(f)\\
+    b_{n}(f')=-na_{n}(f)
+  \end{cases}\text{ and }c_{n}(f')=inc_{n}(f)$$
+\end{pst}\n
+
+Note that one of the advantages of using complex Fourier series is to compute derivatives with more convenience.
+
+\subsection{Fourier Series and Extensions}
+\subsubsection{Extensions of Periodic Functions}
+For any Riemann integrable function $f$ on $[-\pi,\pi]$, one can define the Fourier coefficients to form a Fourier series. On the other hand, we can restrict $f$ to $(-\pi,\pi]$ and extend periodically to a $2\pi$-periodic function $\tilde{f}$ on $\R$. The function $f$ and its extension $\tilde{f}$ have the same Fourier series.\n
+
+Here the $\sim$ symbol in
+
+$$f(x)\sim a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+
+represents $f(x)$ has the Fourier series on the right hand side. The equal sign $=$ is not used since the series may not converge.\n
+
+\begin{exm}
+  Let $f(x)=x$ be a function in $[-\pi,\pi]$. Find the Fourier series of $f$.\n
+
+  \ans The Fourier coefficients are
+
+  $$a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}x\diff x=0$$\s
+
+  $$a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}x\cos(nx)\diff x=0$$\s
+
+  $$b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}x\sin(nx)\diff x=(-1)^{n+1}\frac{2}{n}$$\s
+
+  Therefore
+
+  $$f(x)\sim\sum_{n=1}^{\infty}(-1)^{n+1}\frac{2}{n}\sin(nx)$$\s
+
+  which is a sine series.
+\end{exm}\n
+
+With the example above, the following proposition can be introduced by observation:\n
+
+\begin{pst}
+  Let $f$ be a real function, then its Fourier series is a sine series if $f$ is odd, and it is a cosine series if $f$ is even.
+\end{pst}\n
+
+Note that the Fourier series may not be the same as the original function, especially when there are discontinuous points like $\pm\pi$. Also, the convergence of Fourier series is not clear since some terms like $\sum(1/n)$ does not converge. 
+
+\subsubsection{Big-O and Little-O Notations}
+\begin{dft}
+  Let $\brc{x_{n}}$ be a sequence, then the \textbf{big-O notation}, denoted by $O$, paired with $x_{n}$ is defined as
+
+  $$x_{n}=O(n^{s})\Leftrightarrow\abs{x_{n}}\leq Cn^{s}$$\s
+
+  for some constant $C>0$, as $n\to\infty$. Similarly, the \textbf{little-O notation}, denoted by $o$, paired with $x_{n}$ is defined as
+
+  $$x_{n}=o(n^{s})\Leftrightarrow\frac{\abs{x_{n}}}{n^{s}}\to 0$$\s
+
+  as $n\to\infty$.
+\end{dft}\n
+
+\begin{exm}
+  Find the correlation of
+  
+  $$x_{n}=\frac{2(-1)^{n+1}}{n}\sin(nx)$$\s
+
+  using big-O notation.\n
+
+  \ans Since $\abs{x_{n}}\leq 2/n$, $x_{n}=O(1/n)$.
+\end{exm}\n
+
+\begin{exm}
+  Find the correlation of
+
+  $$x_{n}=\log(n)$$\s
+
+  using little-O notation.\n
+
+  \ans Since $\abs{\log(n)}/n\to 0$ as $n\to\infty$, $x_{n}=o(n)$.
+\end{exm}
+
+\subsubsection{Fourier Series of Unusual Periodic Functions}
+Let $f$ be a $2T$-periodic function. Note that $g(x)=f(\frac{T}{\pi}x)$ is a $2\pi$-periodic function, then
+
+$$g(x)\sim a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
+
+with
+
+$$\begin{cases}
+  a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}g(x)\diff x\\
+  a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\cos(nx)\diff x\\
+  b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\sin(nx)\diff x
+\end{cases}$$\s
+
+along with the substitution $y=\frac{T}{\pi}x$ implies
+
+$$f(y)\sim a_{0}+\sum_{n=1}^{\infty}\brr{a_{n}\cos\brr{\frac{n\pi}{T}y}+b_{n}\sin\brr{\frac{n\pi}{T}y}}$$\s
+
+with
+
+$$\begin{cases}
+  a_{0}=\frac{1}{2T}\int_{-T}^{T}f(y)\diff y\\
+  a_{n}=\frac{1}{T}\int_{-T}^{T}f(y)\cos\brr{\frac{n\pi}{T}y}\diff y\\
+  b_{n}=\frac{1}{T}\int_{-T}^{T}f(y)\sin\brr{\frac{n\pi}{T}y}\diff y
+\end{cases}$$\s
+
+Such Fourier series is called Fourier series of $2T$-periodic function $f$.
+
+\subsection{Convergence of Fourier Series}
+\subsubsection{Riemann-Lebesgue Lemma}
+Recall the definition of a step function on $[-\pi,\pi]$ as a function of the form
+
+$$s(x)=\sum_{j=0}^{N-1}s_{j}\chi_{I_{j}}$$\s
+
+where $-\pi=a_{0}<a_{1}<\cdots<a_{N}=\pi$, $I_{0}=[a_{0},a_{1}]$ and $I_{j}=(a_{j},a_{j+1}]$ for $1\leq j\leq N-1$. The characteristic function (or indicator function)
+
+$$\chi_{E}=\begin{cases}
+  1\erm{if }x\in E\\
+  0\erm{if }x\not\in E
+\end{cases}$$\s
+
+\begin{pst}
+  For every step function $s$ integrable on $[-\pi,\pi]$, there exists a constant $C>0$ depending on $s$ such that
+  
+  $$\abs{a_{n}(s)},\abs{b_{n}(s)}\leq\frac{C}{n}$$\s
+
+  for all $n\geq 1$. $a_{n}(s)$ and $b_{n}(s)$ are Fourier coefficients of $s$.\n
+
+  \prf Let
+  
+  $$s(x)=\sum_{j=0}^{N-1}s_{j}\chi_{I_{j}}$$\s
+  
+  be the step function, then for $n\geq 1$,
+
+  $$\begin{aligned}[t]
+    \pi a_{n}(s)&=\int_{-\pi}^{\pi}s(x)\cos(nx)\diff x\\
+    &=\sum_{j=0}^{N-1}s_{j}\int_{a_{j}}^{a_{j+1}}\cos(nx)\diff x\\
+    &=\sum_{j=0}^{N-1}s_{j}\frac{\sin(na_{j+1})-\sin(na_{j})}{n}
+  \end{aligned}$$\s
+
+  which implies $\abs{a_{n}(s)}\leq\frac{C}{n}$. The proof for $\abs{b_{n}(s)}$ is similar.
+\end{pst}\n
+
+\begin{pst}
+  Let $f$ be integrable on $[-\pi,\pi]$, then for all $\epsilon>0$, there exists a step function $s$ such that $s\leq f$ on $[-\pi,\pi]$ and
+
+  $$\int_{-\pi}^{\pi}(f-s)<\epsilon$$\s
+
+  \prf Since $f$ is Riemann integrable, the function can be approximated with Darboux lower sum. For all $\epsilon>0$, there exists a partition $-\pi=a_{0}<a_{1}<\cdots<a_{N}=\pi$ such that
+
+  $$\int_{-\pi}^{\pi}f-\sum_{j=0}^{N-1}m_{j}(a_{j+1}-a_{j})<\epsilon$$\s
+
+  where $m_{j}=\inf\brc{f(x)\srm x\in[a_{j},a_{j+1}]}$. Define the step function
+
+  $$s(x)=\sum_{j=0}^{N-1}m_{j}\chi_{I_{j}}$$\s
+
+  then $s\leq f$ and
+  
+  $$\int_{-\pi}^{\pi}s(x)\diff x=\sum_{j=0}^{N-1}m_{j}(a_{j+1}-a_{j})$$\s
+
+  implies the result.
+\end{pst}\n
+
+With the propositions above, the \textbf{Riemann-Lebesgue Lemma} can be introduced:\n
+
+\begin{thm}
+  The Fourier coefficients of any $2\pi$-periodic function $f$ integrable on $[-\pi,\pi]$ converge to $0$ as $n\to\infty$.\n
+
+  \prf By \rpst[\sctd{1}], for any $\epsilon>0$, there exists a step function $s$ such that $s\leq f$ and
+
+  $$\int_{-\pi}^{\pi}(f-s)<\frac{\epsilon}{2}$$\s
+
+  On the other hand, by \rpst[\sctd{2}], there exists $n_{0}>0$ such that
+
+  $$\abs{a_{n}(s)}<\frac{\epsilon}{2}$$\s
+
+  for all $n\geq n_{0}$. For instance, $n_{0}=[\frac{2C}{\epsilon}]+1$ with the constant $C$ in \rpst[\sctd{2}]. Note that
+
+  $$\begin{aligned}[t]
+    \abs{a_{n}(f)-a_{n}(s)}&=\frac{1}{\pi}\abs{\int_{-\pi}^{\pi}(f-s)(x)\cos(nx)\diff x}\\
+    &\leq\frac{1}{\pi}\int_{-\pi}^{\pi}(f-s)\erm{as }f\geq s\\
+    &\leq\frac{\epsilon}{2\pi}
+  \end{aligned}$$\s
+
+  Hence,
+
+  $$\begin{aligned}[t]
+    \abs{a_{n}(f)}&\leq\abs{a_{n}(s)}-\abs{a_{n}(f)-a_{n}(s)}\\
+    &<\frac{\epsilon}{2}+\frac{\epsilon}{2\pi}<\epsilon
+  \end{aligned}$$\s
+
+  for all $n\geq n_{0}$, which means $a_{n}(f)\to 0$ as $n\to\infty$. The proof for $b_{n}(f)$ is similar to that above.
+\end{thm}
+
+\subsubsection{Lipschitz Continuity at Points}
+\begin{dft}
+  Let $f\sim a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$ be a function which has a Fourier series, then the \textbf{$n$-th partial sum} of Fourier series of $f$, denoted by $(S_{n}f)(x)$, is given by
+
+  $$(S_{n}f)(x)=a_{0}+\sum_{k=1}^{n}(a_{k}\cos(kx)+b_{k}\sin(kx))$$
+\end{dft}\n
+
+\begin{dft}
+  Let $f$ be a function on $[a,b]$, then $f$ is called \textbf{Lipschitz continuous} at a point $x_{0}\in[a,b]$ if there exists $L>0$ and $\delta>0$ such that
+
+  $$\abs{f(x)-f(x_{0})}\leq L\abs{x-x_{0}}$$\s
+
+  for all $\abs{x-x_{0}}<\delta$.
+\end{dft}\n
+
+Note that both $L$ and $\delta$ may depend on the point $x_{0}$. Below is a proposition on extending Lipschitz continuity from a point to an interval:\n
+
+\begin{pst}
+  If $f$ is Lipschitz continuous at $x_{0}\in[a,b]$ and $f$ is bounded on $[a,b]$, then there exists $L'>0$ which may depends on $x_{0}$ such that
+
+$$\abs{f(x)-f(x_{0})}\leq L'\abs{x-x_{0}}$$\s
+
+for all $x\in[a,b]$.\n
+
+\prf By \rdft[\sctd{1}], there exists $L,\delta>0$ such that
+
+$$\abs{f(x)-f(x_{0})}\leq L\abs{x-x_{0}}$$\s
+
+for all $\abs{x-x_{0}}<\delta$. If $\abs{x-x_{0}}\geq\delta$, then
+
+$$\begin{aligned}[t]
+  \abs{f(x)-f(x_{0})}&\leq\abs{f(x)}+\abs{f(x_{0})}\\
+  &\leq 2M\leq \frac{2M\abs{x-x_{0}}}{\delta}
+\end{aligned}$$\s
+
+where $M=\sup_{[a,b]}\abs{f}\geq 0$. Pick $L'=\max\brc{L,2M/\delta}>0$, then
+
+$$\abs{f(x)-f(x_{0})}\leq L'\abs{x-x_{0}}$$\s
+
+for all $x\in[a,b]$.
+\end{pst}
+
+\subsubsection{Dirichlet Kernels}
+\begin{dft}
+  The \textbf{Dirichlet kernel}, denoted by $D_{n}(z)$, is defined by
+
+  $$D_{n}(z)=\begin{cases}
+    \frac{\sin(n+1/2)z}{2\pi\sin(1/2)z}\erm{if }z\neq 0\\
+    \frac{2n+1}{2\pi}\erm{if }z=0
+  \end{cases}$$
+\end{dft}\n
+
+\begin{pst}
+  Below are the properties of Dirichlet kernels:
+
+  \begin{alist}
+    \item Integral of a Dirichlet kernel $\int_{-\pi}^{\pi}D_{n}(z)\diff z=1$.
+    \item $D_{n}(z)$ is even, continuous, $2\pi$-periodic on $[-\pi,\pi]$ and
+    
+    $$D_{n}\brr{\frac{2k\pi}{2n+1}}=0$$\s
+
+    for all $k=-n,-n+1,\cdots,n$.
+    \item The maximum
+    
+    $$\max_{[-\pi,\pi]}D_{n}(z)=D_{n}(0)=\frac{2n+1}{2\pi}$$
+    \item For all $0<\delta<\pi/2$,
+    
+    $$\int_{0}^{\delta}\abs{D_{n}(z)}\diff z\to+\infty$$\s
+
+    as $n\to+\infty$
+  \end{alist}
+
+  \prf\prt[a]{zr} This can be achieved by integrating
+
+  $$\int_{-\pi}^{\pi}\brr{\frac{1}{2}+\sum_{k=1}^{n}\cos(kz)}\diff z$$\s
+  
+  \prtc[d]{zr} Let $0<\delta<\pi/2$, then for all $n\in\N$, there exists $N\in\N$ such that
+
+  $$N<\frac{n+1/2}{\pi}\delta\leq N+1$$\s
+
+  where $N\to\infty$ as $n\to\infty$. Note that
+  
+  $$\begin{aligned}[t]
+    \int_{0}^{\delta}\abs{D_{n}(z)}\diff z&=\int_{0}^{\delta}\frac{\abs{\sin(n+1/2)z}}{2\pi\abs{\sin(z/2)}}\diff z\\
+    &=\int_{0}^{(n+1/2)\delta}\frac{\abs{\sin(t)}}{2\pi\abs{\sin(t/(2n+1))}}\brr{\frac{2\diff t}{2n+1}}\erm{where }t=\brr{n+\frac{1}{2}}z\\
+    &=\frac{1}{\pi}\int_{0}^{(n+1/2)\delta}\frac{\sin(t)}{t}\frac{t/(2n+1)}{\abs{\sin(t/(2n+1))}}\diff t\\
+    &\geq\frac{1}{\pi}\int_{0}^{(n+1/2)\delta}\frac{\sin(t)}{t}\diff t\erm{since }\frac{\sin(x)}{x}<1\text{ for }0<x\\
+    &\geq\frac{1}{\pi}\int_{0}^{N\pi}\frac{\sin(t)}{t}\diff t\\
+    &=\frac{1}{\pi}\sum_{k=1}^{N}\int_{(k-1)\pi}^{k\pi}\frac{\sin(t)}{t}\diff t\\
+    &=\frac{1}{\pi}\sum_{k=1}^{N}\int_{0}^{\pi}\frac{\abs{\sin(s)}}{s+(k-1)\pi}\diff s\erm{where }s=t-(k-1)\pi\\
+    &\geq\frac{1}{\pi}\sum_{k=1}^{N}\int_{0}^{\pi}\frac{\abs{\sin(s)}}{k\pi}\diff s\erm{since }t\leq k\pi\\
+    &=\frac{1}{\pi^{2}}\brr{\int_{0}^{\pi}\abs{\sin(s)}\diff s}\sum_{k=1}^{N}\frac{1}{k}=\frac{2}{\pi^{2}}\sum_{k=1}^{N}\frac{1}{k}
+  \end{aligned}$$\s
+
+  But since the sum of harmonic series $\sum_{k=1}^{N}(1/k)$ diverges when $N\to\infty$ as $n\to\infty$,
+
+  $$\lim_{n\to\infty}\int_{0}^{\delta}\abs{D_{n}(z)}\diff z=+\infty$$
+\end{pst}\n
+
+With the definition and properties of Dirichlet kernels, the following proposition can be introduced.\n
+
+\begin{pst}
+  Let $f$ be a $2\pi$-periodic function integrable on $[-\pi,\pi]$. Suppose that $f$ is Lipschitz continuous at $x$, then the sequence $\brc{S_{n}f(x)}$ converges to $f(x)$ as $n\to+\infty$.\n
+
+  \prf Let $f$ be a function that is Lipschitz continuous at a point $x_{0}\in[-\pi,\pi]$. By splitting
+  
+  $$(S_{n}(f))(x_{0})-f(x_{0})=I_{1}+I_{2}$$\s
+
+  into integrals $I_{1}$ and $I_{2}$ concentrated in $[-\delta,\delta]$ and essentially, outside the interval, respectively. Note that by \rpst[\sctd{1}],
+\end{pst}\n
+
+\begin{exm}
+  Let $f(x)=x$ be a $2\pi$-periodic function integrable on $[-\pi,\pi]$. Its Fourier series
+
+  $$x\sim 2\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\sin(nx)$$\s
+
+  clearly implies that $f(x)$ is Lipschitz continuous at any $x\in(-\pi,\pi)$.
+\end{exm}\n
+
+\begin{pst}
+  Let $f$ be a $2\pi$-periodic function integrable on $[-\pi,\pi]$. Suppose that for $x_{0}\in[-\pi,\pi]$, the following are satisfied:
+
+  \begin{alist}
+    \item The left-hand limit and right-hand limit both exist, which is
+    
+    $$f(x^{-}_{0})=\lim_{x\to x^{-}_{0}}f(x),f(x^{+}_{0})=\lim_{x\to x^{+}_{0}}f(x)$$
+
+    \item There exists $L>0$ and $\delta>0$ such that
+    
+    $$\begin{cases}
+      \abs{f(x)-f(x^{+}_{0})}\leq L(x-x_{0})\erm{where }0<x-x_{0}<\delta\\
+      \abs{f(x)-f(x^{-}_{0})}\leq L(x_{0}-x)\erm{where }0<x_{0}-x<\delta
+    \end{cases}$$
+  \end{alist}
+
+  then
+
+  $$S_{n}f(x)\to\frac{f(x^{+}_{0})+f(x^{-}_{0})}{2}$$\s
+
+  as $n\to+\infty$.
+\end{pst}\n
+
+\begin{exm}
+  Let $f(x)=x$ be a $2\pi$-periodic function integrable on $[-\pi,\pi]$, where $f$ is discontinuous at $x=\pi$. Note that $f(\pi^{-})=\pi$ and $f(\pi^{+})=-\pi$.\n
+  
+  Now assume $\delta=\frac{\pi}{2}$. For $0<x-\pi<\delta$,
+
+  $$\begin{aligned}[t]
+    \abs{f(x)-f(\pi^{+})}&=\abs{f(x-2\pi)-(-\pi)}\\
+    &=\abs{x-2\pi+\pi}\\
+    &=x-\pi\leq L(x-\pi)
+  \end{aligned}$$\s
+
+  where $L=1$. The approach for $0<\pi-x<\delta$ is similar. Therefore, by \rpst[\sctd{1}],
+  
+  $$S_{n}f(x)\to\frac{f(\pi^{+})+f(\pi^{-})}{2}=0$$\s
+
+  as $n\to+\infty$.
+\end{exm}
+
+\subsubsection{Lipschitz Condition and Uniform Convergence}
+\begin{dft}
+  Let $f$ be a function on $[a,b]$, then it is said to satisfy \textbf{Lipschitz condition} if there exists $L>0$ such that
+
+  $$\abs{f(x)-f(y)}\leq L\abs{x-y}$$\s
+
+  for all $x,y\in[a,b]$.
+\end{dft}\n
+
+Note that Lipschitz condition is uniform since $L$ is independent of any choice of $x,y$. Also, if $f$ satisfies a Lipschitz condition, $f$ is Lipschitz continuous at every point on $[a,b]$.\n
+
+\begin{pst}
+  Let $f$ be a $2\pi$-periodic function satisfying a Lipschitz condition, then its Fourier series converge uniformly to $f$ itself.
+\end{pst}
+
+\subsection{Weierstrass Approximation Theorem}
+\subsubsection{Piecewise Linear Functions}
+Recall that a continuous function is piecewise linear if there exists a partition such that the function is linear within each subinterval.\n
+
+\begin{pst}
+  Let $f$ be a continuous function on $[a,b]$, then for all $\epsilon>0$, there exists a continuous and piecewise linear function $g$ with $g(a)=f(a)$, $g(b)=f(b)$ such that
+
+  $$\nrm{f-g}_{\infty}<\epsilon$$\s
+
+  where
+
+  $$\nrm{f-g}_{\infty}=\sup_{[a,b]}\abs{f(x)-g(x)}$$
+\end{pst}
+
+\subsubsection{Trigonometric Polynomials}
+\begin{dft}
+  A \textbf{trigonometric polynomial} is of the form $P(\cos(x),\sin(x))$ where $P(x,y)$ is a polynomial of $2$ variables.
+\end{dft}\n
+
+Note that a trigonometric polynomial is a finite Fourier series, and vice versa.\n
+
+\begin{pst}
+  Let $f$ be a continuous function on $[0,\pi]$, then for all $\epsilon>0$, there exists a trigonometric polynomial $h$ such that $\nrm{f-h}_{\infty}<\epsilon$.
+\end{pst}
+
+\subsubsection{General Theorem}
+Below is the \textbf{Weierstrass Approximation Theorem}:\n
+
+\begin{thm}
+  Let $f\in C[a,b]$, then for all $\epsilon>0$, there exists a polynomial $q$ such that $\nrm{f-q}_{\infty}<\epsilon$.
+\end{thm}
+
+\subsection{Mean Convergence of Fourier Series}
+\subsubsection{Bracket Products}
+\begin{dft}
+  Let $f,g$ be Riemann integrable functions on $[-\pi,\pi]$, then the \textbf{bracket product} (or \textbf{$L^{2}$-product}, \textbf{$L^{2}$ inner product}) of $f$ and $g$ is given by
+
+  $$\bra{f,g}_{2}=\int_{-\pi}^{\pi}f(x)g(x)\diff x$$
+\end{dft}\n
+
+Note that for complex functions, the bracket product is defined by
+
+$$\bra{f,g}_{2}=\int_{-\pi}^{\pi}f\overline{g}$$\s
+
+\begin{dft}
+  Let $f,g$ be Riemann integrable functions on $[-\pi,\pi]$, then the \textbf{$L^{2}$-norm} of $f$ is given by
+
+  $$\nrm{f}_{2}=\sqrt{\bra{f,f}_{2}}$$\s
+
+  Also, the \textbf{$L^{2}$-distance} between $f$ and $g$ is given by $\nrm{f-g}_{2}$.
+\end{dft}
+
+\subsubsection{Mean Convergence}
+\begin{dft}
+  Let $f,f_{n}$ be Riemann integrable functions on $[-\pi,\pi]$, then $f_{n}\to f$ in \textbf{$L^{2}$-sense} if $\nrm{f_{n}-f}_{2}\to 0$ as $n\to\infty$.
+\end{dft}\n
+
+This definition brings out why such idea is called mean convergence:
+
+$$\lim_{n\to\infty}\int_{-\pi}^{\pi}(f_{n}-f)^{2}\to 0$$\s
+
+is actually a variation of root mean square. Note that $L^{2}$-norm and $L^{2}$-distance are not norm and distance in a strict sense since
+
+$$\begin{cases}
+  \nrm{f}_{2}=0&\not\Rightarrow f=0\\
+  \nrm{f-g}_{2}=0&\not\Rightarrow f=g
+\end{cases}$$\s
+
+in $R[-\pi,\pi]$. It is only true for almost everywhere. Also, although it is not hard to show that $f_{n}\to f$ uniformly implies $\nrm{f_{n}-f}_{2}\to 0$, its converse does not hold. Consider the following counterexample:\n
+
+\begin{exm}
+  Let
+
+  $$f_{n}(x)=\begin{cases}
+    1\erm{if }x\in[0,1/n]\\
+    0\erm{otherwise}
+  \end{cases}$$\s
+
+  be a function, then $\nrm{f_{n}}_{2}^{2}=\int_{-\pi}^{\pi}f_{n}^{2}=1/n$, which tends to $0$ as $n\to\infty$. In this way, $f_{n}\to 0$ in $L^{2}$-sense. However, $f_{n}\not\to 0$ uniformly or even pointwisely.
+\end{exm}
+
+\subsection{Applications to Fourier Series}
+\subsubsection{Minimizers}
+Consider the functions on $[-\pi,\pi]$
+
+$$\begin{cases}
+  \varphi_{0}=\frac{1}{\sqrt{2\pi}}\\
+  \varphi_{n}=\frac{1}{\sqrt{\pi}}\cos(nx)\\
+  \psi_{n}=\frac{1}{\sqrt{\pi}}\sin(nx)
+\end{cases}$$\s
+
+Note that
+
+$$\begin{cases}
+  \bra{\varphi_{m},\varphi_{n}}_{2}=\begin{cases}
+    1\erm{if }m=n\\
+    0\erm{if }m\neq n
+  \end{cases}\\
+  \bra{\psi_{m},\psi_{n}}_{2}=\begin{cases}
+    1\erm{if }m=n\\
+    0\erm{if }m\neq n
+  \end{cases}\\
+  \bra{\varphi_{m},\psi_{n}}_{2}=0\erm{for all }m,n
+\end{cases}$$\s
+
+therefore
+
+$$\brc{\frac{1}{\sqrt{2\pi}},\frac{1}{\sqrt{\pi}}\cos(nx),\frac{1}{\sqrt{\pi}}\sin(nx)}_{n=1}^{\infty}$$\s
+
+can be regarded as an orthogonal basis in $R[-\pi,\pi]$.\n
+
+\begin{dft}
+  The $(2n+1)$ dimensional vector subspace of $R[-\pi,\pi]$ spanned by the first $(2n+1)$ trigonometric functions, denoted by $E_{n}$, is defined by
+
+  $$E_{n}=\mathrm{span}\brc{\frac{1}{\sqrt{2\pi}},\frac{1}{\sqrt{\pi}}\cos(kx),\frac{1}{\sqrt{\pi}}\sin(kx)}_{k=1}^{n}$$
+\end{dft}\n
+
+In general, if there is an orthogonal set (or ortogonal family) $\brc{\phi_{n}}_{n=1}^{\infty}$ in $R[-\pi,\pi]$, let
+
+$$S_{n}=\mathrm{span}\bra{\phi_{1},\phi_{2},\cdots,\phi_{n}}$$\s
+
+be an $n$-dimensional subspace spanned by the first $n$ functions in the orthogonal set, then for any $f\in R[-\pi,\pi]$, the \textbf{minimization problem} is
+
+$$\inf\brc{\nrm{f-g}_{2}\srm g\in S_{n}}$$\s
+
+\begin{pst}
+  The unique minimizer of
+
+  $$\inf\brc{\nrm{f-g}_{2}\srm g\in S_{n}}$$\s
+
+  is attained at the function
+
+  $$g=\sum_{k=1}^{n}\bra{f,\phi_{k}}_{2}\phi_{k}\in S_{n}$$\s
+
+  \prf Note that to minimize $\nrm{f-g}_{2}$ is equivalent to minimize $\nrm{f-g}_{2}^{2}$. For all $g\in S_{n}$,
+
+  $$g=\sum_{k=1}^{n}\beta_{k}\phi_{k}\Rightarrow\nrm{f-g}_{2}^{2}=\int_{-\pi}^{\pi}\abs{f-\sum_{k=1}^{n}\beta_{k}\phi_{k}}^{2}$$\s
+
+  Let $\Phi(\beta)=\nrm{f-g}_{2}^{2}$, then
+
+  $$\begin{aligned}[t]
+    \Phi(\beta)&=\int_{-\pi}^{\pi}\abs{f-\sum_{k=1}^{n}\beta_{k}\phi_{k}}^{2}\\
+    &=\brr{\int_{-\pi}^{\pi}f^{2}}-2\sum_{k=1}^{\infty}\brr{\frac{\beta_{k}}{\sqrt{2}}}\brr{\sqrt{2}\bra{f,\phi_{k}}_{2}^{2}}+\sum_{k=1}^{n}\beta_{k}^{2}\\
+    &\geq\brr{\int_{-\pi}^{\pi}f^{2}}-\sum_{k=1}^{\infty}\brr{\frac{\beta_{k}^{2}}{2}+2\bra{f,\phi_{k}}_{2}^{2}}+\sum_{k=1}^{n}\beta_{k}^{2}\erm{since }2ab\leq a^{2}+b^{2}\\
+    &=\brr{\int_{-\pi}^{\pi}f^{2}}-2\sum_{k=1}^{n}\bra{f,\phi_{k}}_{2}^{2}+\frac{1}{2}\sum_{k=1}^{n}\beta_{k}^{2}\to\infty
+  \end{aligned}$$\s
+
+  as
+
+  $$\nrm{\beta}=\sqrt{\sum_{k=1}^{n}\beta_{k}^{2}}\to\infty$$\s
+
+  Hence $\Phi(\beta)$ attains its minimum at some finite point $\beta$. By some calculus, the minimum required is given by $\beta_{k}=\bra{f,\phi_{k}}_{2}$ for all $1\leq k\leq n$.
+\end{pst}\n
+
+Note that the minimizer $g$ of $\nrm{f-g}_{2}$ over $S_{n}$ is called the \textbf{orthogonal projection} of $f$ on $S_{n}$, denoted by $P_{n}(f)$. With the notation of orthogonal projection,
+
+$$\mathrm{dist}(f,S_{n})=\nrm{f,P_{n}(f)}_{2}$$\s
+
+\begin{crl}
+  For a $2\pi$-periodic function $f$ integrable on $[-\pi,\pi]$ and $n\geq 1$, $\nrm{f-S_{n}(f)}_{2}\leq\nrm{f-g}_{2}$ where $S_{n}(f)$ represents the $n$-th partial sum of the Fourier series of $f$, for all
+
+  $$g=\alpha_{0}+\sum_{k=1}^{n}(\alpha_{k}\cos(kx)+\beta_{k}\sin(kx))$$\s
+
+  with real coefficients.\n
+
+  \prf By the definition of Fourier coefficients $S_{n}(f)=P_{n}(f)$ of $E_{n}$,
+
+  $$\begin{cases}
+    a_{0}=\frac{1}{\sqrt{2\pi}}\bra{f,\frac{1}{\sqrt{2\pi}}}_{2}\\
+    a_{n}\cos(nx)=\frac{1}{\sqrt{\pi}}\bra{f,\frac{1}{\sqrt{\pi}}\cos(nx)}_{2}\cos(nx)\\
+    b_{n}\sin(nx)=\frac{1}{\sqrt{\pi}}\bra{f,\frac{1}{\sqrt{\pi}}\sin(nx)}_{2}\sin(nx)
+  \end{cases}$$
+\end{crl}
+
+\propdisp
+\subsubsection{Measure Zeroes of Fourier Series}
+\begin{thm}
+  Let $f$ be $2\pi$-periodic integrable function on $[-\pi,\pi]$, then the $n$-th partial sum of the Fourier series of $f$ converges to $f$ in $L^{2}$-sense. In other words,
+
+  $$\lim_{n\to\infty}\nrm{S_{n}(f)-f}_{2}=0$$\s
+
+  \prf For any $\epsilon>0$, there exists a $2\pi$-periodic Lipschitz continuous function $g$ such that $\nrm{f-g}_{2}<\epsilon/2$. This can be achieved by finding a step function approximating $f$. By \rpst[\sctd{11}], there exists $N>0$ such that
+
+  $$\nrm{g-S_{N}(g)}_{\infty}<\frac{\epsilon}{2\sqrt{2\pi}}$$\s
+
+  where $\nrm{\cdot}_{\infty}$ represents the uniform convergence. This induces
+
+  $$\nrm{g-S_{N}(g)}_{2}=\sqrt{\int_{-\pi}^{\pi}(g-S_{N}(g))^{2}}\leq\sqrt{2\pi\nrm{g-S_{n}(g)}_{\infty}^{2}}=\frac{\epsilon}{2}$$\s
+
+  By the corollary of \rpst[\sctd{1}],
+
+  $$\nrm{f-S_{N}(f)}_{2}\leq\nrm{f-S_{N}(g)}_{2}\leq\nrm{f-g}_{2}+\nrm{g-S_{n}(g)}_{2}<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$\s
+
+  Finally, since $E_{N}\subset E_{n}$ for all $n\geq N$,
+
+  $$\nrm{f-S_{n}(f)}_{2}\leq\nrm{f-S_{N}(f)}_{2}<\epsilon$$\s
+
+  for any $n\geq N$, thus
+
+  $$\lim_{n\to\infty}\nrm{S_{n}(f)-f}_{2}=0$$
+\end{thm}\n
+
+\begin{crl}
+  Let $f_{1}$ and $f_{2}$ be $2\pi$-periodic integrable functions on $[-\pi,\pi]$ with the same Fourier series, then $f_{1}=f_{2}$ almost everywhere, or $f_{1}=f_{2}$ except a set of measure zero. Furthermore, if $f_{1}$ and $f_{2}$ are both continuous on $[-\pi,\pi]$, then $f_{1}=f_{2}$.\n
+
+  \prf Let $f=f_{1}-f_{2}$, then $a_{n}(f)=b_{n}(f)=0$ gives $S_{n}(f)=0$ for any $n\geq 0$. Therefore
+
+  $$\lim_{n\to\infty}\nrm{S_{n}(f)-f}_{2}=0\Rightarrow \nrm{f}_{2}=0$$\s
+
+  and by theory of Riemann integrals, $f=0$ almost everywhere. If $f_{1},f_{2}$ are continuous, $f^{2}\mathrm{cts}\geq 0\Rightarrow f^{2}\equiv 0$.
+\end{crl}\n
+
+Note that a set $E$ is said to be measure zero if for any $\epsilon>0$, there exists countably many intervals $\brc{I_{k}}$ such that $E\subset\bigcup_{k}I_{k}$ and $\sum_{k}\abs{I_{k}}<\epsilon$.
+
+\subsubsection{Parserval's Identity}
+Below is the \textbf{Parserval's Identity}:\n
+
+\begin{pst}
+  Let $f$ be a $2\pi$-periodic function $f$ integrable on $[-\pi,\pi]$, then
+
+  $$\nrm{f}_{2}^{2}=2\pi a_{0}^{2}+\pi\sum_{n=1}^{\infty}(a_{n}^{2}+b_{n}^{2})$$\s
+
+  where $a_{0},a_{n},b_{n}$ are Fourier coefficients of $f$.\n
+
+  \prf Note that
+
+  $$\begin{cases}
+    \sqrt{2\pi}a_{0}=\bra{f,\frac{1}{\sqrt{2\pi}}}_{2}\\
+    \sqrt{\pi}a_{n}=\bra{f,\frac{1}{\sqrt{\pi}}\cos(nx)}_{2}\erm{for all }n\geq 1\\
+    \sqrt{\pi}b_{n}=\bra{f,\frac{1}{\sqrt{\pi}}\sin(nx)}_{2}\erm{for all }n\geq 1
+  \end{cases}$$\s
+
+  then by corollary of \rpst[\sctd{2}],
+
+  $$\begin{aligned}[t]
+    \bra{f,S_{N}(f)}_{2}&=\bra{(f-S_{N}(f))+S_{N}(f),S_{N}(f)}_{2}\\
+    &=\bra{S_{N}(f),S_{N}(f)}_{2}\erm{since }(f-S_{N}(f))\text{ is orthogonal}\\
+    &=\int_{-\pi}^{\pi}\brr{a_{0}+\sum_{k=1}^{\infty}a_{k}\cos(kx)+b_{k}\sin(kx)}^{2}\diff x
+  \end{aligned}$$\s
+
+  Finally by \rthm[\sctd{1}],
+
+  $$\begin{aligned}[t]
+    0&=\lim_{N\to\infty}\nrm{f-S_{N}(f)}_{2}^{2}\\
+    &=\lim_{N\to\infty}(\nrm{f}_{2}^{2}-2\bra{f,S_{N}(f)}_{2}+\nrm{S_{N}(f)}_{2}^{2})\\
+    &=\lim_{N\to\infty}(\nrm{f}_{2}^{2}-2\nrm{S_{N}(f)}_{2}^{2}+\nrm{S_{N}(f)}_{2}^{2})\\
+    &=\lim_{N\to\infty}(\nrm{f}_{2}^{2}-\nrm{S_{N}(f)}_{2}^{2})
+  \end{aligned}$$\s
+
+  therefore
+
+  $$\nrm{f}_{2}^{2}=\lim_{N\to\infty}\brr{2\pi a_{0}^{2}+\pi\sum_{n=1}^{N}(a_{n}^{2}+b_{n}^{2})}$$
+\end{pst}
+
+\pagebreak
+
+\section{Metric Spaces}
+\subsection{Introduction of Metric Spaces}
+\subsubsection{Definition of Metrics Spaces}
+\begin{dft}
+  Let $X$ be a nonempty set, then a \textbf{metric} on $X$ is a function
+
+  $$d:X\times X\to[0,+\infty)$$\s
+
+  such that the following properties is satisfied for all $x,y,z\in X$:
+
+  \begin{alist}
+    \item Metric is nonnegative, or $d(x,y)\geq 0$. Equality holds if and only if $x=y$.
+    \item Metric is symmetric, or $d(x,y)=d(y,x)$.
+    \item Metric is subadditive (satisfies triangle inequality), or $d(x,y)\leq d(x,z)+d(z,y)$.
+  \end{alist}
+
+  The pair $(X,d)$ is called a \textbf{metric space}.
+\end{dft}\n
+
+\begin{dft}
+  Let $(X,d)$ be a metric space, then the \textbf{metric ball} of radius $r$ centered at $x$, denoted by $B_{r}(x)$, is defined as
+
+  $$B_{r}(x)=\brc{y\in X\srm d(x,y)<r}$$
+\end{dft}
+
+\subsubsection{Examples of Metric Spaces}
+\begin{exm}
+  Below are some examples of metric spaces:
+
+  \begin{alist}
+    \item $(\R,\abs{x-y})$ is a metric space.
+    \item Let $X=\R^{n}$. Denote the metrics
+    
+    $$\begin{cases}
+      d_{k}(x,y)=\sqrt[k]{\sum\abs{x_{i}-y_{i}}^{k}}\\
+      d_{\infty}(x,y)=\max\abs{x_{i}-y_{i}}
+    \end{cases}$$\s
+
+    where $1\leq i\leq n$, then $(\R^{n},d_{1})$, $(\R^{n},d_{2})$, $(\R^{n},d_{\infty})$ are metric spaces.
+    \item Let $C[a,b]$ be the set of all (real) continuous functions on $[a,b]$ and
+    
+    $$\begin{cases}
+      d_{k}(f,g)=\sqrt[k]{\int_{a}^{b}\abs{f-g}^{k}}\\
+      d_{\infty}(f,g)=\max\brc{\abs{f(x)-g(x)}\srm x\in[a,b]}
+    \end{cases}$$\s
+
+    for all $f,g\in C[a,b]$, then $(C[a,b], d_{1})$, $(C[a,b], d_{2})$, $(C[a,b], d_{\infty})$ are metric spaces.
+  \end{alist}
+\end{exm}\n
+
+\begin{exm}
+  Let $X=R[a,b]$ be the set of Riemann integrable functions on $[a,b]$ and
+
+  $$d_{1}(f,g)=\int_{a}^{b}\abs{f-g}$$\s
+
+  However, part (a) of \rdft[\sctd{3}] is not satisfied since $d_{1}(f,g)=0$ only implies $f=g$ almost everywhere, but not exactly $f=g$. $d_{1}$ is then not a suitable metric on $R[a,b]$.\n
+
+  In order to fix this problem, consider $X=R[a,b]/\sim$ where $\sim$ is an equivalent relation on $R[a,b]$ defined by
+
+  $$f\sim g\Leftrightarrow f=g\text{ almost everywhere}$$\s
+
+  Denote
+  
+  $$\overline{f}=\brc{g\in R[a,b]\srm f\sim g}$$\s
+
+  and its corresponding metric
+
+  $$\tilde{d_{k}}(\overline{f},\overline{g})=d_{k}(f,g)$$\s
+
+  then $(X,\tilde{d_{1}})$ and $(X,\tilde{d_{2}})$ are metric spaces.
+\end{exm}\n
+
+Note that $\tilde{d_{2}}$ in the example above is in fact $L^{2}$-distance defined in the last section.
+
+\subsubsection{Normed Spaces}
+\begin{dft}
+  Let $X$ be a nonempty set, then a \textbf{norm} on $X$ is a function
+
+  $$\nrm{\cdot}:X\to[0,+\infty)$$\s
+
+  such that the following properties is satisfied for all $x,y\in X$ and $\alpha\in\R$:
+
+  \begin{alist}
+    \item Norm is nonnegative, or $\nrm{x}\geq 0$. Equality holds if and only if $x=0$.
+    \item Norm is absolutely scalable, or $\nrm{\alpha x}=\abs{\alpha}\nrm{x}$.
+    \item Norm is subadditive, or $\nrm{x+y}\leq\nrm{x}+\nrm{y}$.
+  \end{alist}
+
+  The pair $(X,\nrm{\cdot})$ is called a \textbf{normed space}. Furthermore, a metric $d$ is said to be \textbf{induced} by the norm $\nrm{\cdot}$ if $d(x,y)=\nrm{x-y}$.
+\end{dft}\n
+
+\begin{exm}
+  Below are some examples of norms:
+
+  \begin{alist}
+    \item Let $\nrm{x}_{k}=\sqrt[k]{\sum\abs{x_{i}}^{k}}$ and $\nrm{x}_{\infty}=\max\brc{x_{i}}$, then $\nrm{\cdot}_{1}$, $\nrm{\cdot}_{2}$ and $\nrm{\cdot}_{\infty}$ are norms on $\R^{n}$.
+    \item Let $\nrm{f}_{k}=\sqrt[k]{\int_{a}^{b}\abs{f}^{k}}$ and $\nrm{f}_{\infty}=\max\brc{f(x)}$, then $\nrm{\cdot}_{1}$, $\nrm{\cdot}_{2}$ and $\nrm{\cdot}_{\infty}$ are norms on $C[a,b]$.
+  \end{alist}
+\end{exm}\n
+
+Note that a norm can induce a metric, but not all metrics are induced from norm.\n
+
+\begin{exm}
+  Let $X$ be a nonempty set and
+
+  $$d(x,y)=\begin{cases}
+    1\erm{if }x\neq y\\
+    0\erm{if }x=y
+  \end{cases}$$\s
+
+  be a metric on $X$. Note that $X$ is not necessary a vector space, so $d$ is not induced by a norm. Moreover, even $X$ is a vector space,
+
+  $$d(\alpha x,\alpha y)\neq\abs{\alpha}d(x,y)$$\s
+
+  when $\abs{\alpha}\neq 1$ and $x\neq y$.
+\end{exm}\n
+
+Such metric $d$ in the above example is called a \textbf{discrete metric} on $X$.
+
+\subsubsection{Metric Subspaces}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then for any nonempty set $Y\subset X$, $(Y,d)$ is called a \textbf{metric subspace} of $(X,d)$.
+\end{dft}\n
+
+Note that a metric subspace of a normed space may not be also a normed space, only if the subset is also a vector subspace.
+
+\subsection{Limits and Continuity}
+\subsubsection{Limits and Convergence in Metric Spaces}
+With the understanding of metric spaces, one can extend the definition of limits and convergence to any metric space:\n
+
+\begin{dft}
+  Let $\brc{x_{n}}$ be a sequence in a metric space $(X,d)$, then the sequence is said to be \textbf{converge} to $x\in X$, denoted by $x_{n}\to x$, if
+
+  $$\lim_{n\to\infty}d(x_{n},x)=0$$
+\end{dft}\n
+
+\begin{pst}
+  Let $\brc{x_{n}}$ be a sequence in a metric space $(X,d)$. If $x_{n}\to x$ and $x_{n}\to y$, then $x=y$.
+\end{pst}\n
+
+\begin{exm}
+  Below are some examples on convergence in metric spaces:
+
+  \begin{alist}
+    \item Convergence in $(\R^{n},d_{2})$ is the usual convergence in advanced calculus.
+    \item Convergence in $(C[a,b],d_{\infty})$ is the uniform convergence of sequence of functions in $C[a,b]$.
+  \end{alist}
+\end{exm}
+
+\subsubsection{Strength of Convergence}
+There are many metrics suitable for the same nonempty set $X$, so it is natural to think of comparing among those metrics.\n
+
+\begin{dft}
+  Let $d$ and $\rho$ be different metrics defined on $X$, then $\rho$ is said to be \textbf{stronger than} $d$ (or $d$ is \textbf{weaker than} $\rho$) if there exists a constant $C>0$ such that
+
+  $$d(x,y)\leq C\rho(x,y)$$\s
+  
+  for all $x,y\in X$. $d$ and $\rho$ are \textbf{equivalent} to each other if $d$ is stronger and weaker than $\rho$ at the same time. In other words, there exists $C_{1},C_{2}>0$ such that
+
+  $$d(x,y)\leq C_{1}\rho(x,y)\leq C_{2}d(x,y)$$\s
+
+  for all $x,y\in X$.
+\end{dft}\n
+
+Note that the equivalence of metrics defined above is an equivalent relation.\n
+
+\begin{pst}
+  Let $d$ and $\rho$ be different metrics defined on $X$. If $\rho$ is stronger than $d$ and a sequence $\brc{x_{n}}$ converges in $(X,\rho)$, then the sequence also converges in $(X,d)$ with the same limit. If $\rho$ is equivalent to $d$, then $\brc{x_{n}}$ converges in $(X,\rho)$ if and only if it converges in $(X,d)$ also.
+\end{pst}\n
+
+\begin{exm}
+  Recall the metrics $d_{1}$, $d_{2}$ and $d_{\infty}$ on $\R^{n}$, then
+
+  $$\begin{cases}
+    d_{1}(x,y)\leq nd_{\infty}(x,y)\leq nd_{1}(x,y)\\
+    d_{2}(x,y)\leq\sqrt{n}d_{\infty}(x,y)\leq\sqrt{n}d_{2}(x,y)
+  \end{cases}$$\s
+
+  shows that $d_{1}$, $d_{2}$ and $d_{\infty}$ are equivalent metrics.
+\end{exm}\n
+
+\begin{exm}
+  Recall the metrics $d_{1}$ and $d_{\infty}$ on $C[a,b]$, then
+
+  $$d_{1}(f,g)\leq(b-a)d_{\infty}(f,g)$$\s
+
+  shows that $d_{\infty}$ is stronger than $d_{1}$. However, $d_{1}$ is not stronger than $d_{\infty}$, so $d_{1}$ and $d_{\infty}$ are not equivalent.
+\end{exm}
+
+\subsubsection{Continuity in Metric Spaces}
+\begin{dft}
+  Let $f:(X,d)\to(Y,\rho)$ be a mapping between two metric spaces, then $f$ is \textbf{continuous} at a point $x\in X$ if $f(x_{n})\to f(x)$ in $(Y,\rho)$ whenever $x_{n}\to x$ in $(X,d)$. $f$ is continuous on a set $E\in X$ if it is continuous at every point in $E$.
+\end{dft}\n
+
+\begin{pst}
+  Let $f:(X,d)\to(Y,\rho)$ be a mapping between two metric spaces and $x_{0}\in X$ be a point, then $f$ is continuous at $x_{0}$ if and only if for any $\epsilon>0$, there exists $\delta>0$ such that
+
+  $$\rho(f(x),f(x_{0}))<\epsilon\erm{for all }\brc{x\in X\srm d(x,x_{0})<\delta}$$
+\end{pst}\n
+
+\begin{pst}
+  Let $f:(X,d)\to(Y,\rho)$ and $g:(Y,\rho)\to(Z,m)$ be mappings between metric spaces, then if $f$ is continuous at $x$ and $g$ is continuous at $f(x)$, then $g\circ f$ is also continuous at $x$. Similarly, if $f$ is continuous at $X$ and $g$ is continuous at $Y$, then $g\circ f$ is also continuous at $X$.
+\end{pst}\n
+
+\begin{exm}
+  Let $(X,d)$ be a metric space and $A\subset X$ be a nonempty set. Further define $\rho_{A}:X\to\R$ by
+
+  $$\rho_{A}(x)=\underset{y\in A}{\inf}d(y,x)$$\s
+
+  which is the shortest distance from $x$ to the subset $A$. Show that
+
+  $$\abs{\rho_{A}(x)-\rho_{A}(y)}\leq d(x,y)$$\s
+
+  for any $x,y\in X$.\n
+
+  \ans For fixed $x,y\in X$, along with the definition of $\rho_{A}$, for all $\epsilon>0$, there exists $z\in A$ such that $\rho_{A}(y)+\epsilon>d(z,y)$. Hence
+
+  $$\rho_{A}(x)\leq d(z,x)\leq d(z,y)+d(y,x)<d(y,x)+\rho_{A}(y)+\epsilon$$
+
+  rearranging the equation gives
+
+  $$\rho_{A}(x)-\rho(A)(y)<d(x,y)+\epsilon$$\s
+
+  Note that since $x$ and $y$ are interchangable, and $\epsilon$ is arbitrary,
+
+  $$\abs{\rho_{A}(x)-\rho_{A}(y)}\leq d(x,y)$$
+\end{exm}\n
+
+In fact the example above shows that $\rho_{A}$ is continuous (and even Lipschitz continuous) since $d(x_{n},x)\to 0$ implies $\rho_{A}(x_{n})\to\rho_{A}(n)$. This actually mean there are many continuous functions on a metric space.\n
+
+For simplicity, define
+
+$$\begin{cases}
+  d(x,F)=\inf\brc{d(x,y)\srm y\in F}\\
+  d(E,F)=\inf\brc{d(x,y)\srm x\in E,y\in F}
+\end{cases}$$\s
+
+for subsets $E$ and $F$.
+
+\subsection{Open and Closed Sets}
+\subsubsection{Open Sets}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a set $G\in X$ is called an \textbf{open set} if for any $x\in G$, there exists $\epsilon>0$ such that
+
+  $$B_{\epsilon}(x)=\brc{y\srm d(x,y)<\epsilon}\subset G$$
+\end{dft}\n
+
+Note that $\epsilon$ may vary depending on the choice of $x$, and the empty set $\phi$ is considered an open set. Therefore, the proposition applies:\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space and $G_{\alpha}$ be a collection of open sets, then the following are true:
+
+  \begin{alist}
+    \item $X$ and $\phi$ are open sets.
+    \item Arbitrary union of open sets $\bigcup_{\alpha}G_{\alpha}$ is an open set.
+    \item Finite intersection of open sets $\bigcap_{i=1}^{n}G_{i}$ is an open set.
+  \end{alist}
+\end{pst}
+
+\subsubsection{Closed Sets}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a set $F\in X$ is called an \textbf{closed set} if $X\setminus F$ is an open set.
+\end{dft}\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space and $F_{\alpha}$ be a collection of closed sets, then the following are true:
+
+  \begin{alist}
+    \item $X$ and $\phi$ are closed sets.
+    \item Finite union of closed sets $\bigcup_{j=1}^{n}F_{j}$ is an closed set.
+    \item Arbitrary intersection of closed sets $\bigcap_{\alpha}F_{\alpha}$ is an closed set.
+  \end{alist}
+\end{pst}\n
+
+\begin{crl}
+  Let $(X,d)$ be a metric space, then $X$ and $\phi$ are both open and closed.
+\end{crl}
+
+\subsubsection{Applications of Open and Closed Sets}
+\begin{pst}
+  Let $(X,d)$ be a metric space, then a sequence $\brc{x_{n}}$ converges to $x$ if and only if for all open set $G$ containing $x$, there exists $n_{0}$ such that $x_{n}\in G$ for all $n\geq n_{0}$.
+\end{pst}\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space, then a set $A\subset X$ is closed if and only if whenever $\brc{x_{n}}\subset A$ and $x_{n}\to x$ as $n\to\infty$ implies that $x\in A$.
+\end{pst}\n
+
+\begin{pst}
+  Let $f:(X,d)\to(Y,\rho)$ be a mapping between metric spaces, then the following applies:
+
+  \begin{alist}
+    \item $f$ is continuous at $x$ if and only if for all open set $G\subset Y$ containing $f(x)$, $f^{-1}(G)$ contains $B_{\epsilon}(x)$ for some $\epsilon>0$.
+    \item $f$ is continuous at $x$ if and only if for all open set $G\subset Y$, $f^{-1}(G)$ is open in $X$.
+  \end{alist}
+\end{pst}\n
+
+In this case, $f$ is also continuous at $x$ if and only if for all closed set $F\subset Y$, $f^{-1}(F)$ is closed in $X$.
+
+\propdisp
+\subsection{Points in Metric Space}
+\subsubsection{Boundary Points and Closures}
+\begin{dft}
+  Let $E$ be a set in a metric space $(X,d)$, then a point $x\in X$ (which is not necessary in $E$) is called a \textbf{boundary point} of $E$ if for all open set $G\subset X$ containing $x$,
+
+  $$G\cap E\neq\phi\text{ and }G\setminus E\neq\phi$$\s
+
+  In other words, this is satisfied when $G\cap(X\setminus E)\neq\phi$. The \textbf{boundary} of $E$, denoted by $\partial E$, is the set of boundary points of $E$. The \textbf{closure} of $E$, denoted by $\overline{E}$, is defined as $\overline{E}=E\cup\partial E$.
+\end{dft}\n
+
+For the conditions of a boundary point in the definition above, it suffices to check $G$ of the form $B_{\epsilon}(x)$ for all small $\epsilon>0$, or even $B_{1/n}(x)$ for all $n\geq 1$. Also note that $X$ and $X\setminus E$ shares the same boundary no matter the choice of $E$, or
+
+$$\partial E=\partial X\setminus E\erm{for all }E\subset X$$\s
+
+\subsubsection{Properties of Boundaries and Closures}
+\begin{pst}
+  Below are some properties of boundaries and closures:
+
+  \begin{alist}
+    \item The boundary of an empty set is an empty set, or $\partial\phi=\phi$.
+    \item For all $E\subset X$, $\partial E$ is a closed set.
+    \item If $E$ is a closed set, $\overline{E}=E$.
+  \end{alist}
+\end{pst}\n
+
+\begin{pst}
+  Let $E$ be a subset of a metric space $(X,d)$, then the following applies:
+
+  \begin{alist}
+    \item $x\in\overline{E}$ if and only if $B_{r}(x)\cap E\neq\phi$ for all $r>0$.
+    \item If $A\subset B$, $\overline{A}\subset\overline{B}$ for all $A,B\subset(X,d)$.
+    \item $\overline{E}$ is closed.
+    \item $\overline{E}$ is the smallest closed set containing $E$, or $\overline{E}=\cap\brc{G\subset E\srm G\text{ is closed}}$.
+  \end{alist}
+\end{pst}
+
+\subsubsection{Interior Points}
+\begin{dft}
+  Let $E$ be a subset of a metric space $(X,d)$, then a point $x$ is called an \textbf{interior point} of $E$ if there exists an open set $G$ such that $x\in G$ and $G\subset E$. The \textbf{interior} of $E$, denoted by $E^{0}$, is the set of interior points of $E$.
+\end{dft}\n
+
+\begin{pst}
+  Below are the properties of interiors:
+
+  \begin{alist}
+    \item Interior of $E$, $E^{0}$ is open.
+    \item Interior of $E$ is the set without boundary, or $E^{0}=E\setminus\partial E$.
+    \item Interior of $E$, $E^{0}=X\setminus\overline{X\setminus E}$.
+    \item Interior of $E$, $E^{0}=\cup\brc{G\subset E\srm G\text{ is open}}$.
+  \end{alist}
+\end{pst}
+
+\subsection{Elementary Inequalities for Functions}
+\subsubsection{Young's Inequality}
+\begin{thm}
+  By \textbf{Young's Inequality}, for $a,b>0$ and $p>1$,
+
+  $$ab\leq\frac{a^{p}}{p}+\frac{b^{q}}{q}\erm{with }\frac{1}{p}+\frac{1}{q}=1$$\s
+
+  Equality holds when $a^{p}=b^{q}$.
+\end{thm}\n
+
+Note that $q=\frac{p}{p-1}>1$ is called the \textbf{conjugate} of $p$. Also specifically if $p=2$, the inequality reduces to $2ab\leq a^{2}+b^{2}$.
+
+\subsubsection{Holder's Inequality}
+For the following inequality, denote the norm
+
+$$\nrm{f}_{p}=\brr{\int_{a}^{b}\abs{f(x)}^{p}\diff x}^{1/p}$$\s
+
+\begin{thm}
+  Let $f,g\in R[a,b]$ be Riemann integrable functions and $p>1$, then by \textbf{Holder's Inequality},
+
+  $$\int_{a}^{b}\abs{f(x)g(x)}\diff x\leq\brr{\int_{a}^{b}\abs{f(x)}^{p}\diff x}^{1/p}\brr{\int_{a}^{b}\abs{f(x)}^{q}\diff x}^{1/q}$$\s
+
+  where $q$ is the conjugate of $p$. Equality holds when one of the following conditions is satisfied:
+
+  \begin{alist}
+    \item $f$ or $g$ equals to $0$ almost everywhere.
+    \item There exists a constant $\lambda>0$ such that $\abs{g(x)}^{q}=\lambda\abs{f(x)}^{p}$ almost everywhere.
+  \end{alist}
+\end{thm}\n
+
+Note that Holder's Inequality can be written in norm form $\nrm{fg}_{1}=\nrm{f}_{p}\nrm{g}_{q}$. Holder's Inequality also holds for limiting cases $(p,q)\to(1,\infty)$ and $(p,q)\to(\infty,1)$.
+
+\subsubsection{Minkowski's Inequality}
+\begin{thm}
+  By \textbf{Minkowski's Inequality}, for any $f,g\in R[a,b]$ and $p>1$,
+  
+  $$\nrm{f+g}_{p}\leq\nrm{f}_{p}+\nrm{g}_{p}$$\s
+
+  Equality holds when one of the following conditions is satisfied:
+
+  \begin{alist}
+    \item $f$ or $g$ equals to $0$ almost everywhere.
+    \item $\nrm{f}_{p},\nrm{g}_{p}>0$ and there exists a constant $\lambda>0$ such that $g(x)=\lambda f(x)$ almost everywhere.
+  \end{alist}
+\end{thm}
+
+\pagebreak
+
+\section{Contraction Mapping Principle}
+\subsection{Complete Metric Space}
+\subsubsection{Definition of Complete Metric Space}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a sequence $\brc{x_{n}}$ in $(X,d)$ is a \textbf{Cauchy sequence} if for any $\epsilon>0$, there exists $n_{0}$ such that $d(x_{n},x_{m})<\epsilon$ for all $n,m>n_{0}$.
+\end{dft}\n
+
+\begin{dft}
+  Let $(X,d)$ be a metric space, then the metric space is \textbf{complete} if every Cauchy sequence in the metric space converges. A subset $E$ is complete if the induce metric subspace $(E,d)$ with $d=d\!\mid_{E\times E}$ is complete. In other words, every Cauchy sequence in $E$ converges with limit in $E$.
+\end{dft}\n
+
+Note that convergent sequence is a Cauchy sequence.
+
+\begin{pst}
+  Let $(X,d)$ be a metric space, then the following applies:
+
+  \begin{alist}
+    \item Every complete set in $X$ is closed.
+    \item If $X$ is complete, then every closed set in $X$ is complete.
+  \end{alist}
+\end{pst}\n
+
+\begin{exm}
+  Below are the examples of complete metric space:
+
+  \begin{alist}
+    \item $(\R,\text{standard})$ is complete.
+    \item $[a,b]$, $(-\infty,b]$ and $[a,\infty)$ are complete.
+  \end{alist}
+
+  Below are the counterexamples of complete metric space:
+
+  \begin{alist}
+    \item $[a,b)$ where $b$ is finite, is not complete since $x_{n}=b-1/n\to b\not\in[a,b)$.
+    \item $\Q$ is not complete.
+  \end{alist}
+\end{exm}
+
+\subsubsection{Completion of Metric Spaces}
+\begin{dft}
+  A metric space $(X,d)$ is said to be \textbf{isometrically embedded} in metric space $(Y,\rho)$ if there exists a mapping $\Phi:X\to Y$ such that $d(x,y)=\rho(\Phi(x),\Phi(y))$. If such mapping exists, $\Phi$ is called an \textbf{isometric embedding} (or a \textbf{metric preserving map}) from $(X,d)$ to $(Y,\rho)$.
+\end{dft}\n
+
+Note that $\Phi$ must be injective and continuous.
+
+\begin{dft}
+  Let $(X,d)$ and $(Y,\rho)$ be metric spaces, then $(Y,\rho)$ is called a completion of $(X,d)$ if the following statements are satisfied:
+
+  \begin{alist}
+    \item $(Y,\rho)$ is complete.
+    \item There exists an isometric embedding $\Phi$ such that the closure $\overline{\Phi(X)}=Y$.
+  \end{alist}
+\end{dft}\n
+
+\begin{exm}
+  Let $(X,d)=(\Q,\text{induced metric})$ and $(Y,\rho)=(\R,\text{standard})$. Since $\Q\subset\R$, $(Y,\rho)$ is complete. Further let $\Phi:(X,d)\to(Y,\rho)$ where $\Phi(q)=q$, since $\Q$ is dense in $\R$, $\overline{\Phi(\Q)}=\overline{\Q}=\R$. Therefore, $(Y,\rho)$ is a completion of $(X,d)$.
+\end{exm}\n
+
+\begin{thm}
+  Every metric space has a completion.
+\end{thm}\n
+
+Note that the definition of isometric embedding can be extended to bijection as below:\n
+
+\begin{dft}
+  Let $(X,d)$ and $(Y,\rho)$ be metric spaces, then they are called \textbf{isometric} if there exists a bijective isometric embedding between $(X,d)$ and $(Y,\rho)$.
+\end{dft}\n
+
+Note that the inverse of a bijective isometric embedding is also an isometric embedding. Also, the two metric spaces are regarded as the same if they are isometric.\n
+
+\begin{thm}
+  If metric spaces $(Y,\rho)$ and $(Y',\rho')$ are both completions of a metric space $(X,d)$, then $(Y,\rho)$ and $(Y',\rho')$ are isometric. In other words, completion is unique up to isometry.
+\end{thm}
+
+\subsection{Introduction to Contraction Mapping Principle}
+\subsubsection{General Theorem}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a map $T:(X,d)\to (X,d)$ is called a \textbf{contraction} if there exists a constant $\gamma\in(0,1)$ such that
+  
+  $$d(Tx,Ty)\leq\gamma d(x,y)$$\s
+
+  for all $x,y\in X$. A point $x\in X$ is called a \textbf{fixed point} of $T$ if $Tx=x$.
+\end{dft}\n
+
+Note that $Tx$ is the notation for $T(x)$ but not the multiplication. With the definition of a contraction, below is the \textbf{Contraction Mapping Principle} (or the \textbf{Banach Fixed Point Theorem}):\n
+
+\begin{thm}
+  Every contraction in a complete metric space admit a fixed point.
+\end{thm}
+
+\subsubsection{Perturbation of Identity}
+\begin{dft}
+  A normed space $(X,\nrm{\cdot})$ is a \textbf{Banach space} if it is complete as a metric space with respect to the induced metric $d(x,y)=\nrm{x-y}$ for all $x,y\in X$.
+\end{dft}
+
+\begin{exm}
+  Below are some examples of Banach space:
+
+  \begin{alist}
+    \item $(\R^{n},\nrm{\cdot}_{p})$ is a Banach space if $p>1$.
+    \item $(C[a,b],\nrm{\cdot}_{\infty})$ is a Banach space.
+  \end{alist}
+\end{exm}
+
+\begin{thm}
+  Let $(X,\nrm{\cdot})$ be a Banach space, and $\Phi:\overline{B_{r}(x_{0})}\to X$ satisfies $\Phi(x_{0})=y_{0}$. Suppose that $\Phi=\mathrm{Id}_{X}+\Psi$ such that there exists a constant $\gamma\in(0,1)$ such that
+
+  $$\nrm{\Psi(x_{2})-\Psi(x_{1})}\leq\gamma\nrm{x_{2}-x_{1}}$$\s
+
+  for all $x_{1},x_{2}\in\overline{B_{r}(x_{0})}$, then by \textbf{Perturbation of Identity}, for all $y\in\overline{B_{R}(y_{0})}$ where $R=(1-\gamma)r$, there exists unique $x\in\overline{B_{r}(x_{0})}$ such that $\Phi(x)=y$.
+\end{thm}
+
+\begin{exm}
+  Show that $3x^{4}-x^{2}+x=-0.05$ has a real root.\n
+
+  \prf Notice that $3x^{4}-x^{2}+x=0$ has a root $x=0$. Let $\Phi(x)=x+\Psi(x)$ where $\Psi(x)=3x^{4}-x^{2}$, then $\Phi(0)=0$. For $x_{1},x_{2}\in\overline{B_{r}(0)}$,
+
+  $$\begin{aligned}[t]
+    \abs{\Psi(x_{1})-\Psi(x_{2})}&=\abs{3x_{1}^{4}-x_{1}^{2}-3x_{2}^{4}+x_{2}^{2}}\\
+    &=\abs{3(x_{1}^{4}-x_{2}^{4})-(x_{1}^{2}-x_{2}^{2})}\\
+    &=\abs{3(x_{1}^{3}+x_{1}^{2}x_{2}+x_{2}^{2}x^{1}+x_{2}^{3})-(x_{1}+x_{2})}\abs{x_{1}-x_{2}}\\
+    &=\abs{12r^{3}+2r}\abs{x_{1}-x_{2}}
+  \end{aligned}$$\s
+
+  Choose $r>0$ such that $\gamma=12r^{3}+2^{r}<1$ and $R=(1-\gamma)r\geq 0.05$ so that $-0.05\in\overline{B_{R}(0)}$. Pick $r=1/4$, then $\gamma=11/16$ and $R=5/64$. By Perturbation of Identity, for all $y\in\overline{B_{R}(0)}$, there exists $x\in\overline{B_{r}(0)}$ such that $\Phi(x)=y$. Therefore, there exists a real root for $3x^{4}-x^{2}+x=-0.05$ since $-0.05\in\overline{B_{R}(0)}$.
+\end{exm}\n
+
+The example above can be summarized into the following proposition:\n
+
+\begin{pst}
+  Let $\Phi(x)=x+\Psi(x)$ where $\Psi(x):U\to\R^{n}$ be a $C^{1}$-function on some open set $U\subset\R^{n}$ containing $0$, such that
+
+  $$\Psi(0)=0\text{ and }\lim_{x\to 0}\frac{\partial\Psi_{i}}{\partial x_{j}}(x)=0$$\s
+
+  for all $i,j$, then there exists $r>0$ and $R>0$ such that for all $y\in B_{R}(0)$, $\Phi(x)=y$ has a unique solution $x\in B_{r}(0)$.
+\end{pst}
+
+\subsection{Inverse Function Theorem}
+\subsubsection{Introduction to Inverse Function Theorem}
+Recall the chain rule: let $G:U\subset\R^{n}\to\R^{m}$ and $F:V\subset\R^{m}\to\R^{l}$ be differentiable functions where $U,V$ open in $\R^{n},\R^{m}$ respectively, and $G(U)\subset V$. Then $H=F\circ G:U\to\R^{l}$ differentiable and $DH(x)=DF(G(x))DG(x)$ where
+
+$$DG(x)=\brr{\frac{\partial G_{i}}{\partial x_{j}}(x)}_{i,j}$$\s
+
+and similarly for $DF$ and $DH$. Besides the proposition is required:\n
+
+\begin{pst}
+  Let $F:B\to\R^{n}$ be $C^{1}$ function, where $B$ is a ball in $\R^{n}$, then for any $x_{1},x_{2}\in B$,
+
+  $$F(x_{1})-F(x_{2})=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))\diff t}\cdot(x_{1}-x_{2})$$\s
+
+  in component form $F=(F_{1},\cdots,F_{n})$. In other words,
+
+  $$F_{i}(x_{1})-F_{i}(x_{2})=\sum_{j=1}^{n}\brr{\int_{0}^{1}\frac{\partial F_{i}}{\partial x_{j}}(x_{2}+t(x_{1}-x_{2}))\diff t}(x_{1}-x_{2})_{j}$$
+\end{pst}\n
+
+Finally, recall that if $F:U\subset\R^{n}\to\R^{m}$ be differentiable at a point $p$ in an open set $U$ of $\R^{n}$, then
+
+$$F(p+x)-F(p)=DF(p)x+o(\abs{x})$$\s
+
+for all $x=(x_{1},\cdots,x_{n})$ sufficiently small (or $\abs{x}$ small) where $o(\abs{x})$ is a remaining term such that
+
+$$\frac{o(\abs{x})}{\abs{x}}\to 0\text{ as }\abs{x}\to 0$$\s
+
+\begin{dft}
+  The condition in Inverse Function Theorem that $DF(x_{0})$ is invertible is called the \textbf{nondegeneracy condition}.
+\end{dft}\n
+
+Note that nondegeneracy condition is necessary for the differentiability of local inverse.\n
+
+\begin{pst}
+  Let $F:U\subset\R^{n}\to\R^{n}$ be a $C^{1}$ function where $U$ is an open set and $x_{0}\in U$. Suppose there exists open $V$ such that $x_{0}\in V\subset U$ and $F\!\mid\!_{V}$ has a differentiable inverse, then $DF(x_{0})$ is nonsingular (or invertible).
+\end{pst}\n
+
+Below is the \textbf{Inverse Function Theorem}:\n
+
+\begin{thm}
+  Let $F:U\to\R^{n}$ be a $C^{1}$ map from an open set $U\to\R^{n}$. Suppose $x_{0}\in U$ and $DF(x_{0})$ is invertible (as a matrix or linear transformation), then there exists open sets $V,W$ containing $x_{0},F(x_{0})$ respectively such that the restriction of $F$ on $V$ is a bijection onto $W$ with a $C^{1}$ inverse.\n
+  
+  Moreover, the inverse is $C^{k}$ when $F$ is $C^{k}$ where $1\leq k\leq\infty$, in $V$.\n
+
+  \prf\prt[a]{zr} Consider the special case where $x_{0}=0,y_{0}=F(x_{0})=F(0)=0$, then $DF(0)=I$, which is the identity. Let $\Psi(x)=-x+F(x)$. As $0\in U$ and $U$ is open, there exists $r_{0}>0$ such that $\overline{B_{r_{0}}(0)}\subset U$. Then
+
+  $$\Psi(x_{1})-\Psi(x_{2})=-x_{1}+F(x_{1})+x_{2}-F(x_{2})$$\s
+
+  By \rpst[\sctd{3}],
+
+  $$\begin{aligned}[t]
+    \Psi(x_{1})-\Psi(x_{2})&=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))\diff t}\cdot(x_{1}-x_{2})-(x_{1}-x_{2})\\
+    &=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))\diff t-I}\cdot(x_{1}-x_{2})\\
+    &=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))-DF(0)\diff t}\cdot(x_{1}-x_{2})
+  \end{aligned}$$\s
+
+  Since $F$ is $C^{1}$, for all $\epsilon>0$, there exists $0<r\leq r_{0}$ such that
+
+  $$\nrm{DF(x)-DF(0)}<\epsilon$$\s
+
+  for all $x\in\overline{B_{r}(0)}$, where
+
+  $$\nrm{(b_{ij})}=\sqrt{\sum_{i,j}b_{ij}^{2}}$$\s
+
+  for any $n\times n$ matrix $(b_{ij})$.\n
+  
+  Since $\overline{B_{r}(0)}$ is convex, $x_{1},x_{2}\in\overline{B_{r}(0)}$ implies $x_{2}+t(x_{1}-x_{2})\in\overline{B_{r}(0)}$. Hence for all $\epsilon>0$, there exists $0<r\leq r_{0}$ such that
+
+  $$\nrm{DF(x_{2}+t(x_{1}-x_{2}))-DF(0)}<\epsilon$$\s
+
+  for all $x_{1},x_{2}\in\overline{B_{r}(0)}$ and $t\in(0,1)$. Therefore choosing $\epsilon=1/2$ gives
+
+  $$\abs{\Psi(x_{1})-\Psi(x_{2})}\leq\frac{1}{2}\abs{x_{1}-x_{2}}$$\s
+
+  for all $x_{1},x_{2}\in\overline{B_{r}(0)}$.\n
+
+  \prtc[b]{zr} Choose $r>0$ as in Part (a), then for all $y\in B_{r/2}(0)$, there exists $x\in B_{r}(0)$ such that $F(x)=y$. This is true because of Perturbation of Identity (\rthm[\sctd{6}]) with $\epsilon=1/2$. The local inverse $G$ of $F$,
+
+  $$G:B_{r/2}(0)\to G(B_{r/2}(0))\subset B_{r}(0)$$\s
+
+  satisfies
+
+  $$\abs{G(y_{1})-G(y_{2})}\leq\frac{1}{1-\epsilon}\abs{y_{1}-y_{2}}=2\abs{y_{1}-y_{2}}$$\s
+
+  for all $y_{1},y_{2}\in B_{r/2}(0)$ with $G(B_{r/2}(0))$ open in $B_{r}(0)$.\n
+
+  \prtc[c]{zr} Since $DF(0)=I$, assume that $DF(x)$ is invertible for all $x\in B_{r}(0)$ for $r>0$ given in Part (a). Further let $W=B_{r/2}(0)=B_{R}(0)$, and $V=G(W)\ni 0$, then $G:W\to V$ (and similarly $F:V\to W$). If $G$ is differentiable, by chain rule $DF(G(y))DG(y)=I$ for all $y\in W$. Rewriting the equation gives $DG(y)=(DF)^{-1}(G(y))$.\n
+
+  For any $y_{1}\in W$ such that $y_{1}+y\in W$,
+
+  $$y=(y_{1}+y)-y_{1}=F(G(y_{1}+y))-F(G(y_{1}))$$\s
+
+  let $x_{1}=G(y_{1}+y)$ and $x_{2}=G(y_{1})$, then by \rpst[\sctd{3}],
+
+  $$\begin{aligned}[t]
+    y&=F(x_{1})-F(x_{2})=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))\diff t}\cdot(x_{1}-x_{2})\\
+    &=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))-DF(x_{2})\diff t}\cdot(x_{1}-x_{2})+DF(x_{2})(x_{1}-x_{2})
+  \end{aligned}$$\s
+
+  Hence
+
+  $$\begin{aligned}[t]
+    (DF)^{-1}(x_{2})y&=(DF)^{-1}(x_{2})\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))-DF(x_{2})\diff t}\cdot(x_{1}-x_{2})\\
+    &+(x_{1}-x_{2})
+  \end{aligned}$$\s
+
+  In other words, $G(y_{1}+y)-G(y_{1})=(DF)^{-1}(G(y_{1}))y+R$ where
+
+  $$R=(DF)^{-1}(x_{2})\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))-DF(x_{2})\diff t}\cdot(x_{1}-x_{2})$$\s
+
+  By Part (b), $\abs{x_{1}-x_{2}}\leq 2\abs{y}$, so $\abs{x_{1}-x_{2}}\to 0$ as $\abs{y}\to 0$ and
+
+  $$\frac{\abs{R}}{\abs{y}}\leq 2\nrm{(DF)^{-1}(x_{2})}\int_{0}^{1}\nrm{DF(x_{2})-DF(x_{2}+t(x_{1}-x_{2}))}\diff t$$\s
+
+  With the assumption that $F$ is $C^{1}$,
+
+  $$\lim_{\abs{y}\to 0}\frac{\abs{R}}{\abs{y}}=0$$\s
+
+  Therefore $G(y_{1}+y)-G(y)=(DF)^{-1}(G(y_{1}))y+o(\abs{y})$ which implies $G$ is differentiable at $y_{1}\in W$ and $DG(y_{1})=(DF)^{-1}(G(y_{1}))$.\n
+
+  Finally, for the special case, it is assumed that $DF$ is continuous and invertible on $B_{r}(0)$, then by linear algebra $(DF)^{-1}$ is also continuous. Then $DG(y)=(DF)^{-1}(G(y))$ is also continuous, and implies $G$ is $C^{1}$. Using induction and differentiating the identity $DG(y)=(DF)^{-1}(G(y))$ will finish the fact that $F$ is $C^{k}$ implies $G$ is $C^{k}$.
+\end{thm}\n
+
+\subsubsection{Diffeomorphisms}
+\begin{dft}
+  Let $F:V\to W$ be a $C^{k}$ map where $V$ and $W$ are open sets in $\R^{n}$, then $F$ is called a \textbf{$C^{k}$-diffeomorphism} if $F^{-1}$ exists and is also $C^{k}$.
+\end{dft}\n
+
+With the definition of diffeomorphisms, the Inverse Function Theorem can be rephrased as follows:
+
+\begin{thm}
+  Let $F:U\to\R^{n}$ be a $C^{k}$ map from an open set $U\to\R^{n}$. Suppose $x_{0}\in U$ and $DF(x_{0})$ is invertible (as a matrix or linear transformation), then $F$ is a $C^{k}$-diffeomorphism between some open sets $V,W$ of $x_{0},F(x_{0})$ respectively.
+\end{thm}\n
+
+Also, if $F:V\to W$ is a $C^{k}$-diffeomorphism, then for all function $\varphi:W\to\R$, there corresponds a function $\psi=\varphi\circ F:V\to\R$. Conversely, for all function $\psi=V\to\R$, there corresponds a function $\varphi=\psi\circ F^{-1}:W\to\R$. Moreover, $\varphi$ is $C^{k}$ if and only if $\psi$ is $C^{k}$. Thus every $C^{k}$-diffeomorphism gives rise to a \textbf{local $C^{k}$-change of coordinates}.
+
+\subsubsection{Examples of Inverse Function Theorem}
+Below are some examples about the Inverse Function Theorem:\n
+
+\begin{exm}
+  Let $F:(0,\infty),(-\infty,\infty)\to\R^{2}$ such that $F(r,\theta)=(r\cos(\theta),r\sin(\theta))$, then
+  
+  $$DF=\begin{bmatrix}
+    \cos(\theta) & -r\sin(\theta)\\
+    \sin(\theta) & r\cos(\theta)
+  \end{bmatrix}$$\s
+
+  is invertible for all $(r,\theta)$. By the Inverse Function Theorem, $F$ is locally invertible at every point $(r,\theta)\in(0,\infty)\times(-\infty,\infty)$. However, $F$ is not globally invertible as $F(r,\theta+2\pi)=F(r,\theta)$ implies it is not injective.
+\end{exm}\n
+
+\begin{exm}
+  Let $U$ be an open interval $(a,b)\in\R$, then a $C^{1}$ function $f:(a,b)\to\R$ with $f'\neq 0$ implies $f$ is strictly increasing or decreasing, so global inverse exists. Therefore $1$-dimensional case has stronger result than higher dimensions.
+\end{exm}
+
+\subsubsection{Implicit Function Theorem}
+A theorem similar to Inverse Function Theorem is the \textbf{Implicit Function Theorem}:\n
+
+\begin{thm}
+  Let $U$ be an open set in $\R^{n}\times\R^{m}$, and $F:U\to\R^{m}$ is a $C^{1}$ map. Suppose that $(x_{0},y_{0})\in U$ satisfies $F(x_{0},y_{0})=0$ and $D_{y}F(x_{0},y_{0})$ is invertible in $\R^{m}$, then the following applies:
+
+  \begin{alist}
+    \item There exists an open set of the form $V_{1}\times V_{2}\in U$ containing $(x_{0},y_{0})$ and a $C^{1}$ map
+    
+    $$\varphi:V_{1}\subset\R^{n}\times V_{2}\subset\R^{m}$$\s
+    
+    with $\varphi(x_{0})=y_{0}$ such that $F(x,\varphi(x))=0$ for all $x\in V_{1}$.
+    \item $\varphi:V_{1}\to V_{2}$ is $C^{k}$ when $F$ is $C^{k}$ where $1\leq k\leq\infty$.
+    \item Assume $DF_{y}$ is invertible in $V_{1}\times V_{2}$, then if $\psi:V_{1}\to V_{2}$ is another $C^{1}$ map satisfying $F(x,\psi(x))=0$, then $\psi\equiv\varphi$.
+  \end{alist}
+\end{thm}\n
+
+Note that if
+
+$$F=\begin{bmatrix}
+  F_{1}(x_{1},\cdots,x_{n},y_{1},\cdots,y_{m})\\
+  \vdots\\
+  F_{m}(x_{1},\cdots,x_{n},y_{1},\cdots,y_{m})
+\end{bmatrix}$$\s
+
+then
+
+$$D_{y}F=\begin{bmatrix}
+  \partial F_{1}/\partial y_{1} & \cdots & \partial F_{1}/\partial y_{m}\\
+  \vdots & \ddots & \vdots\\
+  \partial F_{m}/\partial y_{1} & \cdots & \partial F_{m}/\partial y_{m}
+\end{bmatrix}$$\s
+
+is an $m\times m$ matrix and can be regarded as a linear transformation from $\R^{m}$ to $\R^{m}$. In general, for a map $F$ such that $DF(x_{0},y_{0})$ has rank $m$, then one can rearrange the independent variables to make the $m\times m$ submatrix corresponding to the last $m$ columns of the Jacobian matrix invertible, which is the situation in the theorem. Hence the condition $DF_{y}(x_{0},y_{0})$ is invertible in the Implicit Function Theorem can be generalized to $\mathrm{rank}DF(x_{0},y_{0})=m$.
+
+\subsection{Picard-Lindelof Theorem}
+\subsubsection{Initial Value Problems}
+\begin{dft}
+  Let $f$ be a function defined on
+
+$$R=[t_{0}-a,t_{0}+a]\times[x_{0}-b,x_{0}+b]$$\s
+
+where $(t_{0},x_{0})\in\R^{2}$ and $a,b>0$. An \textbf{initial value problem} (or \textbf{Cauchy problem}) is of the form
+
+$$\begin{cases}
+  \diff x/\diff t=f(t,x)\\
+  x(t_{0})=x_{0}
+\end{cases}$$
+\end{dft}\n
+
+This means one has to find $x(t)$ defined in an interval
+
+$$x:[t_{0}-a',t_{0}+a']\to[x_{0}-b,x_{0}+b]$$\s
+
+for some $0<a'\leq a$ such that $x(t)$ is differentiable, $x(t_{0})=x_{0}$ and
+
+$$\frac{\diff x}{\diff t}(t)=f(t,x(t))$$\s
+
+for all $t\in[t_{0}-a',t_{0}+a']$.\n
+
+\begin{exm}
+  Consider the initial value problem
+
+  $$\begin{cases}
+    \diff x/\diff t=1+x^{2}\\
+    x(0)=0
+  \end{cases}$$\s
+
+  Note that $f(t,x)=1+x^{2}$ is smooth on $[-a,a]\times[-b,b]$ for any $a,b>0$, but the solution $x(t)=\tan(t)$ is defined only on $(-\pi/2,\pi/2)$. Therefore, even for a nice function $f$, it is still possible that $a'<a$.
+\end{exm}
+
+\subsubsection{Picard-Lindelof Theorem for Differential Equations}
+Recall the defintion of Lipschitz condition:\n
+
+\begin{dft}
+  Let $f$ be a function defined in $R:[t_{0}-a,t_{0}+a]\times[x_{0}-b,x_{0}+b]$, then $f$ satisfies the Lipschitz condition (uniform in $t$) if there exists a Lipschitz constant $L>0$ such that for all $(t,x_{1}),(t,x_{2})\in R$,
+
+  $$\abs{f(t,x_{1})-f(t,x_{2})}\leq L\abs{x_{1}-x_{2}}$$
+\end{dft}\n
+
+Also recall the properties related to Lipschitz condition:\n
+
+\begin{pst}
+  The following statements are true:
+
+  \begin{alist}
+    \item $f(t,\cdot)$ is Lipschitz continuous in $x$ for all $t\in[t_{0}-a,t_{0}+a]$.
+    \item If $L$ is a Lipschitz constant for $f$, then any $L'>L$ is also a Lipschitz constant.
+    \item Continuity does not imply Lipschitz continuity. For example, $f(t,x)=tx^{1/2}$ is continuous but not Lipschitz continuous near $0$.
+    \item If $R=[t_{0}-a,t_{0}+a]\times[x_{0}-b,x_{0}+b]$ and $f(t,x):R\to\R$ is $C^{1}$, then $f(t,x)$ satisfies the Lipschitz condition. In fact, for some $y\in[x_{0}-b,x_{0}+b]$,
+    
+    $$\abs{f(t,x_{1})-f(t,x_{2})}=\abs{\frac{\partial f}{\partial x}(t,y)(x_{2}-x_{1})}$$\s
+
+    Hence $\abs{f(t,x_{1})-f(t,x_{2})}\leq L\abs{x_{1}-x_{2}}$ for
+    
+    $$L=\max\brc{\abs{\frac{\partial f}{\partial x}(t,x)}\srm (t,x)\in R}$$
+  \end{alist}
+\end{pst}\n
+
+\begin{pst}
+  Under assumption of \rthm[\sctd{1}], every solution $x$ of the initial value problem from $[t_{0}-a',t_{0}+a']$ to $[x_{0}-b,x_{0}+b]$ satisfies the equation
+
+  $$x(t)=x_{0}+\int_{t_{0}}^{t}f(t,x(t))\diff t$$\s
+
+  Conversely, every $x(t)\in C[t_{0}-a',t_{0}+a']$ satisfying the equation above is $C^{1}$ and solves the initial value problem.\n
+
+  \prf This is a result of Fundamental Theorem of Calculus.
+\end{pst}\n
+
+Below is the \textbf{Picard-Lindelof Theorem}:\n
+
+\begin{thm}
+  Let $f$ be a continuous function on $R:[t_{0}-a,t_{0}+a]\times[x_{0}-b,x_{0}+b]$ where $(t_{0},x_{0})\in\R^{2}$ and $a,b>0$ If $f$ satisfies Lipschitz condition on $R$ (uniform in $t$), then there exists $a'\in(0,a]$ and $x\in C^{1}[t_{0}-a',t_{0}+a']$ such that
+
+  $$x_{0}-b\leq x(t)\leq x_{0}+b$$\s
+
+  for all $t\in[t_{0}-a',t_{0}+a']$ and solving the initial value problem. Furthermore, $x$ is the unique solution in $[t_{0}-a',t_{0}+a']$.\n
+
+  \prf For $a'>0$ to be chosen later, let
+
+  $$X=\brc{\varphi\in C[t_{0}-a',t_{0}+a']\srm\varphi(t_{0})=x_{0},\varphi(t)\in[x_{0}-b,x_{0}+b]}$$\s
+
+  with uniform metric $d_{\infty}$ on $X$. Note that $X$ is a closed subset in the complete metric space $(C[t_{0}-a',t_{0}+a'],d_{\infty})$, so $(X,d_{\infty})$ is complete.\n
+
+  Define $T$ on $X$ by
+
+  $$(T\varphi)(t)=x_{0}+\int_{t_{0}}^{t}f(s,\varphi(s))\diff s$$\s
+
+  Note that it is well-defined since $\varphi(s)\in[x_{0}-b,x_{0}+b]$. To show $T\varphi\in X$, one requires $(T\varphi)(t)\in[x_{0}-b,x_{0}+b]$. Let $M=\sup\brc{\abs{f(t,x)}\srm (t,x)\in R}$, then for all $t\in[t_{0}-a',t_{0}+a']$,
+
+  $$\begin{aligned}[t]
+    \abs{(T\varphi)(t)-x_{0}}&=\abs{\int_{t_{0}}^{t}f(s,\varphi(s))\diff s}\\
+    &\leq M\abs{t-t_{0}}\leq Ma'
+  \end{aligned}$$\s
+
+  Choose $0<a'\leq b/M$ gives $\abs{(T\varphi)(t)-x_{0}}\leq b$ and so $T\varphi\in X$. Notice that $T:X\to X$ is a mapping from $(X,d_{\infty})$ to itself. For contraction,
+
+  $$\begin{aligned}[t]
+    \abs{(T\varphi_{1}-T\varphi_{2})(t)}&=\abs{(x_{0}+\int_{t_{0}}^{t}f(s,\varphi_{1}(s))\diff s)-(x_{0}+\int_{t_{0}}^{t}f(s,\varphi_{2}(s))\diff s)}\\
+    &\leq\int_{t_{0}}^{t}\abs{f(s,\varphi_{1}(s))-f(s,\varphi_{2}(s))}\diff s\\
+    &\leq L\int_{t_{0}}^{t}\abs{\varphi_{1}(s)-\varphi_{2}(s)}\diff s\\
+    &\leq L\abs{t-t_{0}}\underset{[t_{0}-a',t_{0}+a']}{\sup}\brc{\varphi_{1}(s)-\varphi_{2}(s)}\\
+    &\leq La'd_{\infty}(\varphi_{1},\varphi_{2})
+  \end{aligned}$$\s
+
+  Therefore if $La'=\gamma<1$, $T$ is a contraction since $d_{\infty}(T\varphi_{1},T\varphi_{2})\leq\gamma d_{\infty}(\varphi_{1},\varphi_{2})$.\n
+
+  In conclusion, if $0<a'<\min\brc{a,b/M,1/L}$, then $T$ is a contraction on a complete metric space. By Contraction Mapping Principle, $T$ admits a unique fixed point $x(t)\in X$.
+\end{thm}\n
+
+Note that the existence part of Picard-Lindelof Theorem still holds with $f(t,x)$ being continuous only. However, the solution may not be unique. Consider the following example:\n
+
+\begin{exm}
+  Let $f(t,x)=\abs{x}^{1/2}$ on $\R\times\R$. Note that $f$ is continuous but not Lipschitz continuous. Then the initial value problem
+
+  $$\begin{cases}
+    \diff x/\diff t=\abs{x}^{1/2}\\
+    x(0)=0
+  \end{cases}$$\s
+
+  has solutions
+  
+  $$x_{1}=0,x_{2}=\frac{1}{4}\abs{t}t$$\s
+  
+  for all $t\in\R$.
+\end{exm}\n
+
+On the other hand, uniqueness of Picard-Lindelof Theorem holds regardless of the size of the interval of existence.
+
+\subsubsection{Picard-Lindelof Theorem for Systems}
+\begin{thm}
+  Consider the initial value problem
+
+  $$\begin{cases}
+    \diff\mathbf{x}/\diff t=\mathbf{f}(t,\mathbf{x})\\
+    \mathbf{x}(t_{0})=\mathbf{x}_{0}
+  \end{cases}$$\s
+
+  where
+
+  $$\mathbf{x}(t)=\begin{bmatrix}
+    x_{1}(t)\\
+    \vdots\\
+    x_{n}(t)
+  \end{bmatrix}\in[x_{1}-b,x_{1}+b]\times\cdots\times[x_{n}-b,x_{n}+b]$$\s
+
+  $$\mathbf{x}_{0}=\begin{bmatrix}
+    x_{1}\\
+    \vdots\\
+    x_{n}
+  \end{bmatrix},\mathbf{f}(t,x)=\begin{bmatrix}
+    f_{1}(t,x)\\
+    \vdots\\
+    f_{n}(t,x)
+  \end{bmatrix}\in C^{1}(R)$$\s
+
+  with
+
+  $$R=[t_{0}-a,t_{0}+a]\times[x_{1}-b,x_{1}+b]\times\cdots\times[x_{n}-b,x_{n}+b]$$\s
+
+  satisfying the Lipschitz condition (uniform in $t$),
+
+  $$\abs{\mathbf{f}(t,\mathbf{x})-\mathbf{f}(t,\mathbf{y})}\leq L\abs{\mathbf{x}-\mathbf{y}}$$\s
+
+  for all $(t,\mathbf{x}),(t,\mathbf{y})\in R$ and some constant $L>0$. There exists a unique solution $\mathbf{x}\in C^{1}[t_{0}-a',t_{0}+a']$ with
+
+  $$\mathbf{x}(t)\in[x_{1}-b,x_{1}+b]\times\cdots\times[x_{n}-b,x_{n}+b]$$\s
+
+  for all $t\in[t_{0}-a',t_{0}+a']$ to the initial value problem, where $a'$ satisfies
+
+  $$0<a'<\min\brc{a,\frac{b}{M},\frac{1}{L}}$$\s
+
+  with
+
+  $$M=\underset{j=1,\cdots,n}{\max}\underset{R}{\sup}\abs{f_{j}(t,\mathbf{x})}$$
+\end{thm}\n
+
+Note that the Picard-Lindelof Theorem for systems can be applied to initial value problems for higher order ordinary differential equations:
+
+$$\begin{cases}
+  \diff^{m}x/\diff t^{m}=f(t,x,\diff x/\diff t,\cdots,\diff^{m-1}x/\diff t^{m-1})\\
+  x(t_{0})=x_{0}\\
+  \diff x/\diff t(t_{0})=x_{1}\\
+  \vdots\\
+  \diff^{m-1}x/\diff t^{m-1}=x_{m-1}
+\end{cases}$$\s
+
+by letting
+
+$$\mathbf{x}=\begin{bmatrix}
+  x\\
+  \diff x/\diff t\\
+  \vdots\\
+  \diff^{m-1}x/\diff t^{m-1}
+\end{bmatrix}$$\s
+
+then
+
+$$\frac{\diff\mathbf{x}}{\diff t}=\begin{bmatrix}
+  \diff x/\diff t\\
+  \diff^{2}x/\diff t^{2}\\
+  \vdots\\
+  \diff^{m}x/\diff t^{m}
+\end{bmatrix}=\mathbf{f}(t,\mathbf{x})$$\s
+
+with
+
+$$\mathbf{x}(t_{0})=\begin{bmatrix}
+  x_{0}\\
+  x_{1}\\
+  \vdots\\
+  x_{m-1}
+\end{bmatrix}$$
+
+\pagebreak
+
+\section{Space of Continuous Functions}
+\subsection{Arzela-Ascoli Theorem}
+\subsubsection{Compact Sets}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then the vector space of all bounded continuous functions is denoted by
+
+  $$C_{b}(X)=\brc{f\in C(X)\srm\abs{f(x)}\leq M,\forall x\in X,\exists M}$$
+\end{dft}\n
+
+It is simple to see that $C_{b}(X)\subset C(X)$, where $C(X)$ is the set of continuous functions on $X$.\n
+
+\begin{exm}
+  If $G$ is a nonempty bounded open set in $\R^{n}$, then $C_{b}(\overline{G})=C(\overline{G})$ as $\overline{G}$ is closed and bounded, then $f\in C(\overline{G})$ has to be bounded.
+\end{exm}\n
+
+Recall that a norm $\nrm{\cdot}$ on a real vector space $X$ is defined by the following properties:
+
+\begin{alist}
+  \item $\nrm{x}\geq 0$ is nonnegative, and $\nrm{x}=0$ if and only if $x=0$.
+  \item $\nrm{\alpha x}=\abs{\alpha}\nrm{x}$ for all $\alpha\in\R$.
+  \item Triangle inequality holds, or $\nrm{x+y}\leq\nrm{x}+\nrm{y}$
+\end{alist}
+
+A vector space with norm $(X,\nrm{\cdot})$ is called a norm space. Note that a norm space has a natural metric $d(x,y)=\nrm{x-y}$.\n
+
+\begin{dft}
+  Let $C_{b}(X)$ be the vector space of all bounded continuous functions, then the \textbf{supnorm} is a norm on $C_{b}(X)$ defined by
+
+  $$\nrm{f}_{\infty}=\underset{x\in X}{\sup}\abs{f(x)}$$
+\end{dft}\n
+
+It is always assumed $C_{b}(X)$ with metric $d_{\infty}(f,g)=\nrm{f-g}_{\infty}$ given by the supnorm.\n
+
+\begin{pst}
+  $(C_{b}(X),d_{\infty})$ is a complete metric space, for any metric space $(X,d)$.
+\end{pst}\n
+
+Note that $(C_{b}(X),d_{\infty})$ is a Banach space since it is a complete normed vector space. $C_{b}(X)$ is usually of infinite dimensional (for example $X=\R^{n}$ or a subset with nonempty interior in $\R^{n}$ like $X=[0,1]$), but it also could be of finite dimensional (for example $X=\brc{p_{1},\cdots,p_{n}}$ as a finite set of discrete metrics, which gives $X\to\R^{n}$ a linear bijection).\n
+
+A reason for studying $C_{b}(X)$ instead of $C(X)$ is the fact that $C(X)$ may contain unbounded function and the supnorm is not defined (for example $X=\R$). However, in some cases, it is still possible to define a metric on $C(X)$:\n
+
+\begin{exm}
+  Let $X=\R^{n}$ and $\overline{B_{n}(0)}=\brc{\abs{x}\leq n}$ for all positive integers $n$. For all $f\in C(\R^{n})$, define
+
+  $$d(f,g)=\sum_{n=1}^{\infty}\frac{1}{2^{n}}\frac{\nrm{f-g}_{\infty,\overline{B_{n}(0)}}}{1+\nrm{f-g}_{\infty,\overline{B_{n}(0)}}}$$\s
+
+  where $\nrm{\cdot}_{\infty,\overline{B_{n}(0)}}$ is the supnorm on the closed ball $\overline{B_{n}(0)}$, then $d$ is a complete metric on $C(\R^{n})$.
+\end{exm}\n
+
+Finally, recall the Bolzano-Weierstrass Theorem in $\R^{n}$:\n
+
+\begin{thm}
+  Every bounded sequence has a convergent subsequence. Similarly, every bounded set contains a convergent sequence.
+\end{thm}
+
+$C_{b}(X)$ may not have Bolzano-Weierstrass property. Consider the following example:\n
+
+\begin{exm}
+  Observe that $C_{b}([0,1])=C[0,1]$. Let $f_{n}(x)=x^{n}$ where $x\in[0,1]$ for all $n$, then $\nrm{f_{n}}_{\infty}=1$. The pointwise limit
+
+  $$f_{n}(x)\to\begin{cases}
+    1\erm{if }x=1\\
+    0\erm{otherwise}
+  \end{cases}$$\s
+
+  implies that no subsequence converges in $C_{b}[0,1]$.
+\end{exm}\n
+
+Because of this, further condition are required to find convergent sequences in subsets of $C_{b}(X)$.\n
+
+\begin{dft}
+  Let $(X,d)$ be a metric space. A set $E\subset X$ is called a \textbf{precompact} set if every sequence in $E$ contains a convergent subsequence with limit in $X$ (which is not necessary in $E$). If the limit is further restricted within $E$, then $E$ is called a \textbf{compact} set.
+\end{dft}\n
+
+\begin{pst}
+  A compact set is a closed precompact set.\n
+  
+  \prf Let $(X,d)$ be a metric space and $\brc{x_{n}}\subset E$ be a sequence in $E\subset X$. If $E$ is precompact, there exists a subsequence $\brc{x_{n_{j}}}$ with limit $z\in X$. If $E$ is closed, the limit $z\in E$, which implies compactness.
+\end{pst}\n
+
+Also recall that by Bolzano-Weierstrass Theorem, $E\subset\R^{n}$ is precompact implies $E$ is bounded. Therefore $E$ is compact implies $E$ is closed and bounded.
+
+\propdisp
+\subsubsection{Equicontinuity}
+\begin{dft}
+  Let $(X,d)$ be a metric space. A subset $C$ of $C(X)$ is said to be \textbf{equicontinuous} if for all $\epsilon>0$, there exists $\delta>0$ such that $\abs{f(x)-f(y)}<\epsilon$ for all $f\in C$ and $x,y\in X$ where $d(x,y)<\delta$.
+\end{dft}\n
+
+In fact, equicontinuity is based on uniform continuity, but at the same time extends $\delta$ to fulfill every function $f\in C$. Therefore, equicontinuity implies every function in $C$ is uniformly continuous. Then, it is simple to see that if $C$ is equicontinuous, any $C'\subset C$ is also equicontinuous.\n
+
+There are other ways to show that a set is equicontinuous. Recall that a function $f$ is Holder continuous if there exists a Holder exponent $\alpha\in(0,1)$ such that
+
+$$\abs{f(x)-f(y)}\leq L\abs{x-y}^{\alpha}$$\s
+
+for some constant $L$. $f$ is Lipschitz continuous if the equation holds for $\alpha=1$. A set $C$ is equicontinuous too if every function $f\in C$ is Holder continuous or Lipschitz continuous.
+
+Another method for equicontinuity requires the following definition:\n
+
+\begin{dft}
+  A set $C$ is said to be \textbf{convex} (in $\R^{n}$) if $x+t(y-x)\in C$ for all $x,y\in C$ and $t\in[0,1]$.
+\end{dft}\n
+
+\begin{pst}
+  Let $C$ be a subset of $C(\overline{G})$ where $\overline{G}$ is a convex in $\R^{n}$. Suppose that each function in $C$ is differentiable and there is a uniform bound on their partial derivatives:
+
+  $$\nrm{\frac{\partial f}{\partial x_{i}}}_{\infty}\leq M$$\s
+
+  for all $f\in C(\overline{G})$ and $i$, then $C$ is equicontinuous.
+\end{pst}\n
+
+\begin{pst}
+  Let $A=\brc{z_{j}}$ be a countable set and $f_{n}:A\to\R$ where $n=1,2,\cdots$ be a sequence of functions defined on $A$. Suppose for each $z_{j}\in A$, $\brc{f_{n}(z_{j})}$ is a bounded sequence in $\R$, then there exists a subsequence $\brc{f_{n_{k}}}$ of $\brc{f_{n}}$ such that for all $z_{j}\in A$, $\brc{f_{n_{k}}(z_{j})}$ is convergent.
+\end{pst}
+
+\subsubsection{Ascoli's Theorem}
+Below is the \textbf{Ascoli's Theorem}:\n
+
+\begin{thm}
+  Suppose $G$ is a bounded nonempty open set in $\R^{m}$, then a set $\mathcal{E}\subset C(\overline{G})=C_{b}(\overline{G})$ is precompact if $\mathcal{E}$ is bounded (in supnorm) and equicontinuous.
+\end{thm}\n
+
+Note that Ascoli's Theorem remains valid for bounded and equicontinuous subsets of $C(G)$ where $G$ is not necessary to take closure. This is because equicontinuity implies uniform continuity of $G$, which can be further extended to uniform continuity of $\overline{G}$. However, boundedness of the domain $\overline{G}$ cannot be removed:\n
+
+\begin{exm}
+  Let $\overline{G}=[0,\infty)\subset\R$, then take $\varphi\in C^{1}[0,1]$ such that $\varphi\not\equiv 0$ and $\varphi(x)=0$ when $x\in[0,1]\setminus[1/2,3/4]$. Further define
+
+  $$f_{n}(x)=\begin{cases}
+    \varphi(x-n)&\erm{if }x\in[n,n+1]\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  It is easy to check that $f_{n}\in C(\overline{G})$ and
+
+  $$\nrm{f_{n}}_{\infty,\overline{G}}=\nrm{\varphi}_{\infty,[0,1]}>0$$\s
+
+  Thus $\mathcal{E}=\brc{f_{n}}$ is a bounded subset of $C(\overline{G})$. By chain rule,
+
+  $$\nrm{\frac{\diff f_{n}}{\diff x}}_{\infty,\overline{G}}=\nrm{\frac{\diff\varphi}{\diff x}}_{\infty,[0,1]}>0$$\s
+
+  Then \rpst[\sctd{3}] states that $\mathcal{E}$ is also equicontinuous.\n
+  
+  Suppose there exists a subsequence $\brc{f_{n_{j}}}$ of $\brc{f_{n}}$ converges to the same $f\in C(\overline{G})$ in $d_{\infty}$. In other words, $f_{n_{j}}\to f$ uniformly on $\overline{G}$ implies pointwise convergence $f_{n_{j}}(x)\to f(x)$ for all $x\in\overline{G}$. However, for fixed $x$, $f_{n}(x)=0$ for all $n\geq x$, so it is expected to have
+
+  $$\lim_{j\to+\infty}f_{n_{j}}(x)\to 0$$\s
+
+  which shows that $f(x)=0$ for all $x\in\overline{G}$. This is a contraction since
+
+  $$0<\nrm{\varphi}_{\infty,[0,1]}=\nrm{f_{n_{j}}}_{\infty,\overline{G}}=\nrm{f_{n_{j}}-f}_{\infty,\overline{G}}\to 0$$\s
+
+  Therefore $\mathcal{E}$ is bounded and equicontinuous, but Ascoli's Theorem doesn't hold.
+\end{exm}
+
+\subsubsection{Arzela's Theorem}
+Below is the \textbf{Arzela's Theorem}, which is the converse of Ascoli's Theorem:\n
+
+\begin{thm}
+  Suppose $G$ is a bounded nonempty open set in $\R^{m}$, then every precompact set in $C(\overline{G})$ must be bounded and equicontinuous.
+\end{thm}
+
+\subsection{Applications to Ordinary Differential Equations}
+\subsubsection{Improvement to Picard-Lindelof Theorem}
+Consider the initial value problem
+
+$$\begin{cases}
+  \diff x/\diff t=f(t,x)\\
+  x(t_{0})=x_{0}
+\end{cases}$$\s
+
+with $f$ being continuous (but not necessary Lipschitz) on $R=[t_{0}-a,t_{0}+a]\times[x_{0}-b,x_{0}+b]$. Of course this is not expected to give a unique result, but existence can be proved. The idea of proof is as follows:
+
+\begin{nlist}
+  \item By Weierstrass Approximation Theorem (on $\R^{2}$), there exists a sequence $\brc{p_{n}}$ of polynomials such that $d_{\infty}(p_{n},f)\to 0$ (in $C(R)$).
+  \item By Picard-Lindelof Theorem, since every $p_{n}$ satisfies Lipschitz condition (uniform in $t$), there exists $a'_{n}>0$ with
+  
+  $$a'_{n}=\min\brc{a,\frac{b}{M_{n}},\frac{1}{L_{n}}}$$\s
+
+  where $M_{n}=\nrm{p_{n}}_{\infty,R}$ and $L_{n}$ be Lipschitz constant of $p_{n}$ on $R$, such that there exists a unique solution $x_{n}\in C^{1}[t_{0}-a'_{n},t_{0}+a'_{n}]$ to the approximated initial value problem
+
+  $$\begin{cases}
+    \diff x_{n}/\diff t=p_{n}(t,x_{n})\\
+    x_{n}(t_{0})=x_{0}
+  \end{cases}$$\s
+
+  for all $t\in[t_{0}-a'_{n},t_{0}+a'_{n}]$.
+  \item By Ascoli's Theorem, there exists a convergent subsequence $\brc{x_{n_{k}}}$ of $\brc{x_{n}}$ such that $x_{n_{k}}\to x$ for some function $x(t)$. It is hoped that such $x$ is the required solution.
+\end{nlist}
+
+However, since $f$ is not assumed to satisfy the Lipschitz condition, one cannot expect $\brc{L_{n}}$ is bounded. In fact, $\brc{L_{n}}$ is unbounded, otherwise $f$ satisfies Lipschitz condition. Here
+
+$$a'_{n}=\min\brc{a,\frac{b}{M_{n}},\frac{1}{L_{n}}}\to 0$$\s
+
+then there is no proper interval for existence of the solution. On the other hand, as $p_{n}\to f$ in $(C(R),d_{\infty})$, $M_{n}\leq M$ for some $M>0$. Therefore, in order to implement the plan above, it is required to improve Picard-Lindelof Theorem:\n
+
+\begin{pst}
+  Under the setting of Picard-Lindelof Theorem, there exists a unique solution $x(t)$ on the interval $[t_{0}-a',t_{0}+a']$ with $x(t)\in[x_{0}-b,x_{0}+b]$, where $a'$ is any number satisfying
+
+  $$0<a'<a^{*}=\min\brc{a,\frac{b}{M}}$$
+\end{pst}
+
+\subsubsection{Cauchy-Peano Theorem}
+Below is the \textbf{Cauchy-Peano Theorem}:\n
+
+\begin{thm}
+  Consider the initial value problem
+
+  $$\begin{cases}
+    \diff x/\diff t=f(t,x)\\
+    x_{t_{0}}=x_{0}
+  \end{cases}$$\s
+
+  where $f$ is continuous on $R=[t_{0}-a,t_{0}+a]\times[x_{0}-b,x_{0}+b]$, then there exists $a'\in(0,a)$ and a $C^{1}$ function
+
+  $$x:[t_{0}-a,t_{0}+a]\to[x_{0}-b,x_{0}+b]$$\s
+
+  solving the initial value problem.
+\end{thm}
+
+\subsection{Baire Category Theorem}
+\subsubsection{Denseness}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a set $E\subset X$ is said to be \textbf{dense} if for all $x\in X$ and $\epsilon>0$, $B_{\epsilon}(x)\cap E\neq\emptyset$.
+\end{dft}\n
+
+Note that $X$ is naturally dense in $(X,d)$, and if $E$ is dense in $X$, its closure $\overline{E}=X$.\n
+
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a set $E\subset X$ is said to be \textbf{nowhere dense} if its closure does not contain any ball. In other words, $\overline{E}$ has empty interior.
+\end{dft}\n
+
+\begin{exm}
+  Set of integers $\Z$ is nowhere dense in $\R$. However, although set of rationals $\Q$ has empty interior, its closure $\overline{\Q}=\R$ has nonempty interior, so $\Q$ is not nowhere dense.
+\end{exm}\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space and $E\subset X$ be a set, then $E$ is nowhere dense if and only if $X\setminus\overline{E}$ is dense in $X$.\n
+
+  \prf If $E$ is nowhere dense, for all $x\in X$ and any $r>0$, $B_{r}(x)\not\subset\overline{E}$, which implies $B_{r}(x)\cap(X\setminus\overline{E})\neq\emptyset$, so $X\setminus\overline{E}$ is dense. The converse follows the reverse order.
+\end{pst}\n
+
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a point $x\in X$ is called an \textbf{isolated point} if $\brc{x}$ is open in $X$.
+\end{dft}\n
+
+Note that $\brc{x}$ is always closed in a metric space. Therefore, $\brc{x}$ is both open and closed if and only if $x$ is an isolated point.\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space, then the following applies:
+
+  \begin{alist}
+    \item If $E$ is nowhere dense in $X$, $\overline{E}$ is nowhere dense in $X$. Also, $E'$ is nowhere dense in $X$ if $E'\subset E$.
+    \item The union of finitely many nowhere dense sets in $X$ is nowhere dense in $X$.
+    \item If $(X,d)$ has no isolated point, then every finite set is nowhere dense.
+  \end{alist}
+\end{pst}\n
+
+Now consider the following example in infinite dimensional normed spaces:\n
+
+\begin{exm}
+  Let $M[a,b]$ be a space of bounded functions on $[a,b]$, then
+  
+  $$\nrm{f}_{\infty}=\underset{[a,b]}{\sup}\abs{f(x)}$$\s
+
+  is well-defined and is a norm on $M[a,b]$. It is clear that $(C[a,b],d_{\infty})$ is a metric (and vector) subspace of $(M[a,b],d_{\infty})$. Show that $C[a,b]$ is nowhere dense in $M[a,b]$.\n
+
+  \ans Note that $C[a,b]$ is closed because uniform limit of continuous functions is continuous. It is left to show that for all $B_{\epsilon}^{\infty}(f)\subset M[a,b]$,
+
+  $$B_{\epsilon}^{\infty}(f)\cap(M[a,b]\setminus C[a,b])\neq\emptyset$$\s
+
+  If $f\in M[a,b]\setminus C[a,b]$, the result is already achieved. For any $f\in C[a,b]$, let
+
+  $$g(x)=\begin{cases}
+    f(x)+\epsilon/2\erm{if }x\in[a,b]\cap\Q\\
+    f(x)-\epsilon/2\erm{if }x\in[a,b]\setminus\Q
+  \end{cases}$$\s
+
+  such that $\nrm{g-f}_{\infty}=\epsilon/2$ implies $g\in B_{\epsilon}^{\infty}(f)$. Since both $[a,b]\cap\Q$ and $[a,b]\setminus\Q$ are dense in $[a,b]$,
+
+  $$\underset{x\to a}{\limsup}g(x)=f(a)+\frac{\epsilon}{2}$$\s
+
+  and
+
+  $$\underset{x\to a}{\liminf}g(x)=f(a)-\frac{\epsilon}{2}$$\s
+
+  shows that $g\in M[a,b]\setminus C[a,b]$. Therefore $B_{\epsilon}^{\infty}(f)\cap(M[a,b]\setminus C[a,b])\neq\emptyset$, and $C[a,b]$ is nowhere dense in $M[a,b]$.
+\end{exm}
+
+\subsubsection{First Category and Second Category}
+\begin{dft}
+  Let $(X,d)$ be a metric space, then a set $E\subset X$ is called \textbf{first category} (or \textbf{meager}) if it can be expressed as a countable union of nowhere dense sets. If $E$ is not of first category, then $E$ is called \textbf{second category}.\n
+
+  $E$ is said to be \textbf{residual} if its complement is of first category.
+\end{dft}\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space, then the following applies:
+
+  \begin{alist}
+    \item Every subset of a set of first category is of first category.
+    \item The union of countable many sets of first category is of first category.
+    \item If $(X,d)$ has no isolated point, every countable subset of $X$ is of first category.
+  \end{alist}
+\end{pst}\n
+
+With the proposition above, a similar proposition for residual sets can be made by taking complements:\n
+
+\begin{pst}
+  Let $(X,d)$ be a metric space, then the following applies:
+
+  \begin{alist}
+    \item Every subset containing a residual set is residual.
+    \item The intersection of countable many residual sets is residual.
+    \item If $(X,d)$ has no isolated point, complement of any countable set is residual.
+  \end{alist}
+\end{pst}\n
+
+\begin{exm}
+  Let $(\R,d_{1})$ be a metric space. Since $\R$ has no isolated points, $\brc{q}$ is nowhere dense for any $q\in\Q$, so $\Q$ is of first category since it is a countable union of $\brc{q}$. On the other hand, the set of irrational numbers $\I=\R\setminus\Q$ is residual in $\R$.
+\end{exm}
+
+\subsubsection{General Theorem}
+Below is the \textbf{Baire Category Theorem}:\n
+
+\begin{thm}
+  Any set of first category in a complete metric space has empty interior. In other words, any countable intersection of open dense sets in a complete metric space is dense.
+\end{thm}\n
+
+With Baire Category Theorem, there are some corollaries to follow:\n
+
+\begin{crl}
+  Let $(X,d)$ be a complete metric space. Suppose that $X=\bigcup_{n=1}^{\infty}E_{n}$ with $E_{n}$ are closed subsets. Then at least one of there $E_{n}$ has nonempty interior.
+\end{crl}\n
+
+\begin{crl}
+  A set of first category in a complete metric space cannot be a residual set, and vice versa.
+\end{crl}
+
+\subsubsection{Applications of Baire Category Theorem}
+\begin{pst}
+  Let $f\in C[a,b]$ be differentiable at $x$, then it is Lipschitz continuous at $x$.\n
+
+  \prf By assumption, for any $\epsilon=1>0$, there exists $\delta_{0}>0$ such that for all $y\in(x-\delta_{0},x+\delta_{0})\setminus\brc{x}$ and $y\in[a,b]$,
+
+  $$\abs{\frac{f(y)-f(x)}{y-x}-f'(x)}<1$$\s
+
+  implies
+
+  $$\abs{f(y)-f(x)}\leq(1+\abs{f'(x)})\abs{y-x}$$\s
+
+  for all $y\in(x-\delta_{0},x+\delta_{0})\cap[a,b]$. If $[a,b]\setminus(x-\delta_{0},x+\delta_{0})=\emptyset$, it is already done. Consider for $y\in[a,b]\setminus(x-\delta_{0},x+\delta_{0})$ if such set is nonempty, $\abs{y-x}\geq\delta_{0}$, hence
+
+  $$\begin{aligned}[t]
+    \abs{f(y)-f(x)}&\leq\abs{f(y)}+\abs{f(x)}\\
+    &\leq 2\nrm{f}_{\infty}\\
+    &\leq\frac{2\nrm{f_{\infty}}}{\delta_{0}}\abs{y-x}=L'\abs{y-x}
+  \end{aligned}$$\s
+
+  Finally, let $L=\max\brc{1+\abs{f'(x)},L'}$, then $\abs{f(y)-f(x)}\leq L\abs{y-x}$ for all $y\in[a,b]$.
+\end{pst}\n
+
+With the proposition above, the following theorem can be introduced:\n
+
+\begin{thm}
+  The set of all continuous, nowhere differentiable functions forms a residual set in $C[a,b]$ and hence dense in $C[a,b]$.
+\end{thm}
+
+\input{sty/footer.sty}
+
+\begin{reflist}
+  \item Elias M. Stein, Rami Shakarchi, \textit{Fourier Analysis: An Introduction (Princeton Lectures in Analysis)}, Princeton, 2003
+  \item Walter Rudin, \textit{Principles of Mathematical Analysis}, McGraw-Hill (3rd Edition), 1976
+\end{reflist}
+
+\end{document}

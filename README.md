@@ -2,7 +2,8 @@
 ### Contents
 MATH1010: University Mathematics ([pdf](pdf/math1010.pdf), [tex](tex/math1010.tex))\
 MATH1030: Linear Algebra I ([pdf](pdf/math1030.pdf), [tex](tex/math1030.tex))\
-MATH2070: Algebraic Structures ([pdf](pdf/math2070.pdf), [tex](tex/math2070.tex))
+MATH2070: Algebraic Structures ([pdf](pdf/math2070.pdf), [tex](tex/math2070.tex))\
+MATH3060: Mathematical Analysis III ([pdf](pdf/math3060.pdf), [tex](tex/math3060.tex))
 
 ### Remarks
 - Contents of all documents are based on [**Course Catalog | CUHK Mathematics**](https://www.math.cuhk.edu.hk/course) from *Department of Mathematics, The Chinese University of Hong Kong (CUHK)*. The author does not own the source.
