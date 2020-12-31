@@ -67,6 +67,7 @@
 \newcommand{\brc}[1]{\left\{ #1\right\}} % Curly brackets
 \newcommand{\brr}[1]{\left( #1\right)} % Round brackets
 \newcommand{\brs}[1]{\left[ #1\right]} % Square brackets
+\newcommand{\cond}[1]{\left. #1\right|} % Condition with right bar
 \newcommand{\diff}{\,\mathrm{d}} % Differential
 \newcommand{\erm}[1]{\;\;\;\;\text{#1}} % Equation remarks
 \newcommand{\nrm}[1]{\left\| #1\right\|} % Norm
@@ -198,6 +199,12 @@ This course requires prerequisites of
 \begin{siderule}[linecolor=zr]{\color{zr}\textit{Theorem \sct. }}
 }{
 \end{siderule}
+}
+
+\newenvironment{cmatrix}{ % Matrix in curly brackets
+  \left( \begin{matrix}
+}{
+  \end{matrix}\right)
 }
 
 \newenvironment{alist}{ % Alphabetical list
