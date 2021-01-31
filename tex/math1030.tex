@@ -275,16 +275,16 @@ Beside from intersections of lines and planes, solving systems of equations with
 \begin{exm}
   The following is a system of linear equations with two unknowns, written in a single vector form equation:
 
-  $$x\begin{cmatrix}
+  $$x\begin{rmatrix}
     2\\
     1
-  \end{cmatrix}+y\begin{cmatrix}
+  \end{rmatrix}+y\begin{rmatrix}
     -3\\
     1
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     -5\\
     5
-  \end{cmatrix}=b$$\s
+  \end{rmatrix}=b$$\s
 
   The problem now becomes finding the combination of the column vectors on the left side that produces the vector $b$ on the right side.
 \end{exm}\n
@@ -294,27 +294,27 @@ Here are the system of linear equations used in examples in previous section:\n
 \begin{exm}
   The following is a system of linear equations with two unknowns, written in a single vector form equation:
 
-  $$x\begin{cmatrix}
+  $$x\begin{rmatrix}
     2\\
     2
-  \end{cmatrix}+y\begin{cmatrix}
+  \end{rmatrix}+y\begin{rmatrix}
     -3\\
     -3
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     -5\\
     0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
-  $$x\begin{cmatrix}
+  $$x\begin{rmatrix}
     2\\
     2
-  \end{cmatrix}+y\begin{cmatrix}
+  \end{rmatrix}+y\begin{rmatrix}
     -3\\
     -3
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     -5\\
     -5
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   In both of the examples, the two vectors on the left side are colinear. For the first example, since the target vector is not colinear with the two vectors, there are no solutions for the system. For the second example, since the target vector is colinear with the two vectors, there are infinite solutions for the system.
 \end{exm}\n
@@ -324,23 +324,23 @@ In fact, this method can also be applied to 3-dimensional cases:\n
 \begin{exm}
   The following is a system of linear equations with three unknowns, written in a single vector form equation:
 
-  $$x\begin{cmatrix}
+  $$x\begin{rmatrix}
     2\\
     4\\
     -2
-  \end{cmatrix}+y\begin{cmatrix}
+  \end{rmatrix}+y\begin{rmatrix}
     1\\
     -6\\
     7
-  \end{cmatrix}+z\begin{cmatrix}
+  \end{rmatrix}+z\begin{rmatrix}
     1\\
     0\\
     2
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     5\\
     -2\\
     9
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   By finding the combination of column vectors on the left side, the solution set for the equation above is
 
@@ -354,35 +354,35 @@ In fact, this method can also be applied to 3-dimensional cases:\n
 \begin{exm}
   In the following example, the three vectors are coplanar, which means they all lies on the same plane:
 
-  $$x\begin{cmatrix}
+  $$x\begin{rmatrix}
     \frac{3}{2}\\
     -1\\
     0
-  \end{cmatrix}+y\begin{cmatrix}
+  \end{rmatrix}+y\begin{rmatrix}
     0\\
     1\\
     -1
-  \end{cmatrix}+z\begin{cmatrix}
+  \end{rmatrix}+z\begin{rmatrix}
     \frac{3}{2}\\
     0\\
     -1
-  \end{cmatrix}=b$$\s
+  \end{rmatrix}=b$$\s
 
   Note that the three vectors lies on the plane $2x+3y+3z=0$. Similar to colinear cases in 2-dimensional space, the resulting vector $b$ determines number of solutions. For example, when
 
-  $$b=b_{0}=\begin{cmatrix}
+  $$b=b_{0}=\begin{rmatrix}
     0\\
     1\\
     1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   the system has no solution, and when
 
-  $$b=b_{\infty}=\begin{cmatrix}
+  $$b=b_{\infty}=\begin{rmatrix}
     3\\
     -1\\
     -1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   the system has infinite solutions.
 \end{exm}
@@ -476,11 +476,11 @@ In order to solve systems of linear equations systematically, a useful and power
 \begin{exm}
   The following is a matrix
 
-  $$B=\begin{cmatrix}
+  $$B=\begin{rmatrix}
   1 & 0 & 2 & 5\\
   3 & -2 & -7 & 4\\
   -1 & 4 & 6 & -3
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   with $m=3$ rows and $n=4$ columns. Note that $[B]_{2,3}=-7$ and $[B]_{3,4}=-3$.
 \end{exm}\n
@@ -496,12 +496,12 @@ At times, a column vector is also simply called a vector. Commonly, the notation
 \begin{dft}
   The \textbf{zero vector} of size $m$ is the column vector of size $m$ with each entry is zero:
 
-  $$\mathbf{0}=\begin{cmatrix}
+  $$\mathbf{0}=\begin{rmatrix}
   0\\
   0\\
   \vdots\\
   0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   or in entry notations, $[\mathbf{0}]_{i}=0$ for $1\leq i\leq m$.
 \end{dft}
@@ -516,13 +516,13 @@ At times, a column vector is also simply called a vector. Commonly, the notation
 \begin{exm}
   Suppose $A$ is a matrix and $\mathbf{u}$ is a column vector where
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 2\\
     3 & 4\\
-  \end{cmatrix},\mathbf{u}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{u}=\begin{rmatrix}
     5\\
     6
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 
   Then
 
@@ -545,30 +545,30 @@ At times, a column vector is also simply called a vector. Commonly, the notation
 
   the \textbf{coefficient matrix} is the $m\times n$ matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     a_{11} & a_{12} & a_{13} & \cdots & a_{1n}\\
     a_{21} & a_{22} & a_{23} & \cdots & a_{2n}\\
     \vdots & \vdots & \vdots & \ddots & \vdots\\
     a_{m1} & a_{m2} & a_{m3} & \cdots & a_{mn}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   the \textbf{vector of constants} is the column vector of size $m$
 
-  $$\mathbf{b}=\begin{cmatrix}
+  $$\mathbf{b}=\begin{rmatrix}
     b_{1}\\
     b_{2}\\
     \vdots\\
     b_{m}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and the \textbf{solution vector} is the column vector of size $n$
 
-  $$\mathbf{x}=\begin{cmatrix}
+  $$\mathbf{x}=\begin{rmatrix}
     x_{1}\\
     x_{2}\\
     \vdots\\
     x_{n}
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{dft}\n
 
 \begin{dft}
@@ -831,12 +831,12 @@ Here are some terminology before introducing reduced row echelon form:\n
 \begin{exm}
   The following is a matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
   0 & 1 & 0 & 1 & 2\\
   0 & 0 & 0 & 3 & 0\\
   0 & 0 & 1 & 0 & 1\\
   0 & 0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Note that the index of leftmost entry of row $1$ is $l_{1}=2$, that of row $2$ is $l_{2}=4$ and that of row $3$ is $l_{3}=3$. Row $4$ is a zero row.
 \end{exm}\n
@@ -881,66 +881,66 @@ With the theorem above, suppose $A$ has $m$ rows and $n$ columns. There is alway
 \begin{exm}
   The following is a matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
   0 & 0 & 1 & 1 & 4\\
   0 & 0 & 1 & 1 & 3\\
   1 & 1 & 2 & 4 & 8\\
   2 & 2 & 5 & 9 & 19\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Consider the first row, note that the first entry of the row is $0$, therefore consider the first column. If the first entry of the row is nonzero, this step can be skipped. The third entry of the column is a nonzero entry, hence perform $R_{1}\leftrightarrow R_{3}$:
 
-  $$\xrightarrow[ ]{R_{1}\leftrightarrow R_{3}}\begin{cmatrix}
+  $$\xrightarrow[ ]{R_{1}\leftrightarrow R_{3}}\begin{rmatrix}
   1 & 1 & 2 & 4 & 8\\
   0 & 0 & 1 & 1 & 3\\
   0 & 0 & 1 & 1 & 4\\
   2 & 2 & 5 & 9 & 19\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Note that the fourth entry of the column is also a nonzero entry, but in this case choosing an entry that is equal to $1$ or $-1$ will make future steps easier. Now check the leftmost entry of the first row, and peform $\frac{1}{a}R_{1}$ where $a$ is the entry. This step is skipped in this example since the leftmost entry of the first row is already $1$.\n
 
   Now eliminate the remaining nonzero entries within the same column. In this example, the fourth entry of the column is nonzero, thus perform $-2R_{1}+R_{4}$:
 
-  $$\xrightarrow[ ]{-2R_{1}+R_{4}}\begin{cmatrix}
+  $$\xrightarrow[ ]{-2R_{1}+R_{4}}\begin{rmatrix}
   1 & 1 & 2 & 4 & 8\\
   0 & 0 & 1 & 1 & 3\\
   0 & 0 & 1 & 1 & 4\\
   0 & 0 & 1 & 1 & 3\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   The first row and first column is completed and can be ignored:
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
   * & * & * & * & *\\
   * & 0 & 1 & 1 & 3\\
   * & 0 & 1 & 1 & 4\\
   * & 0 & 1 & 1 & 3\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Note that the first leftmost entry of the row is at row $2$ and column $3$, so consider the third column and perform elimination, including the ignored row $1$:
 
-  $$\xrightarrow[ ]{-2R_{2}+R_{1},-R_{2}+R_{3},-R_{2}+R_{4}}\begin{cmatrix}
+  $$\xrightarrow[ ]{-2R_{2}+R_{1},-R_{2}+R_{3},-R_{2}+R_{4}}\begin{rmatrix}
   1 & 1 & 0 & 2 & 2\\
   0 & 0 & 1 & 1 & 3\\
   0 & 0 & 0 & 0 & 1\\
   0 & 0 & 0 & 0 & 0\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Repeat the process:
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
   * & * & * & * & *\\
   * & * & * & * & *\\
   * & * & * & 0 & 1\\
   * & * & * & 0 & 0\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
-  $$\xrightarrow[ ]{-2R_{3}+R_{1},-3R_{3}+R_{2}}\begin{cmatrix}
+  $$\xrightarrow[ ]{-2R_{3}+R_{1},-3R_{3}+R_{2}}\begin{rmatrix}
   1 & 1 & 0 & 2 & 0\\
   0 & 0 & 1 & 1 & 0\\
   0 & 0 & 0 & 0 & 1\\
   0 & 0 & 0 & 0 & 0\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   until the matrix is in reduced row echelon form.
 \end{exm}
@@ -1061,16 +1061,16 @@ With the above theorem, the definition of trivial solution is introduced:\n
 \begin{exm}
   The following is a matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
   1 & 4 & 0 & -1 & 0 & 7 & -9\\
   2 & 8 & -1 & 3 & 9 & -13 & 7\\
   0 & 0 & 2 & -3 & -4 & 12 & -8\\
   -1 & -4 & 2 & 4 & 8 & -31 & 37\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Note that
 
-  $$\mathbf{x}=\begin{cmatrix}
+  $$\mathbf{x}=\begin{rmatrix}
   3\\
   0\\
   -5\\
@@ -1078,7 +1078,7 @@ With the above theorem, the definition of trivial solution is introduced:\n
   0\\
   0\\
   1
-\end{cmatrix},\;\mathbf{y}=\begin{cmatrix}
+\end{rmatrix},\;\mathbf{y}=\begin{rmatrix}
   -4\\
   1\\
   -3\\
@@ -1086,7 +1086,7 @@ With the above theorem, the definition of trivial solution is introduced:\n
   1\\
   1\\
   1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   are both in $N(A)$ since $A\mathbf{x}=\mathbf{0}$ and $A\mathbf{y}=\mathbf{0}$.
 \end{exm}
@@ -1366,23 +1366,23 @@ With the definition above, systems of linear equations can be solved by rewritin
 
   \ans The system of linear equations can be rewritten as a linear combination
 
-  $$x_{1}\begin{cmatrix}
+  $$x_{1}\begin{rmatrix}
     1\\
     2\\
     1
-  \end{cmatrix}+x_{2}\begin{cmatrix}
+  \end{rmatrix}+x_{2}\begin{rmatrix}
     -1\\
     1\\
     1
-  \end{cmatrix}+x_{3}\begin{cmatrix}
+  \end{rmatrix}+x_{3}\begin{rmatrix}
     2\\
     1\\
     0
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     1\\
     8\\
     5
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and by row-reducing the augmented matrix,
 
@@ -1429,40 +1429,40 @@ Consider the following example:\n
 
   \ans By row-reducing the system of linear equations, the augmented matrix yields
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & 3 & -2 & 4\\
     0 & 1 & 1 & -3 & 0\\
     0 & 0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Note that there are $2$ pivot columns in the augmented matrix above. $D=\brc{1,2}$ and $F=\brc{3,4,5}$ shows that the dependent variables are $x_{1},x_{2}$ and the free variables are $x_{3},x_{4}$. Hence, $x_{1},x_{2}$ can be represented in the form of $x_{3},x_{4}$:
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     x_{1}\\
     x_{2}\\
     x_{3}\\
     x_{4}
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     4-3x_{3}+2x_{4}\\
     -x_{3}+3x_{4}\\
     x_{3}\\
     x_{4}
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     4\\
     0\\
     0\\
     0
-  \end{cmatrix}+x_{3}\begin{cmatrix}
+  \end{rmatrix}+x_{3}\begin{rmatrix}
     -3\\
     -1\\
     1\\
     0
-  \end{cmatrix}+x_{4}\begin{cmatrix}
+  \end{rmatrix}+x_{4}\begin{rmatrix}
     2\\
     3\\
     0\\
     1
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}\n
 
 With the example above, the general procedure of finding the vector form of solution sets is as follows:
@@ -1553,114 +1553,114 @@ The following theorem describes how to express a null space as a spanning set:\n
 \begin{exm}
   Find a set of vectors $S$ such that the null space of the matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 3 & 3 & -1 & -5\\
     2 & 5 & 7 & 1 & 1\\
     1 & 1 & 5 & 1 & 5\\
     -1 & -4 & -2 & 0 & 4
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   is the span of $S$, or $\bra{S}=N(A)$.\n
 
   \ans Note that the null space of $A$ is the set of all solutions to the homogeneous system $A\mathbf{x}=\mathbf{0}$. By row-reducing the matrix $A$,
 
-  $$B=\begin{cmatrix}
+  $$B=\begin{rmatrix}
     1 & 0 & 6 & 0 & 4\\
     0 & 1 & -1 & 0 & -2\\
     0 & 0 & 0 & 1 & 3\\
     0 & 0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   which means $D=\brc{1,2,4}$ and $F={3,5}$. In other words, $x_{1}$, $x_{2}$ and $x_{4}$ can be expressed in terms of $x_{3}$ and $x_{5}$. The solution vector can be written as
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     x_{1}\\
     x_{2}\\
     x_{3}\\
     x_{4}\\
     x_{5}
-  \end{cmatrix}=x_{3}\begin{cmatrix}
+  \end{rmatrix}=x_{3}\begin{rmatrix}
     -6\\
     1\\
     1\\
     0\\
     0
-  \end{cmatrix}+x_{4}\begin{cmatrix}
+  \end{rmatrix}+x_{4}\begin{rmatrix}
     -4\\
     2\\
     0\\
     -3\\
     1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore
 
-  $$N(A)=\bra{\brc{\begin{cmatrix}
+  $$N(A)=\bra{\brc{\begin{rmatrix}
     -6\\
     1\\
     1\\
     0\\
     0
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -4\\
     2\\
     0\\
     -3\\
     1
-  \end{cmatrix}}}$$
+  \end{rmatrix}}}$$
 \end{exm}
 
 \subsubsection{Reduction of Spans}
 \begin{exm}
   Let
 
-  $$T=\brc{\mathbf{w}_{1},\mathbf{w}_{2},\mathbf{w}_{3},\mathbf{w}_{4}}=\brc{\begin{cmatrix}
+  $$T=\brc{\mathbf{w}_{1},\mathbf{w}_{2},\mathbf{w}_{3},\mathbf{w}_{4}}=\brc{\begin{rmatrix}
     2\\
     -3\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     4\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     7\\
     -5\\
     4
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -7\\
     -6\\
     -5
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   and
 
-  $$D=\begin{cmatrix}
+  $$D=\begin{rmatrix}
     2 & 1 & 7 & -7\\
     -3 & 4 & -5 & -6\\
     1 & 1 & 4 & -5
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 
   Row-reduce $D$ gives
    
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & 3 & -2\\
     0 & 1 & 1 & -3\\
     0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   with
 
-  $$N(D)=\bra{\brc{\mathbf{z}_{1}=\begin{cmatrix}
+  $$N(D)=\bra{\brc{\mathbf{z}_{1}=\begin{rmatrix}
     -3\\
     -1\\
     1\\
     0
-  \end{cmatrix},\mathbf{z}_{2}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{z}_{2}=\begin{rmatrix}
     2\\
     3\\
     0\\
     1
-  \end{cmatrix}}}$$\s
+  \end{rmatrix}}}$$\s
 
   Since $\mathbf{z}_{1}$ and $\mathbf{z}_{2}$ are solutions to the homogeneous equation $D\mathbf{x}=\mathbf{0}$, $\mathbf{w}_{3}$ and $\mathbf{w}_{4}$ can be expressed as $\mathbf{w}_{1}$ and $\mathbf{w}_{2}$. Therefore the infinite set $W=\bra{\brc{\mathbf{w}_{1},\mathbf{w}_{2}}}$.
 \end{exm}
@@ -1685,56 +1685,56 @@ algebra besides spans.\n
 \begin{exm}
   Find the linear independence of
 
-  $$S=\brc{\begin{cmatrix}
+  $$S=\brc{\begin{rmatrix}
     2\\
     -1\\
     3\\
     1\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     2\\
     -1\\
     5\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     2\\
     1\\
     -3\\
     6\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -6\\
     7\\
     -1\\
     0\\
     1
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   \ans By row-reduce the associated matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     2 & 1 & 2 & -6\\
     -1 & 2 & 1 & 7\\
     3 & -1 & -3 & -1\\
     1 & 5 & 6 & 0\\
     2 & 2 & 1 & 1
-  \end{cmatrix}\xrightarrow[ ]{\text{RREF}}\begin{cmatrix}
+  \end{rmatrix}\xrightarrow[ ]{\text{RREF}}\begin{rmatrix}
     1 & 0 & 0 & -2\\
     0 & 1 & 0 & 4\\
     0 & 0 & 1 & -3\\
     0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   there exists a nontrivial solution
 
-  $$\mathbf{x}=\begin{cmatrix}
+  $$\mathbf{x}=\begin{rmatrix}
     2\\
     -4\\
     3\\
     1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   such that it will form a relation of linear independence. Therefore $S$ is linearly dependent.
 \end{exm}\n
@@ -1775,11 +1775,11 @@ In general there are more ways to show a matrix is nonsingular:\n
 \begin{exm}
   Do the columns of the matrix
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & -1 & 2\\
     2 & 1 & 1\\
     1 & 1 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   form a linear independent set?\n
 
@@ -1808,51 +1808,51 @@ In general there are more ways to show a matrix is nonsingular:\n
 \begin{exm}
   Reduce
 
-  $$R=\brc{\mathbf{v}_{1},\mathbf{v}_{2},\mathbf{v}_{3},\mathbf{v}_{4}}=\brc{\begin{cmatrix}
+  $$R=\brc{\mathbf{v}_{1},\mathbf{v}_{2},\mathbf{v}_{3},\mathbf{v}_{4}}=\brc{\begin{rmatrix}
     1\\
     2\\
     -1\\
     3\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     2\\
     1\\
     3\\
     1\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     -7\\
     6\\
     -11\\
     -2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     4\\
     1\\
     2\\
     1\\
     6
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   \ans Let $V$ be the span of $R$, and
 
-  $$D=\begin{cmatrix}
+  $$D=\begin{rmatrix}
     1 & 2 & 0 & 4\\
     2 & 1 & -7 & 1\\
     -1 & 3 & 6 & 2\\
     3 & 1 & -11 & 1\\
     2 & 2 & -2 & 6
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   be a matrix whose columns are vectors in $R$. Row-reduce $D$ gives
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & 0 & 4\\
     0 & 1 & 0 & 0\\
     0 & 0 & 1 & 1\\
     0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Note that $\mathbf{v}_{4}=4\mathbf{v}_{1}+\mathbf{v}_{3}$, so $V=\bra{R}=\brc{\mathbf{v}_{1},\mathbf{v}_{2},\mathbf{v}_{3}}$.
 \end{exm}\n
@@ -1867,152 +1867,152 @@ Since there are many ways to reduce a set into a span, the following theorem pro
 \end{thm}\n
 
 \begin{exm}
-  Reduce $$R=\brc{\begin{cmatrix}
+  Reduce $$R=\brc{\begin{rmatrix}
     1\\
     1\\
     2\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     2\\
     2\\
     4\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     2\\
     0\\
     -1\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     7\\
     1\\
     -1\\
     4
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     2\\
     5\\
     1
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   \ans By placing the column vectors in $R$ into a matrix and row-reducing the matrix,
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 2 & 2 & 7 & 0\\
     1 & 2 & 0 & 1 & 2\\
     2 & 4 & -1 & -1 & 5\\
     1 & 2 & 1 & 4 & 1
-  \end{cmatrix}\xrightarrow[ ]{\text{RREF}}\begin{cmatrix}
+  \end{rmatrix}\xrightarrow[ ]{\text{RREF}}\begin{rmatrix}
     1 & 2 & 0 & 1 & 2\\
     0 & 0 & 1 & 3 & -1\\
     0 & 0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and along with \rthm[\sctd{1}], span of $R$
 
-  $$\bra{R}=\bra{\brc{\begin{cmatrix}
+  $$\bra{R}=\bra{\brc{\begin{rmatrix}
     1\\
     1\\
     2\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     2\\
     0\\
     -1\\
     1
-  \end{cmatrix}}}$$
+  \end{rmatrix}}}$$
 \end{exm}\n
 
 \begin{exm}
   Is the vector
 
-  $$\mathbf{y}=\begin{cmatrix}
+  $$\mathbf{y}=\begin{rmatrix}
     9\\
     2\\
     1\\
     -3
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   within the span of
 
-  $$R=\brc{\begin{cmatrix}
+  $$R=\brc{\begin{rmatrix}
     2\\
     1\\
     3\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -1\\
     1\\
     0\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -8\\
     -1\\
     -9\\
     -4
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     3\\
     1\\
     -1\\
     -2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -10\\
     -1\\
     -1\\
     4
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   \ans Following the process in \rexm[\sctd{1}],
 
-  $$\bra{R}=\bra{\brc{\begin{cmatrix}
+  $$\bra{R}=\bra{\brc{\begin{rmatrix}
     2\\
     1\\
     3\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -1\\
     1\\
     0\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     3\\
     1\\
     -1\\
     -2
-  \end{cmatrix}}}$$\s
+  \end{rmatrix}}}$$\s
 
   By expressing $\bra{R}$ and $\mathbf{y}$ in an augmented matrix and row-reducing the matrix,
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     2 & -1 & 3 & 9\\
     1 & 1 & 1 & 2\\
     3 & 0 & -1 & 1\\
     2 & 1 & -2 & -3
-  \end{cmatrix}\xrightarrow[ ]{\text{RREF}}\begin{cmatrix}
+  \end{rmatrix}\xrightarrow[ ]{\text{RREF}}\begin{rmatrix}
     1 & 0 & 0 & 1\\
     0 & 1 & 0 & -1\\
     0 & 0 & 1 & 2\\
     0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore $\mathbf{y}$ can be expressed in terms of vectors in $\bra{R}$, which is
 
-  $$\mathbf{y}=\begin{cmatrix}
+  $$\mathbf{y}=\begin{rmatrix}
     2\\
     1\\
     3\\
     2
-  \end{cmatrix}-\begin{cmatrix}
+  \end{rmatrix}-\begin{rmatrix}
     -1\\
     1\\
     0\\
     1
-  \end{cmatrix}+2\begin{cmatrix}
+  \end{rmatrix}+2\begin{rmatrix}
     3\\
     1\\
     -1\\
     -2
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}\s
 
 Note that the example above implicitly shows that $\mathbf{y}$ in a linear combination of vectors in $\bra{R}$ is actually unique. This is a consequence of linear independence in the set of vectors in $\bra{R}$.
@@ -2036,41 +2036,41 @@ $$C(A)=\brc{A\mathbf{x}\srm\mathbf{x}\in\R^{n}}\subset\R^{m}$$\s
 \begin{exm}
   Let
   
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 2 & 7 & 1 & -1\\
     1 & 1 & 3 & 1 & 0\\
     3 & 2 & 5 & -1 & 9\\
     1 & -1 & -5 & 2 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Find the column space of $A$.\n
 
   \ans Let
   
-  $$\mathbf{v}=\begin{cmatrix}
+  $$\mathbf{v}=\begin{rmatrix}
     v_{1}\\
     v_{2}\\
     v_{3}\\
     v_{4}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   By row-reducing the augmented matrix $[A\!\mid\!\mathbf{v}]$, the augmented matrix becomes
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & -1 & 0 & 3 & -3v_{1}+5v_{2}-v_{4}\\
     0 & 1 & 4 & 0 & -1 & v_{1}-v_{2}\\
     0 & 0 & 0 & 1 & -2 & 2v_{1}-3v_{2}+v_{4}\\
     0 & 0 & 0 & 0 & 0 & 9v_{1}-16v_{2}+v_{3}+4v_{4}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and is in reduced row-echelon form if and only if $9v_{1}-16v_{2}+v_{3}+4v_{4}=0$, since the last column is not a pivot column. If $9v_{1}-16v_{2}+v_{3}+4v_{4}\neq 0$, the corresponding system of linear equations is inconsistent. Therefore,
   
-  $$C(A)=N\brr{\begin{cmatrix}
+  $$C(A)=N\brr{\begin{rmatrix}
     9\\
     -16\\
     1\\
     4
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   On the other hand, the column space can be written in terms of set of pivot columns, which is
 
@@ -2101,16 +2101,16 @@ With the definition above, it is fairly easy to find row space with the techniqu
 \begin{exm}
   Find the row space of
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 4 & 0 & 1 & 0 & 7 & -9\\
     2 & 8 & -1 & 3 & 9 & -13 & 7\\
     0 & 0 & 2 & -3 & -4 & 12 & -8\\
     -1 & -4 & 2 & 4 & 8 & -31 & 37
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans By finding the transpose of $A$,
 
-  $$A^{t}=\begin{cmatrix}
+  $$A^{t}=\begin{rmatrix}
     1 & 2 & 0 & -1\\
     4 & 8 & 0 & -4\\
     0 & -1 & 2 & 2\\
@@ -2118,11 +2118,11 @@ With the definition above, it is fairly easy to find row space with the techniqu
     0 & 9 & -4 & 8\\
     7 & -13 & 12 & -31\\
     -9 & 7 & -8 & 37
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Using the technique of finding the column space,
 
-  $$R(A)=C(A^{t})=\bra{\brc{\begin{cmatrix}
+  $$R(A)=C(A^{t})=\bra{\brc{\begin{rmatrix}
     1\\
     4\\
     0\\
@@ -2130,7 +2130,7 @@ With the definition above, it is fairly easy to find row space with the techniqu
     0\\
     7\\
     -9
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     2\\
     8\\
     -1\\
@@ -2138,7 +2138,7 @@ With the definition above, it is fairly easy to find row space with the techniqu
     9\\
     -13\\
     7
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     0\\
     2\\
@@ -2146,7 +2146,7 @@ With the definition above, it is fairly easy to find row space with the techniqu
     -4\\
     12\\
     -8
-  \end{cmatrix}}}$$
+  \end{rmatrix}}}$$
 \end{exm}\n
 
 In fact, the definition of row space, even when there is already defintion of column space, has its own use. Consider the following theorem:
@@ -2164,97 +2164,97 @@ One of the applications of row spaces is to improve a span, even the vectors giv
 \begin{exm}
   Improve the span
 
-  $$X=\bra{\brc{\begin{cmatrix}
+  $$X=\bra{\brc{\begin{rmatrix}
     1\\
     2\\
     1\\
     6\\
     6
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     3\\
     -1\\
     2\\
     -1\\
     6
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     -1\\
     0\\
     -1\\
     -2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -3\\
     2\\
     -3\\
     6\\
     -10
-  \end{cmatrix}}}$$\s
+  \end{rmatrix}}}$$\s
 
   \ans Let $A$ be the matrix whose rows are vectors in the set of $X$,
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 2 & 1 & 6 & 6\\
     3 & -1 & 2 & -1 & 6\\
     1 & -1 & 0 & -1 & -2\\
     -3 & 2 & -3 & 6 & -10
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   By row-reducing the matrix $A$,
 
-  $$B=\begin{cmatrix}
+  $$B=\begin{rmatrix}
     1 & 0 & 0 & 2 & -1\\
     0 & 1 & 0 & 3 & 1\\
     0 & 0 & 1 & -2 & 5\\
     0 & 0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   By \rthm[\sctd{1}], $X$ can be improved to nonzero columns of $B^{t}$, which is
 
-  $$X=R(A)=R(B)=\bra{\brc{\begin{cmatrix}
+  $$X=R(A)=R(B)=\bra{\brc{\begin{rmatrix}
     1\\
     0\\
     0\\
     2\\
     -1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     1\\
     0\\
     3\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     0\\
     1\\
     -2\\
     5
-  \end{cmatrix}}}$$
+  \end{rmatrix}}}$$
 \end{exm}\n
 
 \begin{exm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 4 & 0 & 1 & 0 & 7 & -9\\
     2 & 8 & -1 & 3 & 9 & -13 & 7\\
     0 & 0 & 2 & -3 & -4 & 12 & -8\\
     -1 & -4 & 2 & 4 & 8 & -31 & 37
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and
 
-  $$\mathbf{b}=\begin{cmatrix}
+  $$\mathbf{b}=\begin{rmatrix}
     3\\
     9\\
     1\\
     4
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Find out whether $\mathbf{b}$ is in column space of $A$ or not.\n
 
   \ans Using \rpst[\sctd{5}], by row-reducing the transpose matrix of $A$,
 
-  $$B^{t}=\begin{cmatrix}
+  $$B^{t}=\begin{rmatrix}
     1 & 0 & 0 & -\frac{31}{7}\\
     0 & 1 & 0 & \frac{12}{7}\\
     0 & 0 & 1 & \frac{13}{7}\\
@@ -2262,26 +2262,26 @@ One of the applications of row spaces is to improve a span, even the vectors giv
     0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and hence the column space of $A$
 
-  $$C(A)=R(B^{t})=\bra{\brc{\begin{cmatrix}
+  $$C(A)=R(B^{t})=\bra{\brc{\begin{rmatrix}
     1\\
     0\\
     0\\
     -\frac{31}{7}
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     1\\
     0\\
     \frac{12}{7}
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     0\\
     1\\
     \frac{13}{7}
-  \end{cmatrix}}}$$\s
+  \end{rmatrix}}}$$\s
 
   by \rthm[\sctd{2}]. Finally, in order to check whether $\mathbf{b}$ is in column space of $A$, simply check whether both sides of the substituted equation are equal or not. It turns out that
 
@@ -2303,19 +2303,19 @@ One of the applications of row spaces is to improve a span, even the vectors giv
 Note that bases of a vector space is not unique. For example, if $V=\R^{2}$, then
 \pagebreak
 
-$$\brc{\begin{cmatrix}
+$$\brc{\begin{rmatrix}
   1\\
   0
-\end{cmatrix},\begin{cmatrix}
+\end{rmatrix},\begin{rmatrix}
   0\\
   1
-\end{cmatrix}}\text{ and }\brc{\begin{cmatrix}
+\end{rmatrix}}\text{ and }\brc{\begin{rmatrix}
   1\\
   0
-\end{cmatrix},\begin{cmatrix}
+\end{rmatrix},\begin{rmatrix}
   1\\
   1
-\end{cmatrix}}$$\s
+\end{rmatrix}}$$\s
 
 are some possible bases for $V$.\n
 
@@ -2332,76 +2332,76 @@ Below is an example demonstrating the methods:\n
 \begin{exm}
   Find a basis for
 
-  $$S=\bra{\brc{\begin{cmatrix}
+  $$S=\bra{\brc{\begin{rmatrix}
     1\\
     2\\
     0\\
     -1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     4\\
     8\\
     0\\
     -4
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     -1\\
     2\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -1\\
     3\\
     -3\\
     4
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     9\\
     -4\\
     8
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     7\\
     -13\\
     12\\
     -31
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -9\\
     7\\
     -8\\
     37
-  \end{cmatrix}}}$$\s
+  \end{rmatrix}}}$$\s
 
   \ans\prt[a]{zb} Row-reducing the corresponding matrix gives
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 4 & 0 & 0 & 2 & 1 & -3\\
     0 & 0 & 1 & 0 & 1 & -3 & 5\\
     0 & 0 & 0 & 1 & 2 & -6 & 6\\
     0 & 0 & 0 & 0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore
   
-  $$\brc{\begin{cmatrix}
+  $$\brc{\begin{rmatrix}
     1\\
     2\\
     0\\
     -1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     -1\\
     2\\
     2
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -1\\
     3\\
     -3\\
     4
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   is a basis for $S$.\n
 
   \prtc[b]{zb} Row-reducing the corresponding transpose matrix gives
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & 0 & -\frac{31}{7}\\
     0 & 1 & 0 & \frac{12}{7}\\
     0 & 0 & 1 & \frac{13}{7}\\
@@ -2409,26 +2409,26 @@ Below is an example demonstrating the methods:\n
     0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0\\
     0 & 0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore
   
-  $$\brc{\begin{cmatrix}
+  $$\brc{\begin{rmatrix}
     1\\
     0\\
     0\\
     -\frac{31}{7}
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     1\\
     0\\
     \frac{12}{7}
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     0\\
     1\\
     \frac{13}{7}
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   is a basis for $S$.
 \end{exm}\n
@@ -2445,11 +2445,11 @@ Below is an example demonstrating the methods:\n
 \begin{exm}
   Since
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     2 & 2 & 3\\
     -1 & 6 & -4\\
     8 & 0 & 1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   is nonsingular, the set of columns of $A$ is a basis for $\R^{3}$.
 \end{exm}
@@ -2530,29 +2530,29 @@ There are a lot of types of linear transformations, so the left multiplication i
 \begin{exm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     0 & 1 & -1\\
     -1 & 0 & 1\\
     1 & -1 & 0\\
     1 & 1 & 1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and
 
-  $$\mathbf{v}=\begin{cmatrix}
+  $$\mathbf{v}=\begin{rmatrix}
     x\\
     y\\
     z
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   then the left multiplying map $L_{A}$ is from $\R^{3}$ to $\R^{4}$, where
 
-  $$L_{A}(\mathbf{v})=\begin{cmatrix}
+  $$L_{A}(\mathbf{v})=\begin{rmatrix}
     y-z\\
     z-x\\
     x-y\\
     x+y+z
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}\n
 
 Note that left multiplication has the following properties:\n
@@ -2585,10 +2585,10 @@ In this section some linear transformations will be performed to a point in the 
 \begin{exm}
   Denote a point $(x,y)$ as
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     x\\
     y
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   below are some types of linear transformations:
 
@@ -2596,33 +2596,33 @@ In this section some linear transformations will be performed to a point in the 
     \item \textbf{Rotation}\\
     In order to rotate a point by $\theta$ in anticlockwise direction, the transformation matrix is
 
-    $$A=\begin{cmatrix}
+    $$A=\begin{rmatrix}
       \cos(\theta) & -\sin(\theta)\\
       \sin(\theta) & \cos(\theta)
-    \end{cmatrix}$$
+    \end{rmatrix}$$
 
     \item \textbf{Reflection}\\
     In order to reflect a point through the $x$-axis, the transformation matrix is
 
-    $$A=\begin{cmatrix}
+    $$A=\begin{rmatrix}
       1 & 0\\
       0 & -1
-    \end{cmatrix}$$\s
+    \end{rmatrix}$$\s
 
     Similarly, to reflect a point through the $y$-axis, the transformation matrix is
 
-    $$A=\begin{cmatrix}
+    $$A=\begin{rmatrix}
       -1 & 0\\
       0 & 1
-    \end{cmatrix}$$
+    \end{rmatrix}$$
 
     \item \textbf{Stretching}\\
     In order to stretch $x$-axis by a factor of $p$ and $y$-axis by a factor of $q$, the transformation matrix is
 
-    $$A=\begin{cmatrix}
+    $$A=\begin{rmatrix}
       p & 0\\
       0 & q
-    \end{cmatrix}$$
+    \end{rmatrix}$$
   \end{alist}
 \end{exm}
 
@@ -2640,12 +2640,12 @@ With the theorem above, the following definition can be introduced:\n
 \begin{dft}
   Let $V$ be a vector space, $B=\brc{\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}}$ be a basis for $V$ and $\mathbf{v}\in V$, then the coordinate vector of $\mathbf{v}$ relative to the basis $B$ is defined as
 
-  $$\rho_{B}(\mathbf{v})=\begin{cmatrix}
+  $$\rho_{B}(\mathbf{v})=\begin{rmatrix}
     \alpha_{1}\\
     \alpha_{2}\\
     \vdots\\
     \alpha_{n}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   where
   
@@ -2655,67 +2655,67 @@ With the theorem above, the following definition can be introduced:\n
 \begin{exm}
   Let
   
-  $$B=\brc{\begin{cmatrix}
+  $$B=\brc{\begin{rmatrix}
     1\\
     1\\
     0
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     1\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     2\\
     3
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   be a basis for $\R^{3}$, find
 
-  $$\rho_{B}\brr{\begin{cmatrix}
+  $$\rho_{B}\brr{\begin{rmatrix}
     3\\
     4\\
     3
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   \ans By solving a system of linear equations,
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     3\\
     4\\
     3
-  \end{cmatrix}=2\begin{cmatrix}
+  \end{rmatrix}=2\begin{rmatrix}
     1\\
     1\\
     0
-  \end{cmatrix}+\begin{cmatrix}
+  \end{rmatrix}+\begin{rmatrix}
     1\\
     2\\
     3
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   therefore
 
-  $$\rho_{B}\brr{\begin{cmatrix}
+  $$\rho_{B}\brr{\begin{rmatrix}
     3\\
     4\\
     3
-  \end{cmatrix}}=\begin{cmatrix}
+  \end{rmatrix}}=\begin{rmatrix}
     2\\
     0\\
     1
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}
 
 \subsubsection{Change of Basis}
 \begin{dft}
   Let $V$ be a vector space and $B=\brc{\mathbf{u}_{1},\mathbf{u}_{2},\cdots,\mathbf{u}_{n}},B'=\brc{\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}}$ be bases for $V$, then the matrix of \textbf{change of basis} from $B$ to $B'$ is defined as
 
-  $$C_{B,B'}=\begin{cmatrix}
+  $$C_{B,B'}=\begin{rmatrix}
     a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
     a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
     \vdots & \vdots & \ddots & \vdots\\
     a_{n,1} & a_{n,2} & \cdots & a_{n,n}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   where
 
@@ -2731,53 +2731,53 @@ With the theorem above, the following definition can be introduced:\n
 \begin{exm}
   Using the assumption in \rexm[\sctd{3}], and further let
 
-  $$B'=\brc{\begin{cmatrix}
+  $$B'=\brc{\begin{rmatrix}
     0\\
     0\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     0\\
     1
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     1\\
     -1
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
-  Find $\rho_{B'}\brr{\begin{cmatrix}
+  Find $\rho_{B'}\brr{\begin{rmatrix}
     3\\
     4\\
     3
-  \end{cmatrix}}$ by change of basis.\n
+  \end{rmatrix}}$ by change of basis.\n
 
   \ans Note that
 
-  $$C_{B,B'}=\begin{cmatrix}
+  $$C_{B,B'}=\begin{rmatrix}
     1 & 2 & 6\\
     0 & 0 & -1\\
     1 & 1 & 2
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   therefore
 
-  $$\rho_{B'}\brr{\begin{cmatrix}
+  $$\rho_{B'}\brr{\begin{rmatrix}
     3\\
     4\\
     3
-  \end{cmatrix}}=\begin{cmatrix}
+  \end{rmatrix}}=\begin{rmatrix}
     1 & 2 & 6\\
     0 & 0 & -1\\
     1 & 1 & 2
-  \end{cmatrix}\begin{cmatrix}
+  \end{rmatrix}\begin{rmatrix}
     2\\
     0\\
     1
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     8\\
     -1\\
     4
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}
 
 \pagebreak
@@ -2797,23 +2797,23 @@ In the above cases, $\frac{1}{2}$ is said to be the \textbf{multiplicative inver
 \begin{exm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & -1 & 2\\
     2 & 1 & 1\\
     1 & 1 & 0
-  \end{cmatrix},\mathbf{b}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{b}=\begin{rmatrix}
     1\\
     3\\
     2
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   By row-reducing the augmented matrix,
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & 1 & 0\\
     0 & 1 & -1 & 0\\
     0 & 0 & 0 & 1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   shows that the inverse of $A$ does not exist to solve the linear system $LS(A,\mathbf{b})$. Therefore, $A$ is not invertible.
 \end{exm}\n
@@ -2821,15 +2821,15 @@ In the above cases, $\frac{1}{2}$ is said to be the \textbf{multiplicative inver
 \begin{exm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 1 & 1\\
     1 & 0 & -1\\
     0 & 1 & 1
-  \end{cmatrix},B=\begin{cmatrix}
+  \end{rmatrix},B=\begin{rmatrix}
     1 & 0 & -1\\
     -1 & 1 & 2\\
     1 & -1 & -1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Since $AB=BA=I_{3}$, $B$ is the inverse of $A$.
 \end{exm}
@@ -2840,36 +2840,36 @@ For simplicity, matrix inverse for square matrix of size $2$ will be considered 
 \begin{thm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     a & b\\
     c & d
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   be a square matrix of size $2$, then $A$ is invertible if and only if $ad-bc\neq 0$. When $A$ is invertible, its inverse
 
-  $$A^{-1}=\frac{1}{ad-bc}\begin{cmatrix}
+  $$A^{-1}=\frac{1}{ad-bc}\begin{rmatrix}
     d & -b\\
     -c & a
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{thm}\n
 
 \begin{exm}
   Find the inverse of
   
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 2\\
     -2 & 4\\
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans Since $ad-bc=8\neq 0$, $A$ has an inverse. By \rthm[\sctd{1}],
 
-  $$A^{-1}=\frac{1}{8}\begin{cmatrix}
+  $$A^{-1}=\frac{1}{8}\begin{rmatrix}
     4 & -2\\
     2 & 1
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     \frac{1}{2} & -\frac{1}{4}\\
     \frac{1}{4} & \frac{1}{8}
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}\n
 
 For square matrices of larger sizes, an equation cannot simply describe their inverses, so the following method is introduced:
@@ -2881,35 +2881,35 @@ For square matrices of larger sizes, an equation cannot simply describe their in
 \begin{exm}
   Find the inverse of
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     -7 & -6 & -12\\
     5 & 5 & 7\\
     1 & 0 & 4
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   The augmented matrix for finding the inverse according to \rthm[\sctd{1}] is
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     -7 & -6 & -12 & 1 & 0 & 0\\
     5 & 5 & 7 & 0 & 1 & 0\\
     1 & 0 & 4 & 0 & 0 & 1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Row-reduce the augmented matrix gives
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 0 & 0 & -10 & -12 & -9\\
     0 & 1 & 0 & \frac{13}{2} & 8 & \frac{11}{2}\\
     0 & 0 & 1 & \frac{5}{2} & 3 & \frac{5}{2}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore
 
-  $$A^{-1}=\begin{cmatrix}
+  $$A^{-1}=\begin{rmatrix}
     -10 & -12 & -9\\
     \frac{13}{2} & 8 & \frac{11}{2}\\
     \frac{5}{2} & 3 & \frac{5}{2}
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}\n
 
 Note that the left side of the augmented matrix in reduced row-echelon form should be an identity matrix. If it is impossible to make an identity matrix with any row operations, the matrix is not invertible.
@@ -3008,61 +3008,61 @@ With the theorem above, if a matrix is found to be singular, it is a waste of ti
 
   \ans Let $A$ be the coefficient matrix
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1 & 1 & -1 & 4\\
     1 & -1 & 2 & 3\\
     2 & 1 & 1 & 1\\
     2 & 2 & 2 & -9
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Its inverse is
 
-  $$A^{-1}=\begin{cmatrix}
+  $$A^{-1}=\begin{rmatrix}
     -33 & -22 & 45 & -17\\
     35 & 23 & -47 & 18\\
     25 & 17 & -34 & 13\\
     6 & 4 & -8 & 3
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   and by \rthm[\sctd{1}], the solution is
 
-  $$A^{-1}\begin{cmatrix}
+  $$A^{-1}\begin{rmatrix}
     1\\
     2\\
     0\\
     -1
-  \end{cmatrix}=\begin{cmatrix}
+  \end{rmatrix}=\begin{rmatrix}
     -60\\
     63\\
     46\\
     11
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}
 
 \subsection{Matrix Determinants}
 \subsubsection{Definition of Determinant}
 \begin{dft}
-  Let $A$ be an $m\times n$ matrix, then the sucmatrix $A(i\!\mid\!j)$ is the $(m-1)\times(n-1)$ matrix which equals to $A$ without row $i$ and column $j$.
+  Let $A$ be an $m\times n$ matrix, then the surmatrix $A(i\!\mid\!j)$ is the $(m-1)\times(n-1)$ matrix which equals to $A$ without row $i$ and column $j$.
 \end{dft}\n
 
 \begin{exm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 2 & 3 & 4\\
     5 & 6 & 7 & 8\\
     9 & 10 & 11 & 12
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   then
 
-  $$A(1\!\mid\!2)=\begin{cmatrix}
+  $$A(1\!\mid\!2)=\begin{rmatrix}
     5 & 7 & 8\\
     9 & 11 & 12
-  \end{cmatrix},A(2\!\mid\!1)=\begin{cmatrix}
+  \end{rmatrix},A(2\!\mid\!1)=\begin{rmatrix}
     2 & 3 & 4\\
     10 & 11 & 12
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}\n
 
 With the definition of submatrices, determinant can be defined in a recursive way:\n
@@ -3081,10 +3081,10 @@ With the definition of submatrices, determinant can be defined in a recursive wa
 \begin{thm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     a & b\\
     c & d
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   be a square matrix of size $2$, then
   
@@ -3101,11 +3101,11 @@ With the definition of submatrices, determinant can be defined in a recursive wa
 \begin{thm}
   Let
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     a & b & c\\
     d & e & f\\
     g & h & i
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   be a square matrix of size $3$, then
   
@@ -3196,11 +3196,11 @@ In fact, using the method or row reduction is efficient to find the determinant 
 \begin{exm}
   Compute the determinant of
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     2 & 2a & 2a^{2}\\
     2 & 2b & 2b^{2}\\
     2 & 2c & 2c^{2}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans Note that
 
@@ -3240,44 +3240,44 @@ In fact, using the method or row reduction is efficient to find the determinant 
 \begin{exm}
   Find the eigenvectors with their eigenvalues of
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     3 & 1\\
     0 & 2
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans The eigenvectors are
 
-  $$\begin{cmatrix}
+  $$\begin{rmatrix}
     1\\
     0
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     1\\
     -1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   with eigenvalues $3$ and $2$ respectively, which satisfies
 
   $$\begin{aligned}[t]
-    \begin{cmatrix}
+    \begin{rmatrix}
       3 & 1\\
       0 & 2
-    \end{cmatrix}\begin{cmatrix}
+    \end{rmatrix}\begin{rmatrix}
       1\\
       0
-    \end{cmatrix}&=3\begin{cmatrix}
+    \end{rmatrix}&=3\begin{rmatrix}
       1\\
       0
-    \end{cmatrix}\\
-    \begin{cmatrix}
+    \end{rmatrix}\\
+    \begin{rmatrix}
       3 & 1\\
       0 & 2
-    \end{cmatrix}\begin{cmatrix}
+    \end{rmatrix}\begin{rmatrix}
       1\\
       -1
-    \end{cmatrix}&=2\begin{cmatrix}
+    \end{rmatrix}&=2\begin{rmatrix}
       1\\
       -1
-    \end{cmatrix}
+    \end{rmatrix}
   \end{aligned}$$
 \end{exm}\n
 
@@ -3307,11 +3307,11 @@ In particular, the matrix $A-\lambda I$ is necessarily singular, hence $\det(A-\
 \begin{exm}
   Find the eigenvalues of
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     -13 & -8 & -4\\
     12 & 7 & 4\\
     24 & 16 & 7
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans The characteristic polynomial
 
@@ -3346,64 +3346,64 @@ However, for simplicity, usually only one eigenvector is picked (and counted) fr
 \begin{exm}
   Find the eigenvectors of
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     -13 & -8 & -4\\
     12 & 7 & 4\\
     24 & 16 & 7
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans From \rexm[\sctd{3}], the eigenvalues are $\lambda=3$ and $\lambda=-1$. When $\lambda=3$,
 
-  $$A-3I=\begin{cmatrix}
+  $$A-3I=\begin{rmatrix}
     -16 & -8 & -4\\
     12 & 4 & 4\\
     24 & 16 & 4
-  \end{cmatrix}\xrightarrow[ ]{\text{RREF}}\begin{cmatrix}
+  \end{rmatrix}\xrightarrow[ ]{\text{RREF}}\begin{rmatrix}
     1 & 0 & \frac{1}{2}\\
     0 & 1 & -\frac{1}{2}\\
     0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore
 
-  $$\varepsilon_{A}(3)=\bra{\begin{cmatrix}
+  $$\varepsilon_{A}(3)=\bra{\begin{rmatrix}
     -1\\
     1\\
     2
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   Similarly, when $\lambda=-1$,
 
-  $$A+I=\begin{cmatrix}
+  $$A+I=\begin{rmatrix}
     -12 & -8 & -4\\
     12 & 8 & 4\\
     24 & 16 & 8
-  \end{cmatrix}\xrightarrow[ ]{\text{RREF}}\begin{cmatrix}
+  \end{rmatrix}\xrightarrow[ ]{\text{RREF}}\begin{rmatrix}
     1 & \frac{2}{3} & \frac{1}{3}\\
     0 & 0 & 0\\
     0 & 0 & 0
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Therefore
 
-  $$\varepsilon_{A}(-1)=\bra{\begin{cmatrix}
+  $$\varepsilon_{A}(-1)=\bra{\begin{rmatrix}
     -2\\
     3\\
     0
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     -1\\
     0\\
     3
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 \end{exm}\n
 
 \begin{exm}
   Consider the identity matrix of size $2$
 
-  $$I=\begin{cmatrix}
+  $$I=\begin{rmatrix}
     1 & 0\\
     0 & 1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   its characteristic polynomial $p_{I}(x)=1$. Notice that for any $\mathbf{x}\in\R^{2}$,
 
@@ -3438,13 +3438,13 @@ However, for simplicity, usually only one eigenvector is picked (and counted) fr
 
 Note that $A$ and $B$ may not be similar if their characteristic polynomial are the same. For example,
 
-$$A=\begin{cmatrix}
+$$A=\begin{rmatrix}
   1 & 1\\
   0 & 1
-\end{cmatrix},B=\begin{cmatrix}
+\end{rmatrix},B=\begin{rmatrix}
   1 & 0\\
   0 & 1
-\end{cmatrix}$$\s
+\end{rmatrix}$$\s
 
 shares the same characteristic polynomial, but
 
@@ -3457,12 +3457,12 @@ shows that $A$ and $B$ are not similar.
 \begin{dft}
   Let $A$ be a square matrix of size $n$, then $A$ is a \textbf{diagonal matrix} if $[A]_{i,j}=0$ if $i\neq j$. In other words,
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     \lambda_{1} & 0 & \cdots & 0\\
     0 & \lambda_{2} & \cdots & 0\\
     \vdots & \vdots & \ddots & \vdots\\
     0 & 0 & \cdots & \lambda_{n}
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   is a diagonal matrix, denoted by $\mathrm{diag}(\lambda_{1},\lambda_{2},\cdots,\lambda_{n})$.
 \end{dft}\n
@@ -3486,45 +3486,45 @@ shows that $A$ and $B$ are not similar.
 \begin{exm}
   Diagonalize
 
-  $$A=\begin{cmatrix}
+  $$A=\begin{rmatrix}
     1 & 0 & 1 & 1\\
     0 & 1 & 1 & 1\\
     1 & 1 & 1 & 0\\
     1 & 1 & 0 & 1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans Note that the eigenvalues are $\lambda=-1$, $\lambda=1$ and $\lambda=3$. Their bases are
   
-  $$\brc{\begin{cmatrix}
+  $$\brc{\begin{rmatrix}
     -1\\
     -1\\
     1\\
     1
-  \end{cmatrix}},\brc{\begin{cmatrix}
+  \end{rmatrix}},\brc{\begin{rmatrix}
     -1\\
     1\\
     0\\
     0
-  \end{cmatrix},\begin{cmatrix}
+  \end{rmatrix},\begin{rmatrix}
     0\\
     0\\
     -1\\
     1
-  \end{cmatrix}},\brc{\begin{cmatrix}
+  \end{rmatrix}},\brc{\begin{rmatrix}
     1\\
     1\\
     1\\
     1
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   Therefore
 
-  $$S=\begin{cmatrix}
+  $$S=\begin{rmatrix}
     -1 & -1 & 0 & 1\\
     -1 & 1 & 0 & 1\\
     1 & 0 & -1 & 1\\
     1 & 0 & 1 & 1\\
-  \end{cmatrix},D=\mathrm{diag}(-1,1,1,3)$$\s
+  \end{rmatrix},D=\mathrm{diag}(-1,1,1,3)$$\s
 \end{exm}
 
 \subsubsection{Powers of Matrices}
@@ -3552,13 +3552,13 @@ shows that $A$ and $B$ are not similar.
 \begin{exm}
   Let
 
-  $$\mathbf{u}=\begin{cmatrix}
+  $$\mathbf{u}=\begin{rmatrix}
     1\\
     2
-  \end{cmatrix},\mathbf{v}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{v}=\begin{rmatrix}
     3\\
     4
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   then their inner product is
 
@@ -3635,19 +3635,19 @@ Note that any nonzero vector can be transformed to a unit vector by scaling the 
 \begin{exm}
   Normalize
 
-  $$\mathbf{v}=\begin{cmatrix}
+  $$\mathbf{v}=\begin{rmatrix}
     -2\\
     1\\
     2
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   \ans Note that $\nrm{\mathbf{v}}=3$, therefore the unit vector is
 
-  $$\frac{\mathbf{v}}{\nrm{\mathbf{v}}}=\begin{cmatrix}
+  $$\frac{\mathbf{v}}{\nrm{\mathbf{v}}}=\begin{rmatrix}
     -\frac{2}{3}\\
     \frac{1}{3}\\
     \frac{2}{3}
-  \end{cmatrix}$$
+  \end{rmatrix}$$
 \end{exm}
 
 \subsubsection{Orthogonal Sets}
@@ -3658,15 +3658,15 @@ Note that any nonzero vector can be transformed to a unit vector by scaling the 
 \begin{exm}
   Let
 
-  $$\mathbf{u}=\begin{cmatrix}
+  $$\mathbf{u}=\begin{rmatrix}
     1\\
     2\\
     3
-  \end{cmatrix},\mathbf{v}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{v}=\begin{rmatrix}
     -1\\
     -1\\
     1
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Since $\bra{\mathbf{u},\mathbf{v}}=1(-1)+2(-1)+3(1)=0$, $\mathbf{u}$ and $\mathbf{v}$ are perpendicular.
 \end{exm}\n
@@ -3690,27 +3690,27 @@ The technique in the theorem above is called \textbf{projection} of matrix, and 
 \begin{exm}
   Let
 
-  $$S=\brc{\mathbf{v}_{1}=\begin{cmatrix}
+  $$S=\brc{\mathbf{v}_{1}=\begin{rmatrix}
     1\\
     1\\
     1
-  \end{cmatrix},\mathbf{v}_{2}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{v}_{2}=\begin{rmatrix}
     1\\
     -1\\
     0
-  \end{cmatrix},\mathbf{v}_{3}=\begin{cmatrix}
+  \end{rmatrix},\mathbf{v}_{3}=\begin{rmatrix}
     1\\
     1\\
     -2
-  \end{cmatrix}}$$\s
+  \end{rmatrix}}$$\s
 
   be the orthogonal subset of $\R^{3}$, and
 
-  $$\mathbf{u}=\begin{cmatrix}
+  $$\mathbf{u}=\begin{rmatrix}
     1\\
     2\\
     3
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   Express $\mathbf{u}$ in terms of vectors in $S$.\n
 

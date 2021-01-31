@@ -1475,10 +1475,10 @@ Below are some examples about the Inverse Function Theorem:\n
 \begin{exm}
   Let $F:(0,\infty),(-\infty,\infty)\to\R^{2}$ such that $F(r,\theta)=(r\cos(\theta),r\sin(\theta))$, then
   
-  $$DF=\begin{cmatrix}
+  $$DF=\begin{rmatrix}
     \cos(\theta) & -r\sin(\theta)\\
     \sin(\theta) & r\cos(\theta)
-  \end{cmatrix}$$\s
+  \end{rmatrix}$$\s
 
   is invertible for all $(r,\theta)$. By the Inverse Function Theorem, $F$ is locally invertible at every point $(r,\theta)\in(0,\infty)\times(-\infty,\infty)$. However, $F$ is not globally invertible as $F(r,\theta+2\pi)=F(r,\theta)$ implies it is not injective.
 \end{exm}\n
@@ -1506,21 +1506,21 @@ A theorem similar to Inverse Function Theorem is the \textbf{Implicit Function T
 
 Note that if
 
-$$F=\begin{cmatrix}
+$$F=\begin{rmatrix}
   F_{1}(x_{1},\cdots,x_{n},y_{1},\cdots,y_{m})\\
   \vdots\\
   F_{m}(x_{1},\cdots,x_{n},y_{1},\cdots,y_{m})
-\end{cmatrix}$$\s
+\end{rmatrix}$$\s
 
 then
 
-$$D_{y}F=\begin{cmatrix}
+$$D_{y}F=\begin{rmatrix}
   \partial F_{1}/\partial y_{1} & \cdots & \partial F_{1}/\partial y_{m}\\
   \vdots & \ddots & \vdots\\
   \partial F_{m}/\partial y_{1} & \cdots & \partial F_{m}/\partial y_{m}
-\end{cmatrix}$$\s
+\end{rmatrix}$$\s
 
-is an $m\times m$ matrix and can be regarded as a linear transformation from $\R^{m}$ to $\R^{m}$. In general, for a map $F$ such that $DF(x_{0},y_{0})$ has rank $m$, then one can rearrange the independent variables to make the $m\times m$ sucmatrix corresponding to the last $m$ columns of the Jacobian matrix invertible, which is the situation in the theorem. Hence the condition $DF_{y}(x_{0},y_{0})$ is invertible in the Implicit Function Theorem can be generalized to $\mathrm{rank}DF(x_{0},y_{0})=m$.
+is an $m\times m$ matrix and can be regarded as a linear transformation from $\R^{m}$ to $\R^{m}$. In general, for a map $F$ such that $DF(x_{0},y_{0})$ has rank $m$, then one can rearrange the independent variables to make the $m\times m$ surmatrix corresponding to the last $m$ columns of the Jacobian matrix invertible, which is the situation in the theorem. Hence the condition $DF_{y}(x_{0},y_{0})$ is invertible in the Implicit Function Theorem can be generalized to $\mathrm{rank}DF(x_{0},y_{0})=m$.
 
 \subsection{Picard-Lindelof Theorem}
 \subsubsection{Initial Value Problems}
@@ -1667,21 +1667,21 @@ On the other hand, uniqueness of Picard-Lindelof Theorem holds regardless of the
 
   where
 
-  $$\mathbf{x}(t)=\begin{cmatrix}
+  $$\mathbf{x}(t)=\begin{rmatrix}
     x_{1}(t)\\
     \vdots\\
     x_{n}(t)
-  \end{cmatrix}\in[x_{1}-b,x_{1}+b]\times\cdots\times[x_{n}-b,x_{n}+b]$$\s
+  \end{rmatrix}\in[x_{1}-b,x_{1}+b]\times\cdots\times[x_{n}-b,x_{n}+b]$$\s
 
-  $$\mathbf{x}_{0}=\begin{cmatrix}
+  $$\mathbf{x}_{0}=\begin{rmatrix}
     x_{1}\\
     \vdots\\
     x_{n}
-  \end{cmatrix},\mathbf{f}(t,x)=\begin{cmatrix}
+  \end{rmatrix},\mathbf{f}(t,x)=\begin{rmatrix}
     f_{1}(t,x)\\
     \vdots\\
     f_{n}(t,x)
-  \end{cmatrix}\in C^{1}(R)$$\s
+  \end{rmatrix}\in C^{1}(R)$$\s
 
   with
 
@@ -1716,30 +1716,30 @@ $$\begin{cases}
 
 by letting
 
-$$\mathbf{x}=\begin{cmatrix}
+$$\mathbf{x}=\begin{rmatrix}
   x\\
   \diff x/\diff t\\
   \vdots\\
   \diff^{m-1}x/\diff t^{m-1}
-\end{cmatrix}$$\s
+\end{rmatrix}$$\s
 
 then
 
-$$\frac{\diff\mathbf{x}}{\diff t}=\begin{cmatrix}
+$$\frac{\diff\mathbf{x}}{\diff t}=\begin{rmatrix}
   \diff x/\diff t\\
   \diff^{2}x/\diff t^{2}\\
   \vdots\\
   \diff^{m}x/\diff t^{m}
-\end{cmatrix}=\mathbf{f}(t,\mathbf{x})$$\s
+\end{rmatrix}=\mathbf{f}(t,\mathbf{x})$$\s
 
 with
 
-$$\mathbf{x}(t_{0})=\begin{cmatrix}
+$$\mathbf{x}(t_{0})=\begin{rmatrix}
   x_{0}\\
   x_{1}\\
   \vdots\\
   x_{m-1}
-\end{cmatrix}$$
+\end{rmatrix}$$
 
 \pagebreak
 
