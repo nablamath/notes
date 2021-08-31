@@ -1,9 +1,9 @@
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ------------------------------------------------------------ %
 %
 % CUHK Mathematics
 % MATH3060: Mathematical Analysis III
 %
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ------------------------------------------------------------ %
 
 \documentclass[a4paper,12pt]{article}
 \usepackage{standalone}
@@ -64,11 +64,11 @@ hence it can be assumed that $b_{0}=0$.\n
 
   with Fourier coefficients of $f$
 
-  $$\begin{cases}
-    a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(y)\diff y\\
-    a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(y)\cos(ny)\diff y\\
-    b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(y)\sin(ny)\diff y
-  \end{cases}$$
+  $$a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(y)\diff y$$\s
+
+  $$a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(y)\cos(ny)\diff y$$\s
+
+  $$b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}f(y)\sin(ny)\diff y$$\s
 \end{dft}\n
 
 Note that $a_{0}$ is actually the average of $f$ over $[-\pi,\pi]$. Fourier series depends on the global information of $f$ on $[-\pi,\pi]$ instead of a point in $f$. Fourier series also depends only on $f\!\mid\!_{(-\pi,\pi)}$, which means the end points of the closed interval are independent.\n
@@ -167,9 +167,9 @@ $$\begin{aligned}[t]
 which will deduce
 
 $$c_{n}=\begin{cases}
-  \frac{1}{2}(a_{n}-ib_{n})&\erm{if }n\geq 1\\
+  (a_{n}-ib_{n})/2&\erm{if }n\geq 1\\
   0&\erm{if }n=0\\
-  \frac{1}{2}(a_{-n}+ib_{-n})&\erm{if }n\leq -1
+  (a_{-n}+ib_{-n})/2&\erm{if }n\leq -1
 \end{cases}$$\s
 
 \begin{pst}
@@ -257,29 +257,29 @@ Note that the Fourier series may not be the same as the original function, espec
 \end{exm}
 
 \subsubsection{Fourier Series of Unusual Periodic Functions}
-Let $f$ be a $2T$-periodic function. Note that $g(x)=f(\frac{T}{\pi}x)$ is a $2\pi$-periodic function, then
+Let $f$ be a $2T$-periodic function. Note that $g(x)=f(Tx/\pi)$ is a $2\pi$-periodic function, then
 
 $$g(x)\sim a_{0}+\sum_{n=1}^{\infty}(a_{n}\cos(nx)+b_{n}\sin(nx))$$\s
 
 with
 
-$$\begin{cases}
-  a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}g(x)\diff x\\
-  a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\cos(nx)\diff x\\
-  b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\sin(nx)\diff x
-\end{cases}$$\s
+$$a_{0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}g(x)\diff x$$\s
 
-along with the substitution $y=\frac{T}{\pi}x$ implies
+$$a_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\cos(nx)\diff x$$\s
+
+$$b_{n}=\frac{1}{\pi}\int_{-\pi}^{\pi}g(x)\sin(nx)\diff x$$\s
+
+along with the substitution $y=Tx/\pi$ implies
 
 $$f(y)\sim a_{0}+\sum_{n=1}^{\infty}\brr{a_{n}\cos\brr{\frac{n\pi}{T}y}+b_{n}\sin\brr{\frac{n\pi}{T}y}}$$\s
 
 with
 
-$$\begin{cases}
-  a_{0}=\frac{1}{2T}\int_{-T}^{T}f(y)\diff y\\
-  a_{n}=\frac{1}{T}\int_{-T}^{T}f(y)\cos\brr{\frac{n\pi}{T}y}\diff y\\
-  b_{n}=\frac{1}{T}\int_{-T}^{T}f(y)\sin\brr{\frac{n\pi}{T}y}\diff y
-\end{cases}$$\s
+$$a_{0}=\frac{1}{2T}\int_{-T}^{T}f(y)\diff y$$\s
+
+$$a_{n}=\frac{1}{T}\int_{-T}^{T}f(y)\cos\brr{\frac{n\pi}{T}y}\diff y$$\s
+
+$$b_{n}=\frac{1}{T}\int_{-T}^{T}f(y)\sin\brr{\frac{n\pi}{T}y}\diff y$$\s
 
 Such Fourier series is called Fourier series of $2T$-periodic function $f$.
 
@@ -351,7 +351,7 @@ With the propositions above, the \textbf{Riemann-Lebesgue Lemma} can be introduc
 
   $$\abs{a_{n}(s)}<\frac{\epsilon}{2}$$\s
 
-  for all $n\geq n_{0}$. For instance, $n_{0}=[\frac{2C}{\epsilon}]+1$ with the constant $C$ in \rpst[\sctd{2}]. Note that
+  for all $n\geq n_{0}$. For instance, $n_{0}=[2C/\epsilon]+1$ with the constant $C$ in \rpst[\sctd{2}]. Note that
 
   $$\begin{aligned}[t]
     \abs{a_{n}(f)-a_{n}(s)}&=\frac{1}{\pi}\abs{\int_{-\pi}^{\pi}(f-s)(x)\cos(nx)\diff x}\\
@@ -416,8 +416,8 @@ for all $x\in[a,b]$.
   The \textbf{Dirichlet kernel}, denoted by $D_{n}(z)$, is defined by
 
   $$D_{n}(z)=\begin{cases}
-    \frac{\sin(n+1/2)z}{2\pi\sin(1/2)z}\erm{if }z\neq 0\\
-    \frac{2n+1}{2\pi}\erm{if }z=0
+    (\sin((n+1/2)z))/(2\pi\sin(z/2))\erm{if }z\neq 0\\
+    (2n+1)/(2\pi)\erm{if }z=0
   \end{cases}$$
 \end{dft}\n
 
