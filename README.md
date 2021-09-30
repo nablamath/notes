@@ -3,25 +3,27 @@
 #### Required Courses
 | Course Code | Course Name |
 | --- | --- |
-| MATH1010 | University Mathematics (**[pdf](pdf/math1010.pdf)**, **[tex](tex/math1010.tex)**)
-| MATH1030 | Linear Algebra I (**[pdf](pdf/math1030.pdf)**, **[tex](tex/math1030.tex)**)
-| MATH1050 | Foundation of Modern Mathematics (in progress)
-| MATH2010 | Advanced Calculus I (in progress)
-| MATH2020 | Advanced Calculus II (in progress)
-| MATH2040 | Linear Algebra II (in progress)
-| MATH2050 | Mathematical Analysis I (in progress)
-| MATH2060 | Mathematical Analysis II (in progress)
-| MATH2070 | Algebraic Structures (**[pdf](pdf/math2070.pdf)**, **[tex](tex/math2070.tex)**)
-| MATH2230 | Complex Variables with Applications (in progress)
+| MATH1010 | University Mathematics (**[pdf](pdf/math1010.pdf)**, **[tex](tex/math1010.tex)**) |
+| MATH1030 | Linear Algebra I (**[pdf](pdf/math1030.pdf)**, **[tex](tex/math1030.tex)**) |
+| MATH1050 | Foundation of Modern Mathematics (in progress) |
+| MATH2010 | Advanced Calculus I (in progress) |
+| MATH2020 | Advanced Calculus II (in progress) |
+| MATH2040 | Linear Algebra II (in progress) |
+| MATH2050 | Mathematical Analysis I (in progress) |
+| MATH2060 | Mathematical Analysis II (in progress) |
+| MATH2070 | Algebraic Structures (**[pdf](pdf/math2070.pdf)**, **[tex](tex/math2070.tex)**) |
+| MATH2230 | Complex Variables with Applications (in progress) |
 #### Elective Courses
 | Course Code | Course Name |
 | --- | --- |
-| MATH3030 | Abstract Algebra (in progress)
-| MATH3060 | Mathematical Analysis III (**[pdf](pdf/math3060.pdf)**, **[tex](tex/math3060.tex)**)
-| MATH3230 | Numerical Analysis (in progress, prioritized)
-| MATH3240 | Numerical Methods for Differential Equations (in progress)
-| MATH3270 | Ordinary Differential Equations (in progress)
-| MATH4220 | Partial Differential Equations (in progress)
+| MATH3030 | Abstract Algebra (in progress) |
+| MATH3060 | Mathematical Analysis III (**[pdf](pdf/math3060.pdf)**, **[tex](tex/math3060.tex)**) |
+| MATH3080 | Number Theory (in progress) |
+| MATH3230 | Numerical Analysis (in progress, prioritized) |
+| MATH3240 | Numerical Methods for Differential Equations (in progress) |
+| MATH3270 | Ordinary Differential Equations (in progress) |
+| MATH3280 | Introductory Probability (in progress) |
+| MATH4220 | Partial Differential Equations (in progress) |
 
 Other MATH courses are not considered at the moment due to lack of course material or necessity of making notes
 
