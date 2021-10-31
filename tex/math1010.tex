@@ -1015,7 +1015,7 @@ Here the \textbf{product rule} and \textbf{quotient rule} is introduced:\n
   \prtc[b]{zr} Denote differentiable functions of $x$ as $p=f(x)$ and $q=g(x)$. Then
 
   $$\begin{aligned}[t]
-    \frac{\diff}{\diff x}\brr{\frac{p}{q}}&=\lim_{h\to 0}\frac{\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}}{h}\\
+    \frac{\diff}{\diff x}\brr{\frac{p}{q}}&=\lim_{h\to 0}\frac{f(x+h)/g(x+h)-f(x)/g(x)}{h}\\
     &=\lim_{h\to 0}\frac{f(x+h)g(x)-f(x)g(x+h)}{hg(x)g(x+h)}\\
     &=\lim_{h\to 0}\brr{\frac{f(x+h)g(x)-f(x)g(x)}{hg(x)g(x+h)}-\frac{f(x)g(x+h)-f(x)g(x)}{hg(x)g(x+h)}}\\
     &=\lim_{h\to 0}\brr{g(x)\brr{\frac{f(x+h)-f(x)}{hg(x)g(x+h)}}-f(x)\brr{\frac{g(x+h)-g(x)}{hg(x)g(x+h)}}}\\
@@ -1729,17 +1729,17 @@ Denote an integral with power constant $n$ as $I_{n}$. If it is possible to expr
 
 \subsubsection{Partial Fractions}
 \begin{dft}
-  Denote a rational function as $R(x)$, then the partial fraction decomposition of $R(x)$ is
+  Denote a rational function as $R(x)$, then the \textbf{partial fraction} decomposition of $R(x)$ is
 
   $$R(x)=q(x)+\sum\frac{A}{(x-\alpha)^{k}}+\sum\frac{B(x+\beta)}{((x-\beta)^{2}+\gamma^{2})^{k}}+\sum\frac{C}{((x-\beta)^{2}+\gamma^{2})^{k}}$$\s
 
   where $q(x)$ is a polynomial, $A,B,C,\alpha,\beta,\gamma$ are real numbers and $k$ is a positive integer.
 \end{dft}\n
 
-Sometimes rational functions are difficult to integrate explicitly, and finding the \textbf{partial fraction} of the function can make the integration process easier.\n
+Sometimes rational functions are difficult to integrate explicitly, and finding the partial fraction of the function can make the integration process easier.\n
 
 \begin{thm}
-  Let $R(x)=\frac{f(x)}{g(x)}$ be a rational function. Assume that the leading coefficient of $g(x)$ is $1$, then the following are true:
+  Let $R(x)=f(x)/g(x)$ be a rational function. Assume that the leading coefficient of $g(x)$ is $1$, then the following are true:
 
   \begin{alist}
     \item \textbf{Division Algorithm for Polynomials}\n
@@ -1759,7 +1759,7 @@ Sometimes rational functions are difficult to integrate explicitly, and finding 
 \end{thm}\n
 
 \begin{thm}
-  Suppose $\frac{f(x)}{g(x)}$ is a rational function such that the degree of $f(x)$ is smaller than that of $g(x)$ and $g(x)$ has only simple roots, which is
+  Suppose $f(x)/g(x)$ is a rational function such that the degree of $f(x)$ is smaller than that of $g(x)$ and $g(x)$ has only simple roots, which is
 
   $$g(x)=a(x-\alpha_{1})(x-\alpha_{2})\cdots(x-\alpha_{k})$$\s
 
