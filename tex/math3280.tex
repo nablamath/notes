@@ -1,0 +1,2517 @@
+% ------------------------------------------------------------ %
+%
+% CUHK Mathematics
+% MATH3280: Introductory Probability
+%
+% ------------------------------------------------------------ %
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{standalone}
+\input{sty/setup.sty}
+
+\begin{document}
+\title{MATH3280: Introductory Probability}
+\input{sty/cover.sty}
+
+\remark{}
+
+\input{sty/header.sty}
+
+\section{Axioms of Probability}
+\subsection{Introduction to Probability}
+\subsubsection{Definition of Probability}
+\begin{dft}
+  \textbf{Probability} is a study of random behaviours in mathematics.
+\end{dft}\n
+
+Probability has a history of more than $300$ years, which comes from gambling and games of chance.
+
+\subsubsection{Terminologies of Probability}
+Probability involves \textbf{random experiments} and \textbf{outcomes}.\n
+
+\begin{exm}
+  Below are examples of random experiments and their corresponding outcomes:
+  
+  \begin{alist}
+    \item Toss a coin once to obtain a head or a tail.
+    \item Roll a die once to see the number of the top face.
+    \item Randomly choose a student in the class and measure the height of the student.
+  \end{alist}
+\end{exm}\n
+
+\begin{dft}
+  \textbf{Sample space}, usually denoted by $S$, is the set of all possible outcomes of a random experiment.
+\end{dft}\n
+
+\begin{exm}
+  Below are examples of sample spaces of random experiments:
+
+  \begin{alist}
+    \item For tossing a coin once, the sample space $S=\brc{H,T}$ where $H$ represents head and $T$ represents tail.
+    \item For tossing a coin twice, the sample space $S=\brc{HH, HT, TH, TT}$.
+    \item For rolling a die $4$ times to record the numbers appearing in the top face, the sample space $S=\brc{(x_{1},x_{2},x_{3},x_{4})\srm x_{i}\in\brc{1,2,3,4,5,6},1\leq i\leq 4}$.
+    \item For the height of a random student in the campus (in meters), $S=\brc{0\leq x\leq\infty}$.
+  \end{alist}
+\end{exm}\n
+
+\begin{dft}
+  Let $S$ denote the sample space of a random experiment, then any subset $E$ of $S$ is called an \textbf{event} of the experiment.
+\end{dft}\n
+
+If the outcome of an experiment is contained in event $E$, then $E$ is said to be \textbf{occured}. Note that some special events always occurs or not occurs. For example, a \textbf{null event}, denoted by $\phi$, never occurs in any random experiment.
+
+\subsection{Probability Operations}
+\subsubsection{Basic Operations on Events}
+Below are some basic operations on events:\n
+
+\begin{pst}
+  Let $E$ and $F$ are events of a random experiment, then the following applies:
+
+  \begin{alist}
+    \item \textbf{Intersection} of $E$ and $F$, denoted by $E\cap F$.
+    \item \textbf{Union} of $E$ and $F$, denoted by $E\cup F$.
+    \item \textbf{Complement} of $E$, denoted by $E^{c}$.
+  \end{alist}
+\end{pst}\n
+
+In order to understand basic operations on events, \textbf{Venn diagram} is introduced. In Venn diagram, a rectangular region represents a sample space, while a (usually circular) region within the rectangular region represents an event.
+
+\subsubsection{Laws of Event Operations}
+There are three basic laws of event operations:\n
+
+\begin{pst}
+  The \textbf{Communtative Law} states that $E\cap F=F\cap E$ and $E\cup F=F\cup E$.
+\end{pst}\n
+
+\begin{pst}
+  The \textbf{Associative Law} states that $E\cup(F\cup G)=(E\cup F)\cup G$ and $E\cap(F\cap G)=(E\cap F)\cap G$.
+\end{pst}\n
+
+\begin{pst}
+  The \textbf{Distributive Law} states that $E\cap(F\cup G)=(E\cap F)\cup(E\cup G)$ and $E\cup(F\cap G)=(E\cup F)\cap(E\cup G)$.
+\end{pst}\n
+
+Besides the three basic laws, another common law is the \textbf{De Morgan's Laws}.\n
+
+\begin{thm}
+  De Morgan's Laws state that
+
+  $$\brr{\bigcup_{n=1}^{\infty}E_{n}}^{c}=\bigcap_{n=1}^{\infty}E_{n}^{c}$$\s
+
+  $$\brr{\bigcap_{n=1}^{\infty}E_{n}}^{c}=\bigcup_{n=1}^{\infty}E_{n}^{c}$$\s
+
+  \prf Note that
+
+  $$\begin{aligned}[t]
+    x\in{\bigcup_{n=1}^{\infty}E_{n}}^{c}&\Leftrightarrow x\in S,x\not\in\bigcup_{n=1}^{\infty}E_{n}\\
+    &\Leftrightarrow x\in S, x\in E_{n}\text{ for all }n\\
+    &\Leftrightarrow x\in S\setminus E_{n}\text{ for all }n\\
+    &\Leftrightarrow x\in \bigcap_{n=1}^{\infty}E_{n}^{c}
+  \end{aligned}$$\s
+
+  The other law can be proved by using the same technique.
+\end{thm}
+
+\subsection{Axioms and Properties of Probability}
+\subsubsection{Axiomatic Approach to Probability}
+It is an important question knowing how to define the probability of an event, or how likely an event will happen in an experiment. An inituitive approach in define the probability is to repeat the experiment $n$ times, so if the experiment is done for numerous times and $n(E)$ is number of times that an event $E$ has occured, then the probability of $E$
+
+$$P(E)=\lim_{n\to\infty}\frac{n(E)}{n}$$\s
+
+This is a natural idea to define probability as the probability should be higher if the chance that the event will happen is higher. However, one have to consider the drawbacks of the definition above. It is unsure that the limit exists or not, and even if the limit exists, it is dependent of the experiments conducted.\n
+
+The definition above may not be vigorous enough, but it is understandable. However, in order to have a vigorous definition, \textbf{axiomatic approach to probability} is used. Such approach is proposed by Kolmogrov in the $20$th century.\n
+
+\begin{dft}
+  Let $S$ be the sample space of an experiment, then probability $P$ on $S$ is a function which assigns a value to each event $E$ of $S$ such that the following axioms hold:
+
+  \begin{alist}
+    \item\textbf{Axiom $1$}
+    
+    $$0\leq P(E)\leq 1\erm{for all }E\subset S$$
+
+    \item\textbf{Axiom $2$}
+    
+    $$P(S)=1$$
+
+    \item\textbf{Axiom $3$}\n
+    
+    Let $E_{1},E_{2},\cdots$ be a sequence of events that are mutually exclusive, or in other words, $E_{i}\cap E_{j}=\phi\erm{if }i\neq j$, then
+
+    $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=\sum_{n=1}^{\infty}P(E_{n})$$
+  \end{alist}
+\end{dft}\n
+
+Note that the last axiom of the definition above is also called the \textbf{countable additivity of probability}.
+
+\subsubsection{Properties of Probability}
+\begin{pst}
+  A null event has probability of $0$, or $P(\phi)=0$.\n
+
+  \prf Let $(E_{n})_{n=1}^{\infty}$ be a sequence of event by $E_{1}=S$ and $E_{2}=E_{3}=\cdots=\phi$. Since the events are mutually disjoint, then by Axiom $3$,
+
+  $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=\sum_{n=1}^{\infty}P(E_{n})=P(S)+P(\phi)+P(\phi)+\cdots$$\s
+
+  Note that left hand side of the equation is $1$ by Axiom $1$, and $P(S)=1$ by Axiom $2$. Therefore $P(\phi)=0$ in order to hold the equation above.
+\end{pst}\n
+
+\begin{pst}
+  Let $E\subset S$ be an event, then probability of complement of $E$, $P(E^{c})=1-P(E)$.\n
+
+  \prf Let $(E_{n})_{n=1}^{\infty}$ be a sequence of event by $E_{1}=E$, $E_{2}=E^{c}$ and $E_{3}=E_{4}=\cdots=\phi$. Since the events are mutually disjoint, then by Axiom $3$,
+
+  $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=\sum_{n=1}^{\infty}P(E_{n})=P(E)+P(E^{c})+P(\phi)+P(\phi)+\cdots$$\s
+
+  Note that left hand side of the equation is $1$ by Axiom $1$, and $P(S)=1$ by Axiom $2$. Therefore $P(E)+P(E^{c})=1$ in order to hold the equation above. Rearrange the equation finishes the proof.
+\end{pst}\n
+
+The following proposition is the \textbf{finite additivity} of disjoint events:\n
+
+\begin{pst}
+  Let $E_{1},E_{2},\cdots,E_{n}$ be disjoint events, then
+
+  $$P\brr{\bigcup_{i=1}^{n}E_{i}}=\sum_{i=1}^{n}P(E_{i})$$\s
+
+  \prf Let $E_{n+1}=E_{n+2}=\cdots=\phi$, then $(E_{n})_{n=1}^{\infty}$ is disjoint. By Axiom $3$,
+
+  $$P\brr{\bigcup_{i=1}^{\infty}E_{i}}=\sum_{i=1}^{\infty}P(E_{i})$$\s
+
+  and the equation is reduced to desired equation by using Axiom $1$ and $2$. 
+\end{pst}\n
+
+\begin{pst}
+  Let $E$ and $F$ be two events, then $P(E\cup F)=P(E)+P(F)-P(E\cap F)$.\n
+
+  \prf Venn diagram shows the result explicitly. On the other hand, note that $E\cup F=E\cup(F\setminus E)$. By Axiom $3$ and \rpst[\sctd{1}],
+  
+  $$P(E\cup F)=P(E\cup(F\setminus E))=P(E)+P(F\setminus E)$$\s
+
+  Also notice that $F=(F\setminus E)\cup(E\cap F)$, hence
+
+  $$P(F)=P(F\setminus E)+P(E\cap F)$$\s
+
+  Combine both equations by substituting $P(F\setminus E)$ gives the result.
+\end{pst}\n
+
+\begin{pst}
+  Let $E$ and $F$ be two events. If $E\subset F$, then $P(E)\leq P(F)$.\n
+
+  \prf Note that $F=E\cup(F\setminus E)$, then
+
+  $$P(F)=P(E)+P(F\setminus E)\geq P(E)$$
+\end{pst}\n
+
+The following proposition, which is also called the \textbf{inclusion-exclusion identity}, is the generalization of \rpst[\sctd{1}]:\n
+
+\begin{pst}
+  Let $E_{1},E_{2},\cdots,E_{n}$ be events, then
+
+  $$\begin{aligned}[t]
+    P(E_{1}\cup E_{2}\cup\cdots\cup E_{n})&=\sum_{i=1}^{n}P(E_{i})-\sum_{i_{1}<i_{2}}P(E_{i_{1}}\cap E_{i_{2}})\\
+    &-\sum_{i_{1}<i_{2}<i_{3}}P(E_{i_{1}}\cap E_{i_{2}}\cap E_{i_{3}})\\
+    &+\cdots+(-1)^{n+1}P(E_{1}\cap E_{2}\cap\cdots\cap E_{n})\\
+    &=\sum_{r=1}^{n}(-1)^{r+1}\sum_{i_{1}<i_{2}<\cdots<i_{r}}P(E_{i_{1}}\cap E_{i_{2}}\cap\cdots\cap E_{i_{r}})
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{exm}
+  Let $E,F\in S$ be events. Suppose $P(E)=0.8$ and $P(F)=0.9$, prove that $P(E\cap F)\geq 0.7$.\n
+
+  \ans By the inclusion-exclusion identity,
+
+  $$\begin{aligned}[t]
+    P(E\cap F)&=P(E)+P(F)-P(E\cup F)\\
+    &\geq P(E)+P(F)-1=0.7
+  \end{aligned}$$
+\end{exm}\n
+
+\begin{exm}
+  Let $E,F\in S$ be events. Suppose $P(E)=0.8$, $P(F)=0.9$ and $P(E\cap F)=0.75$. Find the probability that exactly one of $E$ and $F$ has occured.\n
+
+  \ans Let $G$ be the required event. Note that $G=(E\setminus F)\cup(F\setminus E)$ is a union of mutually exclusive events, then
+
+  $$\begin{aligned}[t]
+    P(G)&=P(E\setminus F)+P(F\setminus E)\\
+    &=P(E)-P(E\cap F)+P(F)-P(F\cap E)=0.2   
+  \end{aligned}$$
+\end{exm}
+
+\subsubsection{Mutually Disjoint Events}
+\begin{dft}
+  Let $E_{1},E_{2},\cdots,E_{n}$ be events, then union of $(E_{i})_{i=1}^{n}$ can be expressed as a union of mutually disjoint events $(F_{i})_{i=1}^{n}$ by
+
+  $$\begin{cases}
+    F_{1}=E_{1}\\
+    F_{k}=E_{k}\setminus\bigcup_{i=1}^{k-1}E_{i}
+  \end{cases}$$\s
+\end{dft}\n
+
+Note that $F_{n}\subset E_{n}$ for any $n$. The above definition helps to convert any set of events into a set of mutually exclusive events, so that axioms and properties of probability can be used.\n
+
+\begin{pst}
+  Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctd{1}], then $F_{n}\cap F_{m}=\phi$ for any $n\neq m$.\n
+
+  \prf Without loss of generality, assume $n>m$, then
+
+  $$\begin{aligned}[t]
+    F_{n}&=E_{n}\setminus(E_{1}\cup\cdots\cup E_{m}\cup\cdots\cup E_{n-1})\\
+    F_{n}\cap E_{m}&=\phi
+  \end{aligned}$$\s
+
+  but since $F_{m}\subset E_{m}$, $F_{n}\cap F_{m}=\phi$.
+\end{pst}\n
+
+The proposition above ensures that $(F_{n})_{n=1}^{\infty}$ are mutually exclusive.\n
+
+\begin{pst}
+  Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctd{2}], then
+  
+  $$\bigcup_{i=1}^{n}F_{i}=\bigcup_{i=1}^{n}E_{i}$$\s
+\end{pst}
+
+The next proposition is the \textbf{countable subadditivity} of probability:\n
+
+\begin{pst}
+  Let $E_{1},E_{2},\cdots,E_{n}$ be events, then
+
+  $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}\leq\sum_{n=1}^{\infty}P(E_{n})$$\s
+
+  \prf Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctd{3}], then by \rpst[\sctd{2}], \rpst[\sctd{1}] and applying Axiom $3$ to $(F_{n})$,
+
+  $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=P\brr{\bigcup_{n=1}^{\infty}F_{n}}=\sum_{n=1}^{\infty}P(F_{n})\leq\sum_{n=1}^{\infty}P(E_{n})$$
+\end{pst}\n
+
+\subsubsection{Continuity of Probability}
+Continuity of probability consists of two parts, which involves increasing and decreasing subsets of events respectively.
+\begin{pst}
+  Let $E_{1}\subset E_{2}\subset\cdots\subset E_{n}\subset\cdots$ be increasing, then
+
+  $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=\lim_{n\to\infty}P(E_{n})$$\s
+
+  \prf Let $(F_{n})_{n=1}^{\infty}$ as defined in \rdft{\sctd{2}}. Since $(F_{n})_{n=1}^{\infty}$ are mutually disjoint,
+
+  $$\bigcup_{i=1}^{n}F_{i}=\bigcup_{i=1}^{n}E_{i}=E_{n}$$\s
+
+  and
+
+  $$\bigcup_{i=1}^{\infty}F_{i}=\bigcup_{i=1}^{\infty}E_{i}$$\s
+
+  Applying Axiom $3$ to $(F_{n})$ gives
+
+  $$\begin{aligned}[t]
+    P\brr{\bigcup_{n=1}^{\infty}E_{n}}&=P\brr{\bigcup_{n=1}^{\infty}F_{n}}\\
+    &=\sum_{n=1}^{\infty}P(F_{n})\\
+    &=\lim_{n\to\infty}\brr{\sum_{i=1}^{n}P(F_{i})}\\
+    &=\lim_{n\to\infty}P\brr{\bigcup_{i=1}^{n}F_{i}}\\
+    &=\lim_{n\to\infty}P(E_{n})
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{pst}
+  Let $E_{1}\supset E_{2}\supset\cdots\supset E_{n}\supset\cdots$ be increasing, then
+
+  $$P\brr{\bigcap_{n=1}^{\infty}E_{n}}=\lim_{n\to\infty}P(E_{n})$$\s
+  
+  \prf Consider
+
+  $$1-P\brr{\bigcap_{n=1}^{\infty}E_{n}}=P\brr{\brr{\bigcap_{n=1}^{\infty}E_{n}}^{c}}=P\brr{\bigcup_{n=1}^{\infty}E_{n}^{c}}$$\s
+
+  by De Morgan's Law. Apply the proof in \rpst[\sctd{1}] gives
+
+  $$1-P\brr{\bigcap_{n=1}^{\infty}E_{n}}=\lim_{n\to\infty}(1-P(E_{n}))$$\s
+
+  Rearrange the equation finishes the proof.
+\end{pst}
+
+\subsubsection{Cardinality of Events}
+\begin{dft}
+  Let $E$ be an event in $S$. The \textbf{cardinality} of event $E$, denoted by $\#E$, is the number of outcomes occured in the sample space of the experiment.
+\end{dft}\n
+
+In many experiments, it can be assumed that all outcomes of the experiment have the same chance to occur, then $P(E)=\#E/\#S$.\n
+
+\begin{exm}
+  Find the probability that the sum of top faces of two dice is equal to $5$.\n
+
+  \ans Let $E$ be the required event. Note that
+
+  $$S=\brc{(i,j)\srm i,j\in\brc{1,2,3,4,5,6}}$$\s
+
+  and
+
+  $$E=\brc{(i,j)\in S\srm i+j=5}=\brc{(1,4),(2,3),(3,2),(4,1)}$$\s
+
+  Hence
+
+  $$P(E)=\frac{\#E}{\#S}=\frac{4}{36}=\frac{1}{9}$$
+\end{exm}\n
+
+\begin{exm}
+  A committee of $5$ is to be selected from a group of $6$ men and $9$ women. If the selection is made randomly, find the probability that the committee consists of $3$ men and $2$ women.\n
+
+  \ans Let $E$ be the required event. Note that $P(E)=\#E/\#S$ where
+
+  $$\#S=\binom{15}{5},\;\#E=\binom{6}{3}\binom{9}{2}$$
+\end{exm}\n
+
+\begin{exm}
+  In the game of bridge, the entire deck of $52$ cards is dealt out to $4$ players. Find the probability that
+
+  \begin{alist}
+    \item one of the players receives all $13$ spades.
+    \item each player receives an ace.
+  \end{alist}
+
+  \ans\prt[a]{zb} Note that the cardinality of sample space is
+  
+  $$\#S=\binom{52}{13}\binom{39}{13}\binom{26}{13}\binom{13}{13}$$
+
+  Let $E$ be the required event, and $E_{i}$ be the event where the $i$-th player receives all spades. Note that $E=\bigcup_{i=1}^{4}E_{i}$ with $E_{i}$ being mutually exclusive. The $i$-th player first receives spades, other players share the remaining cards, then
+
+  $$\#E_{i}=\binom{13}{13}\binom{39}{13}\binom{26}{13}\binom{13}{13}$$\s
+
+  Therefore
+
+  $$P(E)=\frac{\#E}{\#S}=\frac{4\#E_{i}}{\#S}$$
+
+  \prtc[b]{zb} Let $F$ be the required event. Each player first get an ace, then take $12$ cards from the non-ace pile, then
+
+  $$\#F=\brr{\binom{4}{1}\binom{48}{12}}\brr{\binom{3}{1}\binom{36}{12}}\brr{\binom{2}{1}\binom{24}{12}}\binom{13}{13}$$\s
+
+  and $P(F)=\#F/\#S$.
+\end{exm}
+
+\subsection{Conditional Probability and Independence}
+\subsubsection{Conditional Probability}
+Below is an example of probability with given conditions.\n
+
+\begin{exm}
+  Two fair dice are rolled. Given that the first die is a $4$, find the probability that the sum of two dice is $9$.
+\end{exm}\n
+
+Normally without additional conditions, the event that the sum of two dice is equal to $9$, denoted by $E$, has outcomes $\brc{(3,6),(4,5),(5,4),(6,3)}$. It is easy to find out $P(E)=1/9$. Similarly, the event that the first die is a $4$, denoted by $F$, has outcomes $\brc{(4,1),(4,2),(4,3),(4,4),(4,5),(4,6)}$.\n
+
+With conditions, it is assumed that $F$ has occured. Note that $E\cap F=\brc{(4,5)}$, so the probability of $E$ given $F$ is $1/6$.\n
+
+\begin{dft}
+  Let $E$ and $F$ be two events in a random experiment. Suppose $P(F)>0$, then the \textbf{conditional probability} of $E$ given $F$, denoted by $P(E\mid F)$, is given by
+
+  $$P(E\mid F)=\frac{P(E\cap F)}{P(F)}$$
+\end{dft}\n
+
+Note that if $P(F)=0$, $P(E\mid F)$ is then not well-defined.\n
+
+\begin{exm}
+  A fair coin is flipped $3$ times. Find the conditional probability that the third flip is a head, given that the first flip is a tail.\n
+
+  \ans Let $E$ be the event that the first lip is a tail and $F$ be the event that the third flip is a head. By \rdft[\sctd{1}],
+
+  $$P(F\mid E)=\frac{P(F\cap E)}{P(E)}=\frac{2/8}{4/8}=\frac{1}{2}$$\s
+\end{exm}\n
+
+The following proposition is also called \textbf{multiplicative rule}.\n
+
+\begin{pst}
+  Let $E_{i}$ be events, then
+
+  $$\begin{aligned}[t]
+    P(E_{1}\cap E_{2}\cap\cdots\cap E_{n})=&P(E_{1})P(E_{2}\mid E_{1})P(E_{3}\mid(E_{1}\cap E_{2}))\cdots\\
+    &P(E_{n}\mid(E_{1}\cap E_{2}\cap\cdots\cap E_{n-1}))
+  \end{aligned}$$\s
+
+  \prf Rearrange \rdft[\sctd{2}] gives
+
+  $$P(E_{1}\cap E_{2})=P(E_{1})P(E_{2}\mid E_{1})$$\s
+
+  and can be extended to case of $n$ events by induction.
+\end{pst}
+
+\subsubsection{Bayes Formula}
+Before introducing the main formula, consider the following proposition which is also known as \textbf{total probability formula}:\n
+
+\begin{pst}
+  Let $E$ and $F$ be two events, then
+
+  $$P(E)=P(F)P(E\mid F)+P(F^{c})P(E\mid F^{c})$$\s
+
+  \prf Note that
+
+  $$E=(E\cap F)\cup(E\cap F^{c})$$\s
+
+  and since both events in $E$ are mutually exclusive,
+
+  $$P(E)=P(E\cap F)+P(E\cap F^{c})$$\s
+
+  By multiplicative rule,
+
+  $$P(E)=P(F)P(E\mid F)+P(F^{c})P(E\mid F^{c})$$
+\end{pst}\n
+
+This formula works for any event $F$, and it is said to be a conditioning method for calculating unconditional probability.\n
+
+\begin{dft}
+  Let $E_{1},E_{2},\cdots,E_{n}$ be events, then the events are \textbf{exhausitive} if
+
+  $$\bigcup_{i=1}^{n}E_{i}=S$$
+\end{dft}\n
+
+Below is a generalized formula of \rpst[\sctd{1}]:\n
+
+\begin{crl}
+  Let $E$ be an event, and $F_{1},F_{2},\cdots,F_{n}$ be mutually exclusive and exhausitive events, then
+
+  $$P(E)=\sum_{i=1}^{n}P(F_{i})P(E\mid F_{i})$$\s
+
+  \prf Note that $E\cap F_{i}$ are mutually disjoint, so
+
+  $$\begin{aligned}[t]
+    P(E)&=\sum_{i=1}^{n}P(E\cap F_{i})\\
+    &=\sum_{i=1}^{n}P(F_{i})P(E\mid F_{i})
+  \end{aligned}$$
+\end{crl}\n
+
+With the formula above, \textbf{Bayes formula} is introduced as below:\n
+
+\begin{thm}
+  Let $F_{1},F_{2},\cdots,F_{n}$ be mutually exclusive and exhausitive events, then
+
+  $$P(F_{i}\mid E)=\frac{P(F_{i})P(E\mid F_{i})}{\sum_{j=1}^{n}P(F_{j})P(E\mid F_{j})}$$\s
+
+  \prf By total probability formula,
+
+  $$P(E)=\sum_{j=1}^{n}P(F_{j})P(E\mid F_{j})$$\s
+
+  The proof is finished by applying \rdft[\sctd{5}] with $P(E\cap F_{i})=P(F_{i})P(E\mid F_{i})$.
+\end{thm}\n
+
+\begin{exm}
+  A bin contains $3$ different types of disposable flashlights, which are type $1$, $2$ and $3$. Each type of flashlight has a probability of $0.7$, $0.4$ and $0.3$ respectively to give over $100$ hours of use. Suppose $20\%$ of the flashlights are type $1$, $30\%$ of the flashlights are type $2$ and $50\%$ of the flashlights are type $3$.
+
+  \begin{alist}
+    \item Find the probability that a randomly chosen flashlight will give more than $100$ hours of use.
+    \item Given that a flashlight lasted over $100$ hours, what is the conditional probability that it was type $1$, $2$ or $3$.
+  \end{alist}
+
+  \ans\prt[a]{zb} Let $E$ be the event that the flashlight gives more than $100$ hours of use and $F_{j}$ be the event that the flashlight is of type $j$. Note that $P(F_{1})=0.2$, $P(F_{2})=0.3$ and $P(F_{3})=0.5$, while $P(E\mid F_{1})=0.7$, $P(E\mid F_{2})=0.4$ and $P(E\mid F_{3})=0.3$, then
+
+  $$P(E)=\sum_{j=1}^{3}P(F_{j})P(E\mid F_{j})=0.2(0.7)+0.3(0.4)+0.5(0.3)=0.41$$\s
+
+  \prtc[b]{zb} Without loss of generality,
+
+  $$P(F_{j}\mid E)=\frac{P(F_{j})P(E\mid F_{j})}{P(E)}$$\s
+
+  by the definition of conditional probability.
+\end{exm}\n
+
+\begin{exm}
+  Two fair dice are rolled. Find the conditional probability that at least one of them is $6$ given that the dice land on different numbers.\n
+
+  \ans Let $E$ be the event where at least one of the dice is $6$, and $F$ be the event that two dice land on different numbers. Note that $\#S=36$, $\#F=30$ and $\#(E\cap F)=10$, so
+
+  $$P(E\mid F)=\frac{P(E\cap F)}{P(F)}=\frac{10/36}{30/36}=\frac{1}{3}$$
+\end{exm}\n
+
+\subsubsection{Conditional Independence}
+For most of the cases, $P(E\mid F)$ is not equal to $P(E)$, but there are some special cases where they are equal.\n
+
+\begin{dft}
+  Let $E$ and $F$ be events, then $E$ is said to be \textbf{independent} of $F$ if $P(E\mid F)=P(E)$.
+\end{dft}\n
+
+The following proposition shows the symmetric property of conditional independence:\n
+
+\begin{pst}
+  Let $E$ and $F$ be events, then $E$ and $F$ are independent if $P(E\cap F)=P(E)P(F)$.\n
+
+  \prf By the definition of conditional probability in \rdft[\sctd{8}], if $E$ is independent of $F$, then
+
+  $$P(E\mid F)=\frac{P(E\cap F)}{P(F)}=P(E)$$\s
+  
+  which means $P(E\cap F)=P(E)P(F)$. Apply the definition again gives $P(F\mid E)=P(F)$, hence $F$ is also independent of $E$.
+\end{pst}\n
+
+\begin{exm}
+  A card is randomly chosen from a deck to $52$ playing cards. Let $E$ be the event that the chosen card is an ace, and $F$ be the event that the chosen card is a spade. Check whether $E$ and $F$ are independent.\n
+
+  \ans Since
+
+  $$P(E\cap F)=\frac{1}{52}=\frac{1}{13}\brr{\frac{1}{4}}=P(E)P(F)$$\s
+
+  $E$ and $F$ are independent.
+\end{exm}\n
+
+Below are some properties of conditional independence:\n
+
+\begin{pst}
+  If $E$ and $F$ are independent events, then the following applies:
+  
+  \begin{alist}
+    \item $E$ and $F^{c}$ are independent.
+    \item $E^{c}$ and $F^{c}$ are independent.
+  \end{alist}
+
+  \prf Since $E$ and $F$ are independent, $P(E\cap F)=P(E)P(F)$. Notice that
+
+  $$\begin{aligned}[t]
+    P(E\cap F^{c})&=P(E)-P(E\cap F)\\
+    &=P(E)-P(E)P(F)\\
+    &=P(E)(1-P(F))=P(E)P(F^{c})
+  \end{aligned}$$\s
+
+  then $E$ and $F^{c}$ are independent. It then follows that $E^{c}$ and $F^{c}$ are independent by applying the same method on $E$.
+\end{pst}\n
+
+It is also important to discuss about conditional independence for more than $2$ events. For simplicity, definition of $3$ events is first introduced:\n
+
+\begin{dft}
+  Let $E$, $F$ and $G$ are events, then they are independent if the following are satisfied:
+
+  \begin{alist}
+    \item $P(E\cap F\cap G)=P(E)P(F)P(G)$.
+    \item For any two events, they are independent to each other. In other words, $E$ and $F$ are independent, $E$ and $G$ are independent, and $F$ and $G$ are independent.
+  \end{alist}
+\end{dft}\n
+
+\begin{dft}
+  Let $\brc{E_{1},E_{2},\cdots,E_{n}}$ be a finite family of events, then they are independent if
+  
+  $$P(E_{1}\cap E_{2}\cap\cdots\cap E_{n})=\prod_{i=1}^{n}P(E_{i})$$\s
+
+  and for any subfamily $\brc{E_{j_{1}},E_{j_{2}},\cdots,E_{j_{k}}}$, they are independent.\n
+
+  Furthermore, an infinite family of events are said to be independent if any finite subfamily of events are independent.
+\end{dft}\n
+
+\begin{dft}
+  A random experiment consists of \textbf{subexperiments} if the events $E_{1},E_{2},\cdots,E_{n}$ are independent where $E_{i}$ is an event whose occurence only depends on the $i$-th subexperiment.
+\end{dft}
+
+\pagebreak
+
+\section{Random Variables}
+\subsection{Introduction to Random Variables}
+\subsubsection{Definition of Random Variables}
+\begin{dft}
+  In a random experiment, a \textbf{random variable}, denoted by $X$, is a real-valued function defined on the sample space $S$.
+\end{dft}\n
+
+With the definition above, random variable $X$ is a function that maps from the sample space $S$ to the real number set $\R$. Since $S$ has outcomes of random phenomenon, $X$ that depends on $S$ is random. The following example demonstrates its randomness:\n
+
+\begin{exm}
+  Three fair coins are flipped. Let $X$ be the number of heads appeared. Note that $X=2$ if the outcome is $(H,T,H)$, and $X=0$ if the outcome is $(T,T,T)$.
+\end{exm}\n
+
+Random variable $X$ does not always reflect the outcome explicitly, as shown in the following example:\n
+
+\begin{exm}
+  Two fair dice are rolled. Let $X$ be the product of the two numbers appeared. Note that $X=12$ if the outcome is $(2,6)$ or $(4,3)$.
+\end{exm}
+
+\subsubsection{Discrete Random Variables}
+\begin{dft}
+  Let $X$ be a random variable, then $X$ is said to be \textbf{discrete} if it takes at most countably many different values.
+\end{dft}\n
+
+With a discrete random variable, it is also important to know how to measure the probability of values of $X$. There is a function that can fulfill the purpose above.\n
+
+\begin{dft}
+  Let $X$ be a discrete random variable. For any $a\in\R$, the \textbf{probability mass function} of $a$, denoted by $p(a)$, is defined as
+
+  $$p(a)=P(\brc{X=a})=P(\brc{\omega\in S\srm X(\omega)=a})$$
+\end{dft}\n
+
+In general, $p$ is called the probability mass function of $X$.\n
+
+\begin{pst}
+  Let $x_{1},x_{2},\cdots,x_{n}$ be all possible values of a discrete random variable $X$, then
+  
+  $$p(a)=0\erm{if }a\not\in\brc{x_{1},x_{2},\cdots,x_{n}}$$\s
+
+  and
+
+  $$\sum_{i=1}^{n}p(x_{i})=1$$\s
+
+  \prf Let $E_{i}=\brc{\omega\in S\srm X(\omega)=x_{i}}$, then $E_{i}$ are mutually exclusive. Moreover, since $\bigcup_{i=1}^{n}E_{i}=S$,
+
+  $$1=P\brr{\bigcup_{i=1}^{n}E_{i}}=\sum_{i=1}^{n}P(E_{i})=\sum_{i=1}^{n}p(x_{i})$$
+\end{pst}
+
+\subsubsection{Expected Value of Discrete Random Variables}
+\begin{dft}
+  Let $X$ be a discrete random variable, and $p$ be the probability mass function of $X$, then the \textbf{expected value} of $X$, denoted by $E[X]$, is defined as
+
+  $$E[X]=\sum_{p(a)>0}ap(a)=\sum_{i}x_{i}p(x_{i})$$\s
+
+  where $x_{i}$ are possible values of $X$.
+\end{dft}\n
+
+From the definition above, it can be seen that expected value of $X$ is a weighted average of $X$. The weight depends on the probability of occurence of each value. Therefore, expected value of $X$ is sometimes called the mean of $X$.\n
+
+\begin{exm}
+  Let $X$ be a discrete random variable to represent number of heads appeared in three fair coins, then the expected value of $X$
+
+  $$E[X]=0\brr{\frac{1}{8}}+1\brr{\frac{3}{8}}+2\brr{\frac{3}{8}}+3\brr{\frac{1}{8}}=\frac{3}{2}$$
+\end{exm}\n
+
+Now let $X$ be a discrete random variable on $S$, $g:\R\to\R$ be a function such that $Y=g(X)$, where $Y$ is a function on $S$. Observe that if $x_{i}$ are possible values of $X$, then $g(x_{i})$ are possible values of $Y$, so $Y$ is another discrete random variable on $S$. The following proposition shows a way to calculate expected value of $Y$ simply by values in $X$:\n
+
+\begin{pst}
+  Let $X$ and $Y$ be discrete random variables on $S$ where $Y=g(X)$ by a function $g:\R\to\R$, then
+
+  $$E[Y]=\sum_{i}g(x_{i})p(x_{i})$$\s
+
+  \prf Let $y_{i}$ be possible unique values of $Y$. Grouping $g(x_{i})$ with the same value gives
+  
+  $$\begin{aligned}[t]
+    \sum_{i}g(x_{i})p(x_{i})&=\sum_{j}\sum_{g(x_{i})=y_{j}}g(x_{i})p(x_{i})\\
+    &=\sum_{j}\sum_{g(x_{i})=y_{j}}y_{j}p(x_{i})\\
+    &=\sum_{j}y_{j}\sum_{g(x_{i})=y_{j}}p(x_{i})\\
+    &=\sum_{j}y_{j}\sum_{g(x_{i})=y_{j}}P(\brc{X=x_{i}})\\
+    &=\sum_{j}y_{j}P(\brc{Y=y_{j}})\\
+    &=E[Y]
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{crl}
+  Let $X$ be a discrete random variable and $a,b\in\R$, then
+  
+  $$E[aX+b]=aE[X]+b$$\s
+
+  \prf Let $g(x)=ax+b$ be a function. By \rpst[\sctd{0}],
+
+  $$E[aX+b]=E[g(X)]=\sum_{i}g(x_{i})p(x_{i})$$\s
+
+  where $x_{i}$ are possible different values of $X$. Expand $g$ gives
+
+  $$\begin{aligned}[t]
+    \sum_{i}g(x_{i})p(x_{i})&=\sum_{i}(ax_{i}+b)p(x_{i})\\
+    &=a\sum_{i}x_{i}p(x_{i})+b\sum_{i}p(x_{i})\\
+    &=aE[X]+b
+  \end{aligned}$$
+\end{crl}
+
+\subsubsection{Variance of Discrete Random Variables}
+\begin{dft}
+  Let $X$ be a discrete random variable, then the \textbf{variance} of $X$, denoted by $\mathrm{Var}(X)$, is defined as
+
+  $$\mathrm{Var}(X)=E[(X-\mu)^{2}]$$\s
+
+  where $\mu=E[X]$.
+\end{dft}\n
+
+Note that variance of $X$ is sometimes written as $V(X)$ for simplicity. Variance of $X$ describes how $X$ is spread out from its mean value $\mu$.\n
+
+\begin{pst}
+  Let $X$ be a discrete random variable, then $\mathrm{Var}(X)=E[X^{2}]-\mu^{2}$\n
+
+  \prf Note that
+  
+  $$\begin{aligned}[t]
+    \mathrm{Var}(X)&=E[(X-\mu)^{2}]\\
+    &=\sum_{i}(x_{i}-\mu)^{2}p(x_{i})\\
+    &=\sum_{i}(x_{i}^{2}-2\mu x_{i}+\mu^{2})p(x_{i})\\
+    &=\sum_{i}x_{i}^{2}p(x_{i})-2\mu\sum_{i}x_{i}p(x_{i})+\mu^{2}\sum_{i}p(x_{i})\\
+    &=E[X^{2}]-2\mu^{2}+\mu^{2}=E[X^{2}]-\mu^{2}
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{crl}
+  Let $X$ be a discrete random variable, then $E[X^{2}]\geq(E[X])^{2}$.\n
+
+  \prf From the definition of variance, $\mathrm{Var}(X)\geq 0$, then $E[X^{2}]-\mu^{2}\geq 0$ implies the result.
+\end{crl}
+
+\subsection{Common Types of Discrete Random Variables}
+\subsubsection{Bernoulli Random Variables}
+Consider a random experiment where the outcomes can be classified by either a success or a failure, then the following definition applies:\n
+
+\begin{dft}
+  Let $X$ be a discrete random variable where
+
+  $$X=\begin{cases}
+    1\erm{if the outcome is a success}\\
+    0\erm{if the outcome is a failure}
+  \end{cases}$$\s
+
+  then $X$ is called a \textbf{Bernoulli random variable} with parameter $p=P(\brc{X=1})$.
+\end{dft}\n
+
+Note that $p(0)+p(1)=1$ and $p(a)=0$ if $a$ is neither $0$ nor $1$. Since the expected values $E[X]=p$ and $E[X^{2}]=p$, then the variance $V(X)=E[X^{2}]-(E[X])^{2}=p-p^{2}$.
+
+\subsubsection{Binomial Random Variables}
+Consider a random experiment with $n$ subexperiments and each subexperiment results in either a success or a failure, then the following definition applies:\n
+
+\begin{dft}
+  Let $X$ be a discrete random variable that is equal to the number of successes in a random experiment with $n$ subexperiments, then $X$ is called a \textbf{Binomial random variable} with parameters $(n,p=P(\mathrm{success}))$.
+\end{dft}\n
+
+Consider the following example:\n
+
+\begin{exm}
+  For $n=2$, the possible outcomes of the experiments are $(S,S)$, $(S,F)$, $(F,S)$ and $(F,F)$ where $S$ indicates a success and $F$ indicates a failure. If the probability of a success in each subexperiment is $p$,
+
+  $$\begin{cases}
+    P(\brc{X=0})=P(\brc{(F,F)})=(1-p)^{2}\\
+    P(\brc{X=1})=P(\brc{(S,F),(F,S)})=2p(1-p)\\
+    P(\brc{X=2})=P(\brc{(S,S)})=p^{2}
+  \end{cases}$$
+\end{exm}\n
+
+\begin{pst}
+  Let $X$ be a binomial random variable with parameters $(n,p)$, then
+
+  $$P(\brc{X=k})=\binom{n}{k}p^{k}(1-p)^{n-k}$$\s
+
+  for $k=0,1,\cdots,n$.\n
+
+  \prf Note that for any sequence of outcomes of $n$ subexperiments in which $k$ of them results in successes, there will be $n-k$ failures, so each sequence has probability $p^{k}(1-p)^{n-k}$. By combinatorics, there are $C_{k}^{n}$ sequences that have $k$ successes. The proof is finished by multiplying the results.
+\end{pst}\n
+
+Therefore the name of Binomial random variable comes from binomial constant which is also applied to Binomial theorem
+
+$$(x+y)^{n}=\sum_{i=0}^{n}\binom{n}{i}x^{i}y^{n-i}$$\s
+
+\begin{pst}
+  Let $X$ be a binomial random variable with parameters $(n,p)$, then for $k\geq 1$,
+
+  $$E[X^{k}]=npE[(Y+1)^{k-1}]$$\s
+
+  where $Y$ is another binomial random variable with parameters $(n-1,p)$.\n
+
+  \prf By \rdft[\sctd{3}],
+
+  $$\begin{aligned}[t]
+    E[X^{k}]&=\sum_{i=0}^{n}i^{k}\binom{n}{i}p^{i}(1-p)^{n-i}\\
+    &=\sum_{i=1}^{n}i^{k}\binom{n}{i}p^{i}(1-p)^{n-i}\\
+    &=\sum_{i=1}^{n}i^{k-1}\binom{n-1}{i-1}p^{i}(1-p)^{n-i}\\
+    &=np\sum_{i=1}^{n}i^{k-1}\binom{n-1}{i-1}p^{i-1}(1-p)^{n-i}\\
+    &=np\sum_{j=0}^{n-1}(j+1)^{k-1}\binom{n-1}{j}p^{j}(1-p)^{(n-1)-j}\\
+    &=npE[(Y+1)^{k-1}]
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{crl}
+  Let $X$ be a binomial random variable with parameters $(n,p)$, then $E[X]=np$, $E[X^{2}]=np((n-1)p+1)$ and $\mathrm{Var}(X)=n(p-p^{2})$.\n
+
+  \prf Note that
+
+  $$E[X]=npE[(Y+1)^{0}]=np$$\s
+
+  and
+
+  $$E[X^{2}]=npE[Y+1]=np(E[Y]+1)=np(np-p+1)$$\s
+
+  Therefore
+
+  $$\mathrm{Var}(X)=E[X^{2}]-E[X]^{2}=np(np-p+1)-(np)^{2}=n(p-p^{2})$$
+\end{crl}\n
+
+A binomial random variable $X$ with parameter $(n,p)$ can be expressed as
+
+$$X=X_{1}+X_{2}+\cdots+X_{n}$$\s
+
+where $X_{i}$ are independent Bernoulli random variables.
+
+\subsubsection{Poisson Random Variables}
+\begin{dft}
+  Let $\lambda>0$, then a \textbf{Poisson random variable} with parameter $\lambda$ is a random variable $X$ that takes nonnegative integers $i=\brc{0,1,\cdots}$ such that
+
+  $$P(\brc{X=i})=e^{-\lambda}\frac{\lambda^{i}}{i!}$$
+\end{dft}\n
+
+Poisson random variable satisfies property of probability since
+
+$$\sum_{i=0}^{\infty}e^{-\lambda}\frac{\lambda^{i}}{i!}=e^{-\lambda}\brr{\sum_{i=0}^{\infty}\frac{\lambda^{i}}{i!}}=e^{-\lambda}e^{\lambda}=1$$\s
+
+A Poisson random variable can be used to approximate a binomial random variable $X$ with parameters $(n,p)$ when $n$ is large and $p$ is small such that $np$ is of moderate size that can be used as $\lambda=np$:
+
+$$\begin{aligned}[t]
+  P\brc{X=k}&=\binom{n}{k}p^{k}(1-p)^{n-k}\\
+  &=\frac{n(n-1)\cdots(n-k+1)}{k!}\brr{\frac{\lambda}{n}}^{k}\brr{1-\frac{\lambda}{n}}^{n-k}\\
+  &=\frac{1(1-1/n)\cdots(1-(k-1)/n)}{k!}\lambda^{k}\brr{1-\frac{\lambda}{n}}^{n-k}\\
+  &\approx\frac{\lambda^{k}}{k!}e^{-\lambda}
+\end{aligned}$$\s
+
+\begin{pst}
+  Let $X$ be a Poisson random variable with parameter $\lambda$, then $E[X]=\lambda$ and $\mathrm{Var}(X)=\lambda$.\n
+
+  \prf Note that
+
+  $$\begin{aligned}[t]
+    E[X]&=\sum_{k=0}^{\infty}ke^{-\lambda}\frac{\lambda^{k}}{k!}\\
+    &=\sum_{k=1}^{\infty}ke^{-\lambda}\frac{\lambda^{k}}{k!}\\
+    &=\sum_{k=1}^{\infty}e^{-\lambda}\frac{\lambda^{k}}{(k-1)!}\\
+    &=\lambda\sum_{k=1}^{\infty}e^{-\lambda}\frac{\lambda^{k-1}}{(k-1)!}\\
+    &=\lambda\sum_{j=0}^{\infty}e^{-\lambda}\frac{\lambda^{j}}{j!}=\lambda
+  \end{aligned}$$\s
+
+  and by using similar approach as above,
+
+  $$\begin{aligned}[t]
+    E[X^{2}]&=\sum_{k=0}^{\infty}k^{2}e^{-\lambda}\frac{\lambda^{k}}{k!}\\
+    &=\sum_{k=1}^{\infty}ke^{-\lambda}\frac{\lambda^{k}}{(k-1)!}\\
+    &=\sum_{k=1}^{\infty}(k-1)e^{-\lambda}\frac{\lambda^{k}}{(k-1)!}+\sum_{k=1}^{\infty}e^{-\lambda}\frac{\lambda^{k}}{(k-1)!}\\
+    &=\lambda^{2}+\lambda
+  \end{aligned}$$\s
+
+  Therefore $\mathrm{Var}(X)=E[X^{2}]-E[X]^{2}=\lambda$.
+\end{pst}
+
+\subsection{Properties of Expected Values}
+\subsubsection{Expectation of Sums of Discrete Random Variables}
+\begin{pst}
+  Let $S$ be a finite or countably infinite sample space, and $p(s)=P(\brc{S})$ for any $s\in S$, then for any random variable $X$ on $S$,
+
+  $$E[X]=\sum_{s\in S}X(s)P(s)$$\s
+
+  \prf Suppose the distinct values of $X$ are $x_{i}$ and $S_{i}=\brc{s\in S\srm X(s)=x_{i}}$, then
+
+  $$\begin{aligned}[t]
+    E[X]&=\sum_{i}x_{i}P(\brc{X=x_{i}})\\
+    &=\sum_{i}x_{i}P(S_{i})\\
+    &=\sum_{i}x_{i}\sum_{s\in S_{i}}p(s)\\
+    &=\sum_{i}\sum_{s\in S_{i}}X(s)p(s)\\
+    &=\sum_{s\in S}X(s)P(s)
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{pst}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be discrete random variables on a finite or countably finite sample space $S$, then
+
+  $$E[X_{1}+X_{2}+\cdots+X_{n}]=\sum_{k=1}^{n}E[X_{k}]$$\s
+
+  \prf By \rpst[\sctd{1}],
+
+  $$\begin{aligned}[t]
+    E[X_{1}+X_{2}+\cdots+X_{n}]&=\sum_{s\in S}(X_{1}(s)+X_{2}(s)+\cdots+X_{n}(s))p(s)\\
+    &=\sum_{k=1}^{n}\brr{\sum_{s\in S}x_{k}(s)p(s)}\\
+    &=\sum_{k=1}^{n}E[X_{k}]
+  \end{aligned}$$
+\end{pst}\n
+
+\subsubsection{Continuity of Probability}
+\begin{dft}
+  Let $M$ be a collection of sets and $E_{n}\in M$ for all $n$, then $M$ is said to be \textbf{closed under countable increasing unions}, denoted by $E_{n}\nearrow E$, if
+
+  $$E_{n+1}\supset E_{n},\;E=\bigcup_{n=1}^{\infty}E_{n}$$\s
+
+  Similarly, $M$ is said to be \textbf{closed under contable decreasing intersections}, denoted by $E_{n}\searrow E$, if
+
+  $$E_{n+1}\subset E_{n},\;E=\bigcap_{n=1}^{\infty}E_{n}$$
+\end{dft}\n
+
+With the defintion above, below is the continuity property of probability:\n
+
+\begin{pst}
+  Let $M$ be a collection of sets and $E_{n}\in M$ for all $n$, then if $E_{n}\nearrow E$ or $E_{n}\searrow E$, $\lim P(E_{n})=P(E)$.
+\end{pst}
+
+\subsubsection{Cumulative Distribution Function}
+\begin{dft}
+  Let $X$ be a random variable on a sample space $S$, then the \textbf{cumulative distribution function} of $X$, denoted by $F$, is a function that maps from $\R$ to $\R$ such that
+
+  $$F(b)=P(\brc{X\leq b})$$
+\end{dft}\n
+
+\begin{pst}
+  A cumulative distribution function $F$ has the following properties:
+
+  \begin{alist}
+    \item $F$ is a nondecreasing function. In other words, for $a<b$, $F(a)\leq F(b)$.
+    \item When $b$ tends to $+\infty$ and $-\infty$ respectively,
+    
+    $$\lim_{b\to+\infty}F(b)=1,\;\lim_{b\to-\infty}F(b)=0$$
+
+    \item $F$ is right continuous. In other words,
+    
+    $$\lim_{b_{n}\to b+}F(b_{n})=F(b)$$
+  \end{alist}
+
+  \prf\prt[a]{zr} If $a<b$, then $\brc{X\leq a}\subset\brc{X\leq b}$, so $F(a)\leq F(b)$.\n
+
+  \prtc[b]{zr} If $b_{n}\nearrow\infty$, then
+  
+  $$\brc{X\leq b_{n}}\nearrow\brc{X<\infty}=S$$\s
+  
+  so $F(b_{n})\to 1$ by \rpst[\sctd{2}]. Similarly, if $b_{n}\searrow-\infty$, then
+  
+  $$\brc{X\leq b_{n}}\searrow\brc{X=-\infty}=\phi$$\s
+  
+  so $F(b_{n})\to 0$ by \rpst[\sctd{2}].\n
+
+  \prtc[c]{zr} If $b_{n}\searrow b$, then
+
+  $$\brc{X\leq b_{n}}\searrow\brc{X\leq b}$$\s
+
+  so $F(b_{n})\to F(b)$ by \rpst[\sctd{2}] and shows that $F$ is right continuous.
+\end{pst}\n
+
+Note that $F$ is not left continuous. In the discrete case,
+
+$$P(\brc{X=b})=F(b)-\lim_{b_{n}\nearrow b}F(b_{n})=F(b)-F(b-)$$\s
+
+That is, if $b_{n}\nearrow b$, then
+
+$$\brc{X\leq b_{n}}\nearrow\brc{X\leq b}$$\s
+
+so
+
+$$P(\brc{X=b})=P(\brc{X\leq b})-P(\brc{X<b})$$
+
+\subsection{Continuous Random Variables}
+\subsubsection{Definition of Continuous Random Variables}
+\begin{dft}
+  Let $f$ be a nonnegative function defined on $(-\infty,\infty)$, then $X$ is called a \textbf{continuous random variable} if
+
+  $$P(\brc{X\in B})=\int_{B}f(x)\diff x$$\s
+
+  for all measurable sets $B\subset(-\infty,\infty)$.
+\end{dft}\n
+
+By measurable sets, it represents all intervals and countable unions or intersections of intervals. Note that
+
+$$P(\brc{a\leq X\leq b})=\int_{a}^{b}f(x)\diff x$$\s
+
+which is the area of shaded region under $f(x)$.\n
+
+\begin{dft}
+  Let $f$ be a nonnegative function defined on $(-\infty,\infty)$ and $X$ is a continuous random variable, then $f$ is called a \textbf{probability density function} of $X$ if
+
+  $$\int_{-\infty}^{\infty}f(x)\diff x=1$$
+\end{dft}\n
+
+\begin{exm}
+  Let $X$ be a continuous random variable with probability density function
+
+  $$f(x)=\begin{cases}
+    C(4x-2x^2)\erm{if }x\in(0,2)\\
+    0\erm{otherwise}
+  \end{cases}$$\s
+
+  Find the value of $C$, and $P(\brc{X\geq 1})$.\n
+  
+  \ans By \rdft[\sctd{1}],
+
+  $$\begin{aligned}[t]
+    \int_{-\infty}^{\infty}f(x)\diff x&=1\\
+    \int_{0}^{2}C(4x-2x^{2})&=1\\
+    C\brs{2x^{2}-\frac{2}{3}x^{3}}_{0}^{2}&=1\\
+    \frac{8}{3}C&=1\\
+    C&=\frac{3}{8}    
+  \end{aligned}$$\s
+
+  Therefore
+
+  $$\begin{aligned}[t]
+    P(\brc{X\geq 1})&=\int_{1}^{\infty}f(x)\diff x\\
+    &=\int_{1}^{2}\frac{3}{8}(4x-2x^{2})\diff x\\
+    &=\frac{3}{8}\brs{2x^{2}-\frac{2}{3}x^{3}}_{1}^{2}=\frac{1}{2}
+  \end{aligned}$$
+\end{exm}\n
+
+Finally note that in the continuous case,
+
+$$P(\brc{X=a})=\int_{a}^{a}f(x)\diff x=0$$\s
+
+for any $a\in\R$, so $P(\brc{a\leq X\leq b})=P(\brc{a<X<b})$.
+
+\subsubsection{Expectation of Continuous Random Variables}
+\begin{dft}
+  Let $X$ be a continuous random variable with probability density function $f$, then the expectation of $X$ is defined as
+
+  $$E[X]=\int_{-\infty}^{\infty}xf(x)\diff x$$
+\end{dft}\n
+
+Recall that in the discrete case, $E[X]=\sum xP(\brc{X=x})$. In order to apply this equation for continuous random variables, set a partition of $(-\infty,\infty)$ by $(x_{n})_{n=-\infty}^{\infty}$ such that $x_{n+1}-x_{n}=\Delta x$, then
+
+$$\begin{aligned}[t]
+  &\sum_{n}x_{n}P(\brc{x_{n}<X<x_{n+1}})\\
+  =&\sum_{n}x_{n}\int_{x_{n}}^{x_{n}+\Delta x}f(x)\diff x\\
+  \approx&\sum_{n}x_{n}(f(x_{n})\Delta x)
+\end{aligned}$$\s
+
+When $\Delta x\to 0$,
+
+$$\lim_{\Delta x\to 0}\sum_{n}x_{n}(f(x_{n})\Delta x)=\int_{-\infty}^{\infty}xf(x)\diff x$$\s
+
+\begin{exm}
+  A continuous random variable $X$ is said to be \textbf{uniformly distributed} on $[0,1]$ if it has the density
+
+  $$f(x)=\begin{cases}
+    1&\erm{if }x\in[0,1]\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  Find $E[X]$.\n
+
+  \ans Note that
+
+  $$E[X]=\int_{-\infty}^{\infty}xf(x)\diff x=\int_{0}^{1}x\diff x=\brs{\frac{x^{2}}{2}}_{0}^{1}=\frac{1}{2}$$
+\end{exm}\n
+
+\begin{pst}
+  Let $Y$ be a nonnegative continuous random variable, then
+
+  $$E[Y]=\int_{0}^{\infty}P(\brc{Y>y})\diff y$$\s
+
+  \prf Let $f$ be the density of $Y$, then
+
+  $$\begin{aligned}[t]
+    \int_{0}^{\infty}P(\brc{Y>y})\diff y&=\int_{0}^{\infty}\brr{\int_{y}^{\infty}f(x)\diff x}\diff y\\
+    &=\int_{0}^{\infty}\brr{\int_{0}^{\infty}\mathbf{1}_{\brc{x>y}}f(x)\diff x}\diff y
+  \end{aligned}$$\s
+
+  where
+
+  $$\mathbf{1}_{\brc{x>y}}=\begin{cases}
+    1&\erm{if }x>y\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  By Fubini's theorem,
+
+  $$\begin{aligned}[t]
+    \int_{0}^{\infty}\brr{\int_{0}^{\infty}\mathbf{1}_{\brc{x>y}}f(x)\diff x}\diff y&=\int_{0}^{\infty}\brr{\int_{0}^{\infty}\mathbf{1}_{\brc{x>y}}f(x)\diff y}\diff x\\
+    &=\int_{0}^{\infty}f(x)\brr{\int_{0}^{\infty}\mathbf{1}_{\brc{x>y}}\diff y}\diff x\\
+    &=\int_{0}^{\infty}f(x)(x)\diff x=E[Y]
+  \end{aligned}$$
+\end{pst}\n
+
+The following propostion is the general case about the expectation of continuous random variable:\n
+
+\begin{pst}
+  Let $X$ be a continuous random variable and $g$ be a real-valued function, then
+
+  $$E[g(X)]=\int_{-\infty}^{\infty}g(x)f(x)\diff x$$\s
+
+  \prf By \rpst[\sctd{1}],
+
+  $$\begin{aligned}
+    E[g(x)]&=\int_{0}^{\infty}P(\brc{g(X)>y})\diff y\\
+    &=\int_{0}^{\infty}\brr{\int_{-\infty}^{\infty}\mathbf{1}_{\brc{g(x)>y}}f(x)\diff x}\diff y\\
+    &=\int_{-\infty}^{\infty}\brr{\int_{0}^{\infty}\mathbf{1}_{\brc{g(x)>y}}f(x)\diff y}\diff x\\
+    &=\int_{-\infty}^{\infty}f(x)\brr{\int_{0}^{\infty}\mathbf{1}_{\brc{g(x)>y}}\diff y}\diff x\\
+    &=\int_{-\infty}^{\infty}f(x)g(x)\diff x
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{pst}
+  Let $X$ be a continuous random variable with density $f$, then
+
+  $$\mathrm{Var}(X)=E[(X-\mu)^{2}]$$\s
+
+  where $\mu=E[X]$.\n
+  
+  \prf Note that
+
+  $$\begin{aligned}[t]
+    \mathrm{Var}(X)&=\int_{-\infty}^{\infty}(x^{2}+2x\mu+\mu^{2})f(x)\diff x\\
+    &=\int_{-\infty}^{\infty}x^{2}f(x)\diff x+\mu\int_{-\infty}^{\infty}2xf(x)\diff x+\mu^{2}\int_{-\infty}^{\infty}f(x)\diff x\\
+    &=\int_{-\infty}^{\infty}x^{2}f(x)\diff x-2\mu^{2}+\mu^{2}\\
+    &=\int_{-\infty}^{\infty}x^{2}f(x)\diff x-\mu^{2}
+  \end{aligned}$$
+\end{pst}
+
+\subsection{Common Types of Continuous Random Variables}
+\subsubsection{Uniform Random Variables}
+\begin{dft}
+  Let $X$ be a continuous random variable, then $X$ is a \textbf{uniform random variable} on $[a,b]$ if it has density
+
+  $$f(x)=\begin{cases}
+    1/(b-a)&\erm{if }x\in[a,b]\\
+    0&\erm{otherwise}
+  \end{cases}$$
+\end{dft}\n
+
+\begin{exm}
+  Let $X$ be a uniform random variable. Calculate $E[X]$ and $\mathrm{Var}(X)$.\n
+
+  \ans Note that
+
+  $$\begin{aligned}[t]
+    E[X]&=\int_{-\infty}^{\infty}xf(x)\diff x\\
+    &=\int_{a}^{b}x\brr{\frac{1}{b-a}}\diff x\\
+    &=\frac{1}{b-a}\brs{\frac{1}{2}x^{2}}_{a}^{b}\\
+    &=\frac{a+b}{2}
+  \end{aligned}$$\s
+
+  and
+
+  $$\begin{aligned}[t]
+    &\int_{-\infty}^{\infty}x^{2}f(x)\diff x\\
+    =&\int_{a}^{b}x^{2}\brr{\frac{1}{b-a}}\diff x\\
+    =\frac{1}{b-a}\brs{\frac{1}{3}x^{3}}_{a}^{b}\\
+    &=\frac{a^{2}+ab+b^{2}}{3}
+  \end{aligned}$$\s
+
+  Therefore
+
+  $$\mathrm{Var}(X)=\frac{a^{2}+ab+b^{2}}{3}-\frac{(a+b)^{2}}{4}=\frac{(a-b)^{2}}{12}$$
+\end{exm}\n
+
+For continuous random variables, it is also important to know the following definition:\n
+
+\begin{dft}
+  Let $X$ be a continuous random variable with density $f$, then \textbf{cumulative distribution function} of $X$, denoted by $F_{X}$, is defined as
+
+  $$F_{X}(b)=\int_{-\infty}^{b}f(x)\diff x$$
+\end{dft}\n
+
+\begin{pst}
+  Let $X$ be a continuous random variable with density $f$ and cumulative distribution function $F_{X}$. If $f$ is continuous at $b$, then $F'_{X}(b)=f(b)$.\n
+
+  \prf For $u\in\R$ such that $u\neq 0$,
+
+  $$\begin{aligned}[t]
+    \frac{F_{X}(b+u)-F_{X}(b)}{u}&=\frac{1}{u}\brr{\int_{-\infty}^{b+u}f(x)\diff x-\int_{-\infty}^{b}f(x)\diff x}\\
+    &=\frac{1}{u}\int_{b}^{b+u}f(x)\diff x
+  \end{aligned}$$\s
+
+  Since $f$ is continuous at $b$, so $f(x)-f(b)$ is close at $0$ when $x$ is close to $b$. Hence when $u\to 0$,
+
+  $$\frac{1}{u}\int_{b}^{b+u}f(x)\diff x\to f(b)$$
+\end{pst}
+
+\subsubsection{Normal Random Variables}
+\begin{dft}
+  Let $\mu\in\R$ and $\sigma>0$, then a \textbf{normal random variable} with $\mu$ and $\sigma^{2}$ is a continuous random variable with density function
+
+  $$f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\brr{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$$\s
+
+  for $x\in\R$.
+\end{dft}\n
+
+Note that it is not explicit to show that $f$ is a density function. By substituting $y=(x-\mu)/\sigma$,
+
+$$\begin{aligned}[t]
+  \int_{-\infty}^{\infty}f(x)\diff x&=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}\sigma}\exp\brr{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}\diff x\\
+  &=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-y^{2}/2}\diff y\\
+  &=\frac{1}{\sqrt{2\pi}}e^{-y^{2}/2}\diff y
+\end{aligned}$$\s
+
+Let
+
+$$I=\int_{-\infty}^{\infty}e^{-y^{2}/2}\diff y$$\s
+
+such that the problem reduces to a special case in double integration. Since
+
+$$\begin{aligned}[t]
+  I^{2}&=\brr{\int_{-\infty}^{\infty}e^{-x^{2}/2}\diff x}\brr{\int_{-\infty}^{\infty}e^{-y^{2}/2}\diff y}\\
+  &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-(x^{2}+y^{2})/2}\diff x\diff y\\
+  &=\int_{0}^{\infty}\int_{0}^{2\pi}e^{-r^{2}/2}r\diff\theta\diff r\\
+  &=2\pi\int_{0}^{\infty}re^{-r^{2}/2}\diff r\\
+  &=2\pi\brs{-e^{-r^{2}/2}}_{0}^{\infty}=2\pi
+\end{aligned}$$\s
+
+Then $I=\sqrt{2\pi}$ and
+
+$$\int_{-\infty}^{\infty}f(x)\diff x=1$$\s
+
+\begin{dft}
+  A normal random variable $X$ is said to be \textbf{standard} if it has parameters $\mu=0$ and $\sigma^{2}=1$.
+\end{dft}\n
+
+\begin{pst}
+  Let $X$ be a normal random variable with parameters $\mu$ and $\sigma^{2}$, and $Z=(X-\mu)/\sigma$, then $Z$ is the standard normal random variable.\n
+
+  \prf The cumulative distribution of $Z$ is
+
+  $$\begin{aligned}[t]
+    F_{Z}(b)&=P(\brc{Z\leq b})=P\brr{\brc{\frac{X-\mu}{\sigma}\leq b}}\\
+    &=P(\brc{X\leq \sigma b+\mu})\\
+    &=\int_{-\infty}^{\sigma b+\mu}\frac{1}{\sqrt{2\pi}\sigma}\exp\brr{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}\diff x\\
+    &=\int_{-\infty}^{b}\frac{1}{\sqrt{2\pi}}e^{-y^{2}/2}\diff y
+  \end{aligned}$$\s
+
+  Differentiate both sides gives
+
+  $$F_{Z}'(b)=\frac{1}{2\pi}e^{-b^{2}/2}=f_{Z}(b)$$\s
+  
+  Hence the density of $Z$ is the density of standard normal random variable.
+\end{pst}\n
+
+The next theorem will show that parameters of normal random variables represent expectations and variances.\n
+
+\begin{pst}
+  Let $Z$ be a standard normal random variable, then $E[Z]=0$ and $\mathrm{Var}(X)=1$.\n
+  
+  \prf Note that
+
+  $$E[Z]=\int_{-\infty}^{\infty}x\brr{\frac{1}{\sqrt{2\pi}}}e^{-x^{2}/2}\diff x=\brs{-\frac{1}{\sqrt{2\pi}}e^{-x^{2}/2}}_{-\infty}^{\infty}=0$$\s
+
+  and
+
+  $$\begin{aligned}[t]
+    E[Z^{2}]&=\int_{-\infty}^{\infty}x^{2}\brr{\frac{1}{\sqrt{2\pi}}}e^{-x^{2}/2}\diff x\\
+    &=\int_{-\infty}^{\infty}\frac{x}{\sqrt{2\pi}}\brr{-e^{-x^{2}/2}}'\diff x\\
+    &=\brs{\frac{x}{\sqrt{2\pi}}(-e^{-x^{2}/2})}_{-\infty}^{\infty}-\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}(-e^{-x^{2}/2})\diff x\\
+    &=0-(-1)=1
+  \end{aligned}$$\s
+
+  Hence $\mathrm{Var}(X)=E[Z^{2}]-E[Z]^{2}=1$.
+\end{pst}\n
+
+\begin{pst}
+  Let $Y=aX+b$ where $a,b\in\R$ and $X$ is a continuous random variable, then $E[Y]=aE[X]+b$ and $\mathrm{Var}(Y)=a^{2}\mathrm{Var}(X)$.\n
+
+  \prf Let $f$ be the density function of $X$, then
+
+  $$\begin{aligned}[t]
+    E[Y]&=\int_{-\infty}^{\infty}(ax+b)f(x)\diff x\\
+    &=a\int_{-\infty}^{\infty}xf(x)\diff x+b\int_{-\infty}^{\infty}f(x)\diff x\\
+    &=aE[X]+b
+  \end{aligned}$$\s
+
+  and
+
+  $$\begin{aligned}[t]
+    E[Y]&=\int_{-\infty}^{\infty}(ax+b)^{2}f(x)\diff x\\
+    &=a^{2}\int_{-\infty}^{\infty}x^{2}f(x)\diff x+2ab\int_{-\infty}^{\infty}xf(x)\diff x+b^{2}\int_{-\infty}^{\infty}f(x)\diff x\\
+    &=a^{2}E[X^{2}]+2abE[X]+b^{2}
+  \end{aligned}$$\s
+
+  Therefore
+
+  $$\mathrm{Var}(Y)=E[Y^{2}]-E[Y]^{2}=a^{2}(E[X^{2}]-E[X]^{2})=a^{2}\mathrm{Var}(X)$$
+\end{pst}\n
+
+\begin{thm}
+  Let $X$ be a normal random variable with parameters $\mu$ and $\sigma^{2}$, then $E[X]=\mu$ and $\mathrm{Var}(X)=\sigma^{2}$.\n
+
+  \prf Let $Z=(X-\mu)/\sigma$ be the standard normal random variable. By \rpst[\sctd{2}] and \rpst[\sctd{1}], $E[X]=\sigma E[Z]+\mu=\mu$ and $\mathrm{Var}(X)=\sigma^{2}\mathrm{Var}(Z)=\sigma^{2}$.
+\end{thm}\n
+
+An important property of normal distribution is that it can be used to approximate the binomial random variable with parameters $(n,p)$ where $n$ is large and $p$ is fixed. This is similar to approximation using Poisson random variable, but both approximation have different requirements. Below is the \textbf{de Moivre-Laplace theorem} for such approximation:\n
+
+\begin{thm}
+  Let $0<p<1$ be a fixed value and $X_{n}$ be the binomial random variable with parameters $(n,p)$, then for $a,b\in\R$,
+
+  $$\lim_{n\to\infty}P\brr{\brc{a\leq\frac{X_{n}-np}{\sqrt{np(1-p)}}\leq b}}=P(\brc{a\leq Z\leq b})=\int_{a}^{b}\frac{1}{\sqrt{2\pi}}e^{-x^{2}/2}\diff x$$
+\end{thm}\n
+
+In other words, de Moivre-Laplace theorem shows that $(X_{n}-np)/\sqrt{np(1-p)}$ has an approximate normal distribution. The theorem is also known as a special case of the central limit theorem.\n
+
+\begin{dft}
+  Let $Z$ be the standard normal random variable and $a\in\R$, then $\Phi$ is a \textbf{cumulative distribution function} such that
+
+  $$\Phi(a)=\int_{-\infty}^{a}\frac{1}{\sqrt{2\pi}}e^{-x^{2}/2}\diff x=P(\brc{Z\leq a})$$
+\end{dft}\n
+
+Geometrically, $\Phi$ is the area under the standard normal curve to the left of a random variable $X$.
+
+\begin{exm}
+  Let $X$ be a binomial random variable with parameters $(40,1/2)$. Find $P(\brc{X=20})$.\n
+
+  \ans Note that the exact value of the probability is
+
+  $$P(\brc{X=20})=\binom{40}{20}\brr{\frac{1}{2}}^{40}\approx 0.1254$$\s
+
+  In order to apply \rthm[\sctd{1}], first a continuity correction is applied, which is
+
+  $$P(\brc{X=20})=P(\brc{19.5\leq X\leq 20.5})$$\s
+
+  then
+
+  $$\begin{aligned}[t]
+    P(\brc{19.5\leq X\leq 20.5})&=P\brr{\brc{\frac{19.5-20}{\sqrt{10}}\leq\frac{X-20}{\sqrt{10}}\leq\frac{20.5-20}{\sqrt{10}}}}\\
+    &\approx P(\brc{-0.16\leq Z\leq 0.16})\\
+    &=2\brr{\Phi(0.16)-\frac{1}{2}}
+  \end{aligned}$$\s
+
+  Finally, by checking values of $\Phi$ in a table, $\Phi(0.16)=0.5636$ and $P(\brc{X=20})=0.1272$.
+\end{exm}
+
+\begin{exm}
+  Let $X$ be a normal random variable with parameters $(10,36)$. Find $P(\brc{7\leq X\leq 16})$ given that $\Phi(1)=0.8413$ and $\Phi(0.5)=0.6915$.\n
+
+  \ans Let $Z=(X-\mu)/\sigma=(X-10)/6$ such that $Z$ is a standard normal random variable, then
+
+  $$\begin{aligned}[t]
+    P(\brc{7\leq X\leq 16})&=P(\brc{-0.5\leq Z\leq 1})\\
+    &=\Phi(1)-\Phi(-0.5)\\
+    &=\Phi(1)-(1-\Phi(0.5))=0.3085
+  \end{aligned}$$
+\end{exm}
+
+\subsubsection{Exponential Random Variables}
+\begin{dft}
+  Let $\lambda>0$. An \textbf{exponential random variable} $X$ with parameter $\lambda$ is a random variable with density
+
+  $$f(x)=\begin{cases}
+    \lambda e^{-\lambda x}&\erm{if }x>0\\
+    0&\erm{otherwise}
+  \end{cases}$$
+\end{dft}\n
+
+\begin{exm}
+  Let $X$ be an exponential random variable with parameter $\lambda$. Calculate $E[X]$, $E[X^{n}]$ and $\mathrm{Var}(X)$.\n
+  
+  \ans Let $n\geq 1$, then
+
+  $$\begin{aligned}[t]
+    E[X^{n}]&=\int_{-\infty}^{\infty}x^{n}f(x)\diff x=\int_{0}^{\infty}x^{n}\lambda e^{-\lambda x}\diff x\\
+    &=\int_{0}^{\infty}x^{n}(-e^{-\lambda x})'\diff x\\
+    &=[-x^{n}e^{-\lambda x}]_{0}^{\infty}-\int_{0}^{\infty}nx^{n-1}(-e^{-\lambda x})\diff x\\
+    &=\frac{n}{\lambda}\int_{0}^{\infty}x^{n-1}\lambda e^{-\lambda x}\diff x=\frac{n}{\lambda}E[X^{n-1}]
+  \end{aligned}$$\s
+
+  Hence
+
+  $$E[X^{n}]=\frac{n!}{\lambda^{n}}E[X^{0}]=\frac{n!}{\lambda^{n}}$$\s
+
+  which in particular $E[X]=1/\lambda$ and $E[X^{2}]=2/\lambda^{2}$. Therefore $\mathrm{Var}(X)=E[X^{2}]-E[X]^{2}=1/\lambda^{2}$.
+\end{exm}\n
+
+\begin{exm}
+  Suppose the length of a phone call (in minutes) is an exponential random variable with parameter $1/10$. If Amy arrives immediately right ahead of Bob at a public telephone booth, find the probability that Bob has to wait for between $10$ and $20$ minutes.\n
+
+  \ans Note that
+
+  $$P(\brc{10\leq X\leq 20})=\int_{10}^{20}\lambda e^{-\lambda x}\diff x=e^{-1}-e^{-2}$$
+\end{exm}
+
+\subsection{Distribution of Function of Continuous Random Variables}
+\subsubsection{Density of Function of Continuous Random Variables}
+Let $X$ be a continuous random variable with density $f_{X}$, and $g:\R\to\R$ be a real-valued function. Further let $Y=g(X)$ is then a \textbf{function of continuous random variable}. The discussion is to figure out a general formula for density of $Y$, but before that, consider the following special cases:\n
+
+\begin{exm}
+  Let $X$ be a continuous random variable with density $f_{X}$ and $Y=X^{2}$ be a function of $X$. Find the density of $Y$.\n
+
+  \ans By comparing the cumulative distribution function of $Y$,
+
+  $$\begin{aligned}[t]
+    F_{Y}(y)&=P(\brc{Y\leq y})=P(\brc{X^{2}\leq y})\\
+    &=\begin{cases}
+      P(\brc{-\sqrt{y}\leq X\leq\sqrt{y}})&\erm{if }y\geq 0\\
+      0&\erm{otherwise}
+    \end{cases}
+  \end{aligned}$$\s
+
+  Hence if $y\geq 0$,
+
+  $$F_{Y}(y)=P(\brc{-\sqrt{y}\leq X\leq\sqrt{y}})=F_{X}(\sqrt{y})-F_{X}(-\sqrt{y})$$\s
+
+  Taking derivative with respect to $y$ gives
+
+  $$f_{Y}(y)=\begin{cases}
+    f_{X}(\sqrt{y})(1/2\sqrt{y})-f_{X}(-\sqrt{y})(-1/2\sqrt{y})&\erm{if }y>0\\
+    0&\erm{if }y<0
+  \end{cases}$$
+\end{exm}\n
+
+\begin{exm}
+  Let $X$ be an exponential random variable with parameter $\lambda$, and $Y=1/X$ be a function of $X$. Find the probability density function of $Y$.\n
+
+  \ans Note that $P(\brc{X\leq 0})=0$ implies $P(\brc{Y\leq 0})=0$. After that, the cumulative distribution function of $Y$ is
+
+  $$F_{Y}(y)=P(\brc{Y\leq y})=\begin{cases}
+    P(\brc{1/X\leq y})&\erm{if }y>0\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  Hence when $y>0$,
+
+  $$F_{Y}(y)=P(\brc{X\geq 1/y})=1-F_{X}\brr{\frac{1}{y}}$$\s
+
+  Taking derivative with respect to $y$ gives
+
+  $$f_{Y}(y)=\begin{cases}
+    f_{x}(1/y)(1/y^{2})=\lambda\exp(-\lambda/y)(1/y^{2})&\erm{if }y>0\\
+    0&\erm{if }y<0
+  \end{cases}$$
+\end{exm}\n
+
+Below is a general formula for density of function of continuous random variables:\n
+
+\begin{thm}
+  Let $X$ be a continuous random variable with density $f_{X}$, $g:\R\to\R$ be a strictly monotone and differentiable function, and $Y=g(X)$ is a function of $X$, then
+
+  $$f_{Y}(y)=\begin{cases}
+    f_{X}(g^{-1}(y))\abs{(g^{-1}(y))'}&\erm{if }y=g(x)\text{ for some }x\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  \prf Assume $g$ is strictly increasing, then
+
+  $$F_{Y}(y)=P(\brc{Y\leq y})=P(\brc{g(X)\leq y})=F_{X}(g^{-1}(y))$$\s
+
+  and differentiate with respect to $y$ gives
+
+  $$f_{Y}(y)=f_{X}(g^-1(y))(g^{-1}(y))'$$\s
+
+  and absolute value is taken because $f_{Y}(y)\geq 0$.
+\end{thm}
+
+\pagebreak
+
+\section{Joint Distributions}
+\subsection{Introduction to Joint Distributions}
+\subsubsection{Joint Cumulative Distributions}
+\begin{dft}
+  Let $X$ and $Y$ be two random variables on a sample space, then a \textbf{joint cumulative distribution} of $X$ and $Y$, denoted by $F$, is defined by
+
+  $$F(a,b)=P(\brc{X\leq a,Y\leq b})$$
+\end{dft}\n
+
+Let $F_{X}$ and $F_{Y}$ be the cumulative distribution function of $X$ and $Y$ respectively, then $F_{X}$ and $F_{Y}$ are determined by $F$. This is because
+
+$$\begin{aligned}[t]
+  F_{X}(a)&=P(\brc{X\leq a})=P(\brc{X\leq a,Y\leq\infty})\\
+  &=P\brr{\lim_{b\to\infty}\brc{X\leq a,Y\leq b}}\\
+  &=\lim_{b\to\infty}P(\brr{X\leq a,Y\leq b})=\lim_{b\to\infty}F(a,b)
+\end{aligned}$$\s
+
+In other words, $F_{X}(a)$ can be represented as $F(a,\infty)$, and similarly, $F_{Y}(b)$ can be represented as $F(\infty,b)$. Usually, $F_{X}$ and $F_{Y}$ are called the \textbf{marginal distributions} of $X$ and $Y$ respectively.\n
+
+Also, theoretically all statements about $X$ and $Y$ are determined by the joint distribution of $X$ and $Y$.\n
+
+\begin{exm}
+  Let $F$ be the joint cumulative distribution function of $X$ and $Y$. Find $P(\brc{X>a,Y>b})$.\n
+
+  \ans Note that
+
+  $$\begin{aligned}[t]
+    P(\brc{X>a,Y>b})&=P(\brc{X>a}\cap\brc{Y>b})\\
+    &=1-P((\brc{X>a}\cap\brc{Y>b})^{c})\\
+    &=1-P(\brc{X\leq a}\cup\brc{Y\leq b})\\
+    &=1-P(\brc{X\leq a})-P(\brc{Y\leq b})+P(\brc{X\leq a}\cap\brc{Y\leq b})\\
+    &=1-F(a,\infty)-F(\infty,b)+F(a,b)
+  \end{aligned}$$
+\end{exm}\n
+
+\subsubsection{Discrete Joint Distributions}
+When $X$ and $Y$ are both discrete, the joint probability mass function $p$ can be defined by
+
+$$p(x,y)=P\brc{X=x,Y=y}$$\s
+
+where $(x,y)$ are possible values of $(X,Y)$, and therefore
+
+$$F(a,b)=\sum_{\substack{(x,y)\srm p(x,y)>0\\x\leq a,y\leq b}}p(x,y)$$\s
+
+Consequently,
+
+$$p_{X}(a)=\sum_{y\srm p(a,y)>0}p(a,y),\;p_{Y}(b)=\sum_{x\srm p(x,b)>0}p(x,b)$$\s
+
+\subsubsection{Continuous Joint Distributions}
+\begin{dft}
+  Let $X$ and $Y$ be continuous random variables, then $X$ and $Y$ are said to be \textbf{jointly continuous} if there exists a function $f:\R^{2}\to[0,\infty)$ such that
+
+  $$P(\brc{(X,Y)\in C})=\iint_{C}f(x,y)\diff x\diff y$$\s
+  
+  where $C$ is a measurable set in $\R^{2}$.
+\end{dft}\n
+
+For instance, when $C$ is the countable intersection or union of ractangles $[a,b]\times[c,d]$, $C$ is a measurable set in $\R^{2}$.\n
+
+\begin{exm}
+  Suppose $X$ and $Y$ have a joint density function
+
+  $$f(x,y)=\begin{cases}
+    12xy(1-x)&\erm{if }0<x<1,0<y<1\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  Find $P(\brc{X\leq 1/2,Y\leq 1/2})$ and $P(\brc{X\leq 1/2})$.\n
+
+  \ans Note that
+
+  $$\begin{aligned}[t]
+    P(\brc{X\leq 1/2,Y\leq 1/2})&=P(\brc{(X,Y)\in(-\infty,1/2)\times(-\infty,1/2)})\\
+    &=\int_{-\infty}^{1/2}\int_{-\infty}^{1/2}f(x,y)\diff x\diff y\\
+    &=\int_{0}^{1/2}\int_{0}^{1/2}12xy(1-x)\diff x\diff y\\
+    &=\int_{0}^{1/2}\brs{12y\brr{\frac{x^{2}}{2}-\frac{x^{3}}{3}}}_{0}^{1/2}\diff y\\
+    &=\int_{0}^{1/2}y\diff y\\
+    &=\brs{\frac{y^{2}}{2}}_{0}^{1/2}=\frac{1}{8}
+  \end{aligned}$$\s
+
+   and similarly,
+
+   $$P(\brc{X\leq 1/2})=\int_{0}^{1}\int_{0}^{1/2}12xy(1-x)\diff x\diff y=\frac{1}{2}$$
+\end{exm}\n
+
+\begin{exm}
+  Suppose $X$ and $Y$ have a joint density
+
+  $$f(x,y)=\begin{cases}
+    e^{-(x+y)}&\erm{if }0<x<\infty,0<y<\infty\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  Find the probability density function of $X/Y$.\n
+
+  \ans Notice that $f$ is nonzero only on $(0,\infty)\times(0,\infty)$, or in other words, when $x$ and $y$ are both positive. Assume $X$ and $Y$ always take positive values, then $X/Y$ is also positive. For any $a>0$,
+
+  $$\begin{aligned}[t]
+    F_{X/Y}(a)&=P\brr{\brc{\frac{X}{Y}\leq a}}=P(\brc{X\leq aY})\\
+    &=\underset{(x,y)\srm x\leq ay}{\iint}f(x,y)\diff x\diff y\\
+    &=\underset{\substack{(x,y)\srm x\leq ay\\x>0,y>0}}{\iint}e^{-(x+y)}\diff x\diff y\\
+    &=\int_{0}^{\infty}\int_{0}^{ay}e^{-(x+y)}\diff x\diff y\\
+    &=\int_{0}^{\infty}e^{-y}\brs{-e^{-x}}_{0}^{ay}\diff y\\
+    &=\int_{0}^{\infty}e^{-y}(1-e^{-ay})\diff y\\
+    &=\brs{-e^{-y}+\frac{e^{-(1+a)y}}{1+a}}_{0}^{\infty}\\
+    &=1-\frac{1}{1+a}
+  \end{aligned}$$\s
+
+  Hence
+
+  $$f_{X/Y}(a)=\begin{cases}
+    1/(1+a)^{2}&\erm{if }a>0\\
+    0&\erm{otherwise}
+  \end{cases}$$
+\end{exm}\n
+
+If $X$ and $Y$ are jointly continuous with a joint density $f$, then the cumulative distribution function
+
+$$F(a,b)=P(\brc{X\leq a,Y\leq b})=\int_{-\infty}^{b}\int_{-\infty}^{a}f(x,y)\diff x\diff y$$\s
+
+for any $a,b\in\R$. Similarly, if $f$ is continuous at $(a,b)$ then
+
+$$\frac{\partial^{2} F(a,b)}{\partial a\partial b}=f(a,b)$$\s
+
+This is because if
+
+$$g(y)=\int_{-\infty}^{a}f(x,y)\diff x$$\s
+
+then
+
+$$F(a,b)=\int_{-\infty}^{b}g(y)\diff y$$\s
+
+and by Fundamental Theorem of Calculus,
+
+$$\frac{\partial F(a,b)}{\partial b}=g(b)=\int_{-\infty}^{a}f(x,b)\diff x$$\s
+
+and
+
+$$\frac{\partial^{2} F(a,b)}{\partial a\partial b}=f(a,b)$$\s
+
+In the above joint continuous case,
+
+$$f_{X}(a)=\int_{-\infty}^{\infty}f(a,y)\diff y,\;f_{Y}(b)=\int_{-\infty}^{\infty}f(x,b)\diff x$$\s
+
+because
+
+$$F_{X}(a)=P(\brc{X\leq a,Y\leq\infty})=\int_{-\infty}^{a}\int_{-\infty}^{\infty}f(x,y)\diff y\diff x$$\s
+
+and using the same technique as above,
+
+$$f_{X}(a)=\int_{-\infty}^{\infty}f(a,y)\diff y$$
+
+\subsection{Independence of Random Variables}
+\subsubsection{Independence of Two Random Variables}
+Recall that two events $E$ and $F$ are independent if $P(E\cap F)=P(E)P(F)$. Below is the definition about independence of random variables:\n
+
+\begin{dft}
+  Let $X$ and $Y$ be random variables, then they are \textbf{independent} if
+
+  $$P(\brc{X\in A,Y\in B})=P(\brc{X\in A})P(\brc{Y\in B})$$\s
+
+  for all measurable sets $A,B\subset\R$.
+\end{dft}\n
+
+In other words, the events $\brc{X\in A}$ and $\brc{Y\in B}$ are independent for all $A$ and $B$. Equivalently, $X$ and $Y$ are said to be independent if $F(a,b)=F_{X}(a)F_{Y}(b)$ for all $a,b\in\R$.
+
+\subsubsection{Independence of Discrete Random Variables}
+\begin{pst}
+  Let $X$ and $Y$ be discrete random variables, then $X$ and $Y$ are independent if and only if $p(x,y)=p_{X}(x)p_{Y}(y)$.\n
+
+  \prf\arr Suppose $X$ and $Y$ are independent, then
+
+  $$p(x,y)=P(\brc{X=x,Y=y})=P(\brc{X=x})P(\brc{Y=y})=p_{X}(x)p_{Y}(y)$$\s
+
+  \arl Suppose $p(x,y)=p_{X}(x)p_{Y}(y)$ holds for all $x$ and $y$, then
+
+  $$\begin{aligned}
+    F(a,b)&=P(\brc{X\leq a,Y\leq b})\\
+    &=\sum_{x\leq a,y\leq b}p(x,y)\\
+    &=\sum_{x\leq a,y\leq b}p_{X}(x)p_{Y}(y)\\
+    &=\brr{\sum_{x\leq a}p_{X}(x)}\brr{\sum_{y\leq b}p_{Y}(y)}\\
+    &=F_{X}(a)F_{Y}(b)
+  \end{aligned}$$\s
+
+  which means $X$ and $Y$ are independent.
+\end{pst}
+
+\subsubsection{Independence of Continuous Random Variables}
+\begin{pst}
+  If $X$ and $Y$ are jointly continuous with a density $f(x,y)$, then $X$ and $Y$ are independent if and only if $f(x,y)=f_{X}(x)f_{Y}(y)$.\n
+
+  \prf\arr If $X$ and $Y$ are independent, then $F(a,b)=F_{X}(a)F_{Y}(b)$ for any $a,b\in\R$. Taking partial derivatives gives
+
+  $$f(a,b)=\frac{\partial^{2}F(a,b)}{\partial a\partial b}=F'_{X}(a)F'_{Y}(b)=f_{X}(a)f_{Y}(b)$$\s
+
+  \arl If $f(x,y)=f_{X}(x)f_{Y}(y)$ holds for all $x$ and $y$, then
+
+  $$\begin{aligned}[t]
+    F(a,b)&=\int_{-\infty}^{b}\int_{-\infty}^{a}f(x,y)\diff x\diff y\\
+    &=\int_{-\infty}^{b}\int_{-\infty}^{a}f_{X}(x)f_{Y}(y)\diff x\diff y\\
+    &=\brr{\int_{-\infty}^{b}f_{Y}(y)\diff y}\brr{\int_{-\infty}^{a}f_{X}(x)\diff x}\\
+    &=F_{X}(a)F_{Y}(b)
+  \end{aligned}$$\s
+
+  which means $X$ and $Y$ are independent.
+\end{pst}\n
+
+\begin{exm}
+  Suppose $X$ and $Y$ have a joint density $f(x,y)=24xy$ if $0<x<1$, $0<y<1$ and $0<x+y<1$. Determine whether $X$ and $Y$ are independent.\n
+
+  \ans For $0<a<1$,
+
+  $$f_{X}(a)=\int_{-\infty}^{\infty}f(a,y)\diff y=\int_{0}^{1-a}24ay\diff y=12a(1-a)^{2}$$\s
+
+  which means $f_{Y}(b)=12b(1-b)^{2}$. Therefore $f(a,b)\neq f_{X}(a)f_{Y}(b)$ and $X$ and $Y$ are not independent.
+\end{exm}\n
+
+The following example is called Buffon's needle problem, and it states as follows:\n
+
+\begin{exm}
+  A table is ruled with equidistant parallel lines, a distance $D$ apart. A needle of length $L$ where $L\leq D$ is randomly thrown on the table. Find the probability that the needle with intersect one of the lines.\n
+
+  \ans Let $O$ be the center of the needle, $X$ be the shortest distance between $O$ and the nearest parallel line, and $\theta$ be the angle between the needle and the vertical direction (perpendicular to parallel line). Note that $0\leq X\leq D/2$ and $0\leq\theta\leq\pi/2$.\n
+
+  Suppose $X$ and $\theta$ has a uniform distribution on $[0,D/2]$ and $[0,\pi/2]$ respectively, then the needle intersects one of the parallel lines if and only if $X\leq(L/2)\cos(\theta)$. Further assume that $X$ and $\theta$ are independent, then
+
+  $$\begin{aligned}[t]
+    P\brr{\brc{X\leq\frac{1}{2}L\cos(\theta)}}&=\underset{\substack{(x,\theta)\in[0,D/2]\times[0,\pi/2]\\x\leq(L/2)\cos(\theta)}}{\iint}f(x,\theta)\diff x\diff\theta\\
+    &=\underset{A}{\iint}f_{X}(x)f_{\theta}(\theta)\diff x\diff\theta\\
+    &=\int_{0}^{\pi/2}\int_{0}^{(L/2)\cos(\theta)}\frac{2}{D}\frac{2}{\pi}\diff x\diff\theta\\
+    &=\int_{0}^{\pi/2}\frac{2L}{D\pi}\cos(\theta)\diff\theta\\
+    &=\brs{\frac{2L}{D\pi}\sin(\theta)}_{0}^{\pi/2}=\frac{2L}{D\pi}
+  \end{aligned}$$
+\end{exm}
+
+\subsubsection{Independence of Multiple Random Variables}
+Note that the concepts of joint distribution and independence can be extended to more that two random variables. That is, if $X_{1},X_{2},\cdots,X_{n}$ are random variables on a sample space, then the joint cumulative distribution function is
+
+$$F(a_{1},a_{2},\cdots,a_{n})=P(\brc{X_{1}\leq a_{1},X_{2}\leq a_{2},\cdots,X_{n}\leq a_{n}})$$\s
+
+\begin{thm}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be random variables on a sample space, then they are independent to each other if
+
+  $$P(\brc{X_{1}\in A_{1},X_{2}\in A_{2},\cdots,X_{n}\in A_{n}})=\prod_{k=1}^{n}P(\brc{X_{k}\in A_{k}})$$\s
+
+  for measurable sets $A_{1},A_{2},\cdots,A_{n}\in\R$. Equivalently,
+
+  $$F(a_{1},a_{2},\cdots,a_{n})=\prod_{k=1}^{n}F_{X_{k}}(a_{k})$$\s
+
+  for all $a_{1},a_{2},\cdots,a_{n}\in\R$.
+\end{thm}
+
+\subsection{Sums of Independent Random Variables}
+\subsubsection{Simple Sums of Independent Continuous Random Variables}
+Consider the following example:\n
+
+\begin{exm}
+  Let $X$, $Y$ be independent. Suppose both of them have a uniform distribution on $[0,1]$, calculate the distribution of $X+Y$.\n
+
+  \ans Note that $X+Y\in[0,2]$. For $0\leq a\leq 2$,
+
+  $$P(\brc{X+Y\leq a})=\underset{(x,y)\in[0,1]^{2},x+y\leq a}{\iint}f(x,y)\diff x\diff y$$\s
+
+  where
+
+  $$f(x,y)=f_{X}(x)f_{Y}(y)=\begin{cases}
+    1&\erm{if }0<x<1,0<y<1\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  Hence
+
+  $$\begin{aligned}[t]
+    P(\brc{X+Y\leq a})&=\underset{(x,y)\in[0,1]^{2},x+y\leq a}{\iint}1\diff x\diff y\\
+    &=\begin{cases}
+      \int_{0}^{a}\int_{0}^{a-x}1\diff y\diff x&\erm{if }0<a<1\\
+      \int_{0}^{1}\int_{0}^{\min(a-x,1)}1\diff y\diff x&\erm{if }1<a<2\\
+      0&\erm{otherwise}
+    \end{cases}\\
+    &=\begin{cases}
+      a^{2}/2&\erm{if }0<a<1\\
+      \min(a-1/2,1)&\erm{if }1<a<2\\
+      0&\erm{otherwise}
+    \end{cases}
+  \end{aligned}$$
+\end{exm}\n
+
+Now consider a more general method to compute the distribution of $X+Y$. Let $X$ and $Y$ be independent continuous random variables with density $f_{X}$ and $f_{y}$ respectively, and so $f(x,y)=f_{X}(x)f_{Y}(y)$. For $a\in\R$,
+
+$$\begin{aligned}
+  F_{X+Y}(a)&=P(\brc{X+Y\leq a})\\
+  &=\underset{(x,y)\srm x+y\leq a}{\iint}f(x,y)\diff x\diff y\\
+  &=\underset{(x,y)\srm x+y\leq a}{\iint}f_{X}(x)f_{Y}(y)\diff x\diff y\\
+  &=\int_{-\infty}^{\infty}\int_{-\infty}^{a-y}f_{X}(x)f_{Y}(y)\diff x\diff y\\
+  &=\int_{-\infty}^{\infty}F_{X}(a-y)f_{Y}(y)\diff y
+\end{aligned}$$\s
+
+For simplicity, denote $\ast$ such that for $f$ and $g$,
+
+$$f\ast g(a)=\int_{-\infty}^{\infty}f(a-y)g(y)\diff y=\int_{-\infty}^{\infty}f(y)g(a-y)\diff y$$\s
+
+Note that the density of $X+Y$ is
+
+$$\begin{aligned}[t]
+  f_{X+Y}(a)&=\frac{\diff F_{X+Y}(a)}{\diff a}=\frac{\diff}{\diff a}\int_{-\infty}^{\infty}F_{X}(a-y)f_{Y}(y)\diff y\\
+  &=\int_{-\infty}^{\infty}\frac{\diff}{\diff a}F_{X}(a-y)f_{Y}(y)\diff y\\
+  &=\int_{-\infty}^{\infty}f_{X}(a-y)f_{Y}(y)\diff y=f_{X}\ast f_{Y}(a)
+\end{aligned}$$\s
+
+\begin{exm}
+  Suppose $X$ and $Y$ are independent normal random variables with parameters $(0,1)$ and $(\mu,\sigma^{2})$. Show that $X+Y$ has a normal distribution with parameters $(0,1+\sigma^{2})$.\n
+
+  \ans Density of $X+Y$
+
+  $$\begin{aligned}[t]
+    f_{X+Y}(a)&=\int_{-\infty}^{\infty}f_{X}(a-y)f_{Y}(y)\diff y\\
+    &=\int_{-\infty}^{\infty}\brr{\frac{1}{\sqrt{2\pi}}\exp\brr{-\frac{(a-y)^{2}}{2}}}\brr{\frac{1}{\sqrt{2\pi}\sigma}\exp\brr{-\frac{y^{2}}{2\sigma^{2}}}}\diff y\\
+    &=\frac{1}{2\pi\sigma}\int_{-\infty}^{\infty}\exp\brr{-\frac{(a-y)^{2}}{2}-\frac{y^{2}}{2\sigma^{2}}}
+  \end{aligned}$$\s
+
+  Note that
+
+  $$\frac{(a-y)^{2}}{2}+\frac{y^{2}}{2\sigma^{2}}=\frac{(ky-a\sigma^{2}/k)^{2}}{2\sigma^{2}}+\frac{a^{2}}{2k^{2}}$$\s
+
+  where $k=\sqrt{\sigma^{2}+1}$. Hence
+
+  $$f_{X+Y}(a)=\frac{1}{2\pi\sigma}\exp\brr{-\frac{a^{2}}{2k^{2}}}\int_{-\infty}^{\infty}\exp\brr{\frac{(ky-a\sigma^{2}/k)^{2}}{2\sigma^{2}}}\diff y$$\s
+
+  Let $z=(ky-a\sigma^{2}/k)^{2}/\sigma$, then
+
+  $$f_{X+Y}(a)=\frac{1}{2\pi k}\exp\brr{-\frac{a^{2}}{2k^{2}}}\int_{-\infty}^{\infty}\exp\brr{-\frac{z^{2}}{2}}\diff z=\frac{1}{\sqrt{2\pi}k}\exp\brr{-\frac{a^{2}}{2k^{2}}}$$\s
+
+  which implies $X+Y$ is normal with parameters $(0,k^{2})$.
+\end{exm}
+
+\subsubsection{Simple Sums of Independent Discrete Random Variables}
+If $X$ and $Y$ are independent and discrete random variables,
+
+$$\begin{aligned}[t]
+  P(\brc{X+Y=a})&=\sum_{x}P(\brc{X=x,Y=y})\\
+  &=\sum_{x}P(\brc{X=x})P(\brc{Y=a-x})\\
+  &=\sum_{x}p_{X}(x)p_{Y}(a-x)
+\end{aligned}$$\s
+
+\begin{exm}
+  Suppose $X$ and $Y$ are independent Poisson random variables with parameters $\lambda_{1}$ and $\lambda_{2}$ respectively. Find the distribution of $X+Y$.\n
+
+  \ans Since both $X$ and $Y$ take values in $\brc{0,1,2,\cdots}$, $X+Y$ also takes values in $\brc{0,1,2,\cdots}$. For any integer $n\geq 0$,
+
+  $$\begin{aligned}[t]
+    P(\brc{X+Y=n})&=\sum_{k=0}^{n}P(\brc{X=k})P(\brc{Y=n-k})\\
+    &=\sum_{k=0}^{n}\brr{e^{-\lambda_{1}}\frac{\lambda_{1}^{k}}{k!}}\brr{e^{-\lambda_{2}}\frac{\lambda_{2}^{n-k}}{(n-k)!}}\\
+    &=\frac{e^{-\lambda_{1}-\lambda_{2}}}{n!}\sum_{k=0}^{n}\frac{n!}{k!(n-k)!}\lambda_{1}^{k}\lambda_{2}^{n-k}\\
+    &=\frac{e^{-(\lambda_{1}+\lambda_{2})}}{n!}(\lambda_{1}+\lambda_{2})^{n}
+  \end{aligned}$$\s
+
+  which implies $X+Y$ has a Poisson distribution with parameter $\lambda_{1}+\lambda_{2}$.
+\end{exm}
+
+\subsection{Conditional Distributions}
+\subsubsection{Definition of Conditional Distributions}
+\begin{dft}
+  Let $X$ and $Y$ be discrete random variables, then the \textbf{conditional probability mass function} of $X$ given $Y=y$ is
+
+  $$\begin{aligned}[t]
+    p_{X|Y}(x,y)&=P\brc{X=x\mid Y=y}\\
+    &=\frac{P(X=x,Y=y)}{P(Y=y)}\\
+    &=\frac{p(x,y)}{p_{Y}(y)}
+  \end{aligned}$$\s
+
+  if $p_{Y}(y)\neq 0$.
+\end{dft}\n
+
+\begin{exm}
+  Let $X$ and $Y$ be two independent Poisson random variables with parameters $\lambda_{1}$ and $\lambda_{2}$. Calculate the conditional distribution of $X$ given $X+Y=n$ for some fixed nonnegative integer $n$.\n
+
+  \ans Note that
+
+  $$\begin{aligned}[t]
+    P\brc{X=k\mid X+Y=n}&=\frac{P\brc{X=k,X+Y=n}}{P\brc{X+Y=n}}\\
+    &=\frac{P\brc{X=k}P\brc{Y=n-k}}{P\brc{X+Y=n}}\\
+    &=\frac{(e^{-\lambda_{1}}\lambda_{1}^{k}/k!)(e^{-\lambda_{2}}\lambda_{2}^{n-k}/(n-k)!)}{e^{-\lambda_{1}-\lambda_{2}}(\lambda_{1}+\lambda_{2})^{n}/n!}\\
+    &=\binom{n}{k}\brr{\frac{\lambda_{1}}{\lambda_{1}+\lambda_{2}}}^{k}\brr{\frac{\lambda_{2}}{\lambda_{1}+\lambda_{2}}}^{n-k}
+  \end{aligned}$$\s
+
+  That is, the conditional distribution above is binomial with parameters $n$ and $\lambda_{1}/(\lambda_{1}+\lambda_{2})$.
+\end{exm}\n
+
+\begin{dft}
+  Let $X$ and $Y$ be discrete random variables, then for $A\subset\R$, the \textbf{conditional probability} of $X$ taking values in $A$ given $Y=y$ is
+
+  $$P\brc{X\in A\mid Y=y}=\int_{A}f_{X|Y}(x,y)\diff x$$
+\end{dft}\n
+
+From the definition above, for any $a\in A$,
+
+$$F_{X|Y}(a,y)=P\brc{X\leq a\mid Y=y}=\int_{-\infty}^{a}f_{X|Y}(x,y)\diff x$$\s
+
+First, note that if $X$ and $Y$ are independent, $f_{X|Y}(x,y)=f_{X}(x)$. Also, by the meaning of $Y=y$, one can consider the equation as
+
+$$\begin{aligned}[t]
+  P\brc{X\in A\mid Y=y}&=\lim_{\epsilon\to 0}P\brc{X\in A\mid y-\epsilon<Y<y+\epsilon}\\
+  &=\lim_{\epsilon\to 0}\frac{P\brc{X\in A,y-\epsilon<Y<y+\epsilon}}{P\brc{y-\epsilon<Y<y+\epsilon}}
+\end{aligned}$$\s
+
+\begin{exm}
+  Suppose the joint density of random variables $X$ and $Y$ is given by
+
+  $$f(x,y)=\begin{cases}
+    e^{-x/y}e^{-y}/y\erm{if }x>0,y>0\\
+    0\erm{otherwise}
+  \end{cases}$$\s
+
+  Find $P\brc{X>1\mid Y=y}$.\n
+
+  \ans Note that
+
+  $$\begin{aligned}[t]
+    f_{Y}(y)&=\int_{-\infty}^{\infty}f(x,y)\diff x\\
+    &=\int_{0}^{\infty}e^{-x/y}e^{-y}/y\diff x\\
+    &=\brs{-e^{-x/y}e^{-y}}_{0}^{\infty}=e^{-y}
+  \end{aligned}$$\s
+
+  Then
+
+  $$\begin{aligned}[t]
+    P\brc{X>1\mid Y=y}&=\int_{1}^{\infty}\frac{f(x,y)}{f_{Y}(y)}\diff x\\
+    &=\int_{1}^{\infty}e^{-x/y}/y\diff x\\
+    &=\brs{-e^{-x/y}}_{1}^{\infty}=e^{-1/y}
+  \end{aligned}$$\s
+
+  if $y>0$. Otherwise, $P\brc{X>1\mid Y=y}=0$.
+\end{exm}
+
+\subsubsection{Joint Distributions of Functions of Random Variables}
+Recall the Jacobian (determinant) of $f$ such that $(x_{1},x_{2})\mapsto(g_{1}(x_{1},x_{2}),g_{2}(x_{1},x_{2}))$ is
+
+$$J(x_{1},x_{2})=\det\brr{\begin{bmatrix}
+  \partial g_{1}/\partial x_{1} & \partial g_{1}/\partial x_{2}\\
+  \partial g_{2}/\partial x_{1} & \partial g_{2}/\partial x_{2}
+\end{bmatrix}}=\frac{\partial g_{1}}{\partial x_{1}}\frac{\partial g_{2}}{\partial x_{2}}-\frac{\partial g_{2}}{\partial x_{1}}\frac{\partial g_{1}}{\partial x_{2}}$$\s
+
+Let $X_{1}$ and $X_{2}$ be jointly continuous random variables with density $f_{X_{1},X_{2}}(x_{1},x_{2})$. Further let $g_{1},g_{2}:\R^{2}\to\R$ such that $Y_{1}=g_{1}(X_{1},X_{2})$ and $Y_{2}=g_{2}(X_{1},X_{2})$. With the new random variables, the objective is the find the joint distribution of $Y_{1}$ and $Y_{2}$.\n
+
+\begin{thm}
+  Let $X_{1}$, $X_{2}$, $Y_{1}$ and $Y_{2}$ be random variables, and $g_{1}$ and $g_{2}$ be mapping functions defined as above with the following assumptions:
+
+  \begin{alist}
+    \item $x_{1}$ and $x_{2}$ can be solved in terms of $y_{1}$ and $y_{2}$.
+    \item $g_{1}$ and $g_{2}$ have continuous partial derivatives and the Jacobian $J(x_{1},x_{2})\neq 0$.
+  \end{alist}
+
+  Then $Y_{1}$ and $Y_{2}$ have joint density
+
+  $$f_{Y_{1},Y_{2}}(y_{1},y_{2})=\frac{f_{X_{1},X_{2}}(x_{1},x_{2})}{\abs{J(x_{1},x_{2})}}$$
+\end{thm}\n
+
+Consider the following example:\n
+
+\begin{exm}
+  Let $X_{1}$ and $X_{2}$ be jointly continuous random variables with density $f(x_{1},x_{2})$. Further let $Y_{1}=X_{1}+X_{2}$ and $Y_{2}=X_{1}-X_{2}$, find the joint density of $Y_{1}$ and $Y_{2}$.\n
+
+  \ans Let $y_{1}=g_{1}(x_{1},x_{2})=x_{1}+x_{2}$ and $y_{2}=g_{2}(x_{1},x_{2})=x_{1}-x_{2}$, then $x_{1}=(y_{1}+y_{2})/2$ and $x_{2}=(y_{1}-y_{2})/2$. Note that
+  
+  $$J(x_{1},x_{2})=\det\brr{\begin{bmatrix}
+    1 & 1\\
+    1 & -1
+  \end{bmatrix}}=-2$$\s
+
+  Therefore
+
+  $$f_{Y_{1},Y_{2}}(y_{1},y_{2})=\frac{f(x_{1},x_{2})}{\abs{J(x_{1},x_{2})}}=\frac{1}{2}f\brr{\frac{x_{1}+x_{2}}{2},\frac{x_{1}-x_{2}}{2}}$$
+\end{exm}
+
+\pagebreak
+
+\section{Other Properties of Probability}
+\subsection{Properties of Expectations}
+\subsubsection{Expectations of Functions and Sums of Random Variables}
+Recall that
+
+$$E[X]=\sum_{x}xp(x)$$\s
+
+for discrete case and
+
+$$E[X]=\int_{-\infty}^{\infty}xf(x)\diff x$$\s
+
+for continuous case. No matter which case it is, the expectation of $X$ represents a weighted average of all possible values of $X$.\n
+
+\begin{pst}
+  Let $g:\R^{2}\to\R$ be a real-valued function, and $X$ and $Y$ be discrete random variables with a joint probability mass function $p(x,y)$, then
+
+  $$E[g(X,Y)]=\sum_{x}\sum_{y}g(x,y)p(x,y)$$
+\end{pst}\n
+
+\begin{pst}
+  Let $g:\R^{2}\to\R$ be a real-valued function, and $X$ and $Y$ be continuous random variables with density $f(x,y)$, then
+
+  $$E[g(X,Y)]=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x,y)f(x,y)\diff x\diff y$$\s
+
+  \prf Assume $g$ is nonnegative, then apply the formula for expectation to give
+
+  $$\begin{aligned}[t]
+    E[g(X,Y)]&=\int_{0}^{\infty}P\brc{g(X,Y)>t}\diff t\\
+    &=\int_{0}^{\infty}\brr{\underset{g(x,y)>t}{\iint}f(x,y)\diff x\diff y}\diff t\\
+    &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\brr{\int_{0}^{g(x,y)}f(x,y)\diff t}\diff x\diff y\\
+    &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x,y)f(x,y)\diff x\diff y
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{crl}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be random variables, then
+
+  $$E\brs{\sum_{i=1}^{n}X_{i}}=\sum_{i=1}^{n}E[X_{i}]$$\s
+
+  \prf The proof is done by induction. Assume $X$ and $Y$ are jointly continuous random variables with density $f(x,y)$, then by \rpst[\sctd{0}],
+
+  $$\begin{aligned}[t]
+    E[X+Y]&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(x+y)f(x,y)\diff x\diff y\\
+    &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}xf(x,y)\diff x\diff y+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}yf(x,y)\diff x\diff y\\
+    &=\int_{-\infty}^{\infty}\brr{\int_{-\infty}^{\infty}xf(x,y)\diff y}\diff x+\int_{-\infty}^{\infty}\brr{\int_{-\infty}^{\infty}yf(x,y)\diff x}\diff y\\
+    &=\int_{-\infty}^{\infty}xf_{X}(x)\diff x+\int_{-\infty}^{\infty}yf_{Y}(y)\diff y=E[X]+E[Y]
+  \end{aligned}$$\s
+
+  Then for any $n$, substitute $X=X_{1}+X_{2}+\cdots+X_{n-1}$ and $Y=X_{n}$ which will give the resulting equation.
+\end{crl}
+
+\subsection{Covariances}
+\subsubsection{Definition of Covariances}
+\begin{dft}
+  Let $X$ and $Y$ be random variables, then the \textbf{covariance} of $X$ and $Y$, denoted by $\mathrm{Cov}(X,Y)$, is defined by
+
+  $$\mathrm{Cov}(X,Y)=E[(X-E[X])(Y-E[Y])]$$
+\end{dft}\n
+
+Note that $\mathrm{Cov}(X,X)=\mathrm{Var}(X)$. Also, similar to variance that $\mathrm{Var}(X)=E[X^{2}]-E[X]^{2}$, another formula for covariance is $\mathrm{Cov}(X,Y)=E[XY]-E[X]E[Y]$. This will be explained briefly in the next section.
+
+\subsubsection{Properties of Covariances}
+\begin{pst}
+  Let $X$ and $Y$ be independent random variables, and $g,h:\R\to\R$ be real-valued functions, then
+
+  $$E[g(X)h(Y)]=E[g(X)]E[h(Y)]$$\s
+
+  \prf For continuous case,
+
+  $$\begin{aligned}[t]
+    E[g(X)h(Y)]&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)h(y)f(x,y)\diff x\diff y\\
+    &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)h(y)f_{X}(x)f_{Y}(y)\diff x\diff y\\
+    &=\brr{\int_{-\infty}^{\infty}g(x)f_{X}(x)\diff x}\brr{\int_{-\infty}^{\infty}h(y)f_{Y}(y)\diff y}\\
+    &=E[g(X)]E[h(Y)]
+  \end{aligned}$$
+\end{pst}\n
+
+\begin{crl}
+  If $X$ and $Y$ are independent random variables, then $\mathrm{Cov}(X,Y)=0$.\n
+
+  \prf By \rpst[\sctd{0}],
+
+  $$\mathrm{Cov}(X,Y)=E[(X-E[X])(Y-E[Y])]=E[X-E[X]]E[Y-E[Y]]=0$$
+\end{crl}\n
+
+An important note for the corollary above is that the inverse does not hold. That is, $\mathrm{Cov}(X,Y)=0$ does not imply $X$ and $Y$ are independent. Consider the following example:\n
+
+\begin{exm}
+  Let $X$ and $Y$ be random variables where
+  
+  $$P\brc{X=-1}=P\brc{X=0}=P\brc{X=1}=\frac{1}{3}$$\s
+  
+  and
+
+  $$Y=\begin{cases}
+    1\erm{if }X=0\\
+    0\erm{otherwise}
+  \end{cases}$$\s
+
+  Since $E[X]=0$ and $E[XY]=0$, by the second formula of covariance, $\mathrm{Cov}(X,Y)=0$. However, when substitute $(x,y)=(0,0)$,
+
+  $$P\brc{X=0}P\brc{Y=0}=\frac{1}{3}\brr{1-\frac{1}{3}}\neq 0=P\brc{X=0,Y=0}$$\s
+
+  implies $X$ and $Y$ are not independent.
+\end{exm}\n
+
+Here is a standard list of properties of covariance:\n
+
+\begin{pst}
+  Let $X$ and $Y$ be random variables, then the following equation holds:
+
+  \begin{alist}
+    \item
+    
+    $$\mathrm{Cov}(X,Y)=\mathrm{Cov}(Y,X)$$\s
+
+    \item
+    
+    $$\mathrm{Cov}(X,X)=\mathrm{Var}(X)$$\s
+
+    \item For any $a\in\R$,
+    
+    $$\mathrm{Cov}(aX,Y)=a\mathrm{Cov}(X,Y)$$\s
+
+    \item If $X=X_{1}+X_{2}+\cdots+X_{n}$ and $Y=Y_{1}+Y_{2}+\cdots+Y_{m}$, then
+    
+    $$\mathrm{Cov}(X,Y)=\sum_{i=1}^{n}\sum_{j=1}^{m}\mathrm{Cov}(X_{i},Y_{j})$$
+  \end{alist}
+\end{pst}\n
+
+\begin{crl}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be random variables, then
+
+  $$\mathrm{Var}\brr{\sum_{i=1}^{n}X_{i}}=\sum_{i=1}^{n}\sum_{j=1}^{n}\mathrm{Cov}(X_{i},X_{j})$$\s
+
+  Moreover, if $X_{1},X_{2},\cdots,X_{n}$ are piecewise independent, then
+
+  $$\mathrm{Var}\brr{\sum_{i=1}^{n}X_{i}}=\sum_{i=1}^{n}\mathrm{Var}(X_{i})$$
+\end{crl}
+
+\subsubsection{Independent and Identically Distributed Random Variables}
+\begin{dft}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be random variables, then they are \textbf{identically distributed} if they shares the same expected value $\mu$ and variance $\sigma^{2}$.
+\end{dft}\n
+
+Below is an example which discuss sample mean and sample variance:\n
+
+\begin{exm}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be independent and identically distributed (IID) random variables with expected value $\mu$ and variance $\sigma^{2}$. The sample mean and sample variance, denoted by $\overline{X}$ and $S^{2}$ respectively, is defined by
+
+  $$\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i},\;S^{2}=\sum_{i=1}^{n}\frac{(X_{i}-\overline{X})^{2}}{n-1}$$
+
+  \begin{alist}
+    \item Find the variance of sample mean $\mathrm{Var}(\overline{X})$.
+    \item Find the expected value of sample variance $E[S^{2}]$.
+    \item Show that $\mathrm{Cov}(X_{i}-\overline{X},\overline{X})=0$.
+  \end{alist}
+
+  \ans\prt[a]{zb} Note that
+
+  $$\begin{aligned}[t]
+    \mathrm{Var}(\overline{X})&=\mathrm{Var}\brr{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}}\\
+    &=\frac{1}{n^{2}}\mathrm{Var}(X_{1}+X_{2}+\cdots+X_{n})\\
+    &=\frac{1}{n^{2}}\sum_{i=1}^{n}\mathrm{Var}(X_{i})=\frac{\sigma^{2}}{n}
+  \end{aligned}$$\s
+
+  \prtc[b]{zb} Note that
+
+  $$\begin{aligned}[t]
+    (n-1)S^{2}&=\sum_{i=1}^{n}(X_{i}-\overline{X})^{2}=\sum_{i=1}^{n}((X_{i}-\mu)-(\overline{X}-\mu))^{2}\\
+    &=\sum_{i=1}^{n}\brr{(X_{i}-\mu)^{2}-2(X_{i}-\mu)(\overline{X}-\mu)+(\overline{X}-\mu)^{2}}\\
+    &=\sum_{i=1}^{n}(X_{i}-\mu)^{2}-2(\overline{X}-\mu)\sum_{i=1}^{n}(X_{i}-\mu)+n(\overline{X}-\mu)^{2}\\
+    &=\sum_{i=1}^{n}(X_{i}-\mu)^{2}-n(\overline{X}-\mu)^{2}
+  \end{aligned}$$\s
+
+  Then
+
+  $$E[(n-1)S^{2}]=\sum_{i=1}^{n}E[(X_{i}-\mu)^{2}]-nE[(\overline{X}-\mu)^{2}]=(n-1)\sigma^{2}$$\s
+
+  which implies
+
+  $$E[S^{2}]=\frac{1}{n-1}E[(n-1)S^{2}]=\sigma^{2}$$\s
+
+  \prtc[c]{zb} Note that
+
+  $$\begin{aligned}[t]
+    \mathrm{Cov}(X_{i}-\overline{X},\overline{X})&=\mathrm{Cov}(X_{i},\overline{X})-\mathrm{Var}(\overline{X})\\
+    &=\mathrm{Cov}\brr{X_{i},\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}}-\frac{\sigma^{2}}{n}\\
+    &=\frac{1}{n}\sum_{j=1}^{n}\mathrm{Cov}(X_{i},X_{j})-\frac{\sigma^{2}}{n}\\
+    &=\frac{1}{n}\mathrm{Var}(X_{i})-\frac{\sigma^{2}}{n}=\frac{\sigma^{2}}{n}-\frac{\sigma^{2}}{n}=0
+  \end{aligned}$$
+\end{exm}
+
+\subsection{Conditional Expectations}
+\subsubsection{Definition of Conditional Expectations}
+\begin{dft}
+  Let $X$ and $Y$ be discrete random variables, then the \textbf{conditional expectation} of $X$ given $Y=y$ is
+
+  $$E[X\mid Y=y]=\sum_{x}xP\brc{X=x\mid Y=y}$$\s
+
+  provided that $P\brc{Y=y}>0$.
+\end{dft}\n
+
+\begin{dft}
+  Let $X$ and $Y$ be continuous random variables with density $f(x,y)$, then the conditional expectation of $X$ given $Y=y$ is
+
+  $$E[X\mid Y=y]=\int_{-\infty}^{\infty}xf_{X|Y}(x\mid y)\diff x$$\s
+
+  where
+  
+  $$f_{X|Y}(x\mid y)=\frac{f(x,y)}{f_{Y}(y)}$$\s
+  
+  provided that $f_{Y}(y)>0$.
+\end{dft}\n
+
+\begin{exm}
+  Let $X$ and $Y$ be jointly continuous random variable with density
+
+  $$f(x,y)=\begin{cases}
+    e^{-x/y}e^{-y}/y&\erm{if }x,y>0\\
+    0&\erm{otherwise}
+  \end{cases}$$\s
+
+  Calculate $E[X\mid Y=y]$ given that $y>0$.\n
+  
+  \ans Note that
+
+  $$\begin{aligned}[t]
+    f_{Y}(y)&=\int_{-\infty}^{\infty}f(x,y)\diff x\\
+    &=\int_{0}^{\infty}\frac{e^{-x/y}e^{-y}}{y}\diff x\\
+    &=\brs{-e^{x/y}e^{-y}}_{0}^{\infty}=e^{-y}
+  \end{aligned}$$\s
+
+  where $y>0$. This gives
+
+  $$f_{X|Y}(x\mid y)=\frac{e^{-x/y}e^{-y}/y}{e^{-y}}=\frac{e^{-x/y}}{y}$$\s
+
+  Therefore
+
+  $$\begin{aligned}[t]
+    E[X\mid Y=y]&=\int_{-\infty}^{\infty}xf_{X|Y}(x\mid y)\diff x\\
+    &=\int_{0}^{\infty}\frac{xe^{-x/y}}{y}\diff x\\
+    &=\brs{-xe^{-x/y}}_{0}^{\infty}-\int_{0}^{\infty}-e^{-x/y}\diff x\\
+    &=0+\brs{-ye^{-x/y}}_{0}^{\infty}=y
+  \end{aligned}$$\s
+
+  where $y>0$.
+\end{exm}\n
+
+\subsubsection{Law of Total Expectation}
+Assume $E[X\mid Y]$ is a function of $Y$ by $y\mapsto E[X\mid Y=y]$, then the following theorem called \textbf{law of total expectation} (or \textbf{Adam's law}) can be applied:\n
+
+\begin{thm}
+  Let $X$ and $Y$ be random variables, then $E[X]=E[E[X\mid Y]]$.\n
+
+  \prf Note that in discrete case,
+
+  $$\begin{aligned}[t]
+    E[E[X\mid Y]]&=\sum_{y}E[X\mid Y=y]p_{Y}(y)\\
+    &=\sum_{y}\sum_{x}xP\brc{X=x\mid Y=y}p_{Y}(y)\\
+    &=\sum_{y}\sum_{x}xP\brc{X=x,Y=y}\\
+    &=\sum_{x}\sum_{y}xP\brc{X=x,Y=y}\\
+    &=\sum_{x}xP\brc{X=x}=E[X]
+  \end{aligned}$$
+\end{thm}\n
+
+\begin{exm}
+  A miner is trapped in a mine containing $3$ doors. The first door leads to a tunnel that takes him to safety after $3$ hours of travel, and the other two doors that takes him back to the mine after $5$ and $7$ hours of travel respectively. Assume the miner is equally likely to choose any door at all times, what is the expected length of time until he reaches safety?\n
+
+  \ans Let $X$ be the number of hours until the miner reaches safety, and $Y$ be the door he choose in the first time. By \rthm[\sctd{1}],
+
+  $$\begin{aligned}[t]
+    E[X]&=E[E[X\mid Y]]\\
+    &=\sum_{i=1}^{3}E[X\mid Y=i]P\brc{Y=i}\\
+    &=3\brr{\frac{1}{3}}+(5+E[X])\brr{\frac{1}{3}}+(7+E[X])\brr{\frac{1}{3}}
+  \end{aligned}$$\s
+
+  By solving the equation above, $E[X]=3+5+7=15$ hours.
+\end{exm}
+
+\subsection{Moment Generating Functions}
+\subsubsection{Defintion of Moment Generating Functions}
+\begin{dft}
+  Let $X$ be a random variable and $t\in\R$, then the \textbf{moment generating function} of $X$, denoted by $M_{X}(t)$, is defined as $M_{X}(t)=E[e^{tX}]$.
+\end{dft}\n
+
+If the moment generating function is clear to represent a random variable, the notation becomes $M(t)$ for convenience. Note that
+
+$$e^{tX}=\sum_{n=0}^{\infty}\frac{t^{n}}{n!}X^{n}$$\s
+
+implies
+
+$$M_{X}(t)=\sum_{n=0}^{\infty}\frac{t^{n}}{n!}E[X^{n}]$$\s
+
+where $E[X^{n}]$ is called the \textbf{$n$-th moment} of $X$. Moment generating functions may not be useful at first glance, but if $M_{X}(t)$ exists and is finite for all $-t_{0}<t<t_{0}$ for some $t_{0}>0$, then $E[X^{n}]=M_{X}(0)$ for any positive integer $n$.
+
+\subsubsection{Examples of Moment Generating Functions}
+Consider the following examples of finding moment generating functions for some common distributions:\n
+
+\begin{exm}
+  Let $X$ be binomial random variable with parameters $(n,p)$, then
+
+  $$\begin{aligned}[t]
+    M(t)&=E[e^{tX}]=\sum_{k=0}^{n}e^{tk}P\brc{X=k}\\
+    &=\sum_{k=0}^{n}e^{tk}\binom{n}{k}p^{k}(1-p)^{n-k}\\
+    &=\sum_{k=0}^{n}\binom{n}{k}(pe^{t})^{k}(1-p)^{n-k}=(pe^{t}-p+1)^{n}
+  \end{aligned}$$
+\end{exm}\n
+
+\begin{exm}
+  Let $X$ be Poisson random variable with parameters $\lambda$, then
+
+  $$\begin{aligned}[t]
+    M(t)&=E[e^{tX}]=\sum_{k=0}^{\infty}e^{tk}P\brc{X=k}\\
+    &=\sum_{k=0}^{\infty}e^{tk}e^{-\lambda}\frac{\lambda^{k}}{k!}\\
+    &=\sum_{k=0}^{\infty}e^{-\lambda}\frac{(\lambda e^{t})^{k}}{k!}=\exp(\lambda(e^{t}-1))
+  \end{aligned}$$
+\end{exm}\n
+
+\begin{exm}
+  Let $Z$ be standard normal random variable, then
+
+  $$\begin{aligned}[t]
+    M(t)&=E[e^{tZ}]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{tz}e^{-z^{2}/2}\diff z\\
+    &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{t^{2}/2}e^{-(z-t)^{2}/2}\diff z\\
+    &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{t^{2}/2}e^{-(z-t)^{2}/2}\diff(z-t)=e^{t^{2}/2}
+  \end{aligned}$$
+\end{exm}\n
+
+\begin{exm}
+  Let $X$ be normal random variable with mean $\mu$ and variance $\sigma^{2}$, then by \rexm[\sctd{1}],
+
+  $$\begin{aligned}[t]
+    M_{X}(t)&=E[e^{tX}]=E[e^{t(\mu+\sigma Z)}]=E[e^{t\mu}e^{t\sigma Z}]\\
+    &=e^{t\mu}E[e^{(t\sigma)Z}]=e^{t\mu}M_{Z}(t\sigma)\\
+    &=e^{t\mu}e^{(t\sigma)^{2}/2}=\exp\brr{\frac{(\sigma t)^{2}}{2}+\mu t}
+  \end{aligned}$$
+\end{exm}
+
+\subsubsection{Moment Generating Functions and Distributions}
+\begin{thm}
+  Let $X$ and $Y$ be random variables, then if for any $t_{0}>0$ such that $M_{X}(t)=M_{Y}(t)=c$ for $t\in(-t_{0},t_{0})$ where $c$ is a finite number, then $X$ and $Y$ have the same distribution.
+\end{thm}\n
+
+In other words, the moment generating function of any random variable determines its distribution.\n
+
+\begin{pst}
+  Let $X$ and $Y$ be independent random variables, then $M_{X+Y}(t)=M_{X}(t)+M_{Y}(t)$.\n
+
+  \prf Note that
+
+  \propdisp
+
+  $$M_{X+Y}(t)=E[e^{tX+tY}]=E[e^{tX}]E[e^{tY}]=M_{X}(t)M_{Y}(t)$$
+\end{pst}
+
+\subsection{Limiting Theorems}
+\subsubsection{Markov's Inequality and Chebyshev's Inequality}
+Let $X_{1},X_{2},\cdots,X_{n}$ be a sequence of independent and identically distributed random variables, and the objective is to figure out the limiting behaviour of $(X_{1}+X_{2}+\cdots+X_{n})/n$ when $n$ tends to infinity. Below are \textbf{Markov's inequality} and \textbf{Chebyshev's inequality} in order to solve the problem above:\n
+
+\begin{thm}
+  Let $X$ be a nonnegative random variable, then for any $a>0$,
+
+  $$P\brc{X\geq a}\leq\frac{E[X]}{a}$$\s
+  
+  \prf Let
+
+  $$I=\begin{cases}
+    1\erm{if }X\geq a\\
+    0\erm{otherwise}
+  \end{cases}$$\s
+
+  be random variable. Since $X\geq 0$, $I\leq X/a$ which implies $E[I]\leq E[X]/a$. On the other hand, $E[I]=P\brc{I=1}=P\brc{X\geq a}$ and that leads to the inequality above.
+\end{thm}\n
+
+\begin{thm}
+  Let $X$ be a random variable with finite mean $\mu$ and variance $\sigma^{2}$, then for any $\epsilon>0$,
+
+  $$P\brc{\abs{X-\mu}\geq\epsilon}\leq\frac{\sigma^{2}}{\epsilon^{2}}$$\s
+
+  \prf Let $Y=\abs{X-\mu}^{2}$, then by \rthm[\sctd{1}],
+
+  $$P\brc{\abs{X-\mu}\geq\epsilon}=P\brc{Y\geq\epsilon^{2}}\leq\frac{E[Y]}{\epsilon^{2}}=\frac{\sigma^{2}}{\epsilon^{2}}$$
+\end{thm}\n
+
+\begin{exm}
+  Suppose that it is known that the number of items produced in a factory during a week is a random variable with mean $50$.
+
+  \begin{alist}
+  \item What can be said about the probability that this week’s production will exceed $75$?
+  \item If the variance of a week’s production is known to equal $25$, then what can be said about the probability that this week’s production will be between $40$ and $60$?
+  \end{alist}
+
+  \ans\prt[a]{zb} Let $X$ be the number of items produced during a week with $E[X]=50$, then by Markov's inequality (\rthm[\sctd{2}]),
+
+  $$P\brc{X>75}=P\brc{P\geq 76}\leq\frac{E[X]}{76}=\frac{25}{38}$$\s
+
+  \prtc[b]{zb} Note That
+  
+  $$P\brc{40\leq X\leq 60}=P\brc{\abs{X-50}\leq 10}=1-P\brc{\abs{X-50}>10}$$\s
+
+  By Chebyshev's inequality (\rthm[\sctd{1}]),
+
+  $$P\brc{\abs{X-50}>10}\leq\frac{\mathrm{Var}(X)}{10^{2}}=\frac{1}{4}$$\s
+
+  Therefore $P\brc{40\leq X\leq 60}=3/4$.
+\end{exm}\n
+
+\begin{pst}
+  Let $X$ be a random variable with finite mean $\mu$ and variance $0$, then $P\brc{X=\mu}=1$.\n
+
+  \prf By Chebyshev's inequality (\rthm[\sctd{2}]),
+
+  $$\begin{aligned}[t]
+    P\brc{X\neq\mu}&=P\brc{\bigcup_{n=1}^{\infty}\abs{X-\mu}\geq\frac{1}{k}}\\
+    &=\sum_{n=1}^{\infty}P\brc{\abs{X-\mu}\geq\frac{1}{k}}\\
+    &\leq\sum_{n=1}^{\infty}k^{2}\mathrm{Var}(X)=0
+  \end{aligned}$$\s
+
+  which implies $P\brc{X=\mu}=1-P\brc{X\neq\mu}=1$.
+\end{pst}
+
+\subsubsection{Weak Law of Large Numbers}
+Recall the problem of finding limiting behaviour of $(X_{1}+X_{2}+\cdots+X_{n})/n$ when $n$ tends to infinity. Below is the \textbf{weak law of large numbers}:\n
+
+\begin{thm}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be an independent and identically distributed sequence of random variables with finite mean, then for any $\epsilon>0$,
+
+  $$P\brc{\abs{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}-\mu}\geq\epsilon}\to 0$$\s
+
+  as $n$ tends to infinity.\n
+
+  \prf Assume $\mathrm{Var}(X_{i})$ is finite for all $i$, then note that the mean and the variance are
+
+  $$E\brs{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}}=\frac{1}{n}\sum_{i=1}^{n}E[X_{i}]=\mu$$\s
+
+  and
+
+  $$\begin{aligned}[t]
+    \mathrm{Var}\brr{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}}&=\frac{1}{n^{2}}\mathrm{Var}(X_{1}+X_{2}+\cdots+X_{n})\\
+    &=\frac{1}{n^{2}}\sum_{i=1}^{n}\mathrm{Var}(X_{i})=\frac{\sigma^{2}}{n}
+  \end{aligned}$$\s
+
+  By applying Chebyshev's inequality (\rthm[\sctd{3}]) to $(X_{1}+X_{2}+\cdots+X_{n})/n$,
+
+  $$\begin{aligned}[t]
+    P\brc{\abs{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}-\mu}\geq\epsilon}&\leq\frac{1}{\epsilon^{2}}\mathrm{Var}\brr{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}}\\
+    &=\frac{\sigma^{2}}{n\epsilon^{2}}\to 0
+  \end{aligned}$$\s
+
+  as $n$ tends to infinity.
+\end{thm}
+
+\subsubsection{Central Limit Theorem}
+\begin{pst}
+  Let $Z_{1},Z_{2},\cdots,Z_{n}$ be a sequence of random variables with distribution function $F_{Z_{n}}$, and $Z$ be random variable with distribution function $F_{Z}$. Suppose $M_{Z_{n}}(t)\to M_{Z}(t)$ for all $t\in\R$ as $n$ tends to infinity, then $F_{Z_{n}}(t)\to F_{Z}(t)$ for each $t$ at which $F_{Z}$ is continuous, as $n$ tends to infinity.
+\end{pst}\n
+
+Below is the \textbf{central limit theorem}:\n
+
+\begin{thm}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be an independent and identically distributed sequence of random variables with finite mean $\mu$ and variance $\sigma^{2}$, then for any $a\in\R$,
+
+  $$P\brc{\frac{X_{1}+X_{2}+\cdots+X_{n}-n\mu}{\sqrt{n}\sigma}}\to\Phi(a)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{a}e^{-x^{2}/2}\diff x$$\s
+
+  as $n$ tends to infinity.\n
+
+  \prf Assume $\mu=0$ and $\sigma^{2}=1$. Let $Z_{n}=(X_{1}+X_{2}+\cdots+X_{n})/\sqrt{n}$, and $Z$ be the standard normal random variable, then $M_{Z}(t)=e^{t^{2}/2}$ by \rexm[\sctd{10}]. Note that
+
+  $$\begin{aligned}[t]
+    M_{Z_{n}}(t)&=E\brs{\exp\brr{t\frac{X_{1}+X_{2}+\cdots+X_{n}}{\sqrt{n}}}}\\
+    &=\prod_{i=1}^{n}E[e^{tX_{i}/\sqrt{n}}]=\brr{M_{X}\brr{\frac{t}{\sqrt{n}}}}^{n}
+  \end{aligned}$$\s
+
+  where $X=X_{1}$ for simplicity. Further let $L(t)=\log(M_{X}(t))$, with
+
+  $$L'(t)=\frac{M'_{X}(t)}{M_{X}(t)},\;L''(t)=\frac{M''_{X}(t)M_{X}(t)-M'_{X}(t)^{2}}{M_{X}(t)^{2}}$$\s
+
+  Note that when $t=0$,
+
+  $$L'(0)=\frac{M'_{X}(0)}{M_{X}(0)}=E[X]=1$$\s
+
+  and
+
+  $$L''(0)=\frac{M''_{X}(0)M_{X}(0)-M'_{X}(0)^{2}}{M_{X}(0)^{2}}=E[X^{2}]=\mathrm{Var}(X)+E[X]^{2}=1$$\s
+
+  Hence
+
+  $$\begin{aligned}[t]
+    \lim_{n\to\infty}nL\brr{\frac{t}{\sqrt{n}}}&=\lim_{n\to\infty}\frac{L(t/\sqrt{n})}{(1/\sqrt{n})^{2}}=\lim_{x\to 0}\frac{L(tx)}{x^{2}}\\
+    &=\lim_{x\to 0}\frac{t^{2}L''(tx)}{2}=\frac{t^{2}}{2}L''(0)=\frac{t^{2}}{2}
+  \end{aligned}$$\s
+
+  In other words,
+
+  $$n\log\brr{M_{X}\brr{\frac{t}{\sqrt{n}}}}\to\frac{t^{2}}{2}$$\s
+
+  as $n$ tends to infinity implies $M_{Z_{n}}(t)\to e^{t^{2}/2}$ as $n$ tends to infinity. Generally,
+
+  $$\frac{X_{1}+X_{2}+\cdots+X_{n}-n\mu}{\sqrt{n}\sigma}=\frac{1}{\sqrt{n}}\brr{\frac{X_{1}-\mu}{\sigma}+\frac{X_{2}-\mu}{\sigma}+\cdots+\frac{X_{n}-\mu}{\sigma}}$$\s
+
+  then by taking $\tilde{X_{i}}=(X_{i}-\mu)/\sigma$ such that it has mean $0$ and variance $1$ finishes the proof.
+\end{thm}\n
+
+In other words, the distribution of
+
+$$\frac{X_{1}+X_{2}+\cdots+X_{n}-n\mu}{\sqrt{n}\sigma}=\frac{X_{1}+X_{2}+\cdots+X_{n}-n\mu}{\sqrt{\mathrm{Var}(X_{1}+X_{2}+\cdots+X_{n})}}$$\s
+
+converges to the standard normal distribution as $n$ tends to infinity.\n
+
+\begin{exm}
+  If $10$ fair dice are rolled, find the approximate probability that the sum obtained is between $30$ and $40$.\n
+
+  \ans Let $X_{i}$ be the value obtained in the $i$-th roll where $i=1,2,\cdots,10$. Note that $E[X_{i}]=(1+2+3+4+5+6)/6=7/2$, $E[X_{i}^{2}]=(1^{2}+2^{2}+3^{2}+4^{2}+5^{2}+6^{2})/6=91/6$ and $\mathrm{Var}(X_{i})=35/12$. After continuity correction, the probability required is
+
+  $$\begin{aligned}[t]
+    &P\brc{29.5\leq X_{1}+X_{2}+\cdots+X_{10}\leq 40.5}\\
+    =&P\brc{\frac{29.5-35}{\sqrt{350/12}}\leq\frac{X_{1}+X_{2}+\cdots+X_{10}-35}{\sqrt{350/12}}\leq\frac{40.5-35}{\sqrt{350/12}}}\\
+    \approx&P\brc{-1.02\leq Z\leq 1.02}\\
+    =&2\Phi(1.02)-1=0.6922
+  \end{aligned}$$
+\end{exm}
+
+\subsubsection{Strong Law of Large Numbers}
+\begin{pst}
+  Let $X$ be a nonnegative random variable with finite $E[X]$, then $P\brc{X<\infty}=1$.\n
+
+  \prf By Markov's inequality,
+
+  $$P\brc{X=\infty}\leq P\brc{X\geq n}\leq\frac{E[X]}{n}\to 0$$\s
+
+  as $n$ tends to infinity.
+\end{pst}
+
+Similar to the weak law of large numbers, the \textbf{strong law of large numbers} provide a stronger estimate.\n
+
+\begin{thm}
+  Let $X_{1},X_{2},\cdots,X_{n}$ be an independent and identically distributed sequence of random variables with finite mean $\mu$, then
+
+  $$\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}\to\mu$$\s
+
+  as $n$ tends to infinity.\n
+
+  \prf Assume $E[X_{i}^{4}]=K<\infty$, and without loss of generality, $\mu=0$. Let $S_{n}=X_{1}+X_{2}+\cdots+X_{n}$ to estimate $E[S_{n}^{4}]$. First, expand $(X_{1}+X_{2}+\cdots+X_{n})^{4}$ in terms of $X_{i}^{4}$, $X_{i}^{3}X_{j}$, $X_{i}^{2}X_{j}^{2}$, $X_{i}^{2}X_{j}X_{k}$ and $X_{i}X_{j}X_{k}X_{l}$ where $i,j,k,l$ are distinct. Note that
+
+  $$E[X_{i}^{3}X_{j}]=E[X_{i}^{2}X_{j}X_{k}]=E[X_{i}X_{j}X_{k}X_{l}]=0$$\s
+
+  Hence
+
+  $$E[S_{n}^{4}]=nE[X_{i}^{4}]+6\binom{n}{2}E[X_{i}^{2}]E[X_{j}^{2}]$$\s
+
+  Using a simple inequality $E[X^{2}]^{2}\leq E[X^{4}]$ from applying $X^{2}$ to definition of variance,
+
+  $$E[S_{n}^{4}]\leq\brr{n+6\binom{n}{2}}K=(3n^{2}-2n)K\leq 3n^{2}K$$\s
+
+  implies
+
+  $$E\brs{\frac{S_{n}^{4}}{n^{4}}}\leq\frac{3K}{n^{2}}$$\s
+
+  and
+
+  $$E\brs{\sum_{n=1}^{\infty}\brr{\frac{S_{n}}{n}}^{4}}=\sum_{n=1}^{\infty}E\brs{\brr{\frac{S_{n}}{n}}^{4}}\leq\sum_{n=1}^{\infty}\frac{3K}{n^{2}}<\infty$$\s
+
+  Finally, let
+  
+  $$X=\sum_{n=1}^{\infty}\brr{\frac{S_{n}}{n}}^{4}$$\s
+  
+  since $E[X]$ is finite, by \rpst[\sctd{1}],
+
+  $$P\brc{\sum_{n=1}^{\infty}\brr{\frac{S_{n}}{n}}^{4}<\infty}=1$$\s
+
+  which implies
+
+  $$P\brc{\lim_{n\to\infty}\frac{S_{n}}{n}=0}=1$$\s
+
+  and by \rpst[\sctd{6}],
+
+  $$\frac{S_{n}}{n}=\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}\to 0$$\s
+
+  when $n$ tends to infinity. If $\mu\neq 0$, let $\tilde{X_{n}}=X_{n}-\mu$ and apply the process above gives
+
+  $$\frac{\tilde{X}_{1}+\tilde{X}_{2}+\cdots+\tilde{X}_{n}}{n}\to 0\Leftrightarrow\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}\to\mu$$
+\end{thm}\n
+
+In other words, the probability
+
+$$P\brc{\lim_{n\to\infty}\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}=\mu}=1$$
+
+\input{sty/footer.sty}
+
+\begin{reflist}
+  \item S. Ross, \textit{A First Course in Probability}, Pearson (8th Edition), 2009
+\end{reflist}
+
+\end{document}

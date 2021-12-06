@@ -22,10 +22,10 @@
 | MATH3230 | Numerical Analysis (in progress, prioritized) |
 | MATH3240 | Numerical Methods for Differential Equations (in progress) |
 | MATH3270 | Ordinary Differential Equations (in progress) |
-| MATH3280 | Introductory Probability (in progress) |
+| MATH3280 | Introductory Probability (**[pdf](pdf/math3280.pdf)**, **[tex](tex/math3280.tex)**) |
 | MATH4220 | Partial Differential Equations (in progress) |
 
-Other MATH courses are not considered at the moment due to lack of course material or necessity of making notes
+Other MATH courses are not considered at the moment due to lack of course material or necessity of making notes.
 
 ## Remarks
 - Contents of all documents are based on [**Course Catalog | CUHK Mathematics**](https://www.math.cuhk.edu.hk/course) from *Department of Mathematics, The Chinese University of Hong Kong (CUHK)*. The author does not own the source.
