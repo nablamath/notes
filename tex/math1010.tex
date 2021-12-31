@@ -14,7 +14,7 @@
 \input{sty/cover.sty}
 
 \remark{
-  \item Starting from academic year 2020-2021, a series of Honours courses (with coursecode ending with 8 instead of 0) are introduced. However, Honours courses are assumed to have equivalent contents to their corresponding courses in the past. Hence, current contents will not be modified unless significant difference is found. For more details to Honours courses, please visit \url{https://www.math.cuhk.edu.hk/undergraduates/honours-courses/overview-honours-courses}.
+  \item Starting from academic year 2020-2021, a series of Honours courses (with coursecode ending with 8 instead of 0) are introduced. However, Honours courses are assumed to have equivalent contents to their corresponding courses in the past. Hence, current contents will not be modified unless significant difference is found. For more details to Honours courses, please visit \url{https://www.math.cuhk.edu.hk/undergraduates/honours-courses}.
   \item If you are a freshman to \textit{BSc in Mathematics, The Chinese University of Hong Kong (MATH)}, it is highly recommended to read the preface first. There may be useful information and resources for you to suit up yourself before getting started.
 }
 
@@ -1019,7 +1019,7 @@ Here the \textbf{product rule} and \textbf{quotient rule} is introduced:\n
     &=\lim_{h\to 0}\frac{f(x+h)g(x)-f(x)g(x+h)}{hg(x)g(x+h)}\\
     &=\lim_{h\to 0}\brr{\frac{f(x+h)g(x)-f(x)g(x)}{hg(x)g(x+h)}-\frac{f(x)g(x+h)-f(x)g(x)}{hg(x)g(x+h)}}\\
     &=\lim_{h\to 0}\brr{g(x)\brr{\frac{f(x+h)-f(x)}{hg(x)g(x+h)}}-f(x)\brr{\frac{g(x+h)-g(x)}{hg(x)g(x+h)}}}\\
-    &=\frac{q\frac{\diff p}{\diff x}-p\frac{\diff q}{\diff x}}{q^{2}}
+    &=\frac{q(\diff p/\diff x)-p(\diff q/\diff x)}{q^{2}}
   \end{aligned}$$
 \end{thm}
 
@@ -1099,8 +1099,6 @@ Here partial derivatives are used. The partial derivative $\frac{\partial F}{\pa
 \end{dft}\n
 
 Note that the second derivative of $f(x)$ can also be denoted as $f''(x)$ or $y''$.
-
-\propdisp
 
 \subsubsection{Higher Derivatives}
 \begin{dft}
@@ -1319,6 +1317,8 @@ In order to sketch the graph of $y=f(x)$ accurately, the information below are r
   If $\lim_{x\to-\infty/+\infty}(f(x)-(ax+b))=0$, then $y=ax+b$ is said to be an \textbf{oblique asymptote} of $y=f(x)$.
 \end{dft}
 
+\propdisp
+
 \subsubsection{First Derivative Test and Turning Points}
 \begin{dft}
   Denote a continuous function as $f(x)$. $f(x)$ is said to have a \textbf{local maximum} at $x=a$ if there exists $\delta>0$ such that $f(x)\leq f(a)$ for any $x\in (a-\delta,a+\delta)$, and a \textbf{local minimum} at $x=a$ if there exists $\delta>0$ such that $f(x)\geq f(a)$ for any $x\in (a-\delta,a+\delta)$.
@@ -1350,8 +1350,6 @@ In some cases, local maximum or local minimum cannot be found explicitly. The \t
 
 \subsubsection{Second Derivative Test, Concavity and Inflexion Points}
 Besides the first derivative test, there is also the \textbf{second derivative test}:\n
-
-\propdisp
 
 \begin{pst}
   Denote a continuous function as $f(x)$. Suppose $f'(a)=0$. $f(x)$ has a local maximum at $x=a$ if $f''(a)<0$, and has a local minimum at $x=a$ if $f''(a)>0$.
