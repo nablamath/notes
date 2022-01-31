@@ -25,7 +25,6 @@
 | MATH3270 | Ordinary Differential Equations (in progress) |
 | MATH3280 | Introductory Probability (**[pdf](pdf/math3280.pdf)**, **[tex](tex/math3280.tex)**) |
 | MATH3290 | Mathematical Modeling (in progress) |
-| MATH3330 | Big Data Computing (in progress) |
 | MATH4220 | Partial Differential Equations (in progress) |
 
 Other MATH courses are not considered at the moment due to lack of course material or necessity of making notes.
