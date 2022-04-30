@@ -177,7 +177,7 @@ It is not the only way to solve systems of linear eqautions (where in this case,
     x+y=5
   \end{cases}$$\s
 
-   By plotting the two equations as two different straight lines on the same graph (see \rfig[\sctd{-1}]), where the green line is $2x-3y=5$ and the blue line is $x+y=5$, a unique intersection $(2,3)$ can be found, which is the solution.
+   By plotting the two equations as two different straight lines on the same graph (see \rfig[\sctr{-1}]), where the green line is $2x-3y=5$ and the blue line is $x+y=5$, a unique intersection $(2,3)$ can be found, which is the solution.
 \end{exm}\n
 
 \begin{fig}
@@ -202,7 +202,7 @@ Below is another example where the equations have no solution:\n
     2x-3y=0
   \end{cases}$$\s
 
-   By plotting the two equations as two different straight lines on the same graph (see \rfig[\sctd{-1}]), where the green line is $2x-3y=5$ and the blue line is $2x-3y=0$, no solution can be found since they are parallel lines.
+   By plotting the two equations as two different straight lines on the same graph (see \rfig[\sctr{-1}]), where the green line is $2x-3y=5$ and the blue line is $2x-3y=0$, no solution can be found since they are parallel lines.
 \end{exm}\n
 
 \propdisp
@@ -1204,7 +1204,7 @@ Sometimes it is much more efficient to find just one solution and then find all 
 With the definitions of vector addition and scalar multiplication, a list of properties, stated in the following proposition, can be stated:\n
 
 \begin{pst}
-  Suppose that $\R^{m}$ is the set of column vectors with size $m$ with vector addition and scalar multiplication as defined in \rdft[\sctd{2}] and \rdft[\sctd{1}], then
+  Suppose that $\R^{m}$ is the set of column vectors with size $m$ with vector addition and scalar multiplication as defined in \rdft[\sctr{2}] and \rdft[\sctr{1}], then
 
   \begin{alist}
     \item \textbf{ACC: Addictive Closure, Column Vectors}\\
@@ -1235,7 +1235,7 @@ With the definitions of vector addition and scalar multiplication, a list of pro
   This section is also for potential major in mathematics and it is optional.
 \end{cmt}\n
 
-The following is the abstract definition of vector space. In fact, a lot of different algebraic objects (for example polynomials, matrices, sequences and functions) share similar properties with the set of column vectors. Therefore, it may be found similar with \rpst[\sctd{1}].\n
+The following is the abstract definition of vector space. In fact, a lot of different algebraic objects (for example polynomials, matrices, sequences and functions) share similar properties with the set of column vectors. Therefore, it may be found similar with \rpst[\sctr{1}].\n
 
 \begin{pst}
   Suppose that $V$ is a set with vector addition and scalar multiplication, then $V$, with the two opeations, is a \textbf{vector space} over $\R$ if the following properties hold:
@@ -1783,7 +1783,7 @@ In general there are more ways to show a matrix is nonsingular:\n
 
   form a linear independent set?\n
 
-  \ans By \rthm[\sctd{2}], since $A$ is singular, columns of the matrix form a linear dependent set.
+  \ans By \rthm[\sctr{2}], since $A$ is singular, columns of the matrix form a linear dependent set.
 \end{exm}
 
 \subsubsection{Linear Independence with Null Space and Spans}
@@ -1908,7 +1908,7 @@ Since there are many ways to reduce a set into a span, the following theorem pro
     0 & 0 & 0 & 0 & 0
   \end{rmatrix}$$\s
 
-  and along with \rthm[\sctd{1}], span of $R$
+  and along with \rthm[\sctr{1}], span of $R$
 
   $$\bra{R}=\bra{\brc{\begin{rmatrix}
     1\\
@@ -1962,7 +1962,7 @@ Since there are many ways to reduce a set into a span, the following theorem pro
     4
   \end{rmatrix}}$$\s
 
-  \ans Following the process in \rexm[\sctd{1}],
+  \ans Following the process in \rexm[\sctr{1}],
 
   $$\bra{R}=\bra{\brc{\begin{rmatrix}
     2\\
@@ -2208,7 +2208,7 @@ One of the applications of row spaces is to improve a span, even the vectors giv
     0 & 0 & 0 & 0 & 0
   \end{rmatrix}$$\s
 
-  By \rthm[\sctd{1}], $X$ can be improved to nonzero columns of $B^{t}$, which is
+  By \rthm[\sctr{1}], $X$ can be improved to nonzero columns of $B^{t}$, which is
 
   $$X=R(A)=R(B)=\bra{\brc{\begin{rmatrix}
     1\\
@@ -2252,7 +2252,7 @@ One of the applications of row spaces is to improve a span, even the vectors giv
 
   Find out whether $\mathbf{b}$ is in column space of $A$ or not.\n
 
-  \ans Using \rpst[\sctd{5}], by row-reducing the transpose matrix of $A$,
+  \ans Using \rpst[\sctr{5}], by row-reducing the transpose matrix of $A$,
 
   $$B^{t}=\begin{rmatrix}
     1 & 0 & 0 & -\frac{31}{7}\\
@@ -2283,7 +2283,7 @@ One of the applications of row spaces is to improve a span, even the vectors giv
     \frac{13}{7}
   \end{rmatrix}}}$$\s
 
-  by \rthm[\sctd{2}]. Finally, in order to check whether $\mathbf{b}$ is in column space of $A$, simply check whether both sides of the substituted equation are equal or not. It turns out that
+  by \rthm[\sctr{2}]. Finally, in order to check whether $\mathbf{b}$ is in column space of $A$, simply check whether both sides of the substituted equation are equal or not. It turns out that
 
   $$3\brr{-\frac{31}{7}}+9\brr{\frac{12}{7}}+\brr{\frac{13}{7}}=4$$\s
 
@@ -2476,7 +2476,7 @@ In order to make the definition of dimension well-defined, if $A$ of size $m$ an
 \begin{pst}
   Let $S=\brc{\mathbf{v}_{1},\mathbf{v}_{2},\cdots,\mathbf{v}_{n}}$ be a subset of a finite dimensional vector space $V$, then $\dim\bra{S}\leq n$.\n
 
-  \prf By \rthm[\sctd{7}], there exists a subset $T$ of $S$ such that $T$ is a basis for $\bra{S}$, then dimension of $\bra{S}$ equals to the size of $T$, which is smaller than or equal to the size of $S$.
+  \prf By \rthm[\sctr{7}], there exists a subset $T$ of $S$ such that $T$ is a basis for $\bra{S}$, then dimension of $\bra{S}$ equals to the size of $T$, which is smaller than or equal to the size of $S$.
 \end{pst}\n
 
 \subsubsection{Rank and Nullity}
@@ -2495,7 +2495,7 @@ In order to make the definition of dimension well-defined, if $A$ of size $m$ an
 \begin{thm}
   Let $A$ be an $m\times n$ matrix, then $r(A)=r(A^{t})$. Equivalently, $\dim(C(A))=\dim(R(A))$.\n
 
-  \prf Let $B$ be a row-equivalent matrix of $A$ in reduced row-echelon form with $r$ pivot columns, then $r=r(A)$. By $\rthm[\sctd{16}]$, the first $r$ columns of $B^{t}$ form a basis for row space of $A$, which is $r=r(A^{t})$. Combining both equations, $r(A)=r(A^{t})$.
+  \prf Let $B$ be a row-equivalent matrix of $A$ in reduced row-echelon form with $r$ pivot columns, then $r=r(A)$. By $\rthm[\sctr{16}]$, the first $r$ columns of $B^{t}$ form a basis for row space of $A$, which is $r=r(A^{t})$. Combining both equations, $r(A)=r(A^{t})$.
 \end{thm}\n
 
 The following proposition will conclude the section of rank and nullity:\n
@@ -2729,7 +2729,7 @@ With the theorem above, the following definition can be introduced:\n
 \end{thm}\n
 
 \begin{exm}
-  Using the assumption in \rexm[\sctd{3}], and further let
+  Using the assumption in \rexm[\sctr{3}], and further let
 
   $$B'=\brc{\begin{rmatrix}
     0\\
@@ -2861,7 +2861,7 @@ For simplicity, matrix inverse for square matrix of size $2$ will be considered 
     -2 & 4\\
   \end{rmatrix}$$\s
 
-  \ans Since $ad-bc=8\neq 0$, $A$ has an inverse. By \rthm[\sctd{1}],
+  \ans Since $ad-bc=8\neq 0$, $A$ has an inverse. By \rthm[\sctr{1}],
 
   $$A^{-1}=\frac{1}{8}\begin{rmatrix}
     4 & -2\\
@@ -2887,7 +2887,7 @@ For square matrices of larger sizes, an equation cannot simply describe their in
     1 & 0 & 4
   \end{rmatrix}$$\s
 
-  The augmented matrix for finding the inverse according to \rthm[\sctd{1}] is
+  The augmented matrix for finding the inverse according to \rthm[\sctr{1}] is
 
   $$\begin{rmatrix}
     -7 & -6 & -12 & 1 & 0 & 0\\
@@ -2975,7 +2975,7 @@ Consider $\alpha$ and $\beta$ be real numbers, if $\alpha$ and $\beta$ are nonze
 \begin{thm}
   Let $A$ and $B$ be square matrices of size $n$. If $AB=I$, then $BA=I$.\n
 
-  \prf By \rthm[\sctd{1}], $A$ and $B$ are nonsingular. Let $C$ be a square matrix of size $n$ such that $BC=I$. For now, $A$ is the left inverse of $B$ and $C$ is the right inverse of $B$. Note that
+  \prf By \rthm[\sctr{1}], $A$ and $B$ are nonsingular. Let $C$ be a square matrix of size $n$ such that $BC=I$. For now, $A$ is the left inverse of $B$ and $C$ is the right inverse of $B$. Note that
 
   $$BA=BA(BC)=B(AB)C=BC=I$$\s
 
@@ -3024,7 +3024,7 @@ With the theorem above, if a matrix is found to be singular, it is a waste of ti
     6 & 4 & -8 & 3
   \end{rmatrix}$$\s
 
-  and by \rthm[\sctd{1}], the solution is
+  and by \rthm[\sctr{1}], the solution is
 
   $$A^{-1}\begin{rmatrix}
     1\\
@@ -3163,7 +3163,7 @@ There are mainly two ways to compute determinants of large matrices: expansion a
   Let $A$ be a square matrix, then $\det(A)=\det(A^{t})$.
 \end{thm}\n
 
-In fact, the theorem above shows why the corollary of \rthm[\sctd{1}] is valid.\n
+In fact, the theorem above shows why the corollary of \rthm[\sctr{1}] is valid.\n
 
 \begin{thm}
   Let $A$ be a square matrix with a row or a column where every entry is $0$, then $\det(A)=0$.\n
@@ -3183,12 +3183,12 @@ Recall the row operations, and the following theorem gives the effect of the det
   \end{alist}
 \end{thm}\n
 
-Note that the theorem above also applies to column operations because of \rthm[\sctd{2}].\n
+Note that the theorem above also applies to column operations because of \rthm[\sctr{2}].\n
 
 \begin{thm}
   Let $A$ be a square matrix with two identical rows or columns, then $\det(A)=0$.\n
   
-  \prf This is a result from \rthm[\sctd{2}] and \rthm[\sctd{1}]. Subtract one of the identical rows (columns) will not affect the determinant but giving a zero row (column).
+  \prf This is a result from \rthm[\sctr{2}] and \rthm[\sctr{1}]. Subtract one of the identical rows (columns) will not affect the determinant but giving a zero row (column).
 \end{thm}\n
 
 In fact, using the method or row reduction is efficient to find the determinant of a matrix, since a row-reduced matrix is already an upper triangular matrix.\n
@@ -3352,7 +3352,7 @@ However, for simplicity, usually only one eigenvector is picked (and counted) fr
     24 & 16 & 7
   \end{rmatrix}$$\s
 
-  \ans From \rexm[\sctd{3}], the eigenvalues are $\lambda=3$ and $\lambda=-1$. When $\lambda=3$,
+  \ans From \rexm[\sctr{3}], the eigenvalues are $\lambda=3$ and $\lambda=-1$. When $\lambda=3$,
 
   $$A-3I=\begin{rmatrix}
     -16 & -8 & -4\\
@@ -3714,7 +3714,7 @@ The technique in the theorem above is called \textbf{projection} of matrix, and 
 
   Express $\mathbf{u}$ in terms of vectors in $S$.\n
 
-  \ans By \rthm[\sctd{1}],
+  \ans By \rthm[\sctr{1}],
 
   $$\begin{aligned}[t]
     \mathbf{u}&=\frac{\bra{\mathbf{u},\mathbf{v}_{1}}}{\nrm{\mathbf{v}_{1}}^{2}}\mathbf{v}_{1}+\frac{\bra{\mathbf{u},\mathbf{v}_{2}}}{\nrm{\mathbf{v}_{2}}^{2}}\mathbf{v}_{2}+\frac{\bra{\mathbf{u},\mathbf{v}_{3}}}{\nrm{\mathbf{v}_{3}}^{2}}\mathbf{v}_{3}\\
@@ -3744,7 +3744,7 @@ The technique in the theorem above is called \textbf{projection} of matrix, and 
   
   $$\mathbf{u}=\sum_{i=1}^{k}\bra{\mathbf{u},\mathbf{v}_{i}}\mathbf{v}_{i}$$\s
   
-  \prf This is a result from \rthm[\sctd{5}] where the norms are all $1$.
+  \prf This is a result from \rthm[\sctr{5}] where the norms are all $1$.
 \end{thm}
 
 \subsubsection{Gran-Schmidt Orthogonaliztion Process}

@@ -182,7 +182,7 @@ The following proposition is the \textbf{finite additivity} of disjoint events:\
 \begin{pst}
   Let $E$ and $F$ be two events, then $P(E\cup F)=P(E)+P(F)-P(E\cap F)$.\n
 
-  \prf Venn diagram shows the result explicitly. On the other hand, note that $E\cup F=E\cup(F\setminus E)$. By Axiom $3$ and \rpst[\sctd{1}],
+  \prf Venn diagram shows the result explicitly. On the other hand, note that $E\cup F=E\cup(F\setminus E)$. By Axiom $3$ and \rpst[\sctr{1}],
   
   $$P(E\cup F)=P(E\cup(F\setminus E))=P(E)+P(F\setminus E)$$\s
 
@@ -201,7 +201,7 @@ The following proposition is the \textbf{finite additivity} of disjoint events:\
   $$P(F)=P(E)+P(F\setminus E)\geq P(E)$$
 \end{pst}\n
 
-The following proposition, which is also called the \textbf{inclusion-exclusion identity}, is the generalization of \rpst[\sctd{1}]:\n
+The following proposition, which is also called the \textbf{inclusion-exclusion identity}, is the generalization of \rpst[\sctr{1}]:\n
 
 \begin{pst}
   Let $E_{1},E_{2},\cdots,E_{n}$ be events, then
@@ -249,7 +249,7 @@ The following proposition, which is also called the \textbf{inclusion-exclusion 
 Note that $F_{n}\subset E_{n}$ for any $n$. The above definition helps to convert any set of events into a set of mutually exclusive events, so that axioms and properties of probability can be used.\n
 
 \begin{pst}
-  Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctd{1}], then $F_{n}\cap F_{m}=\phi$ for any $n\neq m$.\n
+  Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctr{1}], then $F_{n}\cap F_{m}=\phi$ for any $n\neq m$.\n
 
   \prf Without loss of generality, assume $n>m$, then
 
@@ -264,7 +264,7 @@ Note that $F_{n}\subset E_{n}$ for any $n$. The above definition helps to conver
 The proposition above ensures that $(F_{n})_{n=1}^{\infty}$ are mutually exclusive.\n
 
 \begin{pst}
-  Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctd{2}], then
+  Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctr{2}], then
   
   $$\bigcup_{i=1}^{n}F_{i}=\bigcup_{i=1}^{n}E_{i}$$\s
 \end{pst}
@@ -276,7 +276,7 @@ The next proposition is the \textbf{countable subadditivity} of probability:\n
 
   $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}\leq\sum_{n=1}^{\infty}P(E_{n})$$\s
 
-  \prf Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctd{3}], then by \rpst[\sctd{2}], \rpst[\sctd{1}] and applying Axiom $3$ to $(F_{n})$,
+  \prf Let $(F_{n})_{n=1}^{\infty}$ as in \rdft[\sctr{3}], then by \rpst[\sctr{2}], \rpst[\sctr{1}] and applying Axiom $3$ to $(F_{n})$,
 
   $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=P\brr{\bigcup_{n=1}^{\infty}F_{n}}=\sum_{n=1}^{\infty}P(F_{n})\leq\sum_{n=1}^{\infty}P(E_{n})$$
 \end{pst}\n
@@ -288,7 +288,7 @@ Continuity of probability consists of two parts, which involves increasing and d
 
   $$P\brr{\bigcup_{n=1}^{\infty}E_{n}}=\lim_{n\to\infty}P(E_{n})$$\s
 
-  \prf Let $(F_{n})_{n=1}^{\infty}$ as defined in \rdft{\sctd{2}}. Since $(F_{n})_{n=1}^{\infty}$ are mutually disjoint,
+  \prf Let $(F_{n})_{n=1}^{\infty}$ as defined in \rdft{\sctr{2}}. Since $(F_{n})_{n=1}^{\infty}$ are mutually disjoint,
 
   $$\bigcup_{i=1}^{n}F_{i}=\bigcup_{i=1}^{n}E_{i}=E_{n}$$\s
 
@@ -316,7 +316,7 @@ Continuity of probability consists of two parts, which involves increasing and d
 
   $$1-P\brr{\bigcap_{n=1}^{\infty}E_{n}}=P\brr{\brr{\bigcap_{n=1}^{\infty}E_{n}}^{c}}=P\brr{\bigcup_{n=1}^{\infty}E_{n}^{c}}$$\s
 
-  by De Morgan's Law. Apply the proof in \rpst[\sctd{1}] gives
+  by De Morgan's Law. Apply the proof in \rpst[\sctr{1}] gives
 
   $$1-P\brr{\bigcap_{n=1}^{\infty}E_{n}}=\lim_{n\to\infty}(1-P(E_{n}))$$\s
 
@@ -404,7 +404,7 @@ Note that if $P(F)=0$, $P(E\mid F)$ is then not well-defined.\n
 \begin{exm}
   A fair coin is flipped $3$ times. Find the conditional probability that the third flip is a head, given that the first flip is a tail.\n
 
-  \ans Let $E$ be the event that the first lip is a tail and $F$ be the event that the third flip is a head. By \rdft[\sctd{1}],
+  \ans Let $E$ be the event that the first lip is a tail and $F$ be the event that the third flip is a head. By \rdft[\sctr{1}],
 
   $$P(F\mid E)=\frac{P(F\cap E)}{P(E)}=\frac{2/8}{4/8}=\frac{1}{2}$$\s
 \end{exm}\n
@@ -419,7 +419,7 @@ The following proposition is also called \textbf{multiplicative rule}.\n
     &P(E_{n}\mid(E_{1}\cap E_{2}\cap\cdots\cap E_{n-1}))
   \end{aligned}$$\s
 
-  \prf Rearrange \rdft[\sctd{2}] gives
+  \prf Rearrange \rdft[\sctr{2}] gives
 
   $$P(E_{1}\cap E_{2})=P(E_{1})P(E_{2}\mid E_{1})$$\s
 
@@ -455,7 +455,7 @@ This formula works for any event $F$, and it is said to be a conditioning method
   $$\bigcup_{i=1}^{n}E_{i}=S$$
 \end{dft}\n
 
-Below is a generalized formula of \rpst[\sctd{1}]:\n
+Below is a generalized formula of \rpst[\sctr{1}]:\n
 
 \begin{crl}
   Let $E$ be an event, and $F_{1},F_{2},\cdots,F_{n}$ be mutually exclusive and exhausitive events, then
@@ -481,7 +481,7 @@ With the formula above, \textbf{Bayes formula} is introduced as below:\n
 
   $$P(E)=\sum_{j=1}^{n}P(F_{j})P(E\mid F_{j})$$\s
 
-  The proof is finished by applying \rdft[\sctd{5}] with $P(E\cap F_{i})=P(F_{i})P(E\mid F_{i})$.
+  The proof is finished by applying \rdft[\sctr{5}] with $P(E\cap F_{i})=P(F_{i})P(E\mid F_{i})$.
 \end{thm}\n
 
 \begin{exm}
@@ -523,7 +523,7 @@ The following proposition shows the symmetric property of conditional independen
 \begin{pst}
   Let $E$ and $F$ be events, then $E$ and $F$ are independent if $P(E\cap F)=P(E)P(F)$.\n
 
-  \prf By the definition of conditional probability in \rdft[\sctd{8}], if $E$ is independent of $F$, then
+  \prf By the definition of conditional probability in \rdft[\sctr{8}], if $E$ is independent of $F$, then
 
   $$P(E\mid F)=\frac{P(E\cap F)}{P(F)}=P(E)$$\s
   
@@ -677,7 +677,7 @@ Now let $X$ be a discrete random variable on $S$, $g:\R\to\R$ be a function such
   
   $$E[aX+b]=aE[X]+b$$\s
 
-  \prf Let $g(x)=ax+b$ be a function. By \rpst[\sctd{0}],
+  \prf Let $g(x)=ax+b$ be a function. By \rpst[\sctr{0}],
 
   $$E[aX+b]=E[g(X)]=\sum_{i}g(x_{i})p(x_{i})$$\s
 
@@ -778,7 +778,7 @@ $$(x+y)^{n}=\sum_{i=0}^{n}\binom{n}{i}x^{i}y^{n-i}$$\s
 
   where $Y$ is another binomial random variable with parameters $(n-1,p)$.\n
 
-  \prf By \rdft[\sctd{3}],
+  \prf By \rdft[\sctr{3}],
 
   $$\begin{aligned}[t]
     E[X^{k}]&=\sum_{i=0}^{n}i^{k}\binom{n}{i}p^{i}(1-p)^{n-i}\\
@@ -880,7 +880,7 @@ $$\begin{aligned}[t]
 
   $$E[X_{1}+X_{2}+\cdots+X_{n}]=\sum_{k=1}^{n}E[X_{k}]$$\s
 
-  \prf By \rpst[\sctd{1}],
+  \prf By \rpst[\sctr{1}],
 
   $$\begin{aligned}[t]
     E[X_{1}+X_{2}+\cdots+X_{n}]&=\sum_{s\in S}(X_{1}(s)+X_{2}(s)+\cdots+X_{n}(s))p(s)\\
@@ -933,17 +933,17 @@ With the defintion above, below is the continuity property of probability:\n
   
   $$\brc{X\leq b_{n}}\nearrow\brc{X<\infty}=S$$\s
   
-  so $F(b_{n})\to 1$ by \rpst[\sctd{2}]. Similarly, if $b_{n}\searrow-\infty$, then
+  so $F(b_{n})\to 1$ by \rpst[\sctr{2}]. Similarly, if $b_{n}\searrow-\infty$, then
   
   $$\brc{X\leq b_{n}}\searrow\brc{X=-\infty}=\phi$$\s
   
-  so $F(b_{n})\to 0$ by \rpst[\sctd{2}].\n
+  so $F(b_{n})\to 0$ by \rpst[\sctr{2}].\n
 
   \prtc[c]{zr} If $b_{n}\searrow b$, then
 
   $$\brc{X\leq b_{n}}\searrow\brc{X\leq b}$$\s
 
-  so $F(b_{n})\to F(b)$ by \rpst[\sctd{2}] and shows that $F$ is right continuous.
+  so $F(b_{n})\to F(b)$ by \rpst[\sctr{2}] and shows that $F$ is right continuous.
 \end{pst}\n
 
 Note that $F$ is not left continuous. In the discrete case,
@@ -990,7 +990,7 @@ which is the area of shaded region under $f(x)$.\n
 
   Find the value of $C$, and $P(\brc{X\geq 1})$.\n
   
-  \ans By \rdft[\sctd{1}],
+  \ans By \rdft[\sctr{1}],
 
   $$\begin{aligned}[t]
     \int_{-\infty}^{\infty}f(x)\diff x&=1\\
@@ -1084,7 +1084,7 @@ The following propostion is the general case about the expectation of continuous
 
   $$E[g(X)]=\int_{-\infty}^{\infty}g(x)f(x)\diff x$$\s
 
-  \prf By \rpst[\sctd{1}],
+  \prf By \rpst[\sctr{1}],
 
   $$\begin{aligned}
     E[g(x)]&=\int_{0}^{\infty}P(\brc{g(X)>y})\diff y\\
@@ -1278,7 +1278,7 @@ The next theorem will show that parameters of normal random variables represent 
 \begin{thm}
   Let $X$ be a normal random variable with parameters $\mu$ and $\sigma^{2}$, then $E[X]=\mu$ and $\mathrm{Var}(X)=\sigma^{2}$.\n
 
-  \prf Let $Z=(X-\mu)/\sigma$ be the standard normal random variable. By \rpst[\sctd{2}] and \rpst[\sctd{1}], $E[X]=\sigma E[Z]+\mu=\mu$ and $\mathrm{Var}(X)=\sigma^{2}\mathrm{Var}(Z)=\sigma^{2}$.
+  \prf Let $Z=(X-\mu)/\sigma$ be the standard normal random variable. By \rpst[\sctr{2}] and \rpst[\sctr{1}], $E[X]=\sigma E[Z]+\mu=\mu$ and $\mathrm{Var}(X)=\sigma^{2}\mathrm{Var}(Z)=\sigma^{2}$.
 \end{thm}\n
 
 An important property of normal distribution is that it can be used to approximate the binomial random variable with parameters $(n,p)$ where $n$ is large and $p$ is fixed. This is similar to approximation using Poisson random variable, but both approximation have different requirements. Below is the \textbf{de Moivre-Laplace theorem} for such approximation:\n
@@ -1306,7 +1306,7 @@ Geometrically, $\Phi$ is the area under the standard normal curve to the left of
 
   $$P(\brc{X=20})=\binom{40}{20}\brr{\frac{1}{2}}^{40}\approx 0.1254$$\s
 
-  In order to apply \rthm[\sctd{1}], first a continuity correction is applied, which is
+  In order to apply \rthm[\sctr{1}], first a continuity correction is applied, which is
 
   $$P(\brc{X=20})=P(\brc{19.5\leq X\leq 20.5})$$\s
 
@@ -1959,7 +1959,7 @@ for continuous case. No matter which case it is, the expectation of $X$ represen
 
   $$E\brs{\sum_{i=1}^{n}X_{i}}=\sum_{i=1}^{n}E[X_{i}]$$\s
 
-  \prf The proof is done by induction. Assume $X$ and $Y$ are jointly continuous random variables with density $f(x,y)$, then by \rpst[\sctd{0}],
+  \prf The proof is done by induction. Assume $X$ and $Y$ are jointly continuous random variables with density $f(x,y)$, then by \rpst[\sctr{0}],
 
   $$\begin{aligned}[t]
     E[X+Y]&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(x+y)f(x,y)\diff x\diff y\\
@@ -2000,7 +2000,7 @@ Note that $\mathrm{Cov}(X,X)=\mathrm{Var}(X)$. Also, similar to variance that $\
 \begin{crl}
   If $X$ and $Y$ are independent random variables, then $\mathrm{Cov}(X,Y)=0$.\n
 
-  \prf By \rpst[\sctd{0}],
+  \prf By \rpst[\sctr{0}],
 
   $$\mathrm{Cov}(X,Y)=E[(X-E[X])(Y-E[Y])]=E[X-E[X]]E[Y-E[Y]]=0$$
 \end{crl}\n
@@ -2189,7 +2189,7 @@ Assume $E[X\mid Y]$ is a function of $Y$ by $y\mapsto E[X\mid Y=y]$, then the fo
 \begin{exm}
   A miner is trapped in a mine containing $3$ doors. The first door leads to a tunnel that takes him to safety after $3$ hours of travel, and the other two doors that takes him back to the mine after $5$ and $7$ hours of travel respectively. Assume the miner is equally likely to choose any door at all times, what is the expected length of time until he reaches safety?\n
 
-  \ans Let $X$ be the number of hours until the miner reaches safety, and $Y$ be the door he choose in the first time. By \rthm[\sctd{1}],
+  \ans Let $X$ be the number of hours until the miner reaches safety, and $Y$ be the door he choose in the first time. By \rthm[\sctr{1}],
 
   $$\begin{aligned}[t]
     E[X]&=E[E[X\mid Y]]\\
@@ -2250,7 +2250,7 @@ Consider the following examples of finding moment generating functions for some 
 \end{exm}\n
 
 \begin{exm}
-  Let $X$ be normal random variable with mean $\mu$ and variance $\sigma^{2}$, then by \rexm[\sctd{1}],
+  Let $X$ be normal random variable with mean $\mu$ and variance $\sigma^{2}$, then by \rexm[\sctr{1}],
 
   $$\begin{aligned}[t]
     M_{X}(t)&=E[e^{tX}]=E[e^{t(\mu+\sigma Z)}]=E[e^{t\mu}e^{t\sigma Z}]\\
@@ -2300,7 +2300,7 @@ Let $X_{1},X_{2},\cdots,X_{n}$ be a sequence of independent and identically dist
 
   $$P\brc{\abs{X-\mu}\geq\epsilon}\leq\frac{\sigma^{2}}{\epsilon^{2}}$$\s
 
-  \prf Let $Y=\abs{X-\mu}^{2}$, then by \rthm[\sctd{1}],
+  \prf Let $Y=\abs{X-\mu}^{2}$, then by \rthm[\sctr{1}],
 
   $$P\brc{\abs{X-\mu}\geq\epsilon}=P\brc{Y\geq\epsilon^{2}}\leq\frac{E[Y]}{\epsilon^{2}}=\frac{\sigma^{2}}{\epsilon^{2}}$$
 \end{thm}\n
@@ -2313,7 +2313,7 @@ Let $X_{1},X_{2},\cdots,X_{n}$ be a sequence of independent and identically dist
   \item If the variance of a week’s production is known to equal $25$, then what can be said about the probability that this week’s production will be between $40$ and $60$?
   \end{alist}
 
-  \ans\prt[a]{zb} Let $X$ be the number of items produced during a week with $E[X]=50$, then by Markov's inequality (\rthm[\sctd{2}]),
+  \ans\prt[a]{zb} Let $X$ be the number of items produced during a week with $E[X]=50$, then by Markov's inequality (\rthm[\sctr{2}]),
 
   $$P\brc{X>75}=P\brc{P\geq 76}\leq\frac{E[X]}{76}=\frac{25}{38}$$\s
 
@@ -2321,7 +2321,7 @@ Let $X_{1},X_{2},\cdots,X_{n}$ be a sequence of independent and identically dist
   
   $$P\brc{40\leq X\leq 60}=P\brc{\abs{X-50}\leq 10}=1-P\brc{\abs{X-50}>10}$$\s
 
-  By Chebyshev's inequality (\rthm[\sctd{1}]),
+  By Chebyshev's inequality (\rthm[\sctr{1}]),
 
   $$P\brc{\abs{X-50}>10}\leq\frac{\mathrm{Var}(X)}{10^{2}}=\frac{1}{4}$$\s
 
@@ -2331,7 +2331,7 @@ Let $X_{1},X_{2},\cdots,X_{n}$ be a sequence of independent and identically dist
 \begin{pst}
   Let $X$ be a random variable with finite mean $\mu$ and variance $0$, then $P\brc{X=\mu}=1$.\n
 
-  \prf By Chebyshev's inequality (\rthm[\sctd{2}]),
+  \prf By Chebyshev's inequality (\rthm[\sctr{2}]),
 
   $$\begin{aligned}[t]
     P\brc{X\neq\mu}&=P\brc{\bigcup_{n=1}^{\infty}\abs{X-\mu}\geq\frac{1}{k}}\\
@@ -2363,7 +2363,7 @@ Recall the problem of finding limiting behaviour of $(X_{1}+X_{2}+\cdots+X_{n})/
     &=\frac{1}{n^{2}}\sum_{i=1}^{n}\mathrm{Var}(X_{i})=\frac{\sigma^{2}}{n}
   \end{aligned}$$\s
 
-  By applying Chebyshev's inequality (\rthm[\sctd{3}]) to $(X_{1}+X_{2}+\cdots+X_{n})/n$,
+  By applying Chebyshev's inequality (\rthm[\sctr{3}]) to $(X_{1}+X_{2}+\cdots+X_{n})/n$,
 
   $$\begin{aligned}[t]
     P\brc{\abs{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}-\mu}\geq\epsilon}&\leq\frac{1}{\epsilon^{2}}\mathrm{Var}\brr{\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}}\\
@@ -2387,7 +2387,7 @@ Below is the \textbf{central limit theorem}:\n
 
   as $n$ tends to infinity.\n
 
-  \prf Assume $\mu=0$ and $\sigma^{2}=1$. Let $Z_{n}=(X_{1}+X_{2}+\cdots+X_{n})/\sqrt{n}$, and $Z$ be the standard normal random variable, then $M_{Z}(t)=e^{t^{2}/2}$ by \rexm[\sctd{10}]. Note that
+  \prf Assume $\mu=0$ and $\sigma^{2}=1$. Let $Z_{n}=(X_{1}+X_{2}+\cdots+X_{n})/\sqrt{n}$, and $Z$ be the standard normal random variable, then $M_{Z}(t)=e^{t^{2}/2}$ by \rexm[\sctr{10}]. Note that
 
   $$\begin{aligned}[t]
     M_{Z_{n}}(t)&=E\brs{\exp\brr{t\frac{X_{1}+X_{2}+\cdots+X_{n}}{\sqrt{n}}}}\\
@@ -2487,7 +2487,7 @@ Similar to the weak law of large numbers, the \textbf{strong law of large number
   
   $$X=\sum_{n=1}^{\infty}\brr{\frac{S_{n}}{n}}^{4}$$\s
   
-  since $E[X]$ is finite, by \rpst[\sctd{1}],
+  since $E[X]$ is finite, by \rpst[\sctr{1}],
 
   $$P\brc{\sum_{n=1}^{\infty}\brr{\frac{S_{n}}{n}}^{4}<\infty}=1$$\s
 
@@ -2495,7 +2495,7 @@ Similar to the weak law of large numbers, the \textbf{strong law of large number
 
   $$P\brc{\lim_{n\to\infty}\frac{S_{n}}{n}=0}=1$$\s
 
-  and by \rpst[\sctd{6}],
+  and by \rpst[\sctr{6}],
 
   $$\frac{S_{n}}{n}=\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}\to 0$$\s
 

@@ -343,15 +343,15 @@ With the propositions above, the \textbf{Riemann-Lebesgue Lemma} can be introduc
 \begin{thm}
   The Fourier coefficients of any $2\pi$-periodic function $f$ integrable on $[-\pi,\pi]$ converge to $0$ as $n\to\infty$.\n
 
-  \prf By \rpst[\sctd{1}], for any $\epsilon>0$, there exists a step function $s$ such that $s\leq f$ and
+  \prf By \rpst[\sctr{1}], for any $\epsilon>0$, there exists a step function $s$ such that $s\leq f$ and
 
   $$\int_{-\pi}^{\pi}(f-s)<\frac{\epsilon}{2}$$\s
 
-  On the other hand, by \rpst[\sctd{2}], there exists $n_{0}>0$ such that
+  On the other hand, by \rpst[\sctr{2}], there exists $n_{0}>0$ such that
 
   $$\abs{a_{n}(s)}<\frac{\epsilon}{2}$$\s
 
-  for all $n\geq n_{0}$. For instance, $n_{0}=[2C/\epsilon]+1$ with the constant $C$ in \rpst[\sctd{2}]. Note that
+  for all $n\geq n_{0}$. For instance, $n_{0}=[2C/\epsilon]+1$ with the constant $C$ in \rpst[\sctr{2}]. Note that
 
   $$\begin{aligned}[t]
     \abs{a_{n}(f)-a_{n}(s)}&=\frac{1}{\pi}\abs{\int_{-\pi}^{\pi}(f-s)(x)\cos(nx)\diff x}\\
@@ -393,7 +393,7 @@ $$\abs{f(x)-f(x_{0})}\leq L'\abs{x-x_{0}}$$\s
 
 for all $x\in[a,b]$.\n
 
-\prf By \rdft[\sctd{1}], there exists $L,\delta>0$ such that
+\prf By \rdft[\sctr{1}], there exists $L,\delta>0$ such that
 
 $$\abs{f(x)-f(x_{0})}\leq L\abs{x-x_{0}}$$\s
 
@@ -477,7 +477,7 @@ With the definition and properties of Dirichlet kernels, the following propositi
   
   $$(S_{n}(f))(x_{0})-f(x_{0})=I_{1}+I_{2}$$\s
 
-  into integrals $I_{1}$ and $I_{2}$ concentrated in $[-\delta,\delta]$ and essentially, outside the interval, respectively. Note that by \rpst[\sctd{1}],
+  into integrals $I_{1}$ and $I_{2}$ concentrated in $[-\delta,\delta]$ and essentially, outside the interval, respectively. Note that by \rpst[\sctr{1}],
 \end{pst}\n
 
 \begin{exm}
@@ -522,7 +522,7 @@ With the definition and properties of Dirichlet kernels, the following propositi
     &=x-\pi\leq L(x-\pi)
   \end{aligned}$$\s
 
-  where $L=1$. The approach for $0<\pi-x<\delta$ is similar. Therefore, by \rpst[\sctd{1}],
+  where $L=1$. The approach for $0<\pi-x<\delta$ is similar. Therefore, by \rpst[\sctr{1}],
   
   $$S_{n}f(x)\to\frac{f(\pi^{+})+f(\pi^{-})}{2}=0$$\s
 
@@ -725,7 +725,7 @@ $$\mathrm{dist}(f,S_{n})=\nrm{f,P_{n}(f)}_{2}$$\s
 
   $$\lim_{n\to\infty}\nrm{S_{n}(f)-f}_{2}=0$$\s
 
-  \prf For any $\epsilon>0$, there exists a $2\pi$-periodic Lipschitz continuous function $g$ such that $\nrm{f-g}_{2}<\epsilon/2$. This can be achieved by finding a step function approximating $f$. By \rpst[\sctd{11}], there exists $N>0$ such that
+  \prf For any $\epsilon>0$, there exists a $2\pi$-periodic Lipschitz continuous function $g$ such that $\nrm{f-g}_{2}<\epsilon/2$. This can be achieved by finding a step function approximating $f$. By \rpst[\sctr{11}], there exists $N>0$ such that
 
   $$\nrm{g-S_{N}(g)}_{\infty}<\frac{\epsilon}{2\sqrt{2\pi}}$$\s
 
@@ -733,7 +733,7 @@ $$\mathrm{dist}(f,S_{n})=\nrm{f,P_{n}(f)}_{2}$$\s
 
   $$\nrm{g-S_{N}(g)}_{2}=\sqrt{\int_{-\pi}^{\pi}(g-S_{N}(g))^{2}}\leq\sqrt{2\pi\nrm{g-S_{n}(g)}_{\infty}^{2}}=\frac{\epsilon}{2}$$\s
 
-  By the corollary of \rpst[\sctd{1}],
+  By the corollary of \rpst[\sctr{1}],
 
   $$\nrm{f-S_{N}(f)}_{2}\leq\nrm{f-S_{N}(g)}_{2}\leq\nrm{f-g}_{2}+\nrm{g-S_{n}(g)}_{2}<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$\s
 
@@ -776,7 +776,7 @@ Below is the \textbf{Parserval's Identity}:\n
     \sqrt{\pi}b_{n}=\bra{f,\frac{1}{\sqrt{\pi}}\sin(nx)}_{2}\erm{for all }n\geq 1
   \end{cases}$$\s
 
-  then by corollary of \rpst[\sctd{2}],
+  then by corollary of \rpst[\sctr{2}],
 
   $$\begin{aligned}[t]
     \bra{f,S_{N}(f)}_{2}&=\bra{(f-S_{N}(f))+S_{N}(f),S_{N}(f)}_{2}\\
@@ -784,7 +784,7 @@ Below is the \textbf{Parserval's Identity}:\n
     &=\int_{-\pi}^{\pi}\brr{a_{0}+\sum_{k=1}^{\infty}a_{k}\cos(kx)+b_{k}\sin(kx)}^{2}\diff x
   \end{aligned}$$\s
 
-  Finally by \rthm[\sctd{1}],
+  Finally by \rthm[\sctr{1}],
 
   $$\begin{aligned}[t]
     0&=\lim_{N\to\infty}\nrm{f-S_{N}(f)}_{2}^{2}\\
@@ -855,7 +855,7 @@ Below is the \textbf{Parserval's Identity}:\n
 
   $$d_{1}(f,g)=\int_{a}^{b}\abs{f-g}$$\s
 
-  However, part (a) of \rdft[\sctd{3}] is not satisfied since $d_{1}(f,g)=0$ only implies $f=g$ almost everywhere, but not exactly $f=g$. $d_{1}$ is then not a suitable metric on $R[a,b]$.\n
+  However, part (a) of \rdft[\sctr{3}] is not satisfied since $d_{1}(f,g)=0$ only implies $f=g$ almost everywhere, but not exactly $f=g$. $d_{1}$ is then not a suitable metric on $R[a,b]$.\n
 
   In order to fix this problem, consider $X=R[a,b]/\sim$ where $\sim$ is an equivalent relation on $R[a,b]$ defined by
 
@@ -1383,7 +1383,7 @@ Below is the \textbf{Inverse Function Theorem}:\n
 
   $$\Psi(x_{1})-\Psi(x_{2})=-x_{1}+F(x_{1})+x_{2}-F(x_{2})$$\s
 
-  By \rpst[\sctd{3}],
+  By \rpst[\sctr{3}],
 
   $$\begin{aligned}[t]
     \Psi(x_{1})-\Psi(x_{2})&=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))\diff t}\cdot(x_{1}-x_{2})-(x_{1}-x_{2})\\
@@ -1411,7 +1411,7 @@ Below is the \textbf{Inverse Function Theorem}:\n
 
   for all $x_{1},x_{2}\in\overline{B_{r}(0)}$.\n
 
-  \prtc[b]{zr} Choose $r>0$ as in Part (a), then for all $y\in B_{r/2}(0)$, there exists $x\in B_{r}(0)$ such that $F(x)=y$. This is true because of Perturbation of Identity (\rthm[\sctd{6}]) with $\epsilon=1/2$. The local inverse $G$ of $F$,
+  \prtc[b]{zr} Choose $r>0$ as in Part (a), then for all $y\in B_{r/2}(0)$, there exists $x\in B_{r}(0)$ such that $F(x)=y$. This is true because of Perturbation of Identity (\rthm[\sctr{6}]) with $\epsilon=1/2$. The local inverse $G$ of $F$,
 
   $$G:B_{r/2}(0)\to G(B_{r/2}(0))\subset B_{r}(0)$$\s
 
@@ -1427,7 +1427,7 @@ Below is the \textbf{Inverse Function Theorem}:\n
 
   $$y=(y_{1}+y)-y_{1}=F(G(y_{1}+y))-F(G(y_{1}))$$\s
 
-  let $x_{1}=G(y_{1}+y)$ and $x_{2}=G(y_{1})$, then by \rpst[\sctd{3}],
+  let $x_{1}=G(y_{1}+y)$ and $x_{2}=G(y_{1})$, then by \rpst[\sctr{3}],
 
   $$\begin{aligned}[t]
     y&=F(x_{1})-F(x_{2})=\brr{\int_{0}^{1}DF(x_{2}+t(x_{1}-x_{2}))\diff t}\cdot(x_{1}-x_{2})\\
@@ -1589,7 +1589,7 @@ Also recall the properties related to Lipschitz condition:\n
 \end{pst}\n
 
 \begin{pst}
-  Under assumption of \rthm[\sctd{1}], every solution $x$ of the initial value problem from $[t_{0}-a',t_{0}+a']$ to $[x_{0}-b,x_{0}+b]$ satisfies the equation
+  Under assumption of \rthm[\sctr{1}], every solution $x$ of the initial value problem from $[t_{0}-a',t_{0}+a']$ to $[x_{0}-b,x_{0}+b]$ satisfies the equation
 
   $$x(t)=x_{0}+\int_{t_{0}}^{t}f(t,x(t))\diff t$$\s
 
@@ -1884,7 +1884,7 @@ Note that Ascoli's Theorem remains valid for bounded and equicontinuous subsets 
 
   $$\nrm{\frac{\diff f_{n}}{\diff x}}_{\infty,\overline{G}}=\nrm{\frac{\diff\varphi}{\diff x}}_{\infty,[0,1]}>0$$\s
 
-  Then \rpst[\sctd{3}] states that $\mathcal{E}$ is also equicontinuous.\n
+  Then \rpst[\sctr{3}] states that $\mathcal{E}$ is also equicontinuous.\n
   
   Suppose there exists a subsequence $\brc{f_{n_{j}}}$ of $\brc{f_{n}}$ converges to the same $f\in C(\overline{G})$ in $d_{\infty}$. In other words, $f_{n_{j}}\to f$ uniformly on $\overline{G}$ implies pointwise convergence $f_{n_{j}}(x)\to f(x)$ for all $x\in\overline{G}$. However, for fixed $x$, $f_{n}(x)=0$ for all $n\geq x$, so it is expected to have
 

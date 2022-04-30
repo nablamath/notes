@@ -156,7 +156,7 @@ Below are some examples on identifying groups:\n
 \begin{pst}
   Let $G$ be a group, then $(ab)^{-1}=b^{-1}a^{-1}\erm{for any }a,b\in G$.\n
 
-  \prf Note that $(ab)(b^{-1}a^{-1})=(b^{-1}a^{-1})(ab)=e$, along with the uniqueness of inverse (by \rpst[\sctd{2}]), $(ab)^{-1}=b^{-1}a^{-1}$.
+  \prf Note that $(ab)(b^{-1}a^{-1})=(b^{-1}a^{-1})(ab)=e$, along with the uniqueness of inverse (by \rpst[\sctr{2}]), $(ab)^{-1}=b^{-1}a^{-1}$.
 \end{pst}\n
 
 \begin{dft}
@@ -206,7 +206,7 @@ $$\abs{g}=\begin{cases}
 
   \prf Suppose $\abs{g}=\infty$, then by defintion, the map $\varphi:\Z\rightarrow\bra{g}$ is surjective. Now if $g^{k_{1}}=g^{k_{2}}$ for $k_{1},k_{2}\in\Z$, and without the loss of generality, assume that $k_{1}\geq k_{2}$. Then $g^{k_{1}-k_{2}}=e$ and $\abs{g}=\infty\Leftrightarrow\brc{k\in\Z^{+}\;\mid\; g^{k}=e}=\phi$. Hence $\varphi$ is injective.\n
 
-  Suppose $\abs{g}=m<\infty$, then it has to show that $\bra{g}\subset\brc{e,g,g^{2},\cdots,g^{m-1}}$. Let $g^{k}\in\bra{g}$ where $k\in\Z$. By \rpst[\sctd{1}], $g^{r}\in\brc{e,g,g^{2},\cdots,g^{m-1}}$.
+  Suppose $\abs{g}=m<\infty$, then it has to show that $\bra{g}\subset\brc{e,g,g^{2},\cdots,g^{m-1}}$. Let $g^{k}\in\bra{g}$ where $k\in\Z$. By \rpst[\sctr{1}], $g^{r}\in\brc{e,g,g^{2},\cdots,g^{m-1}}$.
 \end{thm}
 
 \subsubsection{Definition of Cyclic Groups}
@@ -419,7 +419,7 @@ Just like subsets as substructure of sets in set theory, there is also substruct
 With the proposition above, it is much easier to determine whether a subset of a group is a subgroup or not.
 
 \begin{exm}
-  Prove example (b) and (c) in \rexm[\sctd{5}].\n
+  Prove example (b) and (c) in \rexm[\sctr{5}].\n
 
   \ans \prt[b]{zb} Note that for any $z_{1},z_{2}\in U_{n}$,
 
@@ -429,7 +429,7 @@ With the proposition above, it is much easier to determine whether a subset of a
     \Rightarrow&=z_{1}z_{2}^{-1}\in U_{n}
   \end{aligned}$$\s
 
-  By \rpst[\sctd{1}], $U_{n}<U$.\n
+  By \rpst[\sctr{1}], $U_{n}<U$.\n
 
   \prtc[c]{zb} Note that for any $A,B\in\mathrm{SL}(n,F)$,
 
@@ -439,7 +439,7 @@ With the proposition above, it is much easier to determine whether a subset of a
     \Rightarrow&AB^{-1}\in\mathrm{SL}(n,F)
   \end{aligned}$$\s
 
-  By \rpst[\sctd{1}], $\mathrm{SL}(n,F)<\mathrm{GL}(n,F)$.
+  By \rpst[\sctr{1}], $\mathrm{SL}(n,F)<\mathrm{GL}(n,F)$.
 \end{exm}
 
 \subsubsection{Cyclic Subgroups}
@@ -511,7 +511,7 @@ With the corollary of \rpst[\sct], the greatest common divisor can be defined:\n
 
   Moreover, $\bra{g^{s}}=\bra{g^{t}}$ if and only if $\gcd(s,n)=\gcd(t,n)$.\n
 
-  \prf Let $m=\abs{g^{s}}$. Since $\abs{G}=n$, $(g^{s})^{\frac{n}{d}}=(g^{n})^{\frac{s}{d}}=e$. By \rpst[\sctd{26}], $m\mid\frac{n}{d}$. On the other hand, $e=(g^{s})^{m}$ and by the same proposition as above, $n\mid sm$. By dividing both sides by $d$, $\frac{n}{d}\mid\frac{sm}{d}$. However, $\frac{n}{d}$ and $\frac{s}{d}$ are relatively primes, so $\frac{n}{d}\mid{m}$ which proves that $\abs{g^{s}}=\frac{n}{\gcd(s,n)}$.\n
+  \prf Let $m=\abs{g^{s}}$. Since $\abs{G}=n$, $(g^{s})^{\frac{n}{d}}=(g^{n})^{\frac{s}{d}}=e$. By \rpst[\sctr{26}], $m\mid\frac{n}{d}$. On the other hand, $e=(g^{s})^{m}$ and by the same proposition as above, $n\mid sm$. By dividing both sides by $d$, $\frac{n}{d}\mid\frac{sm}{d}$. However, $\frac{n}{d}$ and $\frac{s}{d}$ are relatively primes, so $\frac{n}{d}\mid{m}$ which proves that $\abs{g^{s}}=\frac{n}{\gcd(s,n)}$.\n
 
   To prove the second assertion, it has to be first shown that there is an equality of subgroups $\bra{g^{s}}=\bra{g^{d}}$ where $d=\gcd(s,n)$. Note that one inclusion is clear: as $d\mid s$, $g^{s}\in \bra{g^{d}}$ which implies $\bra{g^{s}}\subset\bra{g^{d}}$. Conversely, note that there exists $p,q\in\Z$ such that $d=ps+qn$, so $g^{d}=(g^{s})^{p}(g^{n})^{q}=(g^{s})^{p}=\bra{g^{s}}$. Hence $\bra{g^{d}}\subset\bra{g^{s}}$ and the proof of equality is complete.\n
 
@@ -604,7 +604,7 @@ Recall the definition of partitions:\n
 \end{pst}
 
 \subsubsection{Application of Equivalence Relations}
-Recall \rthm[\sctd{20}], below is the proof of the theorem:\n
+Recall \rthm[\sctr{20}], below is the proof of the theorem:\n
 
 \begin{prv}
   Let $\sigma\in S_{n}$ be a permutation of $I_{n}=\brc{1,2,\cdots,n}$. Define a relation $\sim$ on $I_{n}$ by $a\sim b$ if and only if $b=\sigma^{k}(a)$ for some $k\in\Z$, which is an equivalence relation.\n
@@ -943,7 +943,7 @@ Also note that in example (c) of \rexm[\sct], if $\abs{n}\neq 1$, then $n\Z\neq\
 \end{crl}\n
 
 \begin{exm}
-  Below are various examples based on \rpst[\sctd{1}]:
+  Below are various examples based on \rpst[\sctr{1}]:
 
   \begin{alist}
     \item $\Z_{4}\not\cong\Z_{2}\times\Z_{2}$ since $\Z_{4}$ is cyclic but $\Z_{2}\times\Z_{2}$ is not. In fact, $\Z_{4}$ and $\Z$ are the only two groups of order $4$ up to isomorphism.
@@ -1047,7 +1047,7 @@ Note that for any fixed order, there is a unique cyclic group up to isomorphisms
 
   $$U_{n}=\brc{z\in\C\srm z^{n}=1}\subset U=\brc{z\in\C\srm \abs{z}=1}=\bra{e^{\frac{2\pi i}{n}}}$$\s
 
-  Since $\abs{U_{n}}=n$, by \rthm[\sctd{1}], $U_{n}\cong\Z_{n}$, and an isomorphism is given by $e^{\frac{2\pi i}{n}}\mapsto k$ for $k=0,1,2,\cdots,n-1$.
+  Since $\abs{U_{n}}=n$, by \rthm[\sctr{1}], $U_{n}\cong\Z_{n}$, and an isomorphism is given by $e^{\frac{2\pi i}{n}}\mapsto k$ for $k=0,1,2,\cdots,n-1$.
 \end{exm}
 
 \pagebreak
@@ -1236,7 +1236,7 @@ the the following proposition can be applied:\n
 Note that a polynomial with coefficients in $R$ is essentially a finite sequence of elements in $R$.\n
 
 \begin{dft}
-  Let $f(x)$ be a polynomial defined in \rdft[\sctd{1}]. The \textbf{degree} of $f(x)$ is defined as
+  Let $f(x)$ be a polynomial defined in \rdft[\sctr{1}]. The \textbf{degree} of $f(x)$ is defined as
 
   $$\deg f(x):=\begin{cases}
     \max\brc{i\in\Z_{\geq 0}\srm a_{i}\neq 0}&\erm{if }f(x)\not\equiv 0\\
@@ -1247,7 +1247,7 @@ Note that a polynomial with coefficients in $R$ is essentially a finite sequence
 The notation $R[x]$ is the set of all polynomials with coefficients in $R$. With such notation, the following proposition can be introduced:\n
 
 \begin{pst}
-  Let $f(x)=\sum_{i=0}^{\infty}a_{i}x^{i}\in R[x]$ and $g(x)=\sum_{i=0}^{\infty}b_{i}x^{i}\in R[x]$ be polynomials defined in \rdft[\sctd{2}], then the following can be applied:
+  Let $f(x)=\sum_{i=0}^{\infty}a_{i}x^{i}\in R[x]$ and $g(x)=\sum_{i=0}^{\infty}b_{i}x^{i}\in R[x]$ be polynomials defined in \rdft[\sctr{2}], then the following can be applied:
 
   \begin{alist}
     \item \textbf{Equality of Polynomials}\n
@@ -1462,7 +1462,7 @@ In particular, $\phi(0_{R})=0_{R'}$ and $\phi(-a)=-\phi(a)$ for all $a\in R$. No
       $$\phi(k_{1}k_{2})=\overline{k_{1}k_{2}}=\overline{(\overline{k_{1}})(\overline{k_{2}})}=\phi(k_{1})\phi(k_{2})$$
     \end{rlist}
 
-    Note that the zero map $\phi:R\to R'$ where $r\mapsto 0_{R'}$ is not a ring homomorphism because of part (a) of \rdft[\sctd{3}].
+    Note that the zero map $\phi:R\to R'$ where $r\mapsto 0_{R'}$ is not a ring homomorphism because of part (a) of \rdft[\sctr{3}].
 
     \item For any ring $R$, the map $\phi:\Z\to R$ where
 
@@ -1562,7 +1562,7 @@ In particular, $\phi(0_{R})=0_{R'}$ and $\phi(-a)=-\phi(a)$ for all $a\in R$. No
 \subsection{Subrings and Ideals}
 \subsubsection{Definition of Subrings}
 \begin{dft}
-  Let $R$ be a ring. A subset $S\subset R$ is called a \textbf{subring} if it is closed under the addition $+$ and multiplication $\cdot$ in $R$ and $S$ itself is a ring with unity $1_{R}$ under the induced operations. In other words, $S\subset R$ is a subring of $R$ if it satisfies the conditions in \rdft[\sctd{32}].
+  Let $R$ be a ring. A subset $S\subset R$ is called a \textbf{subring} if it is closed under the addition $+$ and multiplication $\cdot$ in $R$ and $S$ itself is a ring with unity $1_{R}$ under the induced operations. In other words, $S\subset R$ is a subring of $R$ if it satisfies the conditions in \rdft[\sctr{32}].
 \end{dft}\n
 
 Note that for any ring $R$, $\brc{0}\subset R$ is not a subring. Below is a practical criterion for checking whether a subset is a subring:\n
@@ -1625,7 +1625,7 @@ Note that for any ring $R$, $\brc{0}\subset R$ is not a subring. Below is a prac
 Note that $\ker\phi$ is not a subring unless $R'$ is the zero ring, because $\phi(1_{R})=1_{R'}\neq 0$ unless $R'=\brc{0_{R'}}$.\n
 
 \begin{exm}
-  Consider an integral domain $D$ contained inside a field $F$, which is $D\subset F$. Let $\alpha\in F$, then this defines the evaluation map $\phi_{\alpha}:D[x]\to F$ where $f(x)\mapsto f(\alpha)$ is a ring homomorphism. By the corollary of \rpst[\sctd{1}],
+  Consider an integral domain $D$ contained inside a field $F$, which is $D\subset F$. Let $\alpha\in F$, then this defines the evaluation map $\phi_{\alpha}:D[x]\to F$ where $f(x)\mapsto f(\alpha)$ is a ring homomorphism. By the corollary of \rpst[\sctr{1}],
 
   $$D[\alpha]:=\mathrm{im}\:\phi_{\alpha}=\brc{f(\alpha)\srm f\in D[x]}$$\s
 
@@ -2027,7 +2027,7 @@ The proposition above is useful to determine whether a polynomial (especially wi
 \begin{exm}
   Check whether $f(x)=x^{3}+3x+2\in\Q[x]$ is reducible or not.\n
 
-  \ans By \rpst[\sctd{1}], only $\pm 1$ and $\pm 2$ are possible roots. However, none of the possible roots satisfies the equation $f(x)=0$. Therefore, $f(x)$ is irreducible.
+  \ans By \rpst[\sctr{1}], only $\pm 1$ and $\pm 2$ are possible roots. However, none of the possible roots satisfies the equation $f(x)=0$. Therefore, $f(x)$ is irreducible.
 \end{exm}\n
 
 \begin{dft}
