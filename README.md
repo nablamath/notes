@@ -2,13 +2,7 @@
 
 ## Contents
 
-**MATH1010: University Mathematics** \[**[pdf](math1010/math1010.pdf)**, **[tex](math1010/math1010.tex)**\]\
-**MATH1030: Linear Algebra I** \[**[pdf](math1030/math1030.pdf)**, **[tex](math1030/math1030.tex)**\]\
-**MATH2070: Algebraic Structures** \[**[pdf](math2070/math2070.pdf)**, **[tex](math2070/math2070.tex)**\]\
-**MATH3060: Mathematical Analysis III** \[**[pdf](math3060/math3060.pdf)**, **[tex](math3060/math3060.tex)**\]\
-**MATH3280: Introductory Probability** \[**[pdf](math3280/math3280.pdf)**, **[tex](math3280/math3280.tex)**\]
-
-Other MATH courses are not considered at the moment due to lack of course material or necessity of making notes.
+Please see [COURSES.md](COURSES.md) for currently available course material throughout different Mathematics courses. For each Mathematics course with complete course material, a *pdf* and a *tex* file are provided together as a package.
 
 ## Remarks
 
