@@ -7,15 +7,22 @@ The following course list is based on the [**Course Catalog | CUHK Mathematics**
 🟢 **MATH1010: University Mathematics** - Course material available \[**[pdf](math1010/math1010.pdf)**, **[tex](math1010/math1010.tex)**\]\
 🔵 **MATH1018: Honours University Mathematics** - Equivalent to **MATH1010**\
 🔴 **MATH1020: General Mathematics** - Work not started\
+🔴 **MATH1025: Essential Mathematical Methods** - Work not started\
+🔵 **MATH1028: Honours Essential Mathematical Methods** - Equivalent to **MATH1025**\
 🟢 **MATH1030: Linear Algebra I** - Course material available \[**[pdf](math1030/math1030.pdf)**, **[tex](math1030/math1030.tex)**\]\
 🔵 **MATH1038: Honours Linear Algebra I** - Equivalent to **MATH1030**\
 🟡 **MATH1050: Foundation of Modern Mathematics** - Work in progress\
 🔵 **MATH1058: Honours Foundation of Modern Mathematics** - Equivalent to **MATH1050**\
+🔴 **MATH1090: Introduction to Set Theory** - Work not started\
+🔵 **MATH1098: Honours Introduction to Set Theory** - Equivalent to **MATH1090**\
 🔴 **MATH1510: Calculus for Engineers** - Work not started\
 🔴 **MATH1520: University Mathematics for Applications** - Work not started\
+🔴 **MATH1525: Basic Mathematics for Science and Technology** - Work not started\
 🔴 **MATH1530: Basic Mathematics for Business and Social Sciences** - Work not started\
 🔴 **MATH1540: University Mathematics for Financial Studies** - Work not started\
 🔴 **MATH1550: Methods of Matrices and Linear Algebra** - Work not started\
+🔴 **MATH1610: Linear Algebra for Advanced Accounting Analytics** - Work not started\
+🔴 **MATH1620: Calculus for Advanced Accounting Analytics** - Work not started\
 🟡 **MATH2010: Advanced Calculus I** - Work in progress\
 🔵 **MATH2018: Honours Advanced Calculus I** - Equivalent to **MATH2010**\
 🟡 **MATH2020: Advanced Calculus II** - Work in progress\
